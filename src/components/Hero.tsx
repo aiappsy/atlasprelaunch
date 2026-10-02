@@ -98,23 +98,53 @@ export const Hero: React.FC<HeroProps> = ({
 
     // Function to trigger voiceover and music
     const startAudioPlay = () => {
-      if (!voiceRef.current || !musicRef.current) return;
+      if (!voiceRef.current || !musicRef.current) return Promise.reject();
+
       const p1 = voiceRef.current.play();
       const p2 = musicRef.current.play();
 
-      Promise.all([p1, p2])
+      return Promise.all([p1, p2])
         .then(() => {
           setIsPlayingAudio(true);
           setAudioBlockedByBrowser(false);
         })
-        .catch(() => {
-          // Browser prevented unprompted autoplay without user interaction
+        .catch((err) => {
           setAudioBlockedByBrowser(true);
+          throw err;
         });
     };
 
-    // Attempt immediate automatic play when entering the site
-    startAudioPlay();
+    // 1. Attempt immediate unmuted autoplay on initial render
+    startAudioPlay().catch(() => {
+      // 2. If browser requires user interaction first, listen on first gesture
+      const handleUserGesture = (e: Event) => {
+        const target = e.target as HTMLElement | null;
+        // Do NOT start voiceover if visitor clicked an action button (calculator, waitlist, stop video, podcast)
+        const btn = target?.closest('button');
+        if (btn) {
+          if (btn.dataset.action !== 'toggle-audio') {
+            cleanUpGestureListeners();
+            return;
+          }
+        }
+
+        startAudioPlay().then(() => {
+          cleanUpGestureListeners();
+        }).catch(() => {});
+      };
+
+      const cleanUpGestureListeners = () => {
+        window.removeEventListener('pointerdown', handleUserGesture, true);
+        window.removeEventListener('click', handleUserGesture, true);
+        window.removeEventListener('touchstart', handleUserGesture, true);
+        window.removeEventListener('keydown', handleUserGesture, true);
+      };
+
+      window.addEventListener('pointerdown', handleUserGesture, true);
+      window.addEventListener('click', handleUserGesture, true);
+      window.addEventListener('touchstart', handleUserGesture, true);
+      window.addEventListener('keydown', handleUserGesture, true);
+    });
 
     return () => {
       voice.removeEventListener('timeupdate', handleTimeUpdate);
