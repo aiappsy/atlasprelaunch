@@ -9,7 +9,6 @@ import {
   Award,
   Compass,
   CheckCircle2,
-  Lock,
 } from 'lucide-react';
 
 interface SiteOpenerVideoProps {
@@ -27,41 +26,42 @@ interface ScriptBeat {
   subtext: string;
 }
 
+// 100% Direct, Blunt, Natural Language — Zero Jargon
 const SCRIPT_BEATS: ScriptBeat[] = [
   {
     startSec: 0,
-    endSec: 4.5,
-    badge: 'STOP OVERPAYING RETAIL',
-    headline: 'Stop Funding Commercial Travel Portals With Your Wealth',
-    subtext: 'Public booking portals add heavy commission markups to pay for TV ads and celebrity campaigns.',
+    endSec: 4.8,
+    badge: 'THE MIDDLEMAN RIP-OFF',
+    headline: 'Booking.com and Expedia Are Ripping You Off',
+    subtext: 'They add massive markups—up to 45%—just to pay for their TV commercials and corporate profits.',
   },
   {
-    startSec: 4.5,
-    endSec: 10.5,
-    badge: 'THE TWO-TIER PRICING REALITY',
-    headline: 'Every 5-Star Hotel Has Two Prices: Retail vs Institutional Net',
-    subtext: 'The inflated public rate on Booking.com and Expedia... versus the private wholesale rate reserved for insiders.',
+    startSec: 4.8,
+    endSec: 10.2,
+    badge: 'THE SECRET WHOLESALE PRICE',
+    headline: 'Hotels Have A Secret Wholesale Price Tourists Never See',
+    subtext: 'Atlas Travel Club cuts out the middlemen and gives you that wholesale price directly.',
   },
   {
-    startSec: 10.5,
-    endSec: 16.5,
-    badge: 'RATE PARITY EXEMPT ARBITRAGE',
-    headline: 'Direct B2B Bedbank Net Rates — Save Up To 45% Net',
-    subtext: 'Atlas connects you straight to Hotelbeds & WebBeds inventory. 100% exempt from Rate Parity contracts.',
+    startSec: 10.2,
+    endSec: 15.5,
+    badge: 'SAME 5-STAR LUXURY • UP TO 45% LESS',
+    headline: 'Same 5-Star Hotels. Same Luxury Villas. 45% Less Out Of Your Pocket.',
+    subtext: 'No fake loyalty point traps. No middleman fees. Just direct wholesale prices.',
   },
   {
-    startSec: 16.5,
-    endSec: 21.0,
-    badge: 'PRELAUNCH FOUNDER PRIVILEGE',
-    headline: 'Lock In Your Membership At Half Price For Life',
-    subtext: 'Guaranteed 50% discount locked in permanently for all prelaunch waitlist members. Never pay full price.',
+    startSec: 15.5,
+    endSec: 20.8,
+    badge: 'LOCK IN HALF PRICE FOR LIFE',
+    headline: 'Join The Waiting List — Lock In Half Price For Life',
+    subtext: 'Join our prelaunch waiting list today, and lock in your membership at half price for life.',
   },
   {
-    startSec: 21.0,
+    startSec: 20.8,
     endSec: 28.0,
-    badge: 'LIFETIME LOTTERY ALLOCATION',
+    badge: '5 FREE LIFETIME PASSES',
     headline: 'Win 1 of 5 Free Lifetime Memberships (Zero Dues Forever)',
-    subtext: '5 lucky founder members will be selected in our launch draw for free lifetime membership with zero annual fees.',
+    subtext: 'Plus, five founder members will win a completely free lifetime membership—you will never pay a single cent in annual dues.',
   },
 ];
 
@@ -80,7 +80,6 @@ export const SiteOpenerVideo: React.FC<SiteOpenerVideoProps> = ({
   const voiceAudioRef = useRef<HTMLAudioElement | null>(null);
   const musicGainRef = useRef<GainNode | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
-  const animFrameRef = useRef<number | null>(null);
 
   // Initialize and handle playback
   useEffect(() => {
@@ -136,11 +135,11 @@ export const SiteOpenerVideo: React.FC<SiteOpenerVideoProps> = ({
 
         // Master gain for music
         const musicGain = ctx.createGain();
-        musicGain.gain.setValueAtTime(0.06, ctx.currentTime); // Sits under the voice
+        musicGain.gain.setValueAtTime(0.06, ctx.currentTime); // Sits gently under the voice
         musicGain.connect(ctx.destination);
         musicGainRef.current = musicGain;
 
-        // Cinematic Warm Ambient Chord (F#m9 / Dmaj7 harmony)
+        // Warm luxury harmonic chords (F#m9 / Dmaj7)
         const chordFreqs = [73.42, 110.0, 146.83, 220.0, 277.18, 329.63, 440.0];
         chordFreqs.forEach((freq, idx) => {
           const osc = ctx.createOscillator();
@@ -148,7 +147,7 @@ export const SiteOpenerVideo: React.FC<SiteOpenerVideoProps> = ({
           osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
           osc.frequency.setValueAtTime(freq, ctx.currentTime);
 
-          // Gentle undulating harmonic filter
+          // Gentle undulating harmonic movement
           const lfo = ctx.createOscillator();
           const lfoGain = ctx.createGain();
           lfo.frequency.setValueAtTime(0.15 + idx * 0.04, ctx.currentTime);
@@ -222,34 +221,34 @@ export const SiteOpenerVideo: React.FC<SiteOpenerVideoProps> = ({
   if (!isOpen) return null;
 
   const currentBeat = SCRIPT_BEATS[activeBeatIndex] || SCRIPT_BEATS[0];
-  const progressPct = Math.min(100, (currentSec / 26) * 100);
+  const progressPct = Math.min(100, (currentSec / 25) * 100);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-2xl overflow-hidden select-none animate-in fade-in duration-300">
-      {/* Background 4K Cinematic Luxury Drone Video Stream */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md overflow-hidden select-none animate-in fade-in duration-300">
+      {/* Background 4K Cinematic Luxury Drone Video Stream — HIGH VISIBILITY */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <iframe
-          className="w-full h-full object-cover scale-110 pointer-events-none opacity-45"
-          src="https://www.youtube-nocookie.com/embed/LXb3EKWsInQ?autoplay=1&mute=1&controls=0&loop=1&playlist=LXb3EKWsInQ&modestbranding=1&rel=0&showinfo=0"
+          className="w-full h-full object-cover scale-110 pointer-events-none opacity-85"
+          src="https://www.youtube-nocookie.com/embed/LXb3EKWsInQ?autoplay=1&mute=1&controls=0&loop=1&playlist=LXb3EKWsInQ&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
           title="Atlas 4K Opener"
           allow="autoplay; encrypted-media"
         />
-        {/* Layered Obsidian & Amber Vignettes */}
-        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/75 to-neutral-950/80" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-neutral-950/95" />
+        {/* Soft, Transparent Vignette: Preserves vibrant ocean & villa visuals */}
+        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/50 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-neutral-950/60 pointer-events-none" />
       </div>
 
       {/* Top Header Bar inside Opener */}
       <div className="absolute top-0 left-0 right-0 z-20 px-6 py-5 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full border border-amber-400/50 bg-neutral-950/80 backdrop-blur-md flex items-center justify-center text-amber-300 shadow-lg shadow-black/80">
+          <div className="w-10 h-10 rounded-full border border-amber-400/50 bg-neutral-950/80 backdrop-blur-md flex items-center justify-center text-amber-300 shadow-xl shadow-black/80">
             <Compass className="w-5 h-5 text-amber-300 animate-spin-slow" />
           </div>
           <div>
-            <span className="font-cinzel text-lg font-bold tracking-[0.2em] text-neutral-100 uppercase">
+            <span className="font-cinzel text-lg font-bold tracking-[0.2em] text-neutral-100 uppercase drop-shadow">
               Atlas
             </span>
-            <span className="text-[10px] uppercase font-mono tracking-widest text-amber-400 ml-2 px-2 py-0.5 rounded-full bg-amber-400/10 border border-amber-400/30">
+            <span className="text-[10px] uppercase font-mono tracking-widest text-amber-400 ml-2 px-2.5 py-0.5 rounded-full bg-amber-400/20 border border-amber-400/40 font-bold backdrop-blur-md">
               Private Prelaunch
             </span>
           </div>
@@ -261,7 +260,7 @@ export const SiteOpenerVideo: React.FC<SiteOpenerVideoProps> = ({
             <button
               type="button"
               onClick={toggleMute}
-              className="px-3.5 py-1.5 rounded-xl bg-neutral-900/80 hover:bg-neutral-800 border border-neutral-700 text-xs font-mono text-neutral-300 flex items-center gap-2 transition cursor-pointer"
+              className="px-3.5 py-1.5 rounded-xl bg-neutral-950/80 hover:bg-neutral-900 border border-neutral-700 text-xs font-mono text-neutral-300 flex items-center gap-2 transition cursor-pointer backdrop-blur-md"
             >
               {isMuted ? <VolumeX className="w-4 h-4 text-neutral-400" /> : <Volume2 className="w-4 h-4 text-emerald-400" />}
               <span>{isMuted ? 'Unmute' : 'Voiceover & Music Active'}</span>
@@ -271,7 +270,7 @@ export const SiteOpenerVideo: React.FC<SiteOpenerVideoProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-1.5 rounded-xl bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-700 text-xs font-mono text-neutral-300 hover:text-neutral-100 transition cursor-pointer flex items-center gap-1.5"
+            className="px-4 py-1.5 rounded-xl bg-neutral-950/85 hover:bg-neutral-900 border border-neutral-700 text-xs font-mono text-neutral-200 hover:text-white transition cursor-pointer flex items-center gap-1.5 backdrop-blur-md"
           >
             <span>Skip to Club</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -279,29 +278,29 @@ export const SiteOpenerVideo: React.FC<SiteOpenerVideoProps> = ({
         </div>
       </div>
 
-      {/* Main Center Stage: Sales-Driven Visual Storyboard & CTA */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-6">
+      {/* Main Center Stage: Glassmorphic Contrast Card over Visible Luxury Video */}
+      <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
         {/* Play with Sound Starter Overlay (Prominently unblocks browser audio autoplay) */}
         {!hasStartedAudio ? (
-          <div className="space-y-6 animate-in fade-in zoom-in-95 duration-500">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/15 border border-amber-400/40 text-amber-300 text-xs font-mono uppercase tracking-widest">
+          <div className="p-6 sm:p-10 rounded-3xl bg-neutral-950/75 border border-amber-400/40 backdrop-blur-xl shadow-2xl shadow-black/90 space-y-6 animate-in fade-in zoom-in-95 duration-500">
+            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-amber-400/20 border border-amber-400/50 text-amber-300 text-xs font-mono uppercase tracking-widest font-bold">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Private B2B Wholesale Bedbanks • Rate Parity Exempt</span>
+              <span>Direct Wholesale Hotel Rates • Zero Middleman Fees</span>
             </div>
 
-            <h1 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-bold text-neutral-100 leading-[1.12] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
-              Sovereign Travel. <br />
+            <h1 className="font-cinzel text-3xl sm:text-5xl font-bold text-neutral-100 leading-[1.12] drop-shadow-lg">
+              Never Pay Retail Travel <br />
               <span className="bg-gradient-to-r from-amber-200 via-amber-300 to-amber-100 bg-clip-text text-transparent">
-                Never Pay Retail Markups Again.
+                Markups Again.
               </span>
             </h1>
 
-            <p className="text-sm sm:text-lg text-neutral-300 max-w-2xl mx-auto font-light leading-relaxed">
-              Every luxury hotel in the world has two prices: the public retail price on Booking.com... and the insider wholesale rate. Experience the arbitrage.
+            <p className="text-sm sm:text-base text-neutral-200 max-w-xl mx-auto leading-relaxed">
+              Booking.com and Expedia charge up to 45% markups just to pay for TV ads. Atlas cuts out the middlemen and gives you secret wholesale hotel prices directly.
             </p>
 
             {/* Giant Play with Voiceover & Music Button */}
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
                 type="button"
                 onClick={startFullAudioExperience}
@@ -316,41 +315,41 @@ export const SiteOpenerVideo: React.FC<SiteOpenerVideoProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-neutral-900/80 hover:bg-neutral-800 border border-neutral-700 text-neutral-300 text-sm font-semibold transition cursor-pointer"
+                className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-700 text-neutral-300 text-sm font-semibold transition cursor-pointer"
               >
                 Enter Site Directly
               </button>
             </div>
           </div>
         ) : (
-          /* Active Playing Opener: Hard-Hitting Sales Beats synced with Voiceover */
-          <div className="space-y-6 animate-in fade-in duration-300">
+          /* Active Playing Opener: Blunt, Direct Sales Copy Synced with Audio */
+          <div className="p-6 sm:p-10 rounded-3xl bg-neutral-950/80 border-2 border-amber-400/60 backdrop-blur-xl shadow-2xl shadow-black/95 space-y-5 animate-in fade-in duration-300">
             {/* Active Beat Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/20 border border-amber-400/50 text-amber-300 text-xs font-mono font-bold uppercase tracking-widest backdrop-blur-md shadow-lg shadow-black/60">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-400/20 border border-amber-400/50 text-amber-300 text-xs font-mono font-bold uppercase tracking-widest shadow-md">
               <Sparkles className="w-3.5 h-3.5" />
               <span>{currentBeat.badge}</span>
             </div>
 
             {/* Active Selling Headline */}
-            <h1 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-bold text-neutral-100 leading-[1.12] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)] max-w-4xl mx-auto">
+            <h1 className="font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold text-neutral-100 leading-tight drop-shadow-md">
               {currentBeat.headline}
             </h1>
 
             {/* Active Spoken Sentence in Quotes */}
-            <p className="text-base sm:text-xl text-neutral-200 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] italic">
+            <p className="text-sm sm:text-lg text-amber-100 max-w-xl mx-auto leading-relaxed drop-shadow font-light">
               "{currentBeat.subtext}"
             </p>
 
             {/* Timeline Progress Bar */}
-            <div className="max-w-md mx-auto h-1.5 bg-neutral-900/90 rounded-full overflow-hidden border border-neutral-800">
+            <div className="max-w-md mx-auto h-1.5 bg-neutral-900 rounded-full overflow-hidden border border-neutral-800">
               <div
-                className="h-full bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 transition-all duration-200 ease-linear"
+                className="h-full bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 transition-all duration-200 ease-linear shadow-sm shadow-amber-400/50"
                 style={{ width: `${progressPct}%` }}
               />
             </div>
 
-            {/* Irresistible Call To Action Cluster (SELL, SELL, SELL) */}
-            <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* Direct Blunt Call To Action Cluster (SELL, SELL, SELL) */}
+            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
                 type="button"
                 onClick={() => {
@@ -358,10 +357,10 @@ export const SiteOpenerVideo: React.FC<SiteOpenerVideoProps> = ({
                   onClose();
                   onClaimSpot();
                 }}
-                className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-sm uppercase tracking-wider shadow-2xl shadow-amber-500/40 transition-all scale-100 hover:scale-105 cursor-pointer flex items-center justify-center gap-2.5"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-xs sm:text-sm uppercase tracking-wider shadow-2xl shadow-amber-500/40 transition-all scale-100 hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
               >
                 <Sparkles className="w-4 h-4 text-neutral-950" />
-                <span>Lock In 50% Off For Life (Join Waiting List)</span>
+                <span>Lock In Half Price For Life</span>
                 <ArrowRight className="w-4 h-4 text-neutral-950" />
               </button>
 
@@ -372,40 +371,40 @@ export const SiteOpenerVideo: React.FC<SiteOpenerVideoProps> = ({
                   onClose();
                   onExploreSavings();
                 }}
-                className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-neutral-900/90 hover:bg-neutral-800 border border-amber-400/40 text-neutral-100 font-semibold text-sm transition cursor-pointer flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-neutral-900 hover:bg-neutral-800 border border-amber-400/40 text-neutral-100 font-semibold text-xs sm:text-sm transition cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Calculate Your Savings</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
 
-            {/* Urgency & Guarantee Seals */}
-            <div className="pt-4 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-neutral-400">
+            {/* Blunt Guarantees */}
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-3 text-[11px] font-mono text-neutral-300">
               <span className="flex items-center gap-1.5 text-amber-300 font-bold">
                 <Award className="w-3.5 h-3.5" />
                 5 Free Lifetime Memberships Draw
               </span>
               <span>•</span>
-              <span className="flex items-center gap-1.5 text-emerald-400">
+              <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                Save Up To 45% Net
+                Up To 45% Wholesale Discount
               </span>
               <span>•</span>
-              <span>Rate Parity Exempt</span>
+              <span>Zero Middleman Fees</span>
             </div>
           </div>
         )}
       </div>
 
-      {/* Bottom Bar with Chapters */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 px-6 py-4 bg-neutral-950/80 border-t border-neutral-900 flex items-center justify-between text-xs text-neutral-500 font-mono">
+      {/* Bottom Bar */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 px-6 py-4 bg-neutral-950/70 border-t border-neutral-900/80 flex items-center justify-between text-xs text-neutral-400 font-mono">
         <div className="flex items-center gap-2">
-          <span>Atlas Sovereign Travel</span>
+          <span>Atlas Travel Club</span>
           <span>•</span>
-          <span>B2B Bedbank Net Rates</span>
+          <span>Direct Wholesale Hotel Rates</span>
         </div>
         <div>
-          <span>Founder Member Allocation: Active</span>
+          <span className="text-amber-300 font-semibold">Founder Member Prelaunch Active</span>
         </div>
       </div>
     </div>
