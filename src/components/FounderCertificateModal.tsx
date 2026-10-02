@@ -37,12 +37,14 @@ interface FounderCertificateModalProps {
   isOpen: boolean;
   onClose: () => void;
   data: FounderCertificateData | null;
+  onOpenPodcast?: (track: 'summary' | 'deepdive') => void;
 }
 
 export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = ({
   isOpen,
   onClose,
   data,
+  onOpenPodcast,
 }) => {
   const [activeTab, setActiveTab] = useState<'certificate' | 'email'>('certificate');
   const [isCopied, setIsCopied] = useState(false);
@@ -289,35 +291,38 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                   <div className="flex flex-col sm:flex-row gap-2 pt-1">
                     <button
                       type="button"
-                      onClick={toggleDeepDivePlay}
-                      className={`flex-1 py-2 px-3 rounded-xl border text-xs font-mono font-semibold flex items-center justify-center gap-2 transition cursor-pointer ${
-                        isPlayingDeepDive
-                          ? 'bg-amber-400 text-neutral-950 border-amber-300 shadow-md shadow-amber-400/30'
-                          : 'bg-amber-400/15 hover:bg-amber-400/25 border-amber-400/40 text-amber-300 hover:text-white'
-                      }`}
+                      onClick={() => {
+                        if (onOpenPodcast) {
+                          onOpenPodcast('deepdive');
+                        } else {
+                          toggleDeepDivePlay();
+                        }
+                      }}
+                      className="flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-xs font-mono flex items-center justify-center gap-2 shadow-md shadow-amber-400/20 transition cursor-pointer"
                     >
-                      {isPlayingDeepDive ? (
-                        <>
-                          <Pause className="w-3.5 h-3.5 fill-current" />
-                          <span>Pause 23-Min Audio Briefing</span>
-                        </>
-                      ) : (
-                        <>
-                          <Play className="w-3.5 h-3.5 fill-current" />
-                          <span>Stream 23-Min Audio Briefing</span>
-                        </>
-                      )}
+                      <Play className="w-3.5 h-3.5 fill-current" />
+                      <span>Stream 23-Min Audio (With Chapters)</span>
                     </button>
+
+                    <a
+                      href="/audio/how-travel-duopolies-rig-hotel-prices.mp3"
+                      download="How_Travel_Duopolies_Rig_Hotel_Prices.mp3"
+                      className="py-2 px-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-amber-400/40 text-neutral-300 hover:text-white font-mono text-xs flex items-center justify-center gap-1.5 transition"
+                      title="Download raw MP3 for offline listening"
+                    >
+                      <Download className="w-3.5 h-3.5 text-amber-400" />
+                      <span>Audio MP3</span>
+                    </a>
 
                     <a
                       href="/docs/OTA_Duopoly_Research_Brief.pdf"
                       download="OTA_Duopoly_Research_Brief.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 py-2 px-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-amber-400/40 text-neutral-300 hover:text-white font-mono text-xs flex items-center justify-center gap-2 transition"
+                      className="py-2 px-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-amber-400/40 text-neutral-300 hover:text-white font-mono text-xs flex items-center justify-center gap-1.5 transition"
                     >
                       <Download className="w-3.5 h-3.5 text-amber-400" />
-                      <span>Download 14-Page PDF Report</span>
+                      <span>14-Page PDF</span>
                     </a>
                   </div>
                 </div>
@@ -460,15 +465,25 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                     <p className="text-[11px] text-neutral-400 leading-relaxed">
                       An unscripted conversational breakdown of Booking Holdings vs. Expedia Group, Rate Parity MFN clauses, and how closed-loop private clubs bypass the retail price-rigging system.
                     </p>
-                    <a
-                      href="/audio/how-travel-duopolies-rig-hotel-prices.mp3"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs text-amber-300 hover:text-amber-200 font-mono font-semibold pt-1"
-                    >
-                      <Play className="w-3 h-3 fill-current" />
-                      <span>Listen to the 23-Min Audio Briefing →</span>
-                    </a>
+                    <div className="flex items-center gap-3 pt-1">
+                      <button
+                        type="button"
+                        onClick={() => onOpenPodcast?.('deepdive')}
+                        className="inline-flex items-center gap-1.5 text-xs text-amber-300 hover:text-amber-200 font-mono font-semibold cursor-pointer"
+                      >
+                        <Play className="w-3 h-3 fill-current" />
+                        <span>Stream 23-Min Audio Briefing →</span>
+                      </button>
+
+                      <a
+                        href="/audio/how-travel-duopolies-rig-hotel-prices.mp3"
+                        download="How_Travel_Duopolies_Rig_Hotel_Prices.mp3"
+                        className="inline-flex items-center gap-1 text-[11px] text-neutral-400 hover:text-white font-mono"
+                      >
+                        <Download className="w-3 h-3 text-amber-400" />
+                        <span>Download MP3</span>
+                      </a>
+                    </div>
                   </div>
 
                   <div className="p-3 rounded-lg bg-neutral-950/80 border border-neutral-800 space-y-1.5">

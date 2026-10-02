@@ -19,6 +19,7 @@ export default function App() {
   const [isCrmAuthenticated, setIsCrmAuthenticated] = useState<boolean>(false);
   const [isWaitlistOpen, setIsWaitlistOpen] = useState<boolean>(false);
   const [isPodcastOpen, setIsPodcastOpen] = useState<boolean>(false);
+  const [podcastTrack, setPodcastTrack] = useState<'summary' | 'deepdive'>('summary');
   const [selectedSavings, setSelectedSavings] = useState<CalculationResult | null>(null);
   const [founderCertificateData, setFounderCertificateData] = useState<FounderCertificateData | null>(null);
   const [isCalculatingVideoPulse, setIsCalculatingVideoPulse] = useState<boolean>(false);
@@ -137,6 +138,7 @@ export default function App() {
         onOpenPodcast={() => {
           setIsVideoPlaying(false);
           heroAudio.pause();
+          setPodcastTrack('summary');
           setIsPodcastOpen(true);
         }}
       />
@@ -154,6 +156,7 @@ export default function App() {
           onOpenPodcast={() => {
             setIsVideoPlaying(false);
             heroAudio.pause();
+            setPodcastTrack('summary');
             setIsPodcastOpen(true);
           }}
           onJoinWaitlist={() => {
@@ -197,12 +200,17 @@ export default function App() {
         isOpen={!!founderCertificateData}
         onClose={() => setFounderCertificateData(null)}
         data={founderCertificateData}
+        onOpenPodcast={(track) => {
+          setPodcastTrack(track);
+          setIsPodcastOpen(true);
+        }}
       />
 
       {/* How It Works Podcast Deep Dive Player Modal */}
       <PodcastPlayerModal
         isOpen={isPodcastOpen}
         onClose={() => setIsPodcastOpen(false)}
+        initialTrack={podcastTrack}
         onOpenWaitlist={() => {
           setIsPodcastOpen(false);
           setIsWaitlistOpen(true);

@@ -4,7 +4,6 @@ import {
   Play,
   Pause,
   RotateCcw,
-  RotateCw,
   Volume2,
   VolumeX,
   Minimize2,
@@ -14,22 +13,63 @@ import {
   ArrowRight,
   Clock,
   Radio,
-  CheckCircle2,
+  Download,
 } from 'lucide-react';
 
-interface Chapter {
+export interface Chapter {
   time: number;
   label: string;
   desc: string;
 }
 
-const CHAPTERS: Chapter[] = [
-  { time: 0, label: '00:00 — The Retail Rate Illusion', desc: 'Why public travel platforms artificially inflate room prices' },
-  { time: 75, label: '01:15 — The Secret Bedbank Channel', desc: 'How luxury five-star hotels clear unbooked premium inventory' },
-  { time: 150, label: '02:30 — Rate Parity Legal Loophole', desc: 'Why closed-loop private clubs are legally exempt from retail prices' },
-  { time: 225, label: '03:45 — Zero-Markup Membership', desc: 'Passing 100% of wholesale net savings directly to private members' },
-  { time: 270, label: '04:30 — The Founder Advantage', desc: 'Locking in half-price lifetime access and free membership draws' },
-];
+export interface PodcastTrack {
+  id: 'summary' | 'deepdive';
+  badge: string;
+  durationLabel: string;
+  title: string;
+  description: string;
+  audioSrc: string;
+  downloadFilename: string;
+  chapters: Chapter[];
+}
+
+export const PODCAST_TRACKS: Record<'summary' | 'deepdive', PodcastTrack> = {
+  summary: {
+    id: 'summary',
+    badge: 'Executive Briefing • 5 Min',
+    durationLabel: '4:58 Duration',
+    title: 'How Private Clubs Get Wholesale Hotel Rates',
+    description:
+      'An unscripted conversational breakdown of closed-loop club economics, secret wholesale bedbanks, and how Atlas passes pure net pricing to private members.',
+    audioSrc: '/audio/how-private-clubs-get-wholesale-hotel-rates.mp3?v=20261002_seek',
+    downloadFilename: 'How_Private_Clubs_Get_Wholesale_Hotel_Rates.mp3',
+    chapters: [
+      { time: 0, label: '00:00 — The Retail Rate Illusion', desc: 'Why public travel platforms artificially inflate room prices' },
+      { time: 75, label: '01:15 — The Secret Bedbank Channel', desc: 'How luxury five-star hotels clear unbooked premium inventory' },
+      { time: 150, label: '02:30 — Rate Parity Legal Loophole', desc: 'Why closed-loop private clubs are legally exempt from retail prices' },
+      { time: 225, label: '03:45 — Zero-Markup Membership', desc: 'Passing 100% of wholesale net savings directly to private members' },
+      { time: 270, label: '04:30 — The Founder Advantage', desc: 'Locking in half-price lifetime access and free membership draws' },
+    ],
+  },
+  deepdive: {
+    id: 'deepdive',
+    badge: 'Forensic Investigation • 23 Min',
+    durationLabel: '23:07 Duration',
+    title: 'How Travel Duopolies Rig Hotel Prices',
+    description:
+      'An institutional deep dive analyzing Booking Holdings vs. Expedia Group, Most Favored Nation (MFN) contracts, and why closed-loop clubs bypass retail markups.',
+    audioSrc: '/audio/how-travel-duopolies-rig-hotel-prices.mp3?v=20261002_deepdive',
+    downloadFilename: 'How_Travel_Duopolies_Rig_Hotel_Prices.mp3',
+    chapters: [
+      { time: 0, label: '00:00 — The $50 Billion Illusion', desc: 'The corporate duopoly controlling 25+ consumer booking brands' },
+      { time: 255, label: '04:15 — The Secret Bedbank Pipeline', desc: 'Hotelbeds & institutional B2B wholesale clearing networks' },
+      { time: 510, label: '08:30 — Most Favored Nation (MFN)', desc: 'The restrictive contracts preventing hotels from offering discounts' },
+      { time: 790, label: '13:10 — Closed-Loop Legal Exemption', desc: 'Why gated membership clubs bypass retail price parity laws' },
+      { time: 1080, label: '18:00 — Zero-Commission Distribution', desc: 'Direct hotel pass-through rates and margin transparency' },
+      { time: 1290, label: '21:30 — Founder Action Plan', desc: 'Securing wholesale access before public club cap closes' },
+    ],
+  },
+};
 
 const SPEED_OPTIONS = [1.0, 1.25, 1.5, 2.0];
 
@@ -38,6 +78,7 @@ interface PodcastPlayerModalProps {
   onClose: () => void;
   onOpenWaitlist: () => void;
   onPlaybackStart?: () => void;
+  initialTrack?: 'summary' | 'deepdive';
 }
 
 export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
@@ -45,22 +86,43 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
   onClose,
   onOpenWaitlist,
   onPlaybackStart,
+  initialTrack = 'summary',
 }) => {
+  const [activeTrackId, setActiveTrackId] = useState<'summary' | 'deepdive'>(initialTrack);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [playbackRate, setPlaybackRate] = useState(1.0);
-  const [volume, setVolume] = useState(1.0);
   const [isMuted, setIsMuted] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const currentTrack = PODCAST_TRACKS[activeTrackId];
 
-  // Initialize Audio
+  // Sync initialTrack when modal opens
   useEffect(() => {
-    const audio = new Audio('/audio/how-private-clubs-get-wholesale-hotel-rates.mp3?v=20261002_seek');
+    if (isOpen && initialTrack && initialTrack !== activeTrackId) {
+      switchTrack(initialTrack, false);
+    }
+  }, [isOpen, initialTrack]);
+
+  // Load and setup audio element
+  const loadAudio = (src: string, autoPlay = false) => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.src = src;
+      audioRef.current.load();
+    } else {
+      audioRef.current = new Audio(src);
+    }
+
+    const audio = audioRef.current;
     audio.preload = 'auto';
-    audioRef.current = audio;
+    audio.playbackRate = playbackRate;
+    audio.muted = isMuted;
+
+    setCurrentTime(0);
+    setDuration(0);
 
     const handleLoadedMetadata = () => {
       if (audio.duration && !isNaN(audio.duration)) {
@@ -79,17 +141,33 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
       setIsPlaying(false);
     };
 
-    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
-    audio.addEventListener('timeupdate', handleTimeUpdate);
-    audio.addEventListener('ended', handleEnded);
+    audio.onloadedmetadata = handleLoadedMetadata;
+    audio.ontimeupdate = handleTimeUpdate;
+    audio.onended = handleEnded;
+
+    if (autoPlay) {
+      onPlaybackStart?.();
+      audio.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
+  };
+
+  // Initial load
+  useEffect(() => {
+    loadAudio(currentTrack.audioSrc, false);
 
     return () => {
-      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
-      audio.removeEventListener('timeupdate', handleTimeUpdate);
-      audio.removeEventListener('ended', handleEnded);
-      audio.pause();
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
     };
   }, []);
+
+  const switchTrack = (trackId: 'summary' | 'deepdive', autoPlay = false) => {
+    if (trackId === activeTrackId) return;
+    setActiveTrackId(trackId);
+    setIsPlaying(autoPlay);
+    loadAudio(PODCAST_TRACKS[trackId].audioSrc, autoPlay);
+  };
 
   // When modal is opened, if it was minimized, un-minimize
   useEffect(() => {
@@ -116,7 +194,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
 
   const seekTo = (seconds: number) => {
     if (!audioRef.current) return;
-    const maxDur = duration > 0 ? duration : 310.8;
+    const maxDur = duration > 0 ? duration : (activeTrackId === 'summary' ? 310.8 : 1387);
     const target = Math.max(0, Math.min(seconds, maxDur));
     try {
       audioRef.current.currentTime = target;
@@ -153,8 +231,6 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
     return `${m}:${s < 10 ? '0' : ''}${s}`;
   };
 
-  const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
-
   // Don't render anything if closed and not playing in minimized dock
   if (!isOpen && !isMinimized && !isPlaying) {
     return null;
@@ -171,7 +247,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
 
           <div className="min-w-0 flex-1">
             <p className="text-xs font-semibold text-neutral-100 truncate">
-              How Private Clubs Get Wholesale Hotel Rates
+              {currentTrack.title}
             </p>
             <p className="text-[11px] font-mono text-neutral-400">
               {formatTime(currentTime)} / {formatTime(duration)}
@@ -228,7 +304,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
             <span className="text-xs uppercase font-mono tracking-widest text-amber-300 font-semibold">
-              Atlas Insider Briefing • How It Works
+              Atlas Audio Intelligence • Private Member Briefings
             </span>
           </div>
 
@@ -263,6 +339,38 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
 
         {/* Scrollable Body */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
+          {/* Track Switcher Tabs */}
+          <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-neutral-950 border border-neutral-800">
+            <button
+              type="button"
+              onClick={() => switchTrack('summary')}
+              className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-mono font-semibold flex items-center justify-center gap-2 transition cursor-pointer ${
+                activeTrackId === 'summary'
+                  ? 'bg-amber-400 text-neutral-950 font-bold shadow-md shadow-amber-400/20'
+                  : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-900'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>5-Min Club Summary</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => switchTrack('deepdive')}
+              className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-mono font-semibold flex items-center justify-center gap-2 transition cursor-pointer ${
+                activeTrackId === 'deepdive'
+                  ? 'bg-amber-400 text-neutral-950 font-bold shadow-md shadow-amber-400/20'
+                  : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-900'
+              }`}
+            >
+              <Radio className="w-3.5 h-3.5" />
+              <span>23-Min Duopoly Deep Dive</span>
+              <span className="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold uppercase">
+                Forensic
+              </span>
+            </button>
+          </div>
+
           {/* Hero Audio Header */}
           <div className="flex flex-col sm:flex-row items-center gap-6">
             {/* Vinyl / Cover Art */}
@@ -272,7 +380,9 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
                 <span className="text-[10px] uppercase font-mono tracking-wider text-amber-400 font-bold block">
                   NotebookLM
                 </span>
-                <span className="text-[9px] text-neutral-400 block font-mono">Deep Dive Audio</span>
+                <span className="text-[9px] text-neutral-400 block font-mono">
+                  {currentTrack.durationLabel}
+                </span>
               </div>
             </div>
 
@@ -280,13 +390,13 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
             <div className="text-center sm:text-left space-y-1.5 flex-1">
               <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-300 text-[11px] font-mono">
                 <Sparkles className="w-3 h-3" />
-                <span>Two-Host Audio Overview • 5 Min</span>
+                <span>{currentTrack.badge}</span>
               </div>
               <h2 className="font-cinzel text-xl sm:text-2xl font-bold text-neutral-100 leading-snug">
-                How Private Clubs Get Wholesale Hotel Rates
+                {currentTrack.title}
               </h2>
               <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-                An unscripted conversational breakdown of closed-loop club economics, secret wholesale bedbanks, and how Atlas passes pure net pricing to private members.
+                {currentTrack.description}
               </p>
             </div>
           </div>
@@ -298,7 +408,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
               <input
                 type="range"
                 min={0}
-                max={duration || 100}
+                max={duration || (activeTrackId === 'summary' ? 310.8 : 1387)}
                 value={currentTime}
                 onChange={(e) => seekTo(parseFloat(e.target.value))}
                 className="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-amber-400 group-hover:h-2 transition-all"
@@ -353,33 +463,47 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
                 type="button"
                 onClick={() => skipSeconds(15)}
                 className="p-2.5 rounded-full text-neutral-300 hover:text-amber-300 hover:bg-neutral-800 transition cursor-pointer"
-                title="Forward 15 seconds"
+                title="Fast forward 15 seconds"
               >
-                <RotateCw className="w-5 h-5" />
+                <RotateCcw className="w-5 h-5 -scale-x-100" />
               </button>
             </div>
 
-            {/* Right: Volume & Mute */}
-            <button
-              type="button"
-              onClick={toggleMute}
-              className="p-2 rounded-xl border border-neutral-700 bg-neutral-800/80 hover:bg-neutral-800 text-neutral-300 hover:text-white transition cursor-pointer"
-              title={isMuted ? 'Unmute' : 'Mute'}
-            >
-              {isMuted ? <VolumeX className="w-4 h-4 text-red-400" /> : <Volume2 className="w-4 h-4" />}
-            </button>
+            {/* Right: Volume & Download */}
+            <div className="flex items-center gap-2">
+              <a
+                href={currentTrack.audioSrc}
+                download={currentTrack.downloadFilename}
+                className="p-2 rounded-xl border border-neutral-700 bg-neutral-800/80 hover:bg-neutral-800 text-neutral-300 hover:text-amber-300 transition cursor-pointer flex items-center gap-1.5 text-xs font-mono"
+                title="Download MP3 for offline listening"
+              >
+                <Download className="w-4 h-4" />
+                <span className="hidden sm:inline">MP3</span>
+              </a>
+
+              <button
+                type="button"
+                onClick={toggleMute}
+                className="p-2 rounded-xl border border-neutral-700 bg-neutral-800/80 hover:bg-neutral-800 text-neutral-300 hover:text-white transition cursor-pointer"
+                title={isMuted ? 'Unmute' : 'Mute'}
+              >
+                {isMuted ? <VolumeX className="w-4 h-4 text-red-400" /> : <Volume2 className="w-4 h-4" />}
+              </button>
+            </div>
           </div>
 
           {/* Jump to Chapters */}
           <div className="space-y-3 pt-2">
             <h3 className="text-xs uppercase font-mono tracking-wider text-neutral-400 font-semibold flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5 text-amber-400" />
-              <span>Key Discussion Chapters (Click to Jump)</span>
+              <span>Discussion Chapters (Click to Jump Instantly)</span>
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {CHAPTERS.map((ch, idx) => {
-                const nextTime = CHAPTERS[idx + 1] ? CHAPTERS[idx + 1].time : (duration || 310.8);
+              {currentTrack.chapters.map((ch, idx) => {
+                const nextTime = currentTrack.chapters[idx + 1]
+                  ? currentTrack.chapters[idx + 1].time
+                  : (duration || (activeTrackId === 'summary' ? 310.8 : 1387));
                 const isActive = currentTime >= ch.time && currentTime < nextTime;
                 return (
                   <button
