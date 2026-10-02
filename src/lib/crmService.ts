@@ -2,6 +2,15 @@ import { LeadRecord, TeamMember, LeadNote, LeadStatus } from './crmTypes';
 
 const DEFAULT_TEAM: TeamMember[] = [
   {
+    id: 'team_lars',
+    name: 'Lars',
+    email: 'lars@agenturer.no',
+    role: 'admin',
+    specialization: 'Nordic Operations & Founder Concierge',
+    status: 'active',
+    createdAt: '2026-10-02T12:00:00Z',
+  },
+  {
     id: 'team_marcus',
     name: 'Marcus Vance',
     email: 'marcus@atlastravelclub.com',
@@ -107,7 +116,14 @@ const LOCAL_STORAGE_TEAM_KEY = 'atlas_crm_team_v2';
 export function getStoredTeamMembers(): TeamMember[] {
   try {
     const raw = localStorage.getItem(LOCAL_STORAGE_TEAM_KEY);
-    if (raw) return JSON.parse(raw);
+    if (raw) {
+      const parsed: TeamMember[] = JSON.parse(raw);
+      if (!parsed.some(m => m.email.toLowerCase() === 'lars@agenturer.no' || m.id === 'team_lars')) {
+        parsed.unshift(DEFAULT_TEAM[0]);
+        localStorage.setItem(LOCAL_STORAGE_TEAM_KEY, JSON.stringify(parsed));
+      }
+      return parsed;
+    }
   } catch (e) {
     console.warn('Could not read team members from localStorage', e);
   }
