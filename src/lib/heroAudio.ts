@@ -89,13 +89,19 @@ class HeroAudioManager {
   public play() {
     if (!this.audio) this.init();
     if (this.audio) {
+      this.audio.muted = false;
+      this.audio.volume = 1.0;
       this.audio.play()
         .then(() => {
           this.isPlaying = true;
           this.needsInteraction = false;
           this.notify();
         })
-        .catch(() => {});
+        .catch((err) => {
+          console.warn('Hero audio play blocked by browser policy:', err);
+          this.needsInteraction = true;
+          this.notify();
+        });
     }
   }
 

@@ -78,13 +78,13 @@ export const Hero: React.FC<HeroProps> = ({
           Booking.com and Expedia charge up to 45% markups just to pay for TV ads. Atlas cuts out the middlemen and gives you the secret wholesale hotel rate directly.
         </p>
 
-        {/* Prominent Golden Sound Prompt (Shown if browser blocked initial unmuted autoplay) */}
-        {audioState.needsInteraction && isVideoPlaying && (
+        {/* Prominent Golden Sound Prompt (Shown whenever audio is not playing) */}
+        {!audioState.isPlaying && isVideoPlaying && (
           <div className="pt-1 animate-in fade-in duration-500">
             <button
               type="button"
               data-action="toggle-audio"
-              onClick={() => heroAudio.play()}
+              onClick={() => heroAudio.restart()}
               className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-amber-500/25 via-amber-400/35 to-amber-500/25 hover:from-amber-400/40 hover:to-amber-300/40 border border-amber-400 text-amber-200 font-semibold text-xs sm:text-sm shadow-xl shadow-amber-500/20 backdrop-blur-md animate-pulse cursor-pointer transition-all scale-100 hover:scale-105"
             >
               <Volume2 className="w-4 h-4 text-amber-300 animate-bounce" />
