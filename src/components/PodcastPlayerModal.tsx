@@ -24,11 +24,11 @@ interface Chapter {
 }
 
 const CHAPTERS: Chapter[] = [
-  { time: 0, label: '00:00 — The Retail Illusion', desc: 'Why public travel platforms charge inflated rates' },
-  { time: 165, label: '02:45 — The 45% OTA Ad Tax', desc: 'How billions in TV marketing get passed on to travelers' },
-  { time: 370, label: '06:10 — The Wholesale Bedbank Network', desc: 'The private inventory clearinghouses behind luxury hotels' },
-  { time: 630, label: '10:30 — Rate Parity Contracts', desc: 'Why hotels are legally barred from displaying discounts publicly' },
-  { time: 890, label: '14:50 — The Atlas Sovereign Club', desc: 'Passing 100% of wholesale net savings to private members' },
+  { time: 0, label: '00:00 — The Retail Rate Illusion', desc: 'Why public travel platforms artificially inflate room prices' },
+  { time: 75, label: '01:15 — The Secret Bedbank Channel', desc: 'How luxury five-star hotels clear unbooked premium inventory' },
+  { time: 150, label: '02:30 — Rate Parity Legal Loophole', desc: 'Why closed-loop private clubs are legally exempt from retail prices' },
+  { time: 225, label: '03:45 — Zero-Markup Membership', desc: 'Passing 100% of wholesale net savings directly to private members' },
+  { time: 270, label: '04:30 — The Founder Advantage', desc: 'Locking in half-price lifetime access and free membership draws' },
 ];
 
 const SPEED_OPTIONS = [1.0, 1.25, 1.5, 2.0];
@@ -58,7 +58,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
 
   // Initialize Audio
   useEffect(() => {
-    const audio = new Audio('/audio/why-your-hotel-room-costs-double.m4a');
+    const audio = new Audio('/audio/how-private-clubs-get-wholesale-hotel-rates.m4a');
     audio.preload = 'metadata';
     audioRef.current = audio;
 
@@ -166,7 +166,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
 
           <div className="min-w-0 flex-1">
             <p className="text-xs font-semibold text-neutral-100 truncate">
-              Why Your Hotel Room Costs Double
+              How Private Clubs Get Wholesale Hotel Rates
             </p>
             <p className="text-[11px] font-mono text-neutral-400">
               {formatTime(currentTime)} / {formatTime(duration)}
@@ -275,13 +275,13 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
             <div className="text-center sm:text-left space-y-1.5 flex-1">
               <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-300 text-[11px] font-mono">
                 <Sparkles className="w-3 h-3" />
-                <span>Two-Host Audio Overview • 18 Min</span>
+                <span>Two-Host Audio Overview • 5 Min</span>
               </div>
               <h2 className="font-cinzel text-xl sm:text-2xl font-bold text-neutral-100 leading-snug">
-                Why Your Hotel Room Costs Double
+                How Private Clubs Get Wholesale Hotel Rates
               </h2>
               <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-                An unscripted conversational breakdown of the 45% OTA advertising tax, how wholesale bedbanks clear unsold five-star suites, and why private membership unlocks net pricing.
+                An unscripted conversational breakdown of closed-loop club economics, secret wholesale bedbanks, and how Atlas passes pure net pricing to private members.
               </p>
             </div>
           </div>

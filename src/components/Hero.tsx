@@ -253,7 +253,7 @@ export const Hero: React.FC<HeroProps> = ({
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-950/60 hover:bg-neutral-900/80 border border-amber-400/30 hover:border-amber-400/70 text-xs font-mono text-amber-300 hover:text-white transition shadow-lg backdrop-blur-md cursor-pointer group"
             >
               <Headphones className="w-3.5 h-3.5 text-amber-400 group-hover:scale-110 transition-transform" />
-              <span>Listen to the 18-min Deep Dive: "Why Your Hotel Room Costs Double" →</span>
+              <span>Listen to the 5-min Deep Dive: "How Private Clubs Get Wholesale Hotel Rates" →</span>
             </button>
           </div>
         )}
