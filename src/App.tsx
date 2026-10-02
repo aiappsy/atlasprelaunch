@@ -10,12 +10,14 @@ import { Footer } from './components/Footer';
 import { CrmDashboard } from './components/crm/CrmDashboard';
 import { CrmAuthGate } from './components/crm/CrmAuthGate';
 import { FounderCertificateModal, FounderCertificateData } from './components/FounderCertificateModal';
+import { VideoTheaterModal } from './components/VideoTheaterModal';
 import { CalculationResult } from './lib/calculatorModel';
 
 export default function App() {
   const [viewMode, setViewMode] = useState<'site' | 'crm'>('site');
   const [isCrmAuthenticated, setIsCrmAuthenticated] = useState<boolean>(false);
   const [isWaitlistOpen, setIsWaitlistOpen] = useState<boolean>(false);
+  const [isVideoTheaterOpen, setIsVideoTheaterOpen] = useState<boolean>(false);
   const [selectedSavings, setSelectedSavings] = useState<CalculationResult | null>(null);
   const [founderCertificateData, setFounderCertificateData] = useState<FounderCertificateData | null>(null);
   const [isCalculatingVideoPulse, setIsCalculatingVideoPulse] = useState<boolean>(false);
@@ -99,7 +101,10 @@ export default function App() {
       {/* Main Content Area */}
       <main className="relative z-10 flex-1 flex flex-col justify-center items-center w-full">
         {/* High-Conviction Hero Section with Founder Member 50% Lifetime & 5 Free Draws */}
-        <Hero onJoinWaitlist={() => setIsWaitlistOpen(true)} />
+        <Hero
+          onJoinWaitlist={() => setIsWaitlistOpen(true)}
+          onOpenVideo={() => setIsVideoTheaterOpen(true)}
+        />
 
         {/* Real Rate Parity Arbitrage Audit Ticker (From Original Repo App) */}
         <RateTicker />
@@ -116,6 +121,13 @@ export default function App() {
 
       {/* Footer with Discreet Staff Lock Icon */}
       <Footer onOpenCrm={() => setViewMode('crm')} />
+
+      {/* 4K Cinematic Founder Teaser Video Theater Modal */}
+      <VideoTheaterModal
+        isOpen={isVideoTheaterOpen}
+        onClose={() => setIsVideoTheaterOpen(false)}
+        onClaimSpot={() => setIsWaitlistOpen(true)}
+      />
 
       {/* Early Access / Waitlist Lead Modal */}
       <WaitlistModal

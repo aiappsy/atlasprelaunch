@@ -1,11 +1,12 @@
 import React from 'react';
-import { Sparkles, Gift, Award, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Gift, Award, ShieldCheck, ArrowRight, CheckCircle2, Play } from 'lucide-react';
 
 interface HeroProps {
   onJoinWaitlist: () => void;
+  onOpenVideo?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist }) => {
+export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onOpenVideo }) => {
   return (
     <section className="relative z-10 pt-4 pb-8 px-4 sm:px-6 max-w-5xl mx-auto text-center">
       {/* Exclusivity / Launch Concept Badge */}
@@ -27,6 +28,35 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist }) => {
         When booking through public portals like Booking.com or Expedia, you pay heavy commission markups that subsidize commercial ads and TV campaigns. As a private, closed-loop membership club, ATLAS is <strong>100% exempt from Rate Parity contracts</strong>, connecting members directly to institutional bedbanks (Hotelbeds, WebBeds) at net wholesale prices.
       </p>
 
+      {/* Primary Action Button Cluster: Claim Spot + Watch 4K Teaser */}
+      <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8">
+        <button
+          type="button"
+          onClick={onJoinWaitlist}
+          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-amber-500/25 transition cursor-pointer flex items-center gap-2"
+        >
+          <Sparkles className="w-4 h-4 text-neutral-950" />
+          <span>Claim Founder Spot (50% Off For Life)</span>
+          <ArrowRight className="w-4 h-4" />
+        </button>
+
+        {onOpenVideo && (
+          <button
+            type="button"
+            onClick={onOpenVideo}
+            className="px-5 py-3.5 rounded-2xl bg-neutral-900/90 hover:bg-neutral-800 border border-amber-400/40 hover:border-amber-400 text-neutral-100 font-semibold text-xs sm:text-sm transition shadow-lg shadow-black/50 cursor-pointer flex items-center gap-2.5 group"
+          >
+            <div className="w-6 h-6 rounded-full bg-amber-400/20 border border-amber-400/40 flex items-center justify-center text-amber-300 group-hover:scale-110 transition-transform">
+              <Play className="w-3 h-3 fill-amber-300 text-amber-300 ml-0.5" />
+            </div>
+            <span>Watch Founder Teaser (0:38)</span>
+            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-400/15 text-amber-300 border border-amber-400/30">
+              4K
+            </span>
+          </button>
+        )}
+      </div>
+
       {/* ========================================================= */}
       {/* EXCLUSIVE FOUNDER MEMBER BENEFIT BANNER (HIGH CONVICTION) */}
       {/* ========================================================= */}
@@ -46,14 +76,28 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist }) => {
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={onJoinWaitlist}
-            className="self-start sm:self-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/30 transition cursor-pointer flex items-center gap-2 shrink-0"
-          >
-            <span>Claim Founder Spot</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+          <div className="flex items-center gap-2 self-start sm:self-auto">
+            {onOpenVideo && (
+              <button
+                type="button"
+                onClick={onOpenVideo}
+                className="px-3.5 py-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-neutral-200 font-semibold text-xs transition cursor-pointer flex items-center gap-1.5"
+                title="Play 4K Teaser Video"
+              >
+                <Play className="w-3.5 h-3.5 text-amber-400" />
+                <span className="hidden sm:inline">Teaser</span>
+              </button>
+            )}
+
+            <button
+              type="button"
+              onClick={onJoinWaitlist}
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/30 transition cursor-pointer flex items-center gap-2 shrink-0"
+            >
+              <span>Claim Spot</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
 
         {/* 2 Core Founder Member Guarantees */}
