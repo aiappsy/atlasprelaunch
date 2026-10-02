@@ -10,14 +10,12 @@ import { Footer } from './components/Footer';
 import { CrmDashboard } from './components/crm/CrmDashboard';
 import { CrmAuthGate } from './components/crm/CrmAuthGate';
 import { FounderCertificateModal, FounderCertificateData } from './components/FounderCertificateModal';
-import { SiteOpenerVideo } from './components/SiteOpenerVideo';
 import { CalculationResult } from './lib/calculatorModel';
 
 export default function App() {
   const [viewMode, setViewMode] = useState<'site' | 'crm'>('site');
   const [isCrmAuthenticated, setIsCrmAuthenticated] = useState<boolean>(false);
   const [isWaitlistOpen, setIsWaitlistOpen] = useState<boolean>(false);
-  const [isSiteOpenerOpen, setIsSiteOpenerOpen] = useState<boolean>(true);
   const [selectedSavings, setSelectedSavings] = useState<CalculationResult | null>(null);
   const [founderCertificateData, setFounderCertificateData] = useState<FounderCertificateData | null>(null);
   const [isCalculatingVideoPulse, setIsCalculatingVideoPulse] = useState<boolean>(false);
@@ -100,10 +98,12 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="relative z-10 flex-1 flex flex-col justify-center items-center w-full">
-        {/* High-Conviction Hero Section with Founder Member 50% Lifetime & 5 Free Draws */}
+        {/* Full-Screen Luxury Video Hero Opener */}
         <Hero
           onJoinWaitlist={() => setIsWaitlistOpen(true)}
-          onOpenVideo={() => setIsSiteOpenerOpen(true)}
+          onExploreSavings={() => {
+            document.getElementById('visual-savings-calculator')?.scrollIntoView({ behavior: 'smooth' });
+          }}
         />
 
         {/* Real Rate Parity Arbitrage Audit Ticker (From Original Repo App) */}
@@ -121,22 +121,6 @@ export default function App() {
 
       {/* Footer with Discreet Staff Lock Icon */}
       <Footer onOpenCrm={() => setViewMode('crm')} />
-
-      {/* Full-Screen Site Opener Video with Voiceover & Background Music */}
-      <SiteOpenerVideo
-        isOpen={isSiteOpenerOpen}
-        onClose={() => setIsSiteOpenerOpen(false)}
-        onClaimSpot={() => {
-          setIsSiteOpenerOpen(false);
-          setIsWaitlistOpen(true);
-        }}
-        onExploreSavings={() => {
-          setIsSiteOpenerOpen(false);
-          setTimeout(() => {
-            document.getElementById('visual-savings-calculator')?.scrollIntoView({ behavior: 'smooth' });
-          }, 100);
-        }}
-      />
 
       {/* Early Access / Waitlist Lead Modal */}
       <WaitlistModal
