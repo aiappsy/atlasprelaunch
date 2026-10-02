@@ -10,14 +10,14 @@ import { Footer } from './components/Footer';
 import { CrmDashboard } from './components/crm/CrmDashboard';
 import { CrmAuthGate } from './components/crm/CrmAuthGate';
 import { FounderCertificateModal, FounderCertificateData } from './components/FounderCertificateModal';
-import { VideoTheaterModal } from './components/VideoTheaterModal';
+import { SiteOpenerVideo } from './components/SiteOpenerVideo';
 import { CalculationResult } from './lib/calculatorModel';
 
 export default function App() {
   const [viewMode, setViewMode] = useState<'site' | 'crm'>('site');
   const [isCrmAuthenticated, setIsCrmAuthenticated] = useState<boolean>(false);
   const [isWaitlistOpen, setIsWaitlistOpen] = useState<boolean>(false);
-  const [isVideoTheaterOpen, setIsVideoTheaterOpen] = useState<boolean>(false);
+  const [isSiteOpenerOpen, setIsSiteOpenerOpen] = useState<boolean>(true);
   const [selectedSavings, setSelectedSavings] = useState<CalculationResult | null>(null);
   const [founderCertificateData, setFounderCertificateData] = useState<FounderCertificateData | null>(null);
   const [isCalculatingVideoPulse, setIsCalculatingVideoPulse] = useState<boolean>(false);
@@ -103,7 +103,7 @@ export default function App() {
         {/* High-Conviction Hero Section with Founder Member 50% Lifetime & 5 Free Draws */}
         <Hero
           onJoinWaitlist={() => setIsWaitlistOpen(true)}
-          onOpenVideo={() => setIsVideoTheaterOpen(true)}
+          onOpenVideo={() => setIsSiteOpenerOpen(true)}
         />
 
         {/* Real Rate Parity Arbitrage Audit Ticker (From Original Repo App) */}
@@ -122,11 +122,20 @@ export default function App() {
       {/* Footer with Discreet Staff Lock Icon */}
       <Footer onOpenCrm={() => setViewMode('crm')} />
 
-      {/* 4K Cinematic Founder Teaser Video Theater Modal */}
-      <VideoTheaterModal
-        isOpen={isVideoTheaterOpen}
-        onClose={() => setIsVideoTheaterOpen(false)}
-        onClaimSpot={() => setIsWaitlistOpen(true)}
+      {/* Full-Screen Site Opener Video with Voiceover & Background Music */}
+      <SiteOpenerVideo
+        isOpen={isSiteOpenerOpen}
+        onClose={() => setIsSiteOpenerOpen(false)}
+        onClaimSpot={() => {
+          setIsSiteOpenerOpen(false);
+          setIsWaitlistOpen(true);
+        }}
+        onExploreSavings={() => {
+          setIsSiteOpenerOpen(false);
+          setTimeout(() => {
+            document.getElementById('visual-savings-calculator')?.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }}
       />
 
       {/* Early Access / Waitlist Lead Modal */}
