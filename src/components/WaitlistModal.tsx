@@ -17,6 +17,7 @@ import {
 import { CalculationResult } from '../lib/calculatorModel';
 import { registerSubscriber } from '../lib/firebase';
 import { addNewLeadFromRegistration } from '../lib/crmService';
+import { dispatchFounderWelcomeEmail } from '../lib/emailService';
 import { FounderCertificateData } from './FounderCertificateModal';
 
 interface WaitlistModalProps {
@@ -101,6 +102,15 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
         tierInfo: tierDesc,
         inviteCode: result.inviteCode,
       });
+
+      // Dispatch official Founder Member Welcome Email via Google Gmail SMTP backend
+      dispatchFounderWelcomeEmail({
+        recipientEmail: email.trim().toLowerCase(),
+        recipientName: fullName.trim(),
+        inviteCode: result.inviteCode,
+        phone: phone.trim(),
+        membershipTier: tierDesc,
+      }).catch((err) => console.warn('Background email dispatch notice:', err));
 
       setSubmissionResult({
         fullName: fullName.trim(),
