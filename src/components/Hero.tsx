@@ -142,8 +142,8 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) 
           playsInline
           className="w-full h-full object-cover scale-105 transition-opacity duration-1000 opacity-85"
         >
+          <source src="/video/luxury-hotel-commercial.mp4" type="video/mp4" />
           <source src="/video/luxury-palms-pool.mp4" type="video/mp4" />
-          <source src="/video/luxury-resort-pool.mp4" type="video/mp4" />
         </video>
 
         {/* Soft, Transparent Luxury Vignette — The Luxury Resort Is 100% Visible */}
@@ -262,7 +262,7 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) 
         {/* Right: Live Luxury Destination Pill */}
         <div className="flex items-center gap-2 bg-neutral-950/60 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-neutral-800/80 text-[11px] shadow-lg">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-neutral-400">Luxury Palms & Resort Pool</span>
+          <span className="text-neutral-300 font-medium">White Dunes Luxury Suites • Paros</span>
           <span className="text-neutral-600">•</span>
           <span className="text-emerald-400 font-bold">Save 45% Net</span>
         </div>

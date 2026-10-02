@@ -63,7 +63,7 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ isCalculating 
           isCalculating ? 'opacity-90 scale-110 filter brightness-115' : 'opacity-80 scale-100'
         }`}
       >
-        <source src="/video/luxury-resort-pool.mp4" type="video/mp4" />
+        <source src="/video/luxury-hotel-commercial.mp4" type="video/mp4" />
         <source src="/video/luxury-palms-pool.mp4" type="video/mp4" />
       </video>
 
