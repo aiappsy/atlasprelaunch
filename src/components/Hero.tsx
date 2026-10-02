@@ -9,7 +9,6 @@ import {
   Award,
   CheckCircle2,
   Gift,
-  Compass,
 } from 'lucide-react';
 
 interface HeroProps {
@@ -19,19 +18,21 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) => {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const [audioBlockedByBrowser, setAudioBlockedByBrowser] = useState(false);
   const [audioProgress, setAudioProgress] = useState(0);
 
   const voiceRef = useRef<HTMLAudioElement | null>(null);
   const musicRef = useRef<HTMLAudioElement | null>(null);
 
-  // Initialize audio elements for Voiceover + Background Music
+  // Initialize and automatically start Voiceover + Background Music
   useEffect(() => {
     const voice = new Audio('/audio/founder-voiceover.mp3');
     const music = new Audio('/audio/luxury-ambient-music.wav');
 
     voice.preload = 'auto';
     music.preload = 'auto';
-    music.volume = 0.25; // Sits warmly under the voice
+    voice.volume = 1.0; // Clear, commanding human voiceover
+    music.volume = 0.35; // Rich ambient cinematic music underneath
 
     voiceRef.current = voice;
     musicRef.current = music;
@@ -55,7 +56,7 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) 
             if (musicRef.current) {
               musicRef.current.pause();
               musicRef.current.currentTime = 0;
-              musicRef.current.volume = 0.25;
+              musicRef.current.volume = 0.35;
             }
             setIsPlayingAudio(false);
             setAudioProgress(0);
@@ -67,9 +68,44 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) 
     voice.addEventListener('timeupdate', handleTimeUpdate);
     voice.addEventListener('ended', handleEnded);
 
+    // Function to trigger voiceover and music
+    const startAudioPlay = () => {
+      if (!voiceRef.current || !musicRef.current) return;
+      const p1 = voiceRef.current.play();
+      const p2 = musicRef.current.play();
+
+      Promise.all([p1, p2])
+        .then(() => {
+          setIsPlayingAudio(true);
+          setAudioBlockedByBrowser(false);
+        })
+        .catch(() => {
+          // Browser prevented unprompted autoplay without user interaction
+          setAudioBlockedByBrowser(true);
+        });
+    };
+
+    // 1. Attempt immediate automatic play when entering the site!
+    startAudioPlay();
+
+    // 2. If browser blocked unprompted autoplay, automatically trigger on the very first user interaction
+    const handleFirstGesture = () => {
+      startAudioPlay();
+      window.removeEventListener('click', handleFirstGesture);
+      window.removeEventListener('touchstart', handleFirstGesture);
+      window.removeEventListener('keydown', handleFirstGesture);
+    };
+
+    window.addEventListener('click', handleFirstGesture, { passive: true });
+    window.addEventListener('touchstart', handleFirstGesture, { passive: true });
+    window.addEventListener('keydown', handleFirstGesture, { passive: true });
+
     return () => {
       voice.removeEventListener('timeupdate', handleTimeUpdate);
       voice.removeEventListener('ended', handleEnded);
+      window.removeEventListener('click', handleFirstGesture);
+      window.removeEventListener('touchstart', handleFirstGesture);
+      window.removeEventListener('keydown', handleFirstGesture);
       voice.pause();
       music.pause();
     };
@@ -85,36 +121,41 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) 
     } else {
       voiceRef.current.currentTime = 0;
       musicRef.current.currentTime = 0;
-      musicRef.current.volume = 0.25;
+      voiceRef.current.volume = 1.0;
+      musicRef.current.volume = 0.35;
 
       voiceRef.current.play().catch(() => {});
       musicRef.current.play().catch(() => {});
       setIsPlayingAudio(true);
+      setAudioBlockedByBrowser(false);
     }
   };
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col justify-between items-center text-center px-4 sm:px-6 pt-6 pb-12 overflow-hidden">
-      {/* 1. Full-Bleed 4K Luxury Travel Video Background (Always Playing Autonomously) */}
+    <section className="relative w-full min-h-screen flex flex-col justify-between items-center text-center px-4 sm:px-6 pt-6 pb-12 overflow-hidden select-none">
+      {/* Real Local 100% Guaranteed Luxury Travel Resort Video Background */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-        {/* Real 4K Maldives Overwater Villas & Turquoise Ocean Video */}
-        <iframe
-          className="w-full h-full object-cover scale-110 pointer-events-none opacity-85 transition-opacity duration-1000"
-          src="https://www.youtube-nocookie.com/embed/LXb3EKWsInQ?autoplay=1&mute=1&controls=0&loop=1&playlist=LXb3EKWsInQ&playsinline=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
-          title="Atlas Luxury Travel"
-          allow="autoplay; encrypted-media"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover scale-105 transition-opacity duration-1000 opacity-85"
+        >
+          <source src="/video/luxury-palms-pool.mp4" type="video/mp4" />
+          <source src="/video/luxury-resort-pool.mp4" type="video/mp4" />
+        </video>
 
-        {/* Soft, Transparent Vignette: Never Blocks the Crystal Water or Villas */}
+        {/* Soft, Transparent Luxury Vignette — The Luxury Resort Is 100% Visible */}
         <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-neutral-950/40 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-neutral-950/50 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-neutral-950/40 pointer-events-none" />
       </div>
 
       {/* Top Floating Badge */}
       <div className="relative z-10 pt-2 animate-in fade-in duration-700">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neutral-950/60 backdrop-blur-md border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-medium shadow-xl shadow-black/50">
           <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-          <span>Direct Wholesale Hotel Rates • Zero Middleman Markups</span>
+          <span>Direct Wholesale Hotel Rates • Zero Middleman Fees</span>
         </div>
       </div>
 
@@ -128,7 +169,7 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) 
         </h1>
 
         <p className="text-base sm:text-xl text-neutral-100 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] px-4">
-          Booking.com and Expedia charge up to 45% markups just to fund their TV ads. Atlas cuts out the middlemen and gives you the secret wholesale hotel rate directly.
+          Booking.com and Expedia charge up to 45% markups just to pay for TV ads. Atlas cuts out the middlemen and gives you the secret wholesale hotel rate directly.
         </p>
 
         {/* Primary Action Button Cluster: "See Your Savings" + "Claim Founder Spot" */}
@@ -155,7 +196,7 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) 
           </button>
         </div>
 
-        {/* Audio Voiceover & Background Music Player Pill */}
+        {/* Audio Controller Indicator */}
         <div className="pt-3 flex items-center justify-center">
           <button
             type="button"
@@ -165,25 +206,34 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) 
                 ? 'bg-amber-400/20 border-amber-400 text-amber-300 shadow-amber-400/20'
                 : 'bg-neutral-950/70 border-neutral-700 text-neutral-300 hover:border-amber-400/60 hover:text-white'
             }`}
-            title="Listen to the Founder Story with Voiceover & Music"
+            title="Toggle Voiceover and Background Music"
           >
             {isPlayingAudio ? (
               <>
                 <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-                <span className="font-semibold text-amber-300">Voiceover & Music Playing</span>
+                <span className="font-semibold text-amber-300">Voiceover & Music Active</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
               </>
             ) : (
               <>
-                <Play className="w-3 h-3 fill-amber-300 text-amber-300" />
-                <span>Play Story (Voiceover + Music)</span>
+                {audioBlockedByBrowser ? (
+                  <>
+                    <Volume2 className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
+                    <span className="text-amber-300 font-bold">Tap To Unmute Voiceover & Music</span>
+                  </>
+                ) : (
+                  <>
+                    <Play className="w-3 h-3 fill-amber-300 text-amber-300" />
+                    <span>Play Voiceover & Music</span>
+                  </>
+                )}
                 <span className="text-[10px] text-amber-400 font-bold bg-amber-400/15 px-1.5 py-0.5 rounded">0:24</span>
               </>
             )}
           </button>
         </div>
 
-        {/* Subtle Audio Progress Bar if playing */}
+        {/* Audio Progress Bar */}
         {isPlayingAudio && (
           <div className="max-w-xs mx-auto h-1 bg-neutral-950/60 rounded-full overflow-hidden border border-neutral-800">
             <div
@@ -212,9 +262,9 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) 
         {/* Right: Live Luxury Destination Pill */}
         <div className="flex items-center gap-2 bg-neutral-950/60 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-neutral-800/80 text-[11px] shadow-lg">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-neutral-400">Overwater Lagoon Villas</span>
+          <span className="text-neutral-400">Luxury Palms & Resort Pool</span>
           <span className="text-neutral-600">•</span>
-          <span className="text-emerald-400 font-bold">Save 42% Net</span>
+          <span className="text-emerald-400 font-bold">Save 45% Net</span>
         </div>
       </div>
     </section>

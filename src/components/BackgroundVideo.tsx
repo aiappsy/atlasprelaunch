@@ -53,30 +53,34 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ isCalculating 
 
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none">
-      {/* High-Visibility 4K Cinematic Luxury Drone Video Stream */}
-      <iframe
-        className={`absolute inset-0 w-full h-full object-cover scale-110 pointer-events-none transition-opacity duration-1000 ${
-          isCalculating ? 'opacity-85 scale-115 filter brightness-115' : 'opacity-70 scale-105'
+      {/* Real Local 100% Guaranteed Luxury Travel Resort Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className={`absolute inset-0 w-full h-full object-cover scale-105 transition-all duration-1000 ${
+          isCalculating ? 'opacity-90 scale-110 filter brightness-115' : 'opacity-80 scale-100'
         }`}
-        src="https://www.youtube-nocookie.com/embed/LXb3EKWsInQ?autoplay=1&mute=1&controls=0&loop=1&playlist=LXb3EKWsInQ&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
-        title="Atlas Background Video"
-        allow="autoplay; encrypted-media"
-      />
+      >
+        <source src="/video/luxury-resort-pool.mp4" type="video/mp4" />
+        <source src="/video/luxury-palms-pool.mp4" type="video/mp4" />
+      </video>
 
-      {/* Rotating High-Res 4K Luxury Resort Fallbacks (Crossfading) */}
+      {/* Rotating High-Res 4K Luxury Resort Imagery Overlay (Crossfades gently) */}
       {LUXURY_DESTINATIONS.map((dest, idx) => (
         <div
           key={dest.name}
           className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 mix-blend-overlay ${
-            idx === activeIdx ? 'opacity-60' : 'opacity-0'
+            idx === activeIdx ? 'opacity-40' : 'opacity-0'
           }`}
           style={{ backgroundImage: `url(${dest.image})` }}
         />
       ))}
 
-      {/* Subtle Refined Edge Vignette (Keeps luxury colors bright & visible while preserving text readability) */}
-      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/60 to-neutral-950/75 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-neutral-950/70 pointer-events-none" />
+      {/* Transparent edge vignette: lets turquoise waters & palm trees shine through brightly */}
+      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-neutral-950/50 pointer-events-none" />
 
       {/* Subtle Live Destination Pill at Bottom Left */}
       <div className="absolute bottom-5 left-6 z-10 hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-neutral-950/80 border border-neutral-800 text-[11px] font-mono text-neutral-300 backdrop-blur-md">
