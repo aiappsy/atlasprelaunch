@@ -33,7 +33,6 @@ export const Hero: React.FC<HeroProps> = ({
 }) => {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [audioBlockedByBrowser, setAudioBlockedByBrowser] = useState(false);
-  const [hasEntered, setHasEntered] = useState(false);
   const [audioProgress, setAudioProgress] = useState(0);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -162,33 +161,6 @@ export const Hero: React.FC<HeroProps> = ({
     setIsPlayingAudio(false);
   };
 
-  const handleEnterWithSound = () => {
-    setHasEntered(true);
-    setAudioBlockedByBrowser(false);
-
-    if (voiceRef.current && musicRef.current) {
-      voiceRef.current.currentTime = 0;
-      musicRef.current.currentTime = 0;
-      voiceRef.current.volume = 1.0;
-      musicRef.current.volume = 0.35;
-
-      const p1 = voiceRef.current.play();
-      const p2 = musicRef.current.play();
-
-      Promise.all([p1, p2])
-        .then(() => {
-          setIsPlayingAudio(true);
-        })
-        .catch((err) => {
-          console.warn('Audio play error:', err);
-        });
-    }
-  };
-
-  const handleEnterMuted = () => {
-    setHasEntered(true);
-  };
-
   const toggleSoundExperience = () => {
     if (!voiceRef.current || !musicRef.current) return;
 
@@ -211,51 +183,6 @@ export const Hero: React.FC<HeroProps> = ({
 
   return (
     <section className="relative w-full min-h-screen flex flex-col justify-between items-center text-center px-4 sm:px-6 pt-6 pb-12 overflow-hidden select-none bg-transparent">
-      {/* Cinematic Luxury Entrance Gate (Solves Browser Autoplay Restrictions Seamlessly) */}
-      {!hasEntered && audioBlockedByBrowser && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/85 backdrop-blur-xl animate-in fade-in duration-300">
-          <div className="relative w-full max-w-lg p-8 sm:p-10 rounded-3xl bg-neutral-900/95 border border-amber-400/40 shadow-2xl shadow-black/95 text-center space-y-6">
-            {/* Top Emblem */}
-            <div className="mx-auto w-16 h-16 rounded-full border border-amber-400/50 bg-gradient-to-b from-amber-400/20 to-neutral-950 flex items-center justify-center text-amber-300 shadow-xl shadow-amber-500/20">
-              <Compass className="w-8 h-8 text-amber-300 animate-pulse" />
-            </div>
-
-            <div className="space-y-2">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-mono tracking-widest uppercase">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Private Club Prelaunch</span>
-              </div>
-              <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-neutral-100 tracking-tight">
-                Atlas Travel Club
-              </h2>
-              <p className="text-xs sm:text-sm text-neutral-300 max-w-sm mx-auto font-light leading-relaxed">
-                Step inside the sovereign travel briefing. Direct wholesale hotel rates with zero middleman markups.
-              </p>
-            </div>
-
-            {/* Primary Action Button: Enter With Sound */}
-            <div className="pt-2 space-y-3">
-              <button
-                type="button"
-                data-action="toggle-audio"
-                onClick={handleEnterWithSound}
-                className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-sm sm:text-base uppercase tracking-wider shadow-2xl shadow-amber-500/40 transition-all scale-100 hover:scale-105 cursor-pointer flex items-center justify-center gap-2.5 group"
-              >
-                <Volume2 className="w-5 h-5 text-neutral-950 group-hover:scale-110 transition-transform" />
-                <span>Enter With Sound & Voiceover</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={handleEnterMuted}
-                className="text-xs font-mono text-neutral-400 hover:text-neutral-200 transition underline underline-offset-4 cursor-pointer"
-              >
-                Continue without sound →
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Soft, Transparent Luxury Vignettes — Background Video Is 100% Vividly Visible */}
       <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-neutral-950/40 pointer-events-none" />
