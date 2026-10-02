@@ -1,4 +1,4 @@
-import { LeadRecord, TeamMember, LeadNote, LeadStatus } from './crmTypes';
+import type { LeadRecord, TeamMember, LeadNote, LeadStatus } from './crmTypes.ts';
 
 const DEFAULT_TEAM: TeamMember[] = [
   {
