@@ -117,6 +117,7 @@ export default function App() {
       <BackgroundVideo
         isCalculating={isCalculatingVideoPulse}
         isPlaying={isVideoPlaying}
+        onEnded={() => setIsVideoPlaying(false)}
       />
 
       {/* Header */}

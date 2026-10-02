@@ -110,31 +110,22 @@ export const Hero: React.FC<HeroProps> = ({
         });
     };
 
-    // 1. Attempt immediate automatic play when entering the site!
+    // Attempt immediate automatic play when entering the site
     startAudioPlay();
-
-    // 2. If browser blocked unprompted autoplay, automatically trigger on the very first user interaction
-    const handleFirstGesture = () => {
-      startAudioPlay();
-      window.removeEventListener('click', handleFirstGesture);
-      window.removeEventListener('touchstart', handleFirstGesture);
-      window.removeEventListener('keydown', handleFirstGesture);
-    };
-
-    window.addEventListener('click', handleFirstGesture, { passive: true });
-    window.addEventListener('touchstart', handleFirstGesture, { passive: true });
-    window.addEventListener('keydown', handleFirstGesture, { passive: true });
 
     return () => {
       voice.removeEventListener('timeupdate', handleTimeUpdate);
       voice.removeEventListener('ended', handleEnded);
-      window.removeEventListener('click', handleFirstGesture);
-      window.removeEventListener('touchstart', handleFirstGesture);
-      window.removeEventListener('keydown', handleFirstGesture);
       voice.pause();
       music.pause();
     };
   }, []);
+
+  const stopAllAudio = () => {
+    if (voiceRef.current) voiceRef.current.pause();
+    if (musicRef.current) musicRef.current.pause();
+    setIsPlayingAudio(false);
+  };
 
   const toggleSoundExperience = () => {
     if (!voiceRef.current || !musicRef.current) return;
@@ -157,27 +148,10 @@ export const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col justify-between items-center text-center px-4 sm:px-6 pt-6 pb-12 overflow-hidden select-none">
-      {/* Real Local 100% Guaranteed Luxury Travel Resort Video Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className={`w-full h-full object-cover scale-105 transition-all duration-1000 ${
-            isVideoPlaying ? 'opacity-85' : 'opacity-70 filter brightness-90 saturate-75'
-          }`}
-        >
-          <source src="/video/luxury-hotel-commercial.mp4" type="video/mp4" />
-          <source src="/video/luxury-palms-pool.mp4" type="video/mp4" />
-        </video>
-
-        {/* Soft, Transparent Luxury Vignette — The Luxury Resort Is 100% Visible */}
-        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-neutral-950/40 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-neutral-950/40 pointer-events-none" />
-      </div>
+    <section className="relative w-full min-h-screen flex flex-col justify-between items-center text-center px-4 sm:px-6 pt-6 pb-12 overflow-hidden select-none bg-transparent">
+      {/* Soft, Transparent Luxury Vignettes — Background Video Is 100% Vividly Visible */}
+      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-neutral-950/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-neutral-950/40 pointer-events-none" />
 
       {/* Top Floating Badge */}
       <div className="relative z-10 pt-2 animate-in fade-in duration-700">
@@ -206,6 +180,7 @@ export const Hero: React.FC<HeroProps> = ({
           <button
             type="button"
             onClick={() => {
+              stopAllAudio();
               onStopVideo?.();
               onExploreSavings();
             }}
@@ -220,6 +195,7 @@ export const Hero: React.FC<HeroProps> = ({
           <button
             type="button"
             onClick={() => {
+              stopAllAudio();
               onStopVideo?.();
               onJoinWaitlist();
             }}

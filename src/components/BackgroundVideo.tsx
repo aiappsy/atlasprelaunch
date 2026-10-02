@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 interface BackgroundVideoProps {
   isCalculating?: boolean;
   isPlaying?: boolean;
+  onEnded?: () => void;
 }
 
 interface LuxuryDestination {
@@ -39,7 +40,11 @@ const LUXURY_DESTINATIONS: LuxuryDestination[] = [
   },
 ];
 
-export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ isCalculating = false, isPlaying = true }) => {
+export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
+  isCalculating = false,
+  isPlaying = true,
+  onEnded,
+}) => {
   const [activeIdx, setActiveIdx] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -66,19 +71,18 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ isCalculating 
 
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none">
-      {/* Real Local 100% Guaranteed Luxury Travel Resort Video */}
+      {/* Real Local 100% Guaranteed Luxury Travel Resort Video — Plays Exactly Once */}
       <video
         ref={videoRef}
         autoPlay
-        loop
         muted
         playsInline
+        onEnded={onEnded}
         className={`absolute inset-0 w-full h-full object-cover scale-105 transition-all duration-1000 ${
-          isCalculating ? 'opacity-90 scale-110 filter brightness-115' : 'opacity-80 scale-100'
+          isCalculating ? 'opacity-90 scale-110 filter brightness-115' : 'opacity-85 scale-100'
         } ${!isPlaying ? 'filter brightness-90 saturate-75' : ''}`}
       >
         <source src="/video/luxury-hotel-commercial.mp4" type="video/mp4" />
-        <source src="/video/luxury-palms-pool.mp4" type="video/mp4" />
       </video>
 
       {/* Rotating High-Res 4K Luxury Resort Imagery Overlay (Crossfades gently) */}
