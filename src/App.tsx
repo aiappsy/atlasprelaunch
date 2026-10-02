@@ -10,12 +10,14 @@ import { Footer } from './components/Footer';
 import { CrmDashboard } from './components/crm/CrmDashboard';
 import { CrmAuthGate } from './components/crm/CrmAuthGate';
 import { FounderCertificateModal, FounderCertificateData } from './components/FounderCertificateModal';
+import { PodcastPlayerModal } from './components/PodcastPlayerModal';
 import { CalculationResult } from './lib/calculatorModel';
 
 export default function App() {
   const [viewMode, setViewMode] = useState<'site' | 'crm'>('site');
   const [isCrmAuthenticated, setIsCrmAuthenticated] = useState<boolean>(false);
   const [isWaitlistOpen, setIsWaitlistOpen] = useState<boolean>(false);
+  const [isPodcastOpen, setIsPodcastOpen] = useState<boolean>(false);
   const [selectedSavings, setSelectedSavings] = useState<CalculationResult | null>(null);
   const [founderCertificateData, setFounderCertificateData] = useState<FounderCertificateData | null>(null);
   const [isCalculatingVideoPulse, setIsCalculatingVideoPulse] = useState<boolean>(false);
@@ -126,6 +128,10 @@ export default function App() {
           setIsVideoPlaying(false);
           setIsWaitlistOpen(true);
         }}
+        onOpenPodcast={() => {
+          setIsVideoPlaying(false);
+          setIsPodcastOpen(true);
+        }}
       />
 
       {/* Main Content Area */}
@@ -135,6 +141,10 @@ export default function App() {
           isVideoPlaying={isVideoPlaying}
           onToggleVideo={() => setIsVideoPlaying((prev) => !prev)}
           onStopVideo={() => setIsVideoPlaying(false)}
+          onOpenPodcast={() => {
+            setIsVideoPlaying(false);
+            setIsPodcastOpen(true);
+          }}
           onJoinWaitlist={() => {
             setIsVideoPlaying(false);
             setIsWaitlistOpen(true);
@@ -174,6 +184,17 @@ export default function App() {
         isOpen={!!founderCertificateData}
         onClose={() => setFounderCertificateData(null)}
         data={founderCertificateData}
+      />
+
+      {/* How It Works Podcast Deep Dive Player Modal */}
+      <PodcastPlayerModal
+        isOpen={isPodcastOpen}
+        onClose={() => setIsPodcastOpen(false)}
+        onOpenWaitlist={() => {
+          setIsPodcastOpen(false);
+          setIsWaitlistOpen(true);
+        }}
+        onPlaybackStart={() => setIsVideoPlaying(false)}
       />
     </div>
   );

@@ -10,11 +10,13 @@ import {
   Award,
   CheckCircle2,
   Gift,
+  Headphones,
 } from 'lucide-react';
 
 interface HeroProps {
   onJoinWaitlist: () => void;
   onExploreSavings: () => void;
+  onOpenPodcast?: () => void;
   isVideoPlaying?: boolean;
   onToggleVideo?: () => void;
   onStopVideo?: () => void;
@@ -23,6 +25,7 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({
   onJoinWaitlist,
   onExploreSavings,
+  onOpenPodcast,
   isVideoPlaying = true,
   onToggleVideo,
   onStopVideo,
@@ -205,6 +208,25 @@ export const Hero: React.FC<HeroProps> = ({
             <ArrowRight className="w-4 h-4 text-amber-400" />
           </button>
         </div>
+
+        {/* Deep Dive Audio Podcast Link */}
+        {onOpenPodcast && (
+          <div className="pt-1">
+            <button
+              type="button"
+              data-action="open-podcast"
+              onClick={() => {
+                stopAllAudio();
+                onStopVideo?.();
+                onOpenPodcast();
+              }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-950/60 hover:bg-neutral-900/80 border border-amber-400/30 hover:border-amber-400/70 text-xs font-mono text-amber-300 hover:text-white transition shadow-lg backdrop-blur-md cursor-pointer group"
+            >
+              <Headphones className="w-3.5 h-3.5 text-amber-400 group-hover:scale-110 transition-transform" />
+              <span>Listen to the 18-min Deep Dive: "Why Your Hotel Room Costs Double" →</span>
+            </button>
+          </div>
+        )}
 
         {/* Media Controls Cluster: Stop/Play Video + Audio Voiceover & Music */}
         <div className="pt-3 flex flex-wrap items-center justify-center gap-2.5">

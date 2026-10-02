@@ -1,12 +1,13 @@
 import React from 'react';
-import { Compass, Sparkles } from 'lucide-react';
+import { Compass, Sparkles, Headphones } from 'lucide-react';
 
 interface HeaderProps {
   onJoinWaitlist: () => void;
+  onOpenPodcast?: () => void;
   onOpenCrm?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onJoinWaitlist }) => {
+export const Header: React.FC<HeaderProps> = ({ onJoinWaitlist, onOpenPodcast }) => {
   return (
     <header className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 flex items-center justify-between">
       {/* Brand Identity */}
@@ -29,12 +30,27 @@ export const Header: React.FC<HeaderProps> = ({ onJoinWaitlist }) => {
         </div>
       </div>
 
-      {/* Live Engine Indicator & Top CTA */}
+      {/* Live Engine Indicator, How It Works Podcast & Top CTA */}
       <div className="flex items-center gap-2 sm:gap-3">
         <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-neutral-900/80 border border-neutral-800 backdrop-blur-md text-neutral-300">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           <span>B2B Net Rates Active</span>
         </div>
+
+        {/* How It Works Podcast Button */}
+        <button
+          type="button"
+          data-action="open-podcast"
+          onClick={onOpenPodcast}
+          className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border border-amber-400/40 hover:border-amber-400 bg-neutral-950/70 hover:bg-neutral-900/90 text-neutral-200 hover:text-amber-300 font-medium text-xs tracking-wide transition shadow-sm backdrop-blur-md cursor-pointer group"
+          title="Listen to our two-host audio Deep Dive on wholesale hotel pricing"
+        >
+          <Headphones className="w-3.5 h-3.5 text-amber-400 group-hover:scale-110 transition-transform" />
+          <span>How It Works</span>
+          <span className="hidden md:inline-block text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.2 rounded bg-amber-400/15 text-amber-300 border border-amber-400/25">
+            Podcast
+          </span>
+        </button>
 
         <button
           type="button"
