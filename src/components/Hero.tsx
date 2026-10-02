@@ -14,16 +14,15 @@ import {
   Compass,
 } from 'lucide-react';
 
+import { heroAudio } from '../lib/heroAudio';
+
 interface HeroProps {
   onJoinWaitlist: () => void;
   onExploreSavings: () => void;
   onOpenPodcast?: () => void;
   isVideoPlaying?: boolean;
-  isAudioMuted?: boolean;
-  audioProgress?: number;
   onToggleVideo?: () => void;
   onStopVideo?: () => void;
-  onToggleAudioMute?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
@@ -31,12 +30,26 @@ export const Hero: React.FC<HeroProps> = ({
   onExploreSavings,
   onOpenPodcast,
   isVideoPlaying = true,
-  isAudioMuted = false,
-  audioProgress = 0,
   onToggleVideo,
   onStopVideo,
-  onToggleAudioMute,
 }) => {
+  const [audioState, setAudioState] = useState(heroAudio.getState());
+
+  useEffect(() => {
+    heroAudio.init();
+    const unsubscribe = heroAudio.subscribe(() => {
+      setAudioState(heroAudio.getState());
+    });
+    return () => unsubscribe();
+  }, []);
+
+  // When video stops, pause audio as well
+  useEffect(() => {
+    if (!isVideoPlaying) {
+      heroAudio.pause();
+    }
+  }, [isVideoPlaying]);
+
   return (
     <section className="relative w-full min-h-screen flex flex-col justify-between items-center text-center px-4 sm:px-6 pt-6 pb-12 overflow-hidden select-none bg-transparent">
 
@@ -65,12 +78,29 @@ export const Hero: React.FC<HeroProps> = ({
           Booking.com and Expedia charge up to 45% markups just to pay for TV ads. Atlas cuts out the middlemen and gives you the secret wholesale hotel rate directly.
         </p>
 
+        {/* Prominent Golden Sound Prompt (Shown if browser blocked initial unmuted autoplay) */}
+        {audioState.needsInteraction && isVideoPlaying && (
+          <div className="pt-1 animate-in fade-in duration-500">
+            <button
+              type="button"
+              data-action="toggle-audio"
+              onClick={() => heroAudio.play()}
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-amber-500/25 via-amber-400/35 to-amber-500/25 hover:from-amber-400/40 hover:to-amber-300/40 border border-amber-400 text-amber-200 font-semibold text-xs sm:text-sm shadow-xl shadow-amber-500/20 backdrop-blur-md animate-pulse cursor-pointer transition-all scale-100 hover:scale-105"
+            >
+              <Volume2 className="w-4 h-4 text-amber-300 animate-bounce" />
+              <span>Click Anywhere to Listen with Voiceover & Music</span>
+              <span className="text-[10px] bg-amber-400/25 px-2 py-0.5 rounded font-mono text-amber-300 font-bold">0:38</span>
+            </button>
+          </div>
+        )}
+
         {/* Primary Action Button Cluster: "See Your Savings" + "Claim Founder Spot" */}
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           {/* Main Primary Button: Glides straight to calculator */}
           <button
             type="button"
             onClick={() => {
+              heroAudio.pause();
               onStopVideo?.();
               onExploreSavings();
             }}
@@ -85,6 +115,7 @@ export const Hero: React.FC<HeroProps> = ({
           <button
             type="button"
             onClick={() => {
+              heroAudio.pause();
               onStopVideo?.();
               onJoinWaitlist();
             }}
@@ -102,6 +133,7 @@ export const Hero: React.FC<HeroProps> = ({
               type="button"
               data-action="open-podcast"
               onClick={() => {
+                heroAudio.pause();
                 onStopVideo?.();
                 onOpenPodcast();
               }}
@@ -119,13 +151,21 @@ export const Hero: React.FC<HeroProps> = ({
           <button
             type="button"
             data-action="toggle-video"
-            onClick={onToggleVideo}
+            onClick={() => {
+              if (isVideoPlaying) {
+                heroAudio.pause();
+                onToggleVideo?.();
+              } else {
+                onToggleVideo?.();
+                heroAudio.restart();
+              }
+            }}
             className={`px-4 py-2 rounded-full border text-xs font-mono flex items-center gap-2 transition-all shadow-xl backdrop-blur-md cursor-pointer ${
               isVideoPlaying
                 ? 'bg-neutral-950/80 border-neutral-700/80 text-neutral-300 hover:border-red-400/80 hover:text-red-300 hover:bg-neutral-900'
                 : 'bg-amber-400/25 border-amber-400 text-amber-300 shadow-amber-400/25 font-bold animate-pulse'
             }`}
-            title={isVideoPlaying ? 'Stop playing background video' : 'Resume background video'}
+            title={isVideoPlaying ? 'Stop playing background video' : 'Resume background video & voiceover'}
           >
             {isVideoPlaying ? (
               <>
@@ -145,15 +185,15 @@ export const Hero: React.FC<HeroProps> = ({
             <button
               type="button"
               data-action="toggle-audio"
-              onClick={onToggleAudioMute}
+              onClick={() => heroAudio.toggle()}
               className={`px-4 py-2 rounded-full border text-xs font-mono flex items-center gap-2.5 transition-all shadow-xl backdrop-blur-md cursor-pointer ${
-                !isAudioMuted
+                audioState.isPlaying
                   ? 'bg-emerald-500/20 border-emerald-400 text-emerald-300 shadow-emerald-400/20'
                   : 'bg-amber-500/20 border-amber-400 text-amber-300 shadow-amber-400/20 animate-pulse'
               }`}
-              title={!isAudioMuted ? 'Mute Voiceover and Music' : 'Unmute Voiceover and Music'}
+              title={audioState.isPlaying ? 'Mute Voiceover and Music' : 'Play Voiceover and Music'}
             >
-              {!isAudioMuted ? (
+              {audioState.isPlaying ? (
                 <>
                   <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
                   <span className="font-semibold text-emerald-300">Voiceover & Music Active</span>
@@ -162,7 +202,7 @@ export const Hero: React.FC<HeroProps> = ({
               ) : (
                 <>
                   <VolumeX className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
-                  <span className="text-amber-300 font-bold">Tap Anywhere to Unmute Sound</span>
+                  <span className="text-amber-300 font-bold">Tap Anywhere to Unmute</span>
                   <span className="text-[10px] text-amber-400 font-bold bg-amber-400/20 px-1.5 py-0.5 rounded">0:38</span>
                 </>
               )}
@@ -171,11 +211,11 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
 
         {/* Audio Progress Bar */}
-        {isVideoPlaying && !isAudioMuted && audioProgress > 0 && audioProgress < 100 && (
+        {isVideoPlaying && audioState.isPlaying && audioState.progress > 0 && audioState.progress < 100 && (
           <div className="max-w-xs mx-auto h-1 bg-neutral-950/60 rounded-full overflow-hidden border border-neutral-800">
             <div
               className="h-full bg-gradient-to-r from-amber-400 to-amber-300 transition-all duration-200"
-              style={{ width: `${audioProgress}%` }}
+              style={{ width: `${audioState.progress}%` }}
             />
           </div>
         )}

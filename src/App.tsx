@@ -12,6 +12,7 @@ import { CrmAuthGate } from './components/crm/CrmAuthGate';
 import { FounderCertificateModal, FounderCertificateData } from './components/FounderCertificateModal';
 import { PodcastPlayerModal } from './components/PodcastPlayerModal';
 import { CalculationResult } from './lib/calculatorModel';
+import { heroAudio } from './lib/heroAudio';
 
 export default function App() {
   const [viewMode, setViewMode] = useState<'site' | 'crm'>('site');
@@ -22,36 +23,8 @@ export default function App() {
   const [founderCertificateData, setFounderCertificateData] = useState<FounderCertificateData | null>(null);
   const [isCalculatingVideoPulse, setIsCalculatingVideoPulse] = useState<boolean>(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(true);
-  const [isAudioMuted, setIsAudioMuted] = useState<boolean>(false);
-  const [audioProgress, setAudioProgress] = useState<number>(0);
 
-  // If the browser initially blocked unmuted autoplay, unmute seamlessly on the very first user gesture
-  useEffect(() => {
-    if (!isAudioMuted) return;
-
-    const handleFirstUserInteraction = (e: Event) => {
-      const target = e.target as HTMLElement | null;
-      const btn = target?.closest('button');
-      // If clicking button to stop video or open podcast, don't unmute
-      if (btn) {
-        const action = btn.dataset.action;
-        if (action === 'toggle-video' || action === 'open-podcast') return;
-      }
-      setIsAudioMuted(false);
-    };
-
-    window.addEventListener('pointerdown', handleFirstUserInteraction, { capture: true, once: true });
-    window.addEventListener('keydown', handleFirstUserInteraction, { capture: true, once: true });
-    window.addEventListener('touchstart', handleFirstUserInteraction, { capture: true, once: true });
-
-    return () => {
-      window.removeEventListener('pointerdown', handleFirstUserInteraction, { capture: true });
-      window.removeEventListener('keydown', handleFirstUserInteraction, { capture: true });
-      window.removeEventListener('touchstart', handleFirstUserInteraction, { capture: true });
-    };
-  }, [isAudioMuted]);
-
-  // Automatically stop playing video (and audio) whenever ANY button on the page is clicked
+  // Automatically stop playing video and audio whenever ANY button on the page is clicked
   useEffect(() => {
     const handleDocumentClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
@@ -62,8 +35,9 @@ export default function App() {
         if (button.dataset.action === 'toggle-video' || button.dataset.action === 'toggle-audio') {
           return;
         }
-        // Any other button clicked anywhere on the site -> automatically STOP the video
+        // Any other button clicked anywhere on the site -> automatically STOP the video & audio
         setIsVideoPlaying(false);
+        heroAudio.pause();
       }
     };
 
@@ -147,20 +121,22 @@ export default function App() {
       <BackgroundVideo
         isCalculating={isCalculatingVideoPulse}
         isPlaying={isVideoPlaying}
-        isMuted={isAudioMuted}
-        onMuteStateChange={(muted) => setIsAudioMuted(muted)}
-        onTimeUpdate={(pct) => setAudioProgress(pct)}
-        onEnded={() => setIsVideoPlaying(false)}
+        onEnded={() => {
+          setIsVideoPlaying(false);
+          heroAudio.pause();
+        }}
       />
 
       {/* Header */}
       <Header
         onJoinWaitlist={() => {
           setIsVideoPlaying(false);
+          heroAudio.pause();
           setIsWaitlistOpen(true);
         }}
         onOpenPodcast={() => {
           setIsVideoPlaying(false);
+          heroAudio.pause();
           setIsPodcastOpen(true);
         }}
       />
@@ -170,28 +146,24 @@ export default function App() {
         {/* Full-Screen Luxury Video Hero Opener */}
         <Hero
           isVideoPlaying={isVideoPlaying}
-          isAudioMuted={isAudioMuted}
-          audioProgress={audioProgress}
-          onToggleVideo={() => {
-            if (!isVideoPlaying) {
-              setIsVideoPlaying(true);
-              setIsAudioMuted(false);
-            } else {
-              setIsVideoPlaying(false);
-            }
+          onToggleVideo={() => setIsVideoPlaying((prev) => !prev)}
+          onStopVideo={() => {
+            setIsVideoPlaying(false);
+            heroAudio.pause();
           }}
-          onStopVideo={() => setIsVideoPlaying(false)}
-          onToggleAudioMute={() => setIsAudioMuted((prev) => !prev)}
           onOpenPodcast={() => {
             setIsVideoPlaying(false);
+            heroAudio.pause();
             setIsPodcastOpen(true);
           }}
           onJoinWaitlist={() => {
             setIsVideoPlaying(false);
+            heroAudio.pause();
             setIsWaitlistOpen(true);
           }}
           onExploreSavings={() => {
             setIsVideoPlaying(false);
+            heroAudio.pause();
             document.getElementById('visual-savings-calculator')?.scrollIntoView({ behavior: 'smooth' });
           }}
         />

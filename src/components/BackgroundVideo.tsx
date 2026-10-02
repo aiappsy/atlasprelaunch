@@ -3,10 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 interface BackgroundVideoProps {
   isCalculating?: boolean;
   isPlaying?: boolean;
-  isMuted?: boolean;
   onEnded?: () => void;
-  onMuteStateChange?: (muted: boolean) => void;
-  onTimeUpdate?: (progressPercent: number) => void;
 }
 
 interface LuxuryDestination {
@@ -46,45 +43,10 @@ const LUXURY_DESTINATIONS: LuxuryDestination[] = [
 export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
   isCalculating = false,
   isPlaying = true,
-  isMuted = false,
   onEnded,
-  onMuteStateChange,
-  onTimeUpdate,
 }) => {
   const [activeIdx, setActiveIdx] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  // Initial autoplay attempt: Try unmuted sound first; if browser blocks, fall back to muted and notify
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.volume = 1.0;
-    video.muted = false;
-
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          // Autoplay with sound succeeded!
-          onMuteStateChange?.(false);
-        })
-        .catch(() => {
-          // Browser autoplay security policy blocked unmuted playback
-          // Fall back immediately to muted video so visuals stream without delay
-          video.muted = true;
-          video.play().catch(() => {});
-          onMuteStateChange?.(true);
-        });
-    }
-  }, []);
-
-  // Synchronize video muted state with prop
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = isMuted;
-    }
-  }, [isMuted]);
 
   // Synchronize video playback with isPlaying prop
   useEffect(() => {
@@ -109,24 +71,18 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
 
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none">
-      {/* Real Local 100% Guaranteed Luxury Travel Resort Video — Plays Exactly Once with AAC Mastered Soundtrack */}
+      {/* Real Local 100% Guaranteed Luxury Travel Resort Video — Plays Exactly Once */}
       <video
         ref={videoRef}
         autoPlay
+        muted
         playsInline
         onEnded={onEnded}
-        onTimeUpdate={() => {
-          if (videoRef.current && onTimeUpdate) {
-            const ct = videoRef.current.currentTime;
-            const pct = Math.min(100, (ct / 38.28) * 100);
-            onTimeUpdate(pct);
-          }
-        }}
         className={`absolute inset-0 w-full h-full object-cover scale-105 transition-all duration-1000 ${
           isCalculating ? 'opacity-90 scale-110 filter brightness-115' : 'opacity-85 scale-100'
         } ${!isPlaying ? 'filter brightness-90 saturate-75' : ''}`}
       >
-        <source src="/video/luxury-hotel-commercial.mp4" type="video/mp4" />
+        <source src="/video/luxury-hotel-commercial.mp4?v=20261002_master" type="video/mp4" />
       </video>
 
       {/* Rotating High-Res 4K Luxury Resort Imagery Overlay (Crossfades gently) */}
