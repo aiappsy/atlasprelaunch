@@ -19,6 +19,29 @@ export default function App() {
   const [selectedSavings, setSelectedSavings] = useState<CalculationResult | null>(null);
   const [founderCertificateData, setFounderCertificateData] = useState<FounderCertificateData | null>(null);
   const [isCalculatingVideoPulse, setIsCalculatingVideoPulse] = useState<boolean>(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(true);
+
+  // Automatically stop playing video (and audio) whenever ANY button on the page is clicked
+  useEffect(() => {
+    const handleDocumentClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+      const button = target.closest('button');
+      if (button) {
+        // If clicking the explicit video toggle or audio toggle button, do not auto-stop
+        if (button.dataset.action === 'toggle-video' || button.dataset.action === 'toggle-audio') {
+          return;
+        }
+        // Any other button clicked anywhere on the site -> automatically STOP the video
+        setIsVideoPlaying(false);
+      }
+    };
+
+    document.addEventListener('click', handleDocumentClick, true);
+    return () => {
+      document.removeEventListener('click', handleDocumentClick, true);
+    };
+  }, []);
 
   useEffect(() => {
     const isAuth = sessionStorage.getItem('atlas_crm_auth') === 'true';
@@ -91,17 +114,32 @@ export default function App() {
   return (
     <div className="relative min-h-screen w-full bg-neutral-950 text-neutral-100 flex flex-col justify-between overflow-x-hidden selection:bg-amber-400 selection:text-neutral-900">
       {/* Background Ambient Video Layer */}
-      <BackgroundVideo isCalculating={isCalculatingVideoPulse} />
+      <BackgroundVideo
+        isCalculating={isCalculatingVideoPulse}
+        isPlaying={isVideoPlaying}
+      />
 
       {/* Header */}
-      <Header onJoinWaitlist={() => setIsWaitlistOpen(true)} />
+      <Header
+        onJoinWaitlist={() => {
+          setIsVideoPlaying(false);
+          setIsWaitlistOpen(true);
+        }}
+      />
 
       {/* Main Content Area */}
       <main className="relative z-10 flex-1 flex flex-col justify-center items-center w-full">
         {/* Full-Screen Luxury Video Hero Opener */}
         <Hero
-          onJoinWaitlist={() => setIsWaitlistOpen(true)}
+          isVideoPlaying={isVideoPlaying}
+          onToggleVideo={() => setIsVideoPlaying((prev) => !prev)}
+          onStopVideo={() => setIsVideoPlaying(false)}
+          onJoinWaitlist={() => {
+            setIsVideoPlaying(false);
+            setIsWaitlistOpen(true);
+          }}
           onExploreSavings={() => {
+            setIsVideoPlaying(false);
             document.getElementById('visual-savings-calculator')?.scrollIntoView({ behavior: 'smooth' });
           }}
         />

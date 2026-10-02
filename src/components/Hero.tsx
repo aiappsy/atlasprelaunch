@@ -4,6 +4,7 @@ import {
   ArrowRight,
   Play,
   Pause,
+  Square,
   Volume2,
   VolumeX,
   Award,
@@ -14,15 +15,39 @@ import {
 interface HeroProps {
   onJoinWaitlist: () => void;
   onExploreSavings: () => void;
+  isVideoPlaying?: boolean;
+  onToggleVideo?: () => void;
+  onStopVideo?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) => {
+export const Hero: React.FC<HeroProps> = ({
+  onJoinWaitlist,
+  onExploreSavings,
+  isVideoPlaying = true,
+  onToggleVideo,
+  onStopVideo,
+}) => {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [audioBlockedByBrowser, setAudioBlockedByBrowser] = useState(false);
   const [audioProgress, setAudioProgress] = useState(0);
 
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const voiceRef = useRef<HTMLAudioElement | null>(null);
   const musicRef = useRef<HTMLAudioElement | null>(null);
+
+  // Synchronize video element and audio with isVideoPlaying
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isVideoPlaying) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+        if (voiceRef.current) voiceRef.current.pause();
+        if (musicRef.current) musicRef.current.pause();
+        setIsPlayingAudio(false);
+      }
+    }
+  }, [isVideoPlaying]);
 
   // Initialize and automatically start Voiceover + Background Music
   useEffect(() => {
@@ -136,11 +161,14 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) 
       {/* Real Local 100% Guaranteed Luxury Travel Resort Video Background */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover scale-105 transition-opacity duration-1000 opacity-85"
+          className={`w-full h-full object-cover scale-105 transition-all duration-1000 ${
+            isVideoPlaying ? 'opacity-85' : 'opacity-70 filter brightness-90 saturate-75'
+          }`}
         >
           <source src="/video/luxury-hotel-commercial.mp4" type="video/mp4" />
           <source src="/video/luxury-palms-pool.mp4" type="video/mp4" />
@@ -177,7 +205,10 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) 
           {/* Main Primary Button: Glides straight to calculator */}
           <button
             type="button"
-            onClick={onExploreSavings}
+            onClick={() => {
+              onStopVideo?.();
+              onExploreSavings();
+            }}
             className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-sm sm:text-base uppercase tracking-wider shadow-2xl shadow-amber-500/40 transition-all scale-100 hover:scale-105 cursor-pointer flex items-center justify-center gap-2.5"
           >
             <Sparkles className="w-4 h-4 text-neutral-950" />
@@ -188,7 +219,10 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) 
           {/* Secondary Action: Join waiting list */}
           <button
             type="button"
-            onClick={onJoinWaitlist}
+            onClick={() => {
+              onStopVideo?.();
+              onJoinWaitlist();
+            }}
             className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-neutral-950/70 hover:bg-neutral-900/90 border border-amber-400/50 hover:border-amber-400 text-neutral-100 font-semibold text-sm sm:text-base transition-all shadow-xl shadow-black/80 backdrop-blur-md cursor-pointer flex items-center justify-center gap-2"
           >
             <span>Lock In Half Price (Founder Spot)</span>
@@ -196,14 +230,41 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) 
           </button>
         </div>
 
-        {/* Audio Controller Indicator */}
-        <div className="pt-3 flex items-center justify-center">
+        {/* Media Controls Cluster: Stop/Play Video + Audio Voiceover & Music */}
+        <div className="pt-3 flex flex-wrap items-center justify-center gap-2.5">
+          {/* Stop / Play Video Button */}
           <button
             type="button"
+            data-action="toggle-video"
+            onClick={onToggleVideo}
+            className={`px-4 py-2 rounded-full border text-xs font-mono flex items-center gap-2 transition-all shadow-xl backdrop-blur-md cursor-pointer ${
+              isVideoPlaying
+                ? 'bg-neutral-950/80 border-neutral-700/80 text-neutral-300 hover:border-red-400/80 hover:text-red-300 hover:bg-neutral-900'
+                : 'bg-amber-400/25 border-amber-400 text-amber-300 shadow-amber-400/25 font-bold animate-pulse'
+            }`}
+            title={isVideoPlaying ? 'Stop playing background video' : 'Resume background video'}
+          >
+            {isVideoPlaying ? (
+              <>
+                <Square className="w-3 h-3 fill-red-400 text-red-400" />
+                <span className="font-semibold">Stop Video</span>
+              </>
+            ) : (
+              <>
+                <Play className="w-3 h-3 fill-amber-300 text-amber-300" />
+                <span className="font-semibold text-amber-300">Play Video</span>
+              </>
+            )}
+          </button>
+
+          {/* Audio Controller Indicator */}
+          <button
+            type="button"
+            data-action="toggle-audio"
             onClick={toggleSoundExperience}
             className={`px-4 py-2 rounded-full border text-xs font-mono flex items-center gap-2.5 transition-all shadow-xl backdrop-blur-md cursor-pointer ${
               isPlayingAudio
-                ? 'bg-amber-400/20 border-amber-400 text-amber-300 shadow-amber-400/20'
+                ? 'bg-emerald-500/20 border-emerald-400 text-emerald-300 shadow-emerald-400/20'
                 : 'bg-neutral-950/70 border-neutral-700 text-neutral-300 hover:border-amber-400/60 hover:text-white'
             }`}
             title="Toggle Voiceover and Background Music"
@@ -211,7 +272,7 @@ export const Hero: React.FC<HeroProps> = ({ onJoinWaitlist, onExploreSavings }) 
             {isPlayingAudio ? (
               <>
                 <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-                <span className="font-semibold text-amber-300">Voiceover & Music Active</span>
+                <span className="font-semibold text-emerald-300">Voiceover & Music Active</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
               </>
             ) : (

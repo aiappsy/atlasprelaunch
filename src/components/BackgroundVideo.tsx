@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface BackgroundVideoProps {
   isCalculating?: boolean;
+  isPlaying?: boolean;
 }
 
 interface LuxuryDestination {
@@ -38,8 +39,20 @@ const LUXURY_DESTINATIONS: LuxuryDestination[] = [
   },
 ];
 
-export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ isCalculating = false }) => {
+export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ isCalculating = false, isPlaying = true }) => {
   const [activeIdx, setActiveIdx] = useState(0);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  // Synchronize video playback with isPlaying prop
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isPlaying]);
 
   // Smoothly rotate luxury destinations every 8 seconds
   useEffect(() => {
@@ -55,13 +68,14 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ isCalculating 
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none">
       {/* Real Local 100% Guaranteed Luxury Travel Resort Video */}
       <video
+        ref={videoRef}
         autoPlay
         loop
         muted
         playsInline
         className={`absolute inset-0 w-full h-full object-cover scale-105 transition-all duration-1000 ${
           isCalculating ? 'opacity-90 scale-110 filter brightness-115' : 'opacity-80 scale-100'
-        }`}
+        } ${!isPlaying ? 'filter brightness-90 saturate-75' : ''}`}
       >
         <source src="/video/luxury-hotel-commercial.mp4" type="video/mp4" />
         <source src="/video/luxury-palms-pool.mp4" type="video/mp4" />
