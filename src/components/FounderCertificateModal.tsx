@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   X,
   Award,
@@ -15,6 +15,11 @@ import {
   Smartphone,
   CreditCard,
   Gift,
+  Play,
+  Pause,
+  Radio,
+  FileText,
+  Headphones,
 } from 'lucide-react';
 
 export interface FounderCertificateData {
@@ -43,7 +48,31 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
   const [isCopied, setIsCopied] = useState(false);
   const [showQR, setShowQR] = useState(false);
 
+  const [isPlayingDeepDive, setIsPlayingDeepDive] = useState(false);
+  const deepDiveAudioRef = useRef<HTMLAudioElement | null>(null);
+
   if (!isOpen || !data) return null;
+
+  const toggleDeepDivePlay = () => {
+    if (!deepDiveAudioRef.current) {
+      deepDiveAudioRef.current = new Audio('/audio/how-travel-duopolies-rig-hotel-prices.mp3');
+      deepDiveAudioRef.current.addEventListener('ended', () => setIsPlayingDeepDive(false));
+    }
+    if (isPlayingDeepDive) {
+      deepDiveAudioRef.current.pause();
+      setIsPlayingDeepDive(false);
+    } else {
+      deepDiveAudioRef.current.play().then(() => setIsPlayingDeepDive(true)).catch(() => {});
+    }
+  };
+
+  const handleClose = () => {
+    if (deepDiveAudioRef.current) {
+      deepDiveAudioRef.current.pause();
+      setIsPlayingDeepDive(false);
+    }
+    onClose();
+  };
 
   const issueDateFormatted = data.issueDate
     ? new Date(data.issueDate).toLocaleDateString('en-US', {
@@ -123,7 +152,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
 
             <button
               type="button"
-              onClick={onClose}
+              onClick={handleClose}
               className="w-8 h-8 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-400 hover:text-neutral-100 flex items-center justify-center transition cursor-pointer"
             >
               <X className="w-4 h-4" />
@@ -233,6 +262,63 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                       <Check className="w-4 h-4 text-emerald-400 shrink-0" />
                       <span>4 Family Guest Passes Included</span>
                     </div>
+                  </div>
+                </div>
+
+                {/* Exclusive Founder Intelligence Briefing Package (23-Min Audio + 14-Page PDF) */}
+                <div className="relative z-10 p-4 rounded-2xl bg-gradient-to-br from-amber-500/10 via-neutral-950/90 to-neutral-950 border border-amber-400/40 space-y-3 mb-4 shadow-xl">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-mono uppercase font-bold text-amber-300 tracking-wider flex items-center gap-1.5">
+                      <Radio className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+                      Confidential Founder Intelligence Included
+                    </span>
+                    <span className="text-[9px] bg-amber-400/20 text-amber-300 border border-amber-400/30 px-2 py-0.5 rounded font-mono font-bold">
+                      23 Min Audio • 14-Page PDF
+                    </span>
+                  </div>
+
+                  <div className="text-xs text-neutral-300 leading-relaxed">
+                    <p className="font-semibold text-neutral-100 flex items-center gap-1.5">
+                      <span>Forensic Expose: "How Travel Duopolies Rig Hotel Prices"</span>
+                    </p>
+                    <p className="text-[11px] text-neutral-400 mt-0.5">
+                      An unscripted breakdown of Booking Holdings vs. Expedia Group, Rate Parity MFN legal loopholes, and how closed-loop private clubs bypass the retail markup machinery.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-2 pt-1">
+                    <button
+                      type="button"
+                      onClick={toggleDeepDivePlay}
+                      className={`flex-1 py-2 px-3 rounded-xl border text-xs font-mono font-semibold flex items-center justify-center gap-2 transition cursor-pointer ${
+                        isPlayingDeepDive
+                          ? 'bg-amber-400 text-neutral-950 border-amber-300 shadow-md shadow-amber-400/30'
+                          : 'bg-amber-400/15 hover:bg-amber-400/25 border-amber-400/40 text-amber-300 hover:text-white'
+                      }`}
+                    >
+                      {isPlayingDeepDive ? (
+                        <>
+                          <Pause className="w-3.5 h-3.5 fill-current" />
+                          <span>Pause 23-Min Audio Briefing</span>
+                        </>
+                      ) : (
+                        <>
+                          <Play className="w-3.5 h-3.5 fill-current" />
+                          <span>Stream 23-Min Audio Briefing</span>
+                        </>
+                      )}
+                    </button>
+
+                    <a
+                      href="/docs/OTA_Duopoly_Research_Brief.pdf"
+                      download="OTA_Duopoly_Research_Brief.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 py-2 px-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-amber-400/40 text-neutral-300 hover:text-white font-mono text-xs flex items-center justify-center gap-2 transition"
+                    >
+                      <Download className="w-3.5 h-3.5 text-amber-400" />
+                      <span>Download 14-Page PDF Report</span>
+                    </a>
                   </div>
                 </div>
 
@@ -353,6 +439,60 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                   <p className="font-mono text-base font-bold text-amber-400">{data.inviteCode}</p>
                 </div>
 
+                {/* Attached Confidential Founder Intelligence Dossier */}
+                <div className="p-4 rounded-xl bg-gradient-to-br from-neutral-900 via-amber-950/20 to-neutral-950 border border-amber-400/30 space-y-3 text-xs">
+                  <div className="text-amber-300 font-bold font-mono flex items-center gap-1.5 uppercase tracking-wider text-[11px]">
+                    <Radio className="w-3.5 h-3.5 text-amber-400" />
+                    CONFIDENTIAL FOUNDER INTELLIGENCE PACKAGE ATTACHED:
+                  </div>
+                  <p className="text-neutral-300">
+                    While our membership committee finalizes your private bedbank credentials, we invite you to review our forensic research on why hotel retail prices are rigged:
+                  </p>
+
+                  <div className="p-3 rounded-lg bg-neutral-950/80 border border-neutral-800 space-y-1.5">
+                    <div className="font-semibold text-neutral-100 flex items-center justify-between">
+                      <span className="flex items-center gap-1.5">
+                        <Headphones className="w-3.5 h-3.5 text-amber-400" />
+                        <span>Audio Deep Dive: "How Travel Duopolies Rig Hotel Prices"</span>
+                      </span>
+                      <span className="text-[10px] text-amber-400 font-mono">23:07 Duration</span>
+                    </div>
+                    <p className="text-[11px] text-neutral-400 leading-relaxed">
+                      An unscripted conversational breakdown of Booking Holdings vs. Expedia Group, Rate Parity MFN clauses, and how closed-loop private clubs bypass the retail price-rigging system.
+                    </p>
+                    <a
+                      href="/audio/how-travel-duopolies-rig-hotel-prices.mp3"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs text-amber-300 hover:text-amber-200 font-mono font-semibold pt-1"
+                    >
+                      <Play className="w-3 h-3 fill-current" />
+                      <span>Listen to the 23-Min Audio Briefing →</span>
+                    </a>
+                  </div>
+
+                  <div className="p-3 rounded-lg bg-neutral-950/80 border border-neutral-800 space-y-1.5">
+                    <div className="font-semibold text-neutral-100 flex items-center justify-between">
+                      <span className="flex items-center gap-1.5">
+                        <FileText className="w-3.5 h-3.5 text-amber-400" />
+                        <span>Industry Research Brief No. 001: The OTA Duopoly</span>
+                      </span>
+                      <span className="text-[10px] text-amber-400 font-mono">14-Page PDF</span>
+                    </div>
+                    <p className="text-[11px] text-neutral-400 leading-relaxed">
+                      Complete institutional research brief with ownership structures, brand portfolios across 25+ consumer sites, and the European vs. US rate-parity regulatory landscape.
+                    </p>
+                    <a
+                      href="/docs/OTA_Duopoly_Research_Brief.pdf"
+                      download="OTA_Duopoly_Research_Brief.pdf"
+                      className="inline-flex items-center gap-1.5 text-xs text-amber-300 hover:text-amber-200 font-mono font-semibold pt-1"
+                    >
+                      <Download className="w-3 h-3" />
+                      <span>Download 14-Page Industry Research Brief (PDF) →</span>
+                    </a>
+                  </div>
+                </div>
+
                 <p className="text-xs text-neutral-400">
                   We are finalizing direct B2B integrations with institutional bedbanks (Hotelbeds, WebBeds) to bring you wholesale net rates across 1M+ hotels and villas. You will be notified the moment member onboarding opens.
                 </p>
@@ -374,7 +514,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
           </span>
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleClose}
             className="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-xs font-semibold cursor-pointer transition"
           >
             Close Certificate
