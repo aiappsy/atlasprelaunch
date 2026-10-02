@@ -19,8 +19,11 @@ interface HeroProps {
   onExploreSavings: () => void;
   onOpenPodcast?: () => void;
   isVideoPlaying?: boolean;
+  isAudioMuted?: boolean;
+  audioProgress?: number;
   onToggleVideo?: () => void;
   onStopVideo?: () => void;
+  onToggleAudioMute?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
@@ -28,159 +31,12 @@ export const Hero: React.FC<HeroProps> = ({
   onExploreSavings,
   onOpenPodcast,
   isVideoPlaying = true,
+  isAudioMuted = false,
+  audioProgress = 0,
   onToggleVideo,
   onStopVideo,
+  onToggleAudioMute,
 }) => {
-  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
-  const [audioBlockedByBrowser, setAudioBlockedByBrowser] = useState(false);
-  const [audioProgress, setAudioProgress] = useState(0);
-
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const voiceRef = useRef<HTMLAudioElement | null>(null);
-  const musicRef = useRef<HTMLAudioElement | null>(null);
-
-  // Synchronize video element and audio with isVideoPlaying
-  useEffect(() => {
-    if (videoRef.current) {
-      if (isVideoPlaying) {
-        videoRef.current.play().catch(() => {});
-      } else {
-        videoRef.current.pause();
-        if (voiceRef.current) voiceRef.current.pause();
-        if (musicRef.current) musicRef.current.pause();
-        setIsPlayingAudio(false);
-      }
-    }
-  }, [isVideoPlaying]);
-
-  // Initialize and automatically start Voiceover + Background Music
-  useEffect(() => {
-    const voice = new Audio('/audio/founder-voiceover.mp3');
-    const music = new Audio('/audio/luxury-ambient-music.wav');
-
-    voice.preload = 'auto';
-    music.preload = 'auto';
-    voice.volume = 1.0; // Clear, commanding human voiceover
-    music.volume = 0.35; // Rich ambient cinematic music underneath
-
-    voiceRef.current = voice;
-    musicRef.current = music;
-
-    const handleTimeUpdate = () => {
-      if (voice.duration) {
-        setAudioProgress((voice.currentTime / voice.duration) * 100);
-      }
-    };
-
-    const handleEnded = () => {
-      // Voiceover ended: slowly fade out music over 4 seconds
-      if (musicRef.current) {
-        let vol = musicRef.current.volume;
-        const fadeInterval = setInterval(() => {
-          if (musicRef.current && vol > 0.02) {
-            vol -= 0.03;
-            musicRef.current.volume = Math.max(0, vol);
-          } else {
-            clearInterval(fadeInterval);
-            if (musicRef.current) {
-              musicRef.current.pause();
-              musicRef.current.currentTime = 0;
-              musicRef.current.volume = 0.35;
-            }
-            setIsPlayingAudio(false);
-            setAudioProgress(0);
-          }
-        }, 300);
-      }
-    };
-
-    voice.addEventListener('timeupdate', handleTimeUpdate);
-    voice.addEventListener('ended', handleEnded);
-
-    // Function to trigger voiceover and music
-    const startAudioPlay = () => {
-      if (!voiceRef.current || !musicRef.current) return Promise.reject();
-
-      const p1 = voiceRef.current.play();
-      const p2 = musicRef.current.play();
-
-      return Promise.all([p1, p2])
-        .then(() => {
-          setIsPlayingAudio(true);
-          setAudioBlockedByBrowser(false);
-        })
-        .catch((err) => {
-          setAudioBlockedByBrowser(true);
-          throw err;
-        });
-    };
-
-    // 1. Attempt immediate unmuted autoplay on initial render
-    startAudioPlay().catch(() => {
-      // 2. If browser requires user interaction first, listen on first gesture
-      const handleUserGesture = (e: Event) => {
-        const target = e.target as HTMLElement | null;
-        // Do NOT start voiceover if visitor clicked an action button (calculator, waitlist, stop video, podcast)
-        const btn = target?.closest('button');
-        if (btn) {
-          if (btn.dataset.action !== 'toggle-audio') {
-            cleanUpGestureListeners();
-            return;
-          }
-        }
-
-        startAudioPlay().then(() => {
-          cleanUpGestureListeners();
-        }).catch(() => {});
-      };
-
-      const cleanUpGestureListeners = () => {
-        window.removeEventListener('pointerdown', handleUserGesture, true);
-        window.removeEventListener('click', handleUserGesture, true);
-        window.removeEventListener('touchstart', handleUserGesture, true);
-        window.removeEventListener('keydown', handleUserGesture, true);
-      };
-
-      window.addEventListener('pointerdown', handleUserGesture, true);
-      window.addEventListener('click', handleUserGesture, true);
-      window.addEventListener('touchstart', handleUserGesture, true);
-      window.addEventListener('keydown', handleUserGesture, true);
-    });
-
-    return () => {
-      voice.removeEventListener('timeupdate', handleTimeUpdate);
-      voice.removeEventListener('ended', handleEnded);
-      voice.pause();
-      music.pause();
-    };
-  }, []);
-
-  const stopAllAudio = () => {
-    if (voiceRef.current) voiceRef.current.pause();
-    if (musicRef.current) musicRef.current.pause();
-    setIsPlayingAudio(false);
-  };
-
-  const toggleSoundExperience = () => {
-    if (!voiceRef.current || !musicRef.current) return;
-
-    if (isPlayingAudio) {
-      voiceRef.current.pause();
-      musicRef.current.pause();
-      setIsPlayingAudio(false);
-    } else {
-      voiceRef.current.currentTime = 0;
-      musicRef.current.currentTime = 0;
-      voiceRef.current.volume = 1.0;
-      musicRef.current.volume = 0.35;
-
-      voiceRef.current.play().catch(() => {});
-      musicRef.current.play().catch(() => {});
-      setIsPlayingAudio(true);
-      setAudioBlockedByBrowser(false);
-    }
-  };
-
   return (
     <section className="relative w-full min-h-screen flex flex-col justify-between items-center text-center px-4 sm:px-6 pt-6 pb-12 overflow-hidden select-none bg-transparent">
 
@@ -215,7 +71,6 @@ export const Hero: React.FC<HeroProps> = ({
           <button
             type="button"
             onClick={() => {
-              stopAllAudio();
               onStopVideo?.();
               onExploreSavings();
             }}
@@ -230,7 +85,6 @@ export const Hero: React.FC<HeroProps> = ({
           <button
             type="button"
             onClick={() => {
-              stopAllAudio();
               onStopVideo?.();
               onJoinWaitlist();
             }}
@@ -248,7 +102,6 @@ export const Hero: React.FC<HeroProps> = ({
               type="button"
               data-action="open-podcast"
               onClick={() => {
-                stopAllAudio();
                 onStopVideo?.();
                 onOpenPodcast();
               }}
@@ -282,50 +135,43 @@ export const Hero: React.FC<HeroProps> = ({
             ) : (
               <>
                 <Play className="w-3 h-3 fill-amber-300 text-amber-300" />
-                <span className="font-semibold text-amber-300">Play Video</span>
+                <span className="font-semibold text-amber-300">Play Video & Sound</span>
               </>
             )}
           </button>
 
           {/* Audio Controller Indicator */}
-          <button
-            type="button"
-            data-action="toggle-audio"
-            onClick={toggleSoundExperience}
-            className={`px-4 py-2 rounded-full border text-xs font-mono flex items-center gap-2.5 transition-all shadow-xl backdrop-blur-md cursor-pointer ${
-              isPlayingAudio
-                ? 'bg-emerald-500/20 border-emerald-400 text-emerald-300 shadow-emerald-400/20'
-                : 'bg-neutral-950/70 border-neutral-700 text-neutral-300 hover:border-amber-400/60 hover:text-white'
-            }`}
-            title="Toggle Voiceover and Background Music"
-          >
-            {isPlayingAudio ? (
-              <>
-                <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-                <span className="font-semibold text-emerald-300">Voiceover & Music Active</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-              </>
-            ) : (
-              <>
-                {audioBlockedByBrowser ? (
-                  <>
-                    <Volume2 className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
-                    <span className="text-amber-300 font-bold">Tap To Unmute Voiceover & Music</span>
-                  </>
-                ) : (
-                  <>
-                    <Play className="w-3 h-3 fill-amber-300 text-amber-300" />
-                    <span>Play Voiceover & Music</span>
-                  </>
-                )}
-                <span className="text-[10px] text-amber-400 font-bold bg-amber-400/15 px-1.5 py-0.5 rounded">0:24</span>
-              </>
-            )}
-          </button>
+          {isVideoPlaying && (
+            <button
+              type="button"
+              data-action="toggle-audio"
+              onClick={onToggleAudioMute}
+              className={`px-4 py-2 rounded-full border text-xs font-mono flex items-center gap-2.5 transition-all shadow-xl backdrop-blur-md cursor-pointer ${
+                !isAudioMuted
+                  ? 'bg-emerald-500/20 border-emerald-400 text-emerald-300 shadow-emerald-400/20'
+                  : 'bg-amber-500/20 border-amber-400 text-amber-300 shadow-amber-400/20 animate-pulse'
+              }`}
+              title={!isAudioMuted ? 'Mute Voiceover and Music' : 'Unmute Voiceover and Music'}
+            >
+              {!isAudioMuted ? (
+                <>
+                  <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+                  <span className="font-semibold text-emerald-300">Voiceover & Music Active</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                </>
+              ) : (
+                <>
+                  <VolumeX className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
+                  <span className="text-amber-300 font-bold">Tap Anywhere to Unmute Sound</span>
+                  <span className="text-[10px] text-amber-400 font-bold bg-amber-400/20 px-1.5 py-0.5 rounded">0:38</span>
+                </>
+              )}
+            </button>
+          )}
         </div>
 
         {/* Audio Progress Bar */}
-        {isPlayingAudio && (
+        {isVideoPlaying && !isAudioMuted && audioProgress > 0 && audioProgress < 100 && (
           <div className="max-w-xs mx-auto h-1 bg-neutral-950/60 rounded-full overflow-hidden border border-neutral-800">
             <div
               className="h-full bg-gradient-to-r from-amber-400 to-amber-300 transition-all duration-200"
