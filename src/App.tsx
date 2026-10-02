@@ -11,6 +11,7 @@ import { CrmDashboard } from './components/crm/CrmDashboard';
 import { CrmAuthGate } from './components/crm/CrmAuthGate';
 import { FounderCertificateModal, FounderCertificateData } from './components/FounderCertificateModal';
 import { PodcastPlayerModal } from './components/PodcastPlayerModal';
+import { CinematicEntrance } from './components/CinematicEntrance';
 import { CalculationResult } from './lib/calculatorModel';
 import { heroAudio } from './lib/heroAudio';
 
@@ -217,6 +218,14 @@ export default function App() {
         }}
         onPlaybackStart={() => setIsVideoPlaying(false)}
       />
+
+      {/* Cinematic Experience Sound Entrance Curtain */}
+      {viewMode === 'site' && (
+        <CinematicEntrance
+          onEnterWithSound={() => setIsVideoPlaying(true)}
+          onEnterSilent={() => {}}
+        />
+      )}
     </div>
   );
 }
