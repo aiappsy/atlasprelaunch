@@ -58,8 +58,8 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
 
   // Initialize Audio
   useEffect(() => {
-    const audio = new Audio('/audio/how-private-clubs-get-wholesale-hotel-rates.m4a');
-    audio.preload = 'metadata';
+    const audio = new Audio('/audio/how-private-clubs-get-wholesale-hotel-rates.mp3?v=20261002_seek');
+    audio.preload = 'auto';
     audioRef.current = audio;
 
     const handleLoadedMetadata = () => {
@@ -70,7 +70,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
 
     const handleTimeUpdate = () => {
       setCurrentTime(audio.currentTime);
-      if (audio.duration && !isNaN(audio.duration)) {
+      if (audio.duration && !isNaN(audio.duration) && duration === 0) {
         setDuration(audio.duration);
       }
     };
@@ -116,9 +116,14 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
 
   const seekTo = (seconds: number) => {
     if (!audioRef.current) return;
-    const target = Math.max(0, Math.min(seconds, duration || 9999));
-    audioRef.current.currentTime = target;
-    setCurrentTime(target);
+    const maxDur = duration > 0 ? duration : 310.8;
+    const target = Math.max(0, Math.min(seconds, maxDur));
+    try {
+      audioRef.current.currentTime = target;
+      setCurrentTime(target);
+    } catch (err) {
+      console.warn('Seek error:', err);
+    }
   };
 
   const skipSeconds = (delta: number) => {
@@ -372,31 +377,42 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
               <span>Key Discussion Chapters (Click to Jump)</span>
             </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {CHAPTERS.map((ch) => {
-                const isActive = currentTime >= ch.time && currentTime < (ch.time + 180);
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {CHAPTERS.map((ch, idx) => {
+                const nextTime = CHAPTERS[idx + 1] ? CHAPTERS[idx + 1].time : (duration || 310.8);
+                const isActive = currentTime >= ch.time && currentTime < nextTime;
                 return (
                   <button
                     key={ch.time}
                     type="button"
-                    onClick={() => {
+                    data-action="jump-chapter"
+                    onClick={(e) => {
+                      e.stopPropagation();
                       seekTo(ch.time);
-                      if (!isPlaying && audioRef.current) {
+                      if (audioRef.current) {
                         onPlaybackStart?.();
-                        audioRef.current.play().then(() => setIsPlaying(true));
+                        audioRef.current.play().then(() => {
+                          setIsPlaying(true);
+                        }).catch(() => {});
                       }
                     }}
-                    className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                    className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer transform hover:scale-[1.01] active:scale-[0.98] ${
                       isActive
-                        ? 'border-amber-400 bg-amber-400/10 text-amber-200'
-                        : 'border-neutral-800 hover:border-neutral-700 bg-neutral-950/40 hover:bg-neutral-800/60 text-neutral-300'
+                        ? 'border-amber-400 bg-amber-400/15 text-amber-200 shadow-lg shadow-amber-400/10 ring-1 ring-amber-400/40'
+                        : 'border-neutral-800/80 hover:border-amber-400/50 bg-neutral-950/60 hover:bg-neutral-850/80 text-neutral-300'
                     }`}
                   >
-                    <p className="text-xs font-semibold text-neutral-100 flex items-center gap-1.5">
-                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />}
-                      <span>{ch.label}</span>
+                    <p className="text-xs font-semibold text-neutral-100 flex items-center gap-2">
+                      {isActive ? (
+                        <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0" />
+                      ) : (
+                        <span className="w-1.5 h-1.5 rounded-full bg-neutral-600 shrink-0" />
+                      )}
+                      <span className={isActive ? 'text-amber-300 font-bold' : 'text-neutral-200'}>
+                        {ch.label}
+                      </span>
                     </p>
-                    <p className="text-[11px] text-neutral-400 truncate mt-0.5">{ch.desc}</p>
+                    <p className="text-[11px] text-neutral-400 truncate mt-1 pl-3.5">{ch.desc}</p>
                   </button>
                 );
               })}
