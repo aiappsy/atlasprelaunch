@@ -11,7 +11,6 @@ import {
   X,
   Sparkles,
   ArrowRight,
-  Clock,
   Radio,
   Download,
 } from 'lucide-react';
@@ -489,57 +488,6 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
               >
                 {isMuted ? <VolumeX className="w-4 h-4 text-red-400" /> : <Volume2 className="w-4 h-4" />}
               </button>
-            </div>
-          </div>
-
-          {/* Jump to Chapters */}
-          <div className="space-y-3 pt-2">
-            <h3 className="text-xs uppercase font-mono tracking-wider text-neutral-400 font-semibold flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-amber-400" />
-              <span>Discussion Chapters (Click to Jump Instantly)</span>
-            </h3>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {currentTrack.chapters.map((ch, idx) => {
-                const nextTime = currentTrack.chapters[idx + 1]
-                  ? currentTrack.chapters[idx + 1].time
-                  : (duration || (activeTrackId === 'summary' ? 310.8 : 1387));
-                const isActive = currentTime >= ch.time && currentTime < nextTime;
-                return (
-                  <button
-                    key={ch.time}
-                    type="button"
-                    data-action="jump-chapter"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      seekTo(ch.time);
-                      if (audioRef.current) {
-                        onPlaybackStart?.();
-                        audioRef.current.play().then(() => {
-                          setIsPlaying(true);
-                        }).catch(() => {});
-                      }
-                    }}
-                    className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer transform hover:scale-[1.01] active:scale-[0.98] ${
-                      isActive
-                        ? 'border-amber-400 bg-amber-400/15 text-amber-200 shadow-lg shadow-amber-400/10 ring-1 ring-amber-400/40'
-                        : 'border-neutral-800/80 hover:border-amber-400/50 bg-neutral-950/60 hover:bg-neutral-850/80 text-neutral-300'
-                    }`}
-                  >
-                    <p className="text-xs font-semibold text-neutral-100 flex items-center gap-2">
-                      {isActive ? (
-                        <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0" />
-                      ) : (
-                        <span className="w-1.5 h-1.5 rounded-full bg-neutral-600 shrink-0" />
-                      )}
-                      <span className={isActive ? 'text-amber-300 font-bold' : 'text-neutral-200'}>
-                        {ch.label}
-                      </span>
-                    </p>
-                    <p className="text-[11px] text-neutral-400 truncate mt-1 pl-3.5">{ch.desc}</p>
-                  </button>
-                );
-              })}
             </div>
           </div>
 
