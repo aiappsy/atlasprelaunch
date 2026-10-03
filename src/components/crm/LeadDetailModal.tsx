@@ -105,6 +105,11 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
               <h3 className="font-cinzel text-lg font-bold text-neutral-100">
                 {lead.fullName || 'Founder Member'}
               </h3>
+              {lead.isEmailVerified && (
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40">
+                  ✓ Verified Email
+                </span>
+              )}
               {lead.priority === 'hot' && (
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-red-500/20 text-red-300 font-bold border border-red-500/40">
                   HOT VIP

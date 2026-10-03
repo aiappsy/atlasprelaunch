@@ -45,25 +45,41 @@ export default function App() {
     const isAuth = sessionStorage.getItem('atlas_crm_auth') === 'true';
     setIsCrmAuthenticated(isAuth);
 
-    const checkHash = () => {
-      if (window.location.hash === '#crm' || window.location.search.includes('crm')) {
+    const checkRoute = () => {
+      const path = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+      const search = window.location.search.toLowerCase();
+      if (
+        path === '/admin' ||
+        path.startsWith('/admin/') ||
+        hash === '#admin' ||
+        hash === '#/admin' ||
+        hash === '#crm' ||
+        search.includes('admin') ||
+        search.includes('crm')
+      ) {
         setViewMode('crm');
+      } else {
+        setViewMode('site');
       }
     };
-    checkHash();
-    window.addEventListener('hashchange', checkHash);
+    checkRoute();
+    window.addEventListener('hashchange', checkRoute);
+    window.addEventListener('popstate', checkRoute);
 
     // Keyboard shortcut: Alt+C or Ctrl+Shift+C
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.altKey && e.key.toLowerCase() === 'c') || (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c')) {
         e.preventDefault();
+        window.history.pushState(null, '', '/admin');
         setViewMode('crm');
       }
     };
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener('hashchange', checkHash);
+      window.removeEventListener('hashchange', checkRoute);
+      window.removeEventListener('popstate', checkRoute);
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
@@ -123,8 +139,8 @@ export default function App() {
 
   const handleBackToSite = () => {
     setViewMode('site');
-    if (window.location.hash === '#crm') {
-      history.replaceState(null, '', window.location.pathname);
+    if (window.location.pathname.startsWith('/admin') || window.location.hash.includes('admin') || window.location.hash.includes('crm')) {
+      window.history.pushState(null, '', '/');
     }
   };
 
@@ -213,7 +229,10 @@ export default function App() {
       </main>
 
       {/* Footer with Discreet Staff Lock Icon */}
-      <Footer onOpenCrm={() => setViewMode('crm')} />
+      <Footer onOpenCrm={() => {
+        window.history.pushState(null, '', '/admin');
+        setViewMode('crm');
+      }} />
 
       {/* Early Access / Waitlist Lead Modal */}
       <WaitlistModal

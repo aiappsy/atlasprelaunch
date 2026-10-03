@@ -205,12 +205,22 @@ export function addNewLeadFromRegistration(params: NewLeadRegistrationParams | s
     preferredContact,
     createdAt: new Date().toISOString(),
     status: 'new',
+    isEmailVerified: true,
+    verifiedAt: new Date().toISOString(),
     membershipTier: tierInfo,
     modeledSavingsUSD: modeledSavings,
     totalNights: 14,
     inviteCode,
     priority,
-    notes: [],
+    notes: [
+      {
+        id: 'note_' + Math.random().toString(36).substring(2, 9),
+        authorId: 'system',
+        authorName: 'Admissions Gatekeeper',
+        content: 'Email verified via 6-digit OTP code before Founder Member Diploma issuance.',
+        createdAt: new Date().toISOString(),
+      },
+    ],
   };
 
   const updated = [newLead, ...leads];

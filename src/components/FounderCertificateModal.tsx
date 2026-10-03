@@ -276,28 +276,14 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                     </div>
                   </div>
 
-                  {/* Bottom Credentials, Dual Signatures & Stamp of Authorization */}
-                  <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#b8862d]/30 mt-3">
-                    {/* Left Signature: Pål Juritzen */}
-                    <div className="text-center sm:text-left order-2 sm:order-1 flex-1">
-                      <div className="font-signature text-3xl sm:text-4xl text-[#1a150e] leading-none mb-0.5">
-                        Pål Juritzen
-                      </div>
-                      <div className="w-36 sm:w-44 border-t border-[#8c651e]/60 my-1 mx-auto sm:mx-0" />
-                      <div className="font-cinzel text-xs font-bold uppercase tracking-wider text-[#1a150e]">
-                        Pål Juritzen
-                      </div>
-                      <div className="text-[10px] font-mono text-[#66502e]">
-                        Founder & Managing Director
-                      </div>
-                    </div>
-
-                    {/* Center: THE OFFICIAL EMBOSSED GOLD STAMP OF AUTHORIZATION */}
-                    <div className="relative flex flex-col items-center justify-center order-1 sm:order-2 my-2 sm:my-0 shrink-0">
+                  {/* Bottom Credentials, Sole Signature & Stamp of Authorization */}
+                  <div className="pt-5 flex flex-col sm:flex-row items-center justify-around gap-6 border-t border-[#b8862d]/30 mt-3 px-4 sm:px-10">
+                    {/* Center-Left: THE OFFICIAL EMBOSSED GOLD STAMP OF AUTHORIZATION */}
+                    <div className="relative flex flex-col items-center justify-center order-2 sm:order-1 my-2 sm:my-0 shrink-0">
                       {/* Crimson Hanging Ribbons */}
                       <div className="absolute -bottom-6 flex gap-2 pointer-events-none z-0">
-                        <div className="w-4 h-10 bg-gradient-to-b from-[#8b1515] to-[#550808] border-l border-r border-[#d4af37] shadow-md transform -rotate-6 clip-ribbon" />
-                        <div className="w-4 h-10 bg-gradient-to-b from-[#8b1515] to-[#550808] border-l border-r border-[#d4af37] shadow-md transform rotate-6 clip-ribbon" />
+                        <div className="w-4 h-11 bg-gradient-to-b from-[#8b1515] to-[#550808] border-l border-r border-[#d4af37] shadow-md transform -rotate-6 clip-ribbon" />
+                        <div className="w-4 h-11 bg-gradient-to-b from-[#8b1515] to-[#550808] border-l border-r border-[#d4af37] shadow-md transform rotate-6 clip-ribbon" />
                       </div>
 
                       {/* Circular Metallic Seal */}
@@ -320,17 +306,20 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                       </div>
                     </div>
 
-                    {/* Right Signature: Lars V. Agenturer */}
-                    <div className="text-center sm:text-right order-3 flex-1">
-                      <div className="font-signature text-3xl sm:text-4xl text-[#1a150e] leading-none mb-0.5">
-                        Lars V. Agenturer
+                    {/* Center-Right: Sole Signatory - Pål Juritzen */}
+                    <div className="text-center sm:text-right order-1 sm:order-2 shrink-0">
+                      <div className="font-signature text-4xl sm:text-5xl text-[#1a150e] leading-none mb-1">
+                        Pål Juritzen
                       </div>
-                      <div className="w-36 sm:w-44 border-t border-[#8c651e]/60 my-1 mx-auto sm:ml-auto sm:mr-0" />
-                      <div className="font-cinzel text-xs font-bold uppercase tracking-wider text-[#1a150e]">
-                        Lars V. Agenturer
+                      <div className="w-48 sm:w-56 border-t-2 border-[#8c651e]/70 my-1.5 mx-auto sm:ml-auto sm:mr-0" />
+                      <div className="font-cinzel text-xs sm:text-sm font-bold uppercase tracking-wider text-[#1a150e]">
+                        Pål Juritzen
                       </div>
-                      <div className="text-[10px] font-mono text-[#66502e]">
-                        Chairman of Admissions Committee
+                      <div className="text-xs font-mono text-[#66502e] font-semibold">
+                        Founder & Managing Director
+                      </div>
+                      <div className="text-[10px] font-mono text-[#8a6522] tracking-wider uppercase">
+                        Atlas Intelligence & Sovereign Travel Club
                       </div>
                     </div>
                   </div>

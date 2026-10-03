@@ -26,6 +26,8 @@ export interface LeadRecord {
   preferredContact?: 'whatsapp' | 'call' | 'sms' | 'email' | 'messenger';
   createdAt: string;
   status: LeadStatus;
+  isEmailVerified?: boolean;
+  verifiedAt?: string;
   membershipTier: string;
   modeledSavingsUSD: number;
   totalNights: number;

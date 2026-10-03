@@ -348,6 +348,11 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
                             <td className="py-3 px-4">
                               <div className="flex items-center gap-2">
                                 <span className="font-semibold text-neutral-100">{lead.fullName || 'Founder Member'}</span>
+                                {lead.isEmailVerified && (
+                                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40">
+                                    ✓ Verified
+                                  </span>
+                                )}
                                 {lead.priority === 'hot' && (
                                   <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-red-500/20 text-red-300 font-bold border border-red-500/40">
                                     VIP
