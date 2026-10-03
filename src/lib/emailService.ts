@@ -148,6 +148,64 @@ export interface DispatchEmailResult {
 }
 
 export async function dispatchFounderWelcomeEmail(payload: WelcomeEmailPayload): Promise<DispatchEmailResult> {
+  // 1. Try EmailJS client-side dispatch if configured
+  const emailJsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  if (emailJsPublicKey) {
+    try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'default_service';
+      const welcomeTemplateId = import.meta.env.VITE_EMAILJS_WELCOME_TEMPLATE_ID || import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      
+      const emailJsRes = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service_id: serviceId,
+          template_id: welcomeTemplateId,
+          user_id: emailJsPublicKey,
+          template_params: {
+            to_email: payload.recipientEmail,
+            to_name: payload.recipientName,
+            invite_code: payload.inviteCode,
+            phone: payload.phone || '',
+            membership_tier: payload.membershipTier || 'Founder Member',
+            pdf_link: 'https://atlaslaunch.ai.studio/docs/OTA_Duopoly_Research_Brief.pdf',
+            audio_link: 'https://atlaslaunch.ai.studio/audio/how-travel-duopolies-rig-hotel-prices.mp3',
+          },
+        }),
+      });
+
+      if (emailJsRes.ok) {
+        return {
+          success: true,
+          message: 'Welcome email dispatched via EmailJS client relay',
+        };
+      }
+    } catch (e) {
+      console.warn('[EmailJS Client Error]:', e);
+    }
+  }
+
+  // 2. Try Custom Webhook Relay (e.g. Google Apps Script, Resend, or Cloudflare Worker)
+  const webhookUrl = import.meta.env.VITE_EMAIL_WEBHOOK_URL;
+  if (webhookUrl) {
+    try {
+      const hookRes = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'welcome',
+          payload,
+        }),
+      });
+      if (hookRes.ok) {
+        return { success: true, message: 'Welcome email dispatched via Webhook' };
+      }
+    } catch (e) {
+      console.warn('[Webhook Relay Error]:', e);
+    }
+  }
+
+  // 3. Fallback to local dev server /api/send-welcome-email
   try {
     const res = await fetch('/api/send-welcome-email', {
       method: 'POST',
@@ -185,6 +243,62 @@ export async function dispatchVerificationCode(
   name: string,
   code: string
 ): Promise<{ success: boolean; message?: string }> {
+  // 1. Try EmailJS client-side dispatch if configured
+  const emailJsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  if (emailJsPublicKey) {
+    try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'default_service';
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_verification';
+
+      const emailJsRes = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service_id: serviceId,
+          template_id: templateId,
+          user_id: emailJsPublicKey,
+          template_params: {
+            to_email: email,
+            to_name: name || 'Applicant',
+            verification_code: code,
+          },
+        }),
+      });
+
+      if (emailJsRes.ok) {
+        return {
+          success: true,
+          message: 'Verification code sent to your inbox via EmailJS',
+        };
+      }
+    } catch (e) {
+      console.warn('[EmailJS Client Error]:', e);
+    }
+  }
+
+  // 2. Try Custom Webhook Relay
+  const webhookUrl = import.meta.env.VITE_EMAIL_WEBHOOK_URL;
+  if (webhookUrl) {
+    try {
+      const hookRes = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'verification',
+          email,
+          name,
+          code,
+        }),
+      });
+      if (hookRes.ok) {
+        return { success: true, message: 'Verification code sent via Webhook' };
+      }
+    } catch (e) {
+      console.warn('[Webhook Relay Error]:', e);
+    }
+  }
+
+  // 3. Fallback to local dev server /api/send-verification-code
   try {
     const res = await fetch('/api/send-verification-code', {
       method: 'POST',
@@ -204,7 +318,7 @@ export async function dispatchVerificationCode(
       message: data.message || (res.ok ? 'Verification code sent' : 'Failed to send verification code'),
     };
   } catch (err) {
-    console.warn('Network notice during verification code dispatch:', err);
+    console.warn('Notice during verification code dispatch:', err);
     return {
       success: false,
       message: 'Network notice',
