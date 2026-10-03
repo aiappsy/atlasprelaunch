@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BackgroundVideo } from './components/BackgroundVideo';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
@@ -12,7 +12,6 @@ import { CrmAuthGate } from './components/crm/CrmAuthGate';
 import { FounderCertificateModal, FounderCertificateData } from './components/FounderCertificateModal';
 import { PodcastPlayerModal } from './components/PodcastPlayerModal';
 import { CalculationResult } from './lib/calculatorModel';
-import { heroAudio } from './lib/heroAudio';
 
 export default function App() {
   const [viewMode, setViewMode] = useState<'site' | 'crm'>('site');
@@ -24,12 +23,14 @@ export default function App() {
   const [founderCertificateData, setFounderCertificateData] = useState<FounderCertificateData | null>(null);
   const [isCalculatingVideoPulse, setIsCalculatingVideoPulse] = useState<boolean>(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(true);
+  const [isVideoMuted, setIsVideoMuted] = useState<boolean>(true);
 
-  // Automatically pause hero video & audio when modals open
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  // Automatically pause hero video when any modal opens
   useEffect(() => {
     if (isWaitlistOpen || isPodcastOpen || !!founderCertificateData) {
       setIsVideoPlaying(false);
-      heroAudio.pause();
     }
   }, [isWaitlistOpen, isPodcastOpen, founderCertificateData]);
 
@@ -59,6 +60,26 @@ export default function App() {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
+
+  const handleToggleMute = () => {
+    if (videoRef.current) {
+      const next = !videoRef.current.muted;
+      videoRef.current.muted = next;
+      videoRef.current.volume = 1.0;
+      setIsVideoMuted(next);
+    }
+  };
+
+  const handleUnmuteAndRestart = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.muted = false;
+      videoRef.current.volume = 1.0;
+      videoRef.current.play().catch(() => {});
+      setIsVideoMuted(false);
+      setIsVideoPlaying(true);
+    }
+  };
 
   const handleUnlockSavings = (savings: CalculationResult) => {
     setSelectedSavings(savings);
@@ -103,26 +124,24 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen w-full bg-neutral-950 text-neutral-100 flex flex-col justify-between overflow-x-hidden selection:bg-amber-400 selection:text-neutral-900">
-      {/* Background Ambient Video Layer */}
+      {/* Unified Background Commercial Video with Built-in Studio Voiceover & Music */}
       <BackgroundVideo
+        videoRef={videoRef}
         isCalculating={isCalculatingVideoPulse}
         isPlaying={isVideoPlaying}
-        onEnded={() => {
-          setIsVideoPlaying(false);
-          heroAudio.pause();
-        }}
+        isMuted={isVideoMuted}
+        onMuteChange={(muted) => setIsVideoMuted(muted)}
+        onEnded={() => setIsVideoPlaying(false)}
       />
 
       {/* Header */}
       <Header
         onJoinWaitlist={() => {
           setIsVideoPlaying(false);
-          heroAudio.pause();
           setIsWaitlistOpen(true);
         }}
         onOpenPodcast={() => {
           setIsVideoPlaying(false);
-          heroAudio.pause();
           setPodcastTrack('summary');
           setIsPodcastOpen(true);
         }}
@@ -133,25 +152,21 @@ export default function App() {
         {/* Full-Screen Luxury Video Hero Opener */}
         <Hero
           isVideoPlaying={isVideoPlaying}
+          isVideoMuted={isVideoMuted}
           onToggleVideo={() => setIsVideoPlaying((prev) => !prev)}
-          onStopVideo={() => {
-            setIsVideoPlaying(false);
-            heroAudio.pause();
-          }}
+          onStopVideo={() => setIsVideoPlaying(false)}
+          onToggleMute={handleToggleMute}
+          onUnmuteAndRestart={handleUnmuteAndRestart}
           onOpenPodcast={() => {
             setIsVideoPlaying(false);
-            heroAudio.pause();
             setPodcastTrack('summary');
             setIsPodcastOpen(true);
           }}
           onJoinWaitlist={() => {
             setIsVideoPlaying(false);
-            heroAudio.pause();
             setIsWaitlistOpen(true);
           }}
           onExploreSavings={() => {
-            setIsVideoPlaying(false);
-            heroAudio.pause();
             document.getElementById('visual-savings-calculator')?.scrollIntoView({ behavior: 'smooth' });
           }}
         />

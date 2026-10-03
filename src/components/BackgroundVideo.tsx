@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface BackgroundVideoProps {
   isCalculating?: boolean;
   isPlaying?: boolean;
+  isMuted?: boolean;
+  onMuteChange?: (muted: boolean) => void;
+  videoRef?: React.RefObject<HTMLVideoElement | null>;
   onEnded?: () => void;
 }
 
@@ -43,23 +46,79 @@ const LUXURY_DESTINATIONS: LuxuryDestination[] = [
 export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
   isCalculating = false,
   isPlaying = true,
+  isMuted = true,
+  onMuteChange,
+  videoRef,
   onEnded,
 }) => {
   const [activeIdx, setActiveIdx] = useState(0);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  // Synchronize video playback with isPlaying prop
+  // Synchronize playback
   useEffect(() => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.play().catch(() => {});
-      } else {
-        videoRef.current.pause();
-      }
+    const video = videoRef?.current;
+    if (!video) return;
+    if (isPlaying) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
     }
-  }, [isPlaying]);
+  }, [isPlaying, videoRef]);
 
-  // Smoothly rotate luxury destinations every 8 seconds
+  // Synchronize mute state
+  useEffect(() => {
+    const video = videoRef?.current;
+    if (!video) return;
+    if (video.muted !== isMuted) {
+      video.muted = isMuted;
+      video.volume = 1.0;
+    }
+  }, [isMuted, videoRef]);
+
+  // Try unmuted autoplay on initial entrance; fall back to muted if browser requires gesture
+  useEffect(() => {
+    const video = videoRef?.current;
+    if (!video) return;
+
+    // Try unmuted first
+    video.muted = false;
+    video.volume = 1.0;
+    video.play()
+      .then(() => {
+        onMuteChange?.(false);
+      })
+      .catch(() => {
+        // Browser blocked unmuted autoplay -> play muted and listen for first gesture to unmute
+        video.muted = true;
+        onMuteChange?.(true);
+        video.play().catch(() => {});
+      });
+
+    // Unmute on ANY gesture (click, tap, scroll, keydown)
+    const unlockSound = () => {
+      if (videoRef?.current && videoRef.current.muted) {
+        videoRef.current.muted = false;
+        videoRef.current.volume = 1.0;
+        onMuteChange?.(false);
+      }
+      cleanup();
+    };
+
+    const cleanup = () => {
+      window.removeEventListener('pointerdown', unlockSound, true);
+      window.removeEventListener('click', unlockSound, true);
+      window.removeEventListener('touchstart', unlockSound, true);
+      window.removeEventListener('keydown', unlockSound, true);
+    };
+
+    window.addEventListener('pointerdown', unlockSound, true);
+    window.addEventListener('click', unlockSound, true);
+    window.addEventListener('touchstart', unlockSound, true);
+    window.addEventListener('keydown', unlockSound, true);
+
+    return () => cleanup();
+  }, [videoRef, onMuteChange]);
+
+  // Rotate luxury destinations every 8 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % LUXURY_DESTINATIONS.length);
@@ -71,18 +130,17 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
 
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none">
-      {/* Real Local 100% Guaranteed Luxury Travel Resort Video — Plays Exactly Once */}
+      {/* 100% Unified Master Commercial Video with Built-in Studio Voiceover & Music */}
       <video
         ref={videoRef}
         autoPlay
-        muted
         playsInline
         onEnded={onEnded}
         className={`absolute inset-0 w-full h-full object-cover scale-105 transition-all duration-1000 ${
           isCalculating ? 'opacity-90 scale-110 filter brightness-115' : 'opacity-85 scale-100'
         } ${!isPlaying ? 'filter brightness-90 saturate-75' : ''}`}
       >
-        <source src="/video/luxury-hotel-commercial.mp4?v=20261002_master" type="video/mp4" />
+        <source src="/video/luxury-hotel-commercial.mp4?v=20261003_voice_master" type="video/mp4" />
       </video>
 
       {/* Rotating High-Res 4K Luxury Resort Imagery Overlay (Crossfades gently) */}
