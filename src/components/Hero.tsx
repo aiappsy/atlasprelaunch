@@ -81,7 +81,10 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Main Primary Button: Glides straight to calculator */}
           <button
             type="button"
-            onClick={onExploreSavings}
+            onClick={() => {
+              onStopVideo?.();
+              onExploreSavings();
+            }}
             className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-sm sm:text-base uppercase tracking-wider shadow-2xl shadow-amber-500/40 transition-all scale-100 hover:scale-105 cursor-pointer flex items-center justify-center gap-2.5"
           >
             <Sparkles className="w-4 h-4 text-neutral-950" />
@@ -92,7 +95,10 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Secondary Action: Join waiting list */}
           <button
             type="button"
-            onClick={onJoinWaitlist}
+            onClick={() => {
+              onStopVideo?.();
+              onJoinWaitlist();
+            }}
             className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-neutral-950/70 hover:bg-neutral-900 border border-amber-400/40 hover:border-amber-400 text-amber-300 font-bold text-xs sm:text-sm uppercase tracking-wider backdrop-blur-md shadow-xl transition-all scale-100 hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
           >
             <Award className="w-4 h-4 text-amber-400" />

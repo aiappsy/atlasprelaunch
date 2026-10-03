@@ -27,10 +27,17 @@ export default function App() {
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
+  const handleStopVideo = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+    setIsVideoPlaying(false);
+  };
+
   // Automatically pause hero video when any modal opens
   useEffect(() => {
     if (isWaitlistOpen || isPodcastOpen || !!founderCertificateData) {
-      setIsVideoPlaying(false);
+      handleStopVideo();
     }
   }, [isWaitlistOpen, isPodcastOpen, founderCertificateData]);
 
@@ -61,6 +68,23 @@ export default function App() {
     };
   }, []);
 
+  const handleToggleVideo = () => {
+    if (videoRef.current) {
+      if (isVideoPlaying) {
+        videoRef.current.pause();
+        setIsVideoPlaying(false);
+      } else {
+        videoRef.current.muted = false;
+        videoRef.current.volume = 1.0;
+        videoRef.current.play().catch(() => {});
+        setIsVideoMuted(false);
+        setIsVideoPlaying(true);
+      }
+    } else {
+      setIsVideoPlaying((prev) => !prev);
+    }
+  };
+
   const handleToggleMute = () => {
     if (videoRef.current) {
       const next = !videoRef.current.muted;
@@ -81,7 +105,13 @@ export default function App() {
     }
   };
 
+  const handleExploreSavings = () => {
+    handleStopVideo();
+    document.getElementById('visual-savings-calculator')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const handleUnlockSavings = (savings: CalculationResult) => {
+    handleStopVideo();
     setSelectedSavings(savings);
     setIsWaitlistOpen(true);
   };
@@ -131,17 +161,17 @@ export default function App() {
         isPlaying={isVideoPlaying}
         isMuted={isVideoMuted}
         onMuteChange={(muted) => setIsVideoMuted(muted)}
-        onEnded={() => setIsVideoPlaying(false)}
+        onEnded={handleStopVideo}
       />
 
       {/* Header */}
       <Header
         onJoinWaitlist={() => {
-          setIsVideoPlaying(false);
+          handleStopVideo();
           setIsWaitlistOpen(true);
         }}
         onOpenPodcast={() => {
-          setIsVideoPlaying(false);
+          handleStopVideo();
           setPodcastTrack('summary');
           setIsPodcastOpen(true);
         }}
@@ -153,22 +183,20 @@ export default function App() {
         <Hero
           isVideoPlaying={isVideoPlaying}
           isVideoMuted={isVideoMuted}
-          onToggleVideo={() => setIsVideoPlaying((prev) => !prev)}
-          onStopVideo={() => setIsVideoPlaying(false)}
+          onToggleVideo={handleToggleVideo}
+          onStopVideo={handleStopVideo}
           onToggleMute={handleToggleMute}
           onUnmuteAndRestart={handleUnmuteAndRestart}
           onOpenPodcast={() => {
-            setIsVideoPlaying(false);
+            handleStopVideo();
             setPodcastTrack('summary');
             setIsPodcastOpen(true);
           }}
           onJoinWaitlist={() => {
-            setIsVideoPlaying(false);
+            handleStopVideo();
             setIsWaitlistOpen(true);
           }}
-          onExploreSavings={() => {
-            document.getElementById('visual-savings-calculator')?.scrollIntoView({ behavior: 'smooth' });
-          }}
+          onExploreSavings={handleExploreSavings}
         />
 
         {/* Real Rate Parity Arbitrage Audit Ticker (From Original Repo App) */}

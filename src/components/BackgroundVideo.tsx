@@ -87,41 +87,11 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
         onMuteChange?.(false);
       })
       .catch(() => {
-        // Browser blocked unmuted autoplay -> play muted and listen for first gesture to unmute
+        // Browser blocked unmuted autoplay -> play muted; explicit button press required to unmute
         video.muted = true;
         onMuteChange?.(true);
         video.play().catch(() => {});
       });
-
-    // Unmute on ANY gesture (click, tap, scroll, keydown)
-    const unlockSound = () => {
-      const v = videoRef?.current;
-      if (v) {
-        v.muted = false;
-        v.volume = 1.0;
-        // If user tapped early in the video, restart from 0:00 so they hear the full opening voiceover
-        if (v.currentTime < 12) {
-          v.currentTime = 0;
-        }
-        v.play().catch(() => {});
-        onMuteChange?.(false);
-      }
-      cleanup();
-    };
-
-    const cleanup = () => {
-      window.removeEventListener('pointerdown', unlockSound, true);
-      window.removeEventListener('click', unlockSound, true);
-      window.removeEventListener('touchstart', unlockSound, true);
-      window.removeEventListener('keydown', unlockSound, true);
-    };
-
-    window.addEventListener('pointerdown', unlockSound, true);
-    window.addEventListener('click', unlockSound, true);
-    window.addEventListener('touchstart', unlockSound, true);
-    window.addEventListener('keydown', unlockSound, true);
-
-    return () => cleanup();
   }, [videoRef, onMuteChange]);
 
   // Rotate luxury destinations every 8 seconds
@@ -141,7 +111,8 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
         ref={videoRef}
         autoPlay
         playsInline
-        muted
+        muted={isMuted}
+        loop={false}
         onEnded={onEnded}
         className={`absolute inset-0 w-full h-full object-cover scale-105 transition-all duration-1000 ${
           isCalculating ? 'opacity-90 scale-110 filter brightness-115' : 'opacity-85 scale-100'
