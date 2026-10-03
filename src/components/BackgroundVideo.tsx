@@ -95,9 +95,15 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
 
     // Unmute on ANY gesture (click, tap, scroll, keydown)
     const unlockSound = () => {
-      if (videoRef?.current && videoRef.current.muted) {
-        videoRef.current.muted = false;
-        videoRef.current.volume = 1.0;
+      const v = videoRef?.current;
+      if (v) {
+        v.muted = false;
+        v.volume = 1.0;
+        // If user tapped early in the video, restart from 0:00 so they hear the full opening voiceover
+        if (v.currentTime < 12) {
+          v.currentTime = 0;
+        }
+        v.play().catch(() => {});
         onMuteChange?.(false);
       }
       cleanup();
@@ -135,6 +141,7 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
         ref={videoRef}
         autoPlay
         playsInline
+        muted
         onEnded={onEnded}
         className={`absolute inset-0 w-full h-full object-cover scale-105 transition-all duration-1000 ${
           isCalculating ? 'opacity-90 scale-110 filter brightness-115' : 'opacity-85 scale-100'
