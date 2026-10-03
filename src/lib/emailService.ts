@@ -179,3 +179,35 @@ export async function dispatchFounderWelcomeEmail(payload: WelcomeEmailPayload):
     };
   }
 }
+
+export async function dispatchVerificationCode(
+  email: string,
+  name: string,
+  code: string
+): Promise<{ success: boolean; message?: string }> {
+  try {
+    const res = await fetch('/api/send-verification-code', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        recipientEmail: email,
+        recipientName: name,
+        verificationCode: code,
+      }),
+    });
+
+    const data = await res.json().catch(() => ({}));
+    return {
+      success: res.ok,
+      message: data.message || (res.ok ? 'Verification code sent' : 'Failed to send verification code'),
+    };
+  } catch (err) {
+    console.warn('Network notice during verification code dispatch:', err);
+    return {
+      success: false,
+      message: 'Network notice',
+    };
+  }
+}

@@ -101,26 +101,29 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
   return (
     <div
       id="founder-certificate-modal-overlay"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
     >
-      <div className="relative w-full max-w-2xl bg-neutral-900 border border-amber-400/50 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
-        {/* Header Bar */}
-        <div className="px-5 sm:px-6 py-4 bg-neutral-950 border-b border-neutral-800 flex items-center justify-between">
+      <div
+        id="founder-certificate-modal-container"
+        className="relative w-full max-w-4xl bg-neutral-900 border border-amber-400/50 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh]"
+      >
+        {/* Header Bar (Hidden in Print) */}
+        <div className="no-print px-5 sm:px-6 py-3.5 bg-neutral-950 border-b border-neutral-800 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-amber-400/10 border border-amber-400/40 flex items-center justify-center text-amber-300">
-              <Award className="w-5 h-5 text-amber-300" />
+            <div className="w-8 h-8 rounded-full bg-amber-400/10 border border-amber-400/40 flex items-center justify-center text-amber-300">
+              <Award className="w-4 h-4 text-amber-300" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-sm sm:text-base font-bold text-neutral-100 font-cinzel">
-                  Founder Member Certificate
+                  Founder Member Diploma & Credentials
                 </h3>
                 <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold">
-                  Issued
+                  Verified & Issued
                 </span>
               </div>
               <p className="text-[11px] text-neutral-400 font-mono">
-                Issued to: <span className="text-amber-300">{data.email}</span>
+                Holder: <span className="text-amber-300">{data.fullName || data.email}</span> • Registry ID: <span className="text-amber-300 font-bold">{data.inviteCode}</span>
               </p>
             </div>
           </div>
@@ -137,7 +140,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                     : 'text-neutral-400 hover:text-neutral-200'
                 }`}
               >
-                Certificate Pass
+                Official Diploma
               </button>
               <button
                 type="button"
@@ -163,233 +166,228 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
         </div>
 
         {/* Modal Scrollable Body */}
-        <div className="p-5 sm:p-7 overflow-y-auto space-y-5 text-left">
+        <div className="p-3 sm:p-6 overflow-y-auto space-y-4 text-left">
           {activeTab === 'certificate' ? (
             /* ======================================================== */
-            /* TAB 1: 3D HOLOGRAPHIC STYLE FOUNDER MEMBER CERTIFICATE  */
+            /* TAB 1: LUXURY MANILLA DIPLOMA WITH STAMP OF AUTHORIZATION */
             /* ======================================================== */
             <div className="space-y-4">
+              {/* THE AUTHENTIC MANILLA DIPLOMA */}
               <div
-                id="printable-founder-certificate"
-                className="relative overflow-hidden rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-neutral-900 via-amber-950/40 to-neutral-950 border-2 border-amber-400/60 shadow-2xl shadow-black/80"
+                id="printable-founder-diploma"
+                className="relative p-6 sm:p-10 md:p-12 bg-[#faf6eb] bg-gradient-to-br from-[#fdfaf2] via-[#f7f1e1] to-[#f2e7ce] text-[#1c170f] rounded-2xl shadow-2xl border-[6px] border-[#9c7526] overflow-hidden select-none"
               >
-                {/* Holographic Ambient Shine Overlays */}
-                <div className="absolute -right-24 -top-24 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
-                <div className="absolute -left-24 -bottom-24 w-80 h-80 bg-emerald-400/5 rounded-full blur-3xl pointer-events-none" />
+                {/* Inner Fine Gold Pinstripe Border with Inset */}
+                <div className="absolute inset-3 border-2 border-[#b8862d]/60 pointer-events-none rounded-xl" />
+                <div className="absolute inset-4 border border-[#8c6218]/30 pointer-events-none rounded-lg" />
 
-                {/* Certificate Top Header */}
-                <div className="flex items-center justify-between relative z-10 mb-6 pb-4 border-b border-amber-400/20">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-xl bg-amber-400/15 border border-amber-400/40 flex items-center justify-center text-amber-300">
-                      <Sparkles className="w-4 h-4 text-amber-300" />
-                    </div>
-                    <div>
-                      <span className="font-cinzel text-base sm:text-lg font-bold tracking-widest uppercase text-neutral-100 block">
-                        Atlas Travel Club
-                      </span>
-                      <span className="text-[10px] font-mono tracking-widest uppercase text-amber-300">
-                        Official Founder Member Certificate
-                      </span>
-                    </div>
-                  </div>
+                {/* Classical Corner Flourishes */}
+                <div className="absolute top-4 left-4 text-[#9c7526] text-xl font-serif select-none pointer-events-none">✦</div>
+                <div className="absolute top-4 right-4 text-[#9c7526] text-xl font-serif select-none pointer-events-none">✦</div>
+                <div className="absolute bottom-4 left-4 text-[#9c7526] text-xl font-serif select-none pointer-events-none">✦</div>
+                <div className="absolute bottom-4 right-4 text-[#9c7526] text-xl font-serif select-none pointer-events-none">✦</div>
 
-                  <div className="px-3 py-1 rounded-full bg-amber-400/15 border border-amber-400/40 text-[10px] font-mono font-bold uppercase tracking-widest text-amber-300">
-                    VIP Founder Pass
+                {/* Subtle Guilloche / Security Background Watermark */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-[0.035] pointer-events-none">
+                  <div className="w-[500px] h-[500px] rounded-full border-[40px] border-[#1c170f] flex items-center justify-center">
+                    <span className="font-cinzel text-9xl font-bold">A</span>
                   </div>
                 </div>
 
-                {/* EMV Gold Chip & Sovereign Emblem */}
-                <div className="flex items-center justify-between mb-6 relative z-10">
-                  <div className="w-13 h-10 rounded-xl bg-gradient-to-br from-amber-200 via-amber-400 to-amber-600 border border-amber-200/60 shadow-inner flex items-center justify-around px-1.5">
-                    <div className="w-full h-4 border-t border-b border-amber-900/50" />
-                  </div>
-                  <div className="flex items-center gap-1.5 text-xs font-mono text-emerald-400 bg-emerald-500/15 px-2.5 py-1 rounded-full border border-emerald-500/30 font-bold">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>Closed-Loop Rate Parity Exempt</span>
-                  </div>
-                </div>
-
-                {/* Founder Member Credentials Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 relative z-10 mb-6">
-                  <div>
-                    <span className="text-[10px] font-mono uppercase text-neutral-400 block tracking-wider">
-                      Founder Reference ID
+                <div className="relative z-10 text-center space-y-3">
+                  {/* Top Sovereign Crest */}
+                  <div className="flex items-center justify-center gap-2 text-[#9c7526]">
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-[#9c7526]" />
+                    <Sparkles className="w-4 h-4 fill-current" />
+                    <span className="text-[10px] font-mono tracking-[0.3em] uppercase font-bold text-[#8a6522]">
+                      Sovereign Wholesale Registry
                     </span>
-                    <span className="font-mono text-base sm:text-lg font-bold tracking-wider text-amber-300">
-                      {data.inviteCode}
-                    </span>
+                    <Sparkles className="w-4 h-4 fill-current" />
+                    <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-[#9c7526]" />
                   </div>
 
-                  <div>
-                    <span className="text-[10px] font-mono uppercase text-neutral-400 block tracking-wider">
-                      Certificate Holder
-                    </span>
-                    <span className="font-bold text-xs sm:text-sm text-neutral-100 truncate block">
-                      {data.fullName || data.email}
-                    </span>
-                    <span className="text-[10px] font-mono text-neutral-400 block truncate">
-                      {data.email} {data.phone ? `• ${data.phone}` : ''}
-                    </span>
-                  </div>
+                  {/* Institution Name */}
+                  <h1 className="font-cinzel text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-[0.2em] text-[#1a150e] uppercase leading-tight drop-shadow-sm">
+                    The Atlas Travel Club
+                  </h1>
 
-                  <div>
-                    <span className="text-[10px] font-mono uppercase text-neutral-400 block tracking-wider">
-                      Issue Date
-                    </span>
-                    <span className="font-mono text-xs sm:text-sm text-neutral-300">
-                      {issueDateFormatted}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Guaranteed Founder Privileges Box */}
-                <div className="relative z-10 p-4 rounded-2xl bg-neutral-950/80 border border-amber-400/30 space-y-2 mb-4">
-                  <span className="text-[10px] font-mono uppercase font-bold text-amber-300 tracking-wider block">
-                    Certified Founder Member Guarantees:
-                  </span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                    <div className="flex items-center gap-2 text-neutral-200">
-                      <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span><strong>50% Off Membership for Life</strong> (Locked)</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-neutral-200">
-                      <Gift className="w-4 h-4 text-amber-400 shrink-0" />
-                      <span><strong>5 Free Lifetime Draw</strong> Entry Active</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-neutral-200">
-                      <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>Direct B2B Net Bedbank Rates</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-neutral-200">
-                      <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>4 Family Guest Passes Included</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Exclusive Founder Intelligence Briefing Package (23-Min Audio + 14-Page PDF) */}
-                <div className="relative z-10 p-4 rounded-2xl bg-gradient-to-br from-amber-500/10 via-neutral-950/90 to-neutral-950 border border-amber-400/40 space-y-3 mb-4 shadow-xl">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono uppercase font-bold text-amber-300 tracking-wider flex items-center gap-1.5">
-                      <Radio className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-                      Confidential Founder Intelligence Included
-                    </span>
-                    <span className="text-[9px] bg-amber-400/20 text-amber-300 border border-amber-400/30 px-2 py-0.5 rounded font-mono font-bold">
-                      23 Min Audio • 14-Page PDF
-                    </span>
-                  </div>
-
-                  <div className="text-xs text-neutral-300 leading-relaxed">
-                    <p className="font-semibold text-neutral-100 flex items-center gap-1.5">
-                      <span>Forensic Expose: "How Travel Duopolies Rig Hotel Prices"</span>
+                  {/* Diploma Subtitle */}
+                  <div className="space-y-0.5">
+                    <p className="font-cinzel text-xs sm:text-sm font-bold tracking-[0.22em] text-[#966b1e] uppercase">
+                      Sovereign Charter & Diploma of Founding Membership
                     </p>
-                    <p className="text-[11px] text-neutral-400 mt-0.5">
-                      An unscripted breakdown of Booking Holdings vs. Expedia Group, Rate Parity MFN legal loopholes, and how closed-loop private clubs bypass the retail markup machinery.
+                    <p className="font-mono text-[9px] sm:text-[10px] tracking-wider text-[#735a34] uppercase">
+                      Instituted under Private Association Conventions • Geneva & Oslo • Registry Ref. {data.inviteCode}
                     </p>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-2 pt-1">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (onOpenPodcast) {
-                          onOpenPodcast('deepdive');
-                        } else {
-                          toggleDeepDivePlay();
-                        }
-                      }}
-                      className="flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-xs font-mono flex items-center justify-center gap-2 shadow-md shadow-amber-400/20 transition cursor-pointer"
-                    >
-                      <Play className="w-3.5 h-3.5 fill-current" />
-                      <span>Stream 23-Min Audio (With Chapters)</span>
-                    </button>
+                  <div className="w-48 h-0.5 bg-gradient-to-r from-transparent via-[#b8862d] to-transparent mx-auto my-2" />
 
-                    <a
-                      href="/audio/how-travel-duopolies-rig-hotel-prices.mp3"
-                      download="How_Travel_Duopolies_Rig_Hotel_Prices.mp3"
-                      className="py-2 px-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-amber-400/40 text-neutral-300 hover:text-white font-mono text-xs flex items-center justify-center gap-1.5 transition"
-                      title="Download raw MP3 for offline listening"
-                    >
-                      <Download className="w-3.5 h-3.5 text-amber-400" />
-                      <span>Audio MP3</span>
-                    </a>
+                  {/* Conferral Statement */}
+                  <p className="font-mono text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-[#7a6037] font-semibold pt-1">
+                    Be it known to all persons present that:
+                  </p>
 
-                    <a
-                      href="/docs/OTA_Duopoly_Research_Brief.pdf"
-                      download="OTA_Duopoly_Research_Brief.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="py-2 px-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-amber-400/40 text-neutral-300 hover:text-white font-mono text-xs flex items-center justify-center gap-1.5 transition"
-                    >
-                      <Download className="w-3.5 h-3.5 text-amber-400" />
-                      <span>14-Page PDF</span>
-                    </a>
-                  </div>
-                </div>
-
-                {/* Bottom Verification & Barcode Strip */}
-                <div className="relative z-10 pt-4 border-t border-white/10 flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-1.5 font-mono text-[11px] text-neutral-400">
-                    <ShieldCheck className="w-4 h-4 text-amber-400" />
-                    <span>Registered in Atlas Sovereign Club Registry</span>
+                  {/* Recipient Full Name */}
+                  <div className="py-1">
+                    <h2 className="font-cinzel text-2xl sm:text-3xl md:text-4xl font-black text-[#1a150e] tracking-wide uppercase inline-block px-8 py-1 border-b-2 border-[#b8862d]/60">
+                      {data.fullName || 'Accredited Member'}
+                    </h2>
+                    <p className="font-mono text-[10px] sm:text-[11px] text-[#7a6037] mt-1.5">
+                      Registry Email: <strong className="text-[#1a150e]">{data.email}</strong> {data.phone ? `• Priority Mobile: ${data.phone}` : ''}
+                    </p>
                   </div>
 
-                  <button
-                    type="button"
-                    onClick={() => setShowQR(!showQR)}
-                    className="flex items-center gap-1.5 font-mono text-[11px] font-bold text-amber-300 hover:text-amber-200 cursor-pointer"
-                  >
-                    <QrCode className="w-4 h-4" />
-                    <span>{showQR ? 'Hide Voucher QR' : 'Show Voucher QR'}</span>
-                  </button>
-                </div>
+                  {/* Proclamation Citation Paragraph */}
+                  <p className="font-diploma italic text-xs sm:text-sm text-[#382f22] max-w-2xl mx-auto leading-relaxed px-4 pt-1">
+                    Having established verified eligibility and met the charter standards of the Admissions Committee, is hereby inducted as an accredited <strong>Founding Lifetime Member</strong> of Atlas Travel Club, permanently vested with direct wholesale bedbank access, immunity from retail OTA price markups, and sovereign booking privileges in perpetuity.
+                  </p>
 
-                {/* QR Expansion */}
-                {showQR && (
-                  <div className="mt-4 p-4 bg-white rounded-2xl text-slate-900 text-center animate-in fade-in zoom-in-95 relative z-10">
-                    <div className="w-32 h-32 mx-auto bg-slate-950 p-2 rounded-xl flex items-center justify-center">
-                      <svg className="w-28 h-28 text-white" viewBox="0 0 100 100" fill="currentColor">
-                        <rect x="10" y="10" width="25" height="25" fill="#fff" />
-                        <rect x="15" y="15" width="15" height="15" fill="#000" />
-                        <rect x="65" y="10" width="25" height="25" fill="#fff" />
-                        <rect x="70" y="15" width="15" height="15" fill="#000" />
-                        <rect x="10" y="65" width="25" height="25" fill="#fff" />
-                        <rect x="15" y="70" width="15" height="15" fill="#000" />
-                        <rect x="40" y="10" width="10" height="20" fill="#fff" />
-                        <rect x="40" y="40" width="20" height="20" fill="#fff" />
-                        <rect x="70" y="50" width="15" height="15" fill="#fff" />
-                        <rect x="40" y="70" width="20" height="15" fill="#fff" />
-                      </svg>
+                  {/* Guaranteed Privileges Grid on Diploma */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 max-w-2xl mx-auto pt-2 text-left">
+                    <div className="p-2.5 rounded-lg bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
+                      <div className="flex items-center gap-1.5 text-[#8a6522] font-cinzel text-xs font-bold uppercase">
+                        <ShieldCheck className="w-3.5 h-3.5 text-[#9c7526] shrink-0" />
+                        <span>B2B Net Rate Parity</span>
+                      </div>
+                      <p className="text-[10px] font-mono text-[#57462c] mt-0.5">
+                        Direct wholesale pass-through with zero OTA commission markup.
+                      </p>
                     </div>
-                    <p className="text-xs font-mono font-bold mt-2 text-slate-900">
-                      {data.inviteCode}-FOUNDER-VERIFIED
-                    </p>
-                    <p className="text-[10px] text-slate-500 mt-0.5">
-                      Valid for closed-loop B2B bedbank onboarding
-                    </p>
+
+                    <div className="p-2.5 rounded-lg bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
+                      <div className="flex items-center gap-1.5 text-[#8a6522] font-cinzel text-xs font-bold uppercase">
+                        <Award className="w-3.5 h-3.5 text-[#9c7526] shrink-0" />
+                        <span>50% Lifetime Lock</span>
+                      </div>
+                      <p className="text-[10px] font-mono text-[#57462c] mt-0.5">
+                        Annual membership fee locked at half price permanently for life.
+                      </p>
+                    </div>
+
+                    <div className="p-2.5 rounded-lg bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
+                      <div className="flex items-center gap-1.5 text-[#8a6522] font-cinzel text-xs font-bold uppercase">
+                        <Gift className="w-3.5 h-3.5 text-[#9c7526] shrink-0" />
+                        <span>Sovereign Allocation</span>
+                      </div>
+                      <p className="text-[10px] font-mono text-[#57462c] mt-0.5">
+                        4 Family Guest Passes & Launch Draw Entry for 1 of 5 Free Memberships.
+                      </p>
+                    </div>
                   </div>
-                )}
+
+                  {/* Bottom Credentials, Dual Signatures & Stamp of Authorization */}
+                  <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#b8862d]/30 mt-3">
+                    {/* Left Signature: Pål Juritzen */}
+                    <div className="text-center sm:text-left order-2 sm:order-1 flex-1">
+                      <div className="font-signature text-3xl sm:text-4xl text-[#1a150e] leading-none mb-0.5">
+                        Pål Juritzen
+                      </div>
+                      <div className="w-36 sm:w-44 border-t border-[#8c651e]/60 my-1 mx-auto sm:mx-0" />
+                      <div className="font-cinzel text-xs font-bold uppercase tracking-wider text-[#1a150e]">
+                        Pål Juritzen
+                      </div>
+                      <div className="text-[10px] font-mono text-[#66502e]">
+                        Founder & Managing Director
+                      </div>
+                    </div>
+
+                    {/* Center: THE OFFICIAL EMBOSSED GOLD STAMP OF AUTHORIZATION */}
+                    <div className="relative flex flex-col items-center justify-center order-1 sm:order-2 my-2 sm:my-0 shrink-0">
+                      {/* Crimson Hanging Ribbons */}
+                      <div className="absolute -bottom-6 flex gap-2 pointer-events-none z-0">
+                        <div className="w-4 h-10 bg-gradient-to-b from-[#8b1515] to-[#550808] border-l border-r border-[#d4af37] shadow-md transform -rotate-6 clip-ribbon" />
+                        <div className="w-4 h-10 bg-gradient-to-b from-[#8b1515] to-[#550808] border-l border-r border-[#d4af37] shadow-md transform rotate-6 clip-ribbon" />
+                      </div>
+
+                      {/* Circular Metallic Seal */}
+                      <div className="relative z-10 w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-[#ffe58f] via-[#d4af37] via-[#aa7c11] to-[#634305] p-1.5 shadow-[0_6px_20px_rgba(140,90,10,0.5)] border-2 border-[#fff3b0] flex items-center justify-center">
+                        {/* Outer Serrated Ring Effect */}
+                        <div className="w-full h-full rounded-full border-2 border-dashed border-[#ffe58f]/80 bg-gradient-to-br from-[#d4af37] via-[#b8860b] to-[#7c530c] flex flex-col items-center justify-center text-center p-1.5 shadow-inner">
+                          <span className="text-[7px] sm:text-[8px] font-cinzel font-bold text-[#fff7cf] tracking-widest uppercase">
+                            ATLAS TRAVEL CLUB
+                          </span>
+                          <div className="my-0.5 text-[#fff7cf]">
+                            <Award className="w-5 h-5 mx-auto fill-[#fff7cf]/20" />
+                          </div>
+                          <span className="text-[8px] sm:text-[9px] font-cinzel font-black text-[#ffffff] tracking-wider uppercase drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                            ★ AUTHORIZED ★
+                          </span>
+                          <span className="text-[6px] sm:text-[7px] font-mono text-[#ffe58f] tracking-widest uppercase font-semibold">
+                            SOVEREIGN CHARTER 2026
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right Signature: Lars V. Agenturer */}
+                    <div className="text-center sm:text-right order-3 flex-1">
+                      <div className="font-signature text-3xl sm:text-4xl text-[#1a150e] leading-none mb-0.5">
+                        Lars V. Agenturer
+                      </div>
+                      <div className="w-36 sm:w-44 border-t border-[#8c651e]/60 my-1 mx-auto sm:ml-auto sm:mr-0" />
+                      <div className="font-cinzel text-xs font-bold uppercase tracking-wider text-[#1a150e]">
+                        Lars V. Agenturer
+                      </div>
+                      <div className="text-[10px] font-mono text-[#66502e]">
+                        Chairman of Admissions Committee
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom Legal Registry Line */}
+                  <div className="pt-2 text-[9px] font-mono text-[#7a6037] flex flex-col sm:flex-row items-center justify-between border-t border-[#b8862d]/20">
+                    <span>Issued under Great Seal of Atlas • {issueDateFormatted}</span>
+                    <span className="font-bold text-[#8a6522]">CERTIFICATE SERIAL: {data.inviteCode}-VERIFIED</span>
+                  </div>
+                </div>
               </div>
 
-              {/* Action Toolbar */}
-              <div className="flex flex-col sm:flex-row gap-2.5 pt-2">
-                <button
-                  type="button"
-                  onClick={copyCode}
-                  className="flex-1 py-3 px-4 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-200 font-mono text-xs flex items-center justify-center gap-2 cursor-pointer transition"
-                >
-                  {isCopied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                  <span>{isCopied ? 'Code Copied' : 'Copy Reference Code'}</span>
-                </button>
-
+              {/* Action Toolbar Below Diploma (Hidden in Print) */}
+              <div className="no-print flex flex-col sm:flex-row gap-2.5 pt-2">
                 <button
                   type="button"
                   onClick={printOrDownload}
-                  className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-xs flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-amber-500/20 transition"
+                  className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-xl shadow-amber-500/30 transition transform hover:scale-[1.01]"
                 >
                   <Download className="w-4 h-4" />
-                  <span>Download / Print Certificate</span>
+                  <span>Print / Download Diploma PDF</span>
                 </button>
+
+                <button
+                  type="button"
+                  onClick={copyCode}
+                  className="py-3 px-4 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-200 font-mono text-xs flex items-center justify-center gap-2 cursor-pointer transition"
+                >
+                  {isCopied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                  <span>{isCopied ? 'Code Copied' : `Copy ID: ${data.inviteCode}`}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onOpenPodcast) {
+                      onOpenPodcast('deepdive');
+                    } else {
+                      toggleDeepDivePlay();
+                    }
+                  }}
+                  className="py-3 px-4 rounded-xl bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-neutral-300 hover:text-white font-mono text-xs flex items-center justify-center gap-2 cursor-pointer transition"
+                >
+                  <Radio className="w-4 h-4 text-amber-400" />
+                  <span>23-Min Audio Briefing</span>
+                </button>
+
+                <a
+                  href="/docs/OTA_Duopoly_Research_Brief.pdf"
+                  download="OTA_Duopoly_Research_Brief.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="py-3 px-4 rounded-xl bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-neutral-300 hover:text-white font-mono text-xs flex items-center justify-center gap-2 cursor-pointer transition"
+                >
+                  <FileText className="w-4 h-4 text-amber-400" />
+                  <span>14-Page PDF</span>
+                </a>
               </div>
             </div>
           ) : (
