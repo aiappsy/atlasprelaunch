@@ -52,23 +52,7 @@ class HeroAudioManager {
   }
 
   private attachGlobalGestureListener() {
-    const handleGesture = (e: Event) => {
-      const target = e.target as HTMLElement | null;
-      const btn = target?.closest('button');
-      // If clicking action to leave or stop video, do not start audio
-      if (btn) {
-        const action = btn.dataset.action;
-        if (action === 'toggle-video' || action === 'open-podcast') {
-          cleanup();
-          return;
-        }
-        const text = btn.innerText || '';
-        if (text.includes('Calculator') || text.includes('Founder Spot')) {
-          cleanup();
-          return;
-        }
-      }
-
+    const handleGesture = () => {
       this.play();
       cleanup();
     };
@@ -78,12 +62,14 @@ class HeroAudioManager {
       window.removeEventListener('click', handleGesture, true);
       window.removeEventListener('touchstart', handleGesture, true);
       window.removeEventListener('keydown', handleGesture, true);
+      window.removeEventListener('wheel', handleGesture, true);
     };
 
     window.addEventListener('pointerdown', handleGesture, true);
     window.addEventListener('click', handleGesture, true);
     window.addEventListener('touchstart', handleGesture, true);
     window.addEventListener('keydown', handleGesture, true);
+    window.addEventListener('wheel', handleGesture, true);
   }
 
   public play() {

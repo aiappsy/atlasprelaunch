@@ -11,7 +11,6 @@ import { CrmDashboard } from './components/crm/CrmDashboard';
 import { CrmAuthGate } from './components/crm/CrmAuthGate';
 import { FounderCertificateModal, FounderCertificateData } from './components/FounderCertificateModal';
 import { PodcastPlayerModal } from './components/PodcastPlayerModal';
-import { CinematicEntrance } from './components/CinematicEntrance';
 import { CalculationResult } from './lib/calculatorModel';
 import { heroAudio } from './lib/heroAudio';
 
@@ -26,28 +25,13 @@ export default function App() {
   const [isCalculatingVideoPulse, setIsCalculatingVideoPulse] = useState<boolean>(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(true);
 
-  // Automatically stop playing video and audio whenever ANY button on the page is clicked
+  // Automatically pause hero video & audio when modals open
   useEffect(() => {
-    const handleDocumentClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (!target) return;
-      const button = target.closest('button');
-      if (button) {
-        // If clicking the explicit video toggle or audio toggle button, do not auto-stop
-        if (button.dataset.action === 'toggle-video' || button.dataset.action === 'toggle-audio') {
-          return;
-        }
-        // Any other button clicked anywhere on the site -> automatically STOP the video & audio
-        setIsVideoPlaying(false);
-        heroAudio.pause();
-      }
-    };
-
-    document.addEventListener('click', handleDocumentClick, true);
-    return () => {
-      document.removeEventListener('click', handleDocumentClick, true);
-    };
-  }, []);
+    if (isWaitlistOpen || isPodcastOpen || !!founderCertificateData) {
+      setIsVideoPlaying(false);
+      heroAudio.pause();
+    }
+  }, [isWaitlistOpen, isPodcastOpen, founderCertificateData]);
 
   useEffect(() => {
     const isAuth = sessionStorage.getItem('atlas_crm_auth') === 'true';
@@ -218,14 +202,6 @@ export default function App() {
         }}
         onPlaybackStart={() => setIsVideoPlaying(false)}
       />
-
-      {/* Cinematic Experience Sound Entrance Curtain */}
-      {viewMode === 'site' && (
-        <CinematicEntrance
-          onEnterWithSound={() => setIsVideoPlaying(true)}
-          onEnterSilent={() => {}}
-        />
-      )}
     </div>
   );
 }
