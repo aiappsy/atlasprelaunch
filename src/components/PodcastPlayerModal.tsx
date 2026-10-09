@@ -52,20 +52,20 @@ export const PODCAST_TRACKS: Record<'summary' | 'deepdive', PodcastTrack> = {
   },
   deepdive: {
     id: 'deepdive',
-    badge: 'Forensic Investigation • 21 Min',
-    durationLabel: '20:53 Duration',
+    badge: 'Forensic Investigation • 23 Min',
+    durationLabel: '23:07 Duration',
     title: 'How Wholesale Memberships Bypass Travel Markups',
     description:
       'An unscripted forensic breakdown analyzing OTA retail markups, hotel bedbank distribution, Duffel NDC direct airline booking, and why private membership clubs legally access true wholesale rates.',
-    audioSrc: '/audio/How_Wholesale_Memberships_Bypass_Travel_Markups.m4a?v=20261009_v1',
-    downloadFilename: 'How_Wholesale_Memberships_Bypass_Travel_Markups.m4a',
+    audioSrc: '/audio/how-travel-duopolies-rig-hotel-prices.mp3?v=20261009_master',
+    downloadFilename: 'How_Wholesale_Memberships_Bypass_Travel_Markups.mp3',
     chapters: [
       { time: 0, label: '00:00 — The Retail Travel Monopoly', desc: 'How public search engines and OTAs artificially inflate travel rates' },
-      { time: 240, label: '04:00 — Institutional Bedbank Pipelines', desc: 'Hotelbeds, WebBeds, and the secret wholesale supply chain' },
-      { time: 480, label: '08:00 — Price Parity Laws & The Legal Exemption', desc: 'Why password-protected closed-loop clubs bypass retail parity' },
-      { time: 720, label: '12:00 — Direct NDC Airline Integration', desc: 'Cutting out legacy GDS fees on commercial flights' },
-      { time: 960, label: '16:00 — Built-In Disruption & Protection', desc: 'Automated EU261 flight cash recovery and travel guarantees' },
-      { time: 1140, label: '19:00 — The Founder Membership Advantage', desc: 'Securing lifetime half-price access before public launch' },
+      { time: 255, label: '04:15 — Institutional Bedbank Pipelines', desc: 'Hotelbeds, WebBeds, and the secret wholesale supply chain' },
+      { time: 510, label: '08:30 — Price Parity Laws & The Legal Exemption', desc: 'Why password-protected closed-loop clubs bypass retail parity' },
+      { time: 790, label: '13:10 — Direct NDC Airline Integration', desc: 'Cutting out legacy GDS fees on commercial flights' },
+      { time: 1080, label: '18:00 — Built-In Disruption & Protection', desc: 'Automated EU261 flight cash recovery and travel guarantees' },
+      { time: 1290, label: '21:30 — The Founder Membership Advantage', desc: 'Securing lifetime half-price access before public launch' },
     ],
   },
 };
@@ -121,17 +121,18 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
     audio.muted = isMuted;
 
     setCurrentTime(0);
-    setDuration(0);
+    const expectedDur = activeTrackId === 'summary' ? 373 : 1387;
+    setDuration(expectedDur);
 
     const handleLoadedMetadata = () => {
-      if (audio.duration && !isNaN(audio.duration)) {
+      if (audio.duration && isFinite(audio.duration) && !isNaN(audio.duration) && audio.duration > 0) {
         setDuration(audio.duration);
       }
     };
 
     const handleTimeUpdate = () => {
       setCurrentTime(audio.currentTime);
-      if (audio.duration && !isNaN(audio.duration) && duration === 0) {
+      if (audio.duration && isFinite(audio.duration) && !isNaN(audio.duration) && audio.duration > 0) {
         setDuration(audio.duration);
       }
     };
@@ -140,13 +141,28 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
       setIsPlaying(false);
     };
 
+    const handleError = () => {
+      console.warn('Primary audio stream failed, falling back to MP3');
+      if (audio.src.includes('.m4a')) {
+        audio.src = activeTrackId === 'summary'
+          ? '/audio/how-private-clubs-get-wholesale-hotel-rates.mp3'
+          : '/audio/how-travel-duopolies-rig-hotel-prices.mp3';
+        audio.load();
+        audio.play().then(() => setIsPlaying(true)).catch(() => {});
+      }
+    };
+
     audio.onloadedmetadata = handleLoadedMetadata;
+    audio.oncanplay = handleLoadedMetadata;
     audio.ontimeupdate = handleTimeUpdate;
     audio.onended = handleEnded;
+    audio.onerror = handleError;
 
     if (autoPlay) {
       onPlaybackStart?.();
-      audio.play().then(() => setIsPlaying(true)).catch(() => {});
+      audio.play().then(() => setIsPlaying(true)).catch((e) => {
+        console.warn('Autoplay blocked:', e);
+      });
     }
   };
 
@@ -161,9 +177,14 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
     };
   }, []);
 
-  const switchTrack = (trackId: 'summary' | 'deepdive', autoPlay = false) => {
-    if (trackId === activeTrackId) return;
+  const switchTrack = (trackId: 'summary' | 'deepdive', autoPlay = true) => {
+    if (trackId === activeTrackId) {
+      togglePlay();
+      return;
+    }
     setActiveTrackId(trackId);
+    setDuration(trackId === 'summary' ? 373 : 1387);
+    setCurrentTime(0);
     setIsPlaying(autoPlay);
     loadAudio(PODCAST_TRACKS[trackId].audioSrc, autoPlay);
   };

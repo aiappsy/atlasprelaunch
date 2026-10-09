@@ -13,6 +13,8 @@ import {
 interface HeroProps {
   onJoinWaitlist: () => void;
   onExploreSavings: () => void;
+  onExploreFlights?: () => void;
+  onExploreHotels?: () => void;
   onOpenPodcast?: () => void;
   isVideoPlaying?: boolean;
   isVideoMuted?: boolean;
@@ -25,6 +27,8 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({
   onJoinWaitlist,
   onExploreSavings,
+  onExploreFlights,
+  onExploreHotels,
   onOpenPodcast,
   isVideoPlaying = true,
   isVideoMuted = true,
@@ -106,21 +110,26 @@ export const Hero: React.FC<HeroProps> = ({
           </button>
         </div>
 
-        {/* Interactive Flight & Hotel Teaser Pill (Immediate Above-The-Fold Indicator) */}
-        <div className="pt-2 flex items-center justify-center">
+        {/* Direct Action Tabs: Dedicated Flights vs Hotels Savings Jumpers */}
+        <div className="pt-2 flex flex-wrap items-center justify-center gap-2.5">
           <button
             type="button"
-            onClick={onExploreSavings}
-            className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 py-2.5 rounded-2xl bg-neutral-900/90 hover:bg-neutral-800 border border-sky-400/40 hover:border-amber-400/60 text-xs text-neutral-200 transition-all cursor-pointer backdrop-blur-md shadow-xl group"
+            onClick={onExploreFlights || onExploreSavings}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-neutral-900/90 hover:bg-neutral-800 border border-sky-400/50 hover:border-sky-300 text-xs font-mono text-sky-300 font-semibold transition-all cursor-pointer shadow-lg backdrop-blur-md group"
           >
-            <span className="flex items-center gap-1.5 text-sky-300 font-semibold font-mono">
-              ✈️ Duffel NDC Flights <span className="text-white font-bold hidden sm:inline">(~15–24% Net)</span>
-            </span>
-            <span className="text-neutral-600">•</span>
-            <span className="flex items-center gap-1.5 text-amber-300 font-semibold font-mono">
-              🏨 Bedbank Wholesale <span className="text-white font-bold hidden sm:inline">(Up to 45%)</span>
-            </span>
-            <ArrowRight className="w-3.5 h-3.5 text-amber-400 group-hover:translate-x-1 transition-transform" />
+            <Plane className="w-4 h-4 text-sky-400" />
+            <span>✈️ Calculate Flight Savings (~15–24% Net)</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+          </button>
+
+          <button
+            type="button"
+            onClick={onExploreHotels || onExploreSavings}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-neutral-900/90 hover:bg-neutral-800 border border-amber-400/50 hover:border-amber-300 text-xs font-mono text-amber-300 font-semibold transition-all cursor-pointer shadow-lg backdrop-blur-md group"
+          >
+            <Bed className="w-4 h-4 text-amber-400" />
+            <span>🏨 Calculate Hotel Savings (Up to 45% Net)</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 

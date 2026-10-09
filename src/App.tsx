@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BackgroundVideo } from './components/BackgroundVideo';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { RateTicker } from './components/RateTicker';
-import { DynamicSavingsCalculator } from './components/DynamicSavingsCalculator';
+import { DynamicSavingsCalculator, CalculatorMode } from './components/DynamicSavingsCalculator';
 import { TrustPillars } from './components/TrustPillars';
 import { WaitlistModal } from './components/WaitlistModal';
 import { Footer } from './components/Footer';
@@ -19,6 +18,7 @@ export default function App() {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState<boolean>(false);
   const [isPodcastOpen, setIsPodcastOpen] = useState<boolean>(false);
   const [podcastTrack, setPodcastTrack] = useState<'summary' | 'deepdive'>('summary');
+  const [calculatorMode, setCalculatorMode] = useState<CalculatorMode>('package');
   const [selectedSavings, setSelectedSavings] = useState<CalculationResult | null>(null);
   const [founderCertificateData, setFounderCertificateData] = useState<FounderCertificateData | null>(null);
   const [isCalculatingVideoPulse, setIsCalculatingVideoPulse] = useState<boolean>(false);
@@ -263,17 +263,27 @@ export default function App() {
             handleStopVideo();
             setIsWaitlistOpen(true);
           }}
-          onExploreSavings={handleExploreSavings}
+          onExploreSavings={() => {
+            setCalculatorMode('package');
+            handleExploreSavings();
+          }}
+          onExploreFlights={() => {
+            setCalculatorMode('flights');
+            handleExploreSavings();
+          }}
+          onExploreHotels={() => {
+            setCalculatorMode('hotels');
+            handleExploreSavings();
+          }}
         />
 
-        {/* Dynamic & Visual Savings Calculator (Immediate Access) */}
+        {/* Dynamic & Visual Savings Calculator (Immediate Access with 3 Modes) */}
         <DynamicSavingsCalculator
+          key={calculatorMode}
+          initialMode={calculatorMode}
           onUnlockSavings={handleUnlockSavings}
           onCalculationTrigger={handleCalculationTrigger}
         />
-
-        {/* Real Rate Parity Arbitrage Audit Ticker & Live Scanner */}
-        <RateTicker />
 
         {/* Club Pillars */}
         <TrustPillars />
