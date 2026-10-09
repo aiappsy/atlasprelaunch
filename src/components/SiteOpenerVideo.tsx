@@ -26,42 +26,49 @@ interface ScriptBeat {
   subtext: string;
 }
 
-// 100% Direct, Blunt, Natural Language — Zero Jargon
+// 100% Direct, Blunt, Natural Language — Synchronized with Brian Studio Voiceover (1:22)
 const SCRIPT_BEATS: ScriptBeat[] = [
   {
     startSec: 0,
-    endSec: 4.8,
-    badge: 'THE MIDDLEMAN RIP-OFF',
-    headline: 'Booking.com and Expedia Are Ripping You Off',
-    subtext: 'They add massive markups—up to 45%—just to pay for their TV commercials and corporate profits.',
+    endSec: 9.1,
+    badge: 'THE RETAIL MIDDLEMAN TRAP',
+    headline: 'Booking Portals Add Massive Markups',
+    subtext: 'Booking.com, Expedia, and legacy portals charge huge markups just to fund retail TV ads and corporate profits.',
   },
   {
-    startSec: 4.8,
-    endSec: 10.2,
-    badge: 'THE SECRET WHOLESALE PRICE',
-    headline: 'Hotels Have A Secret Wholesale Price Tourists Never See',
-    subtext: 'Atlas Travel Club cuts out the middlemen and gives you that wholesale price directly.',
+    startSec: 9.1,
+    endSec: 18.4,
+    badge: 'SOVEREIGN TRAVEL CLUB',
+    headline: 'A Private Club Cutting Out All Middlemen',
+    subtext: 'Atlas Travel Club is a private, closed-loop sovereign club that eliminates markups and delivers pure net pricing.',
   },
   {
-    startSec: 10.2,
-    endSec: 15.5,
-    badge: 'SAME 5-STAR LUXURY • UP TO 45% LESS',
-    headline: 'Same 5-Star Hotels. Same Luxury Villas. 45% Less Out Of Your Pocket.',
-    subtext: 'No fake loyalty point traps. No middleman fees. Just direct wholesale prices.',
+    startSec: 18.4,
+    endSec: 29.5,
+    badge: 'BEDBANK WHOLESALE HOTELS',
+    headline: 'Up to 45% Below Retail On 5-Star Resorts',
+    subtext: 'Direct access to global bedbank wholesale inventories—the exact same five-star hotels and luxury villas for less.',
   },
   {
-    startSec: 15.5,
-    endSec: 20.8,
-    badge: 'LOCK IN HALF PRICE FOR LIFE',
-    headline: 'Join The Waiting List — Lock In Half Price For Life',
-    subtext: 'Join our prelaunch waiting list today, and lock in your membership at half price for life.',
+    startSec: 29.5,
+    endSec: 43.9,
+    badge: 'DIRECT NDC AIRLINE FARES',
+    headline: 'Wholesale Commercial Flights Without GDS Fees',
+    subtext: 'Direct connection to airline networks via modern NDC. No legacy GDS booking fees on Economy and Business Class.',
   },
   {
-    startSec: 20.8,
-    endSec: 28.0,
-    badge: '5 FREE LIFETIME PASSES',
-    headline: 'Win 1 of 5 Free Lifetime Memberships (Zero Dues Forever)',
-    subtext: 'Plus, five founder members will win a completely free lifetime membership—you will never pay a single cent in annual dues.',
+    startSec: 43.9,
+    endSec: 62.8,
+    badge: 'MEMBER PRIVILEGES & EU261',
+    headline: 'EU261 Recovery, Insolvency Protection & Concierge',
+    subtext: 'Automated €600 cash flight disruption recovery, full travel insolvency guarantee, and 24/7 dedicated human concierge support.',
+  },
+  {
+    startSec: 62.8,
+    endSec: 82.5,
+    badge: 'FOUNDER LAUNCH PRIVILEGES',
+    headline: 'Lock In Half Price For Life • 5 Free Lifetime Passes',
+    subtext: 'Join the prelaunch list now to secure half-price membership for life, plus enter to win 1 of 5 lifetime passes with zero dues forever.',
   },
 ];
 
@@ -89,7 +96,7 @@ export const SiteOpenerVideo: React.FC<SiteOpenerVideoProps> = ({
     }
 
     // Prepare voiceover audio element
-    const audio = new Audio('/audio/founder-voiceover.mp3');
+    const audio = new Audio('/audio/founder-voiceover.mp3?v=20261009_brian_v3');
     audio.preload = 'auto';
     voiceAudioRef.current = audio;
 

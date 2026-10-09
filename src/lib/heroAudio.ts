@@ -11,7 +11,7 @@ class HeroAudioManager {
     this.hasInitialized = true;
 
     try {
-      this.audio = new Audio('/audio/hero-voiceover-mastered.mp3?v=20261002_master');
+      this.audio = new Audio('/audio/hero-voiceover-mastered.mp3?v=20261009_brian_v3');
       this.audio.preload = 'auto';
       this.audio.volume = 1.0;
 
