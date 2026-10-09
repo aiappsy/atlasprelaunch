@@ -64,21 +64,13 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
     }
   }, [isPlaying, videoRef]);
 
-  // Synchronize mute state
-  useEffect(() => {
-    const video = videoRef?.current;
-    if (!video) return;
-    if (video.muted !== isMuted) {
-      video.muted = isMuted;
-      video.volume = 1.0;
-    }
-  }, [isMuted, videoRef]);
-
-  // Background ambient video is kept muted so browsers never block it
+  // Background ambient video is STRICTLY muted (volume 0) so its internal audio track NEVER plays
   useEffect(() => {
     const video = videoRef?.current;
     if (!video) return;
     video.muted = true;
+    video.defaultMuted = true;
+    video.volume = 0;
     video.play().catch(() => {});
   }, [videoRef]);
 
@@ -94,12 +86,13 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
 
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none">
-      {/* 100% Crisp 4K Cinematic Background Video */}
+      {/* 100% Crisp 4K Cinematic Background Video (Strictly Silent Backdrop) */}
       <video
         ref={videoRef}
         autoPlay
         playsInline
         muted
+        defaultMuted
         loop
         className={`absolute inset-0 w-full h-full object-cover scale-100 transition-all duration-1000 opacity-90 ${
           isCalculating ? 'scale-105 filter brightness-110' : ''

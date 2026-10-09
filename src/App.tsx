@@ -111,6 +111,10 @@ export default function App() {
   }, []);
 
   const handleToggleVideo = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.volume = 0;
+    }
     if (isVideoPlaying) {
       voiceAudioRef.current?.pause();
       videoRef.current?.pause();
@@ -125,6 +129,10 @@ export default function App() {
   };
 
   const handleToggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.volume = 0;
+    }
     if (isVideoMuted) {
       if (voiceAudioRef.current) {
         voiceAudioRef.current.volume = 1.0;
@@ -140,9 +148,12 @@ export default function App() {
   const handleUnmuteAndRestart = () => {
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
+      videoRef.current.muted = true;
+      videoRef.current.volume = 0;
       videoRef.current.play().catch(() => {});
     }
     if (voiceAudioRef.current) {
+      voiceAudioRef.current.pause();
       voiceAudioRef.current.currentTime = 0;
       voiceAudioRef.current.volume = 1.0;
       voiceAudioRef.current.play().catch((err) => {

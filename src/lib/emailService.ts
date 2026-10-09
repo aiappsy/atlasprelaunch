@@ -15,7 +15,7 @@ export interface WelcomeEmailPayload {
 export function generateFounderWelcomeHtml(payload: WelcomeEmailPayload): string {
   const name = payload.recipientName || 'Founder Member';
   const siteUrl = 'https://atlaslaunch.ai.studio';
-  const audioUrl = `${siteUrl}/audio/how-travel-duopolies-rig-hotel-prices.mp3`;
+  const audioUrl = `${siteUrl}/audio/How_Wholesale_Memberships_Bypass_Travel_Markups.m4a`;
   const pdfUrl = `${siteUrl}/docs/OTA_Duopoly_Research_Brief.pdf`;
 
   return `
@@ -169,7 +169,7 @@ export async function dispatchFounderWelcomeEmail(payload: WelcomeEmailPayload):
             phone: payload.phone || '',
             membership_tier: payload.membershipTier || 'Founder Member',
             pdf_link: 'https://atlaslaunch.ai.studio/docs/OTA_Duopoly_Research_Brief.pdf',
-            audio_link: 'https://atlaslaunch.ai.studio/audio/how-travel-duopolies-rig-hotel-prices.mp3',
+            audio_link: 'https://atlaslaunch.ai.studio/audio/How_Wholesale_Memberships_Bypass_Travel_Markups.m4a',
           },
         }),
       });

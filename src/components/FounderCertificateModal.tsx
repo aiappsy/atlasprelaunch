@@ -57,7 +57,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
 
   const toggleDeepDivePlay = () => {
     if (!deepDiveAudioRef.current) {
-      deepDiveAudioRef.current = new Audio('/audio/how-travel-duopolies-rig-hotel-prices.mp3');
+      deepDiveAudioRef.current = new Audio('/audio/How_Wholesale_Memberships_Bypass_Travel_Markups.m4a?v=20261009_v1');
       deepDiveAudioRef.current.addEventListener('ended', () => setIsPlayingDeepDive(false));
     }
     if (isPlayingDeepDive) {
