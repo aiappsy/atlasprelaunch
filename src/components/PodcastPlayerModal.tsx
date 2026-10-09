@@ -35,19 +35,19 @@ export interface PodcastTrack {
 export const PODCAST_TRACKS: Record<'summary' | 'deepdive', PodcastTrack> = {
   summary: {
     id: 'summary',
-    badge: 'Executive Briefing • 5 Min',
-    durationLabel: '4:58 Duration',
-    title: 'How Private Clubs Get Wholesale Hotel Rates & Duffel NDC Flights',
+    badge: 'Executive Briefing • 6 Min',
+    durationLabel: '6:13 Duration',
+    title: 'How Private Memberships Access Wholesale Travel',
     description:
       'An unscripted conversational breakdown of closed-loop club economics, secret hotel bedbanks, Duffel NDC airline net fares, and built-in EU261 travel disruption protection.',
-    audioSrc: '/audio/how-private-clubs-get-wholesale-hotel-rates.mp3?v=20261002_seek',
-    downloadFilename: 'How_Private_Clubs_Get_Wholesale_Hotel_Rates.mp3',
+    audioSrc: '/audio/How_Private_Memberships_Access_Wholesale_Travel.m4a?v=20261009_v1',
+    downloadFilename: 'How_Private_Memberships_Access_Wholesale_Travel.m4a',
     chapters: [
       { time: 0, label: '00:00 — The Retail Rate Illusion', desc: 'Why public travel platforms artificially inflate room and flight prices' },
-      { time: 75, label: '01:15 — The Secret Bedbank Channel', desc: 'How luxury five-star hotels clear unbooked premium inventory at net cost' },
-      { time: 150, label: '02:30 — Duffel NDC Airline Net Rates', desc: 'Direct carrier API integration bypassing legacy GDS retail markups' },
-      { time: 225, label: '03:45 — EU Travel Protection & EU261', desc: 'Automated disruption compensation up to €600 plus statutory reisegaranti' },
-      { time: 270, label: '04:30 — The Founder Advantage', desc: 'Locking in half-price lifetime access and free membership draws' },
+      { time: 85, label: '01:25 — The Secret Bedbank Channel', desc: 'How luxury five-star hotels clear unbooked premium inventory at net cost' },
+      { time: 185, label: '03:05 — Duffel NDC Airline Net Rates', desc: 'Direct carrier API integration bypassing legacy GDS retail markups' },
+      { time: 275, label: '04:35 — EU Travel Protection & EU261', desc: 'Automated disruption compensation up to €600 plus statutory reisegaranti' },
+      { time: 335, label: '05:35 — The Founder Advantage', desc: 'Locking in half-price lifetime access and free membership draws' },
     ],
   },
   deepdive: {
