@@ -26,15 +26,41 @@ export default function App() {
   const [isVideoMuted, setIsVideoMuted] = useState<boolean>(true);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const voiceAudioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Initialize Brian's studio voiceover
+  useEffect(() => {
+    const audio = new Audio('/audio/founder-voiceover.mp3?v=20261009_brian_v3');
+    audio.preload = 'auto';
+    audio.volume = 1.0;
+    voiceAudioRef.current = audio;
+
+    const handleEnded = () => {
+      setIsVideoMuted(true);
+      setIsVideoPlaying(false);
+      if (videoRef.current) {
+        videoRef.current.pause();
+      }
+    };
+
+    audio.addEventListener('ended', handleEnded);
+
+    return () => {
+      audio.removeEventListener('ended', handleEnded);
+      audio.pause();
+    };
+  }, []);
 
   const handleStopVideo = () => {
+    voiceAudioRef.current?.pause();
     if (videoRef.current) {
       videoRef.current.pause();
     }
     setIsVideoPlaying(false);
+    setIsVideoMuted(true);
   };
 
-  // Automatically pause hero video when any modal opens
+  // Automatically pause hero video and voiceover when any modal opens
   useEffect(() => {
     if (isWaitlistOpen || isPodcastOpen || !!founderCertificateData) {
       handleStopVideo();
@@ -85,45 +111,59 @@ export default function App() {
   }, []);
 
   const handleToggleVideo = () => {
-    if (videoRef.current) {
-      if (isVideoPlaying) {
-        videoRef.current.pause();
-        setIsVideoPlaying(false);
-      } else {
-        videoRef.current.muted = false;
-        videoRef.current.volume = 1.0;
-        videoRef.current.play().catch(() => {});
-        setIsVideoMuted(false);
-        setIsVideoPlaying(true);
-      }
+    if (isVideoPlaying) {
+      voiceAudioRef.current?.pause();
+      videoRef.current?.pause();
+      setIsVideoPlaying(false);
     } else {
-      setIsVideoPlaying((prev) => !prev);
+      videoRef.current?.play().catch(() => {});
+      if (!isVideoMuted && voiceAudioRef.current) {
+        voiceAudioRef.current.play().catch(() => {});
+      }
+      setIsVideoPlaying(true);
     }
   };
 
   const handleToggleMute = () => {
-    if (videoRef.current) {
-      const next = !videoRef.current.muted;
-      videoRef.current.muted = next;
-      videoRef.current.volume = 1.0;
-      setIsVideoMuted(next);
+    if (isVideoMuted) {
+      if (voiceAudioRef.current) {
+        voiceAudioRef.current.volume = 1.0;
+        voiceAudioRef.current.play().catch(() => {});
+      }
+      setIsVideoMuted(false);
+    } else {
+      voiceAudioRef.current?.pause();
+      setIsVideoMuted(true);
     }
   };
 
   const handleUnmuteAndRestart = () => {
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
-      videoRef.current.muted = false;
-      videoRef.current.volume = 1.0;
       videoRef.current.play().catch(() => {});
-      setIsVideoMuted(false);
-      setIsVideoPlaying(true);
     }
+    if (voiceAudioRef.current) {
+      voiceAudioRef.current.currentTime = 0;
+      voiceAudioRef.current.volume = 1.0;
+      voiceAudioRef.current.play().catch((err) => {
+        console.warn('Audio play error:', err);
+      });
+    }
+    setIsVideoMuted(false);
+    setIsVideoPlaying(true);
   };
 
   const handleExploreSavings = () => {
-    handleStopVideo();
-    document.getElementById('visual-savings-calculator')?.scrollIntoView({ behavior: 'smooth' });
+    const el = document.getElementById('visual-savings-calculator');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const rect = el.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      window.scrollTo({
+        top: rect.top + scrollTop - 40,
+        behavior: 'smooth',
+      });
+    }
   };
 
   const handleUnlockSavings = (savings: CalculationResult) => {
@@ -215,14 +255,14 @@ export default function App() {
           onExploreSavings={handleExploreSavings}
         />
 
-        {/* Real Rate Parity Arbitrage Audit Ticker (From Original Repo App) */}
-        <RateTicker />
-
-        {/* Dynamic & Visual Savings Calculator */}
+        {/* Dynamic & Visual Savings Calculator (Immediate Access) */}
         <DynamicSavingsCalculator
           onUnlockSavings={handleUnlockSavings}
           onCalculationTrigger={handleCalculationTrigger}
         />
+
+        {/* Real Rate Parity Arbitrage Audit Ticker & Live Scanner */}
+        <RateTicker />
 
         {/* Club Pillars */}
         <TrustPillars />

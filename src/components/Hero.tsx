@@ -106,6 +106,24 @@ export const Hero: React.FC<HeroProps> = ({
           </button>
         </div>
 
+        {/* Interactive Flight & Hotel Teaser Pill (Immediate Above-The-Fold Indicator) */}
+        <div className="pt-2 flex items-center justify-center">
+          <button
+            type="button"
+            onClick={onExploreSavings}
+            className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 py-2.5 rounded-2xl bg-neutral-900/90 hover:bg-neutral-800 border border-sky-400/40 hover:border-amber-400/60 text-xs text-neutral-200 transition-all cursor-pointer backdrop-blur-md shadow-xl group"
+          >
+            <span className="flex items-center gap-1.5 text-sky-300 font-semibold font-mono">
+              ✈️ Duffel NDC Flights <span className="text-white font-bold hidden sm:inline">(~15–24% Net)</span>
+            </span>
+            <span className="text-neutral-600">•</span>
+            <span className="flex items-center gap-1.5 text-amber-300 font-semibold font-mono">
+              🏨 Bedbank Wholesale <span className="text-white font-bold hidden sm:inline">(Up to 45%)</span>
+            </span>
+            <ArrowRight className="w-3.5 h-3.5 text-amber-400 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+
         {/* Video & Sound Controls Bar */}
         <div className="pt-3 flex items-center justify-center gap-2.5 flex-wrap">
           {/* Stop / Resume Video Button */}
@@ -139,19 +157,19 @@ export const Hero: React.FC<HeroProps> = ({
                   ? 'bg-emerald-500/20 border-emerald-400 text-emerald-300 shadow-emerald-400/20'
                   : 'bg-amber-500/20 border-amber-400 text-amber-300 shadow-amber-400/20 animate-pulse'
               }`}
-              title={!isVideoMuted ? 'Mute Voiceover and Music' : 'Play Voiceover and Music'}
+              title={!isVideoMuted ? 'Mute Brian Voiceover' : 'Play Brian Voiceover'}
             >
               {!isVideoMuted ? (
                 <>
                   <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-                  <span className="font-semibold text-emerald-300">Voiceover & Music Active</span>
+                  <span className="font-semibold text-emerald-300">Voiceover Active (Brian)</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
                 </>
               ) : (
                 <>
                   <VolumeX className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
-                  <span className="text-amber-300 font-bold">Tap to Unmute Sound</span>
-                  <span className="text-[10px] text-amber-400 font-bold bg-amber-400/20 px-1.5 py-0.5 rounded">0:38</span>
+                  <span className="text-amber-300 font-bold">Tap to Unmute Voiceover</span>
+                  <span className="text-[10px] text-amber-400 font-bold bg-amber-400/20 px-1.5 py-0.5 rounded">1:22</span>
                 </>
               )}
             </button>
