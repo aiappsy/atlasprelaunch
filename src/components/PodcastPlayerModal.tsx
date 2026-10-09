@@ -40,8 +40,8 @@ export const PODCAST_TRACKS: Record<'summary' | 'deepdive', PodcastTrack> = {
     title: 'How Private Memberships Access Wholesale Travel',
     description:
       'An unscripted conversational breakdown of closed-loop club economics, secret hotel bedbanks, Duffel NDC airline net fares, and built-in EU261 travel disruption protection.',
-    audioSrc: '/audio/How_Private_Memberships_Access_Wholesale_Travel.m4a?v=20261009_v1',
-    downloadFilename: 'How_Private_Memberships_Access_Wholesale_Travel.m4a',
+    audioSrc: '/audio/How_Private_Memberships_Access_Wholesale_Travel.mp3?v=20261009_final',
+    downloadFilename: 'How_Private_Memberships_Access_Wholesale_Travel.mp3',
     chapters: [
       { time: 0, label: '00:00 — The Retail Rate Illusion', desc: 'Why public travel platforms artificially inflate room and flight prices' },
       { time: 85, label: '01:25 — The Secret Bedbank Channel', desc: 'How luxury five-star hotels clear unbooked premium inventory at net cost' },
@@ -52,20 +52,20 @@ export const PODCAST_TRACKS: Record<'summary' | 'deepdive', PodcastTrack> = {
   },
   deepdive: {
     id: 'deepdive',
-    badge: 'Forensic Investigation • 23 Min',
-    durationLabel: '23:07 Duration',
+    badge: 'Forensic Investigation • 21 Min',
+    durationLabel: '20:53 Duration',
     title: 'How Wholesale Memberships Bypass Travel Markups',
     description:
       'An unscripted forensic breakdown analyzing OTA retail markups, hotel bedbank distribution, Duffel NDC direct airline booking, and why private membership clubs legally access true wholesale rates.',
-    audioSrc: '/audio/how-travel-duopolies-rig-hotel-prices.mp3?v=20261009_master',
+    audioSrc: '/audio/How_Wholesale_Memberships_Bypass_Travel_Markups.mp3?v=20261009_final',
     downloadFilename: 'How_Wholesale_Memberships_Bypass_Travel_Markups.mp3',
     chapters: [
       { time: 0, label: '00:00 — The Retail Travel Monopoly', desc: 'How public search engines and OTAs artificially inflate travel rates' },
-      { time: 255, label: '04:15 — Institutional Bedbank Pipelines', desc: 'Hotelbeds, WebBeds, and the secret wholesale supply chain' },
-      { time: 510, label: '08:30 — Price Parity Laws & The Legal Exemption', desc: 'Why password-protected closed-loop clubs bypass retail parity' },
-      { time: 790, label: '13:10 — Direct NDC Airline Integration', desc: 'Cutting out legacy GDS fees on commercial flights' },
-      { time: 1080, label: '18:00 — Built-In Disruption & Protection', desc: 'Automated EU261 flight cash recovery and travel guarantees' },
-      { time: 1290, label: '21:30 — The Founder Membership Advantage', desc: 'Securing lifetime half-price access before public launch' },
+      { time: 240, label: '04:00 — Institutional Bedbank Pipelines', desc: 'Hotelbeds, WebBeds, and the secret wholesale supply chain' },
+      { time: 480, label: '08:00 — Price Parity Laws & The Legal Exemption', desc: 'Why password-protected closed-loop clubs bypass retail parity' },
+      { time: 720, label: '12:00 — Direct NDC Airline Integration', desc: 'Cutting out legacy GDS fees on commercial flights' },
+      { time: 960, label: '16:00 — Built-In Disruption & Protection', desc: 'Automated EU261 flight cash recovery and travel guarantees' },
+      { time: 1140, label: '19:00 — The Founder Membership Advantage', desc: 'Securing lifetime half-price access before public launch' },
     ],
   },
 };
