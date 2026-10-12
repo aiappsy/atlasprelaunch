@@ -8,6 +8,8 @@ import {
   VolumeX,
   Award,
   Gift,
+  Plane,
+  Bed,
 } from 'lucide-react';
 
 interface HeroProps {

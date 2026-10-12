@@ -92,7 +92,6 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
         autoPlay
         playsInline
         muted
-        defaultMuted
         loop
         className={`absolute inset-0 w-full h-full object-cover scale-100 transition-all duration-1000 opacity-90 ${
           isCalculating ? 'scale-105 filter brightness-110' : ''

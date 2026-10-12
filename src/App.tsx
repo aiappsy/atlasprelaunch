@@ -28,13 +28,8 @@ export default function App() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const voiceAudioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Initialize Brian's studio voiceover
+  // Initialize Brian's studio voiceover with iOS Safari & Chrome WebKit resilience
   useEffect(() => {
-    const audio = new Audio('/audio/founder-voiceover.mp3?v=20261009_brian_v3');
-    audio.preload = 'auto';
-    audio.volume = 1.0;
-    voiceAudioRef.current = audio;
-
     const handleEnded = () => {
       setIsVideoMuted(true);
       setIsVideoPlaying(false);
@@ -43,11 +38,16 @@ export default function App() {
       }
     };
 
-    audio.addEventListener('ended', handleEnded);
+    const audioEl = voiceAudioRef.current;
+    if (audioEl) {
+      audioEl.addEventListener('ended', handleEnded);
+    }
 
     return () => {
-      audio.removeEventListener('ended', handleEnded);
-      audio.pause();
+      if (audioEl) {
+        audioEl.removeEventListener('ended', handleEnded);
+        audioEl.pause();
+      }
     };
   }, []);
 
@@ -134,9 +134,16 @@ export default function App() {
       videoRef.current.volume = 0;
     }
     if (isVideoMuted) {
-      if (voiceAudioRef.current) {
-        voiceAudioRef.current.volume = 1.0;
-        voiceAudioRef.current.play().catch(() => {});
+      const audioEl = voiceAudioRef.current;
+      if (audioEl) {
+        audioEl.muted = false;
+        audioEl.volume = 1.0;
+        const playPromise = audioEl.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((err) => {
+            console.warn('iOS audio playback interaction required:', err);
+          });
+        }
       }
       setIsVideoMuted(false);
     } else {
@@ -146,22 +153,45 @@ export default function App() {
   };
 
   const handleUnmuteAndRestart = () => {
+    // 1. Ensure ambient video is silently looping in background
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
       videoRef.current.muted = true;
       videoRef.current.volume = 0;
       videoRef.current.play().catch(() => {});
     }
-    if (voiceAudioRef.current) {
-      voiceAudioRef.current.pause();
-      voiceAudioRef.current.currentTime = 0;
-      voiceAudioRef.current.volume = 1.0;
-      voiceAudioRef.current.play().catch((err) => {
-        console.warn('Audio play error:', err);
-      });
+
+    // 2. Play voiceover via DOM audio element with direct touch unlock
+    const audioEl = voiceAudioRef.current;
+    if (audioEl) {
+      audioEl.pause();
+      audioEl.currentTime = 0;
+      audioEl.muted = false;
+      audioEl.volume = 1.0;
+
+      const playPromise = audioEl.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsVideoMuted(false);
+            setIsVideoPlaying(true);
+          })
+          .catch((err) => {
+            console.warn('iOS play blocked or failed:', err);
+            // Fallback retry
+            audioEl.load();
+            audioEl.play().catch(() => {});
+            setIsVideoMuted(false);
+            setIsVideoPlaying(true);
+          });
+      } else {
+        setIsVideoMuted(false);
+        setIsVideoPlaying(true);
+      }
+    } else {
+      setIsVideoMuted(false);
+      setIsVideoPlaying(true);
     }
-    setIsVideoMuted(false);
-    setIsVideoPlaying(true);
   };
 
   const handleExploreSavings = () => {
@@ -324,6 +354,15 @@ export default function App() {
           setIsWaitlistOpen(true);
         }}
         onPlaybackStart={() => setIsVideoPlaying(false)}
+      />
+
+      {/* Hidden Master Studio Audio Element (Rendered in DOM with playsInline for iOS Chrome/Safari) */}
+      <audio
+        ref={voiceAudioRef}
+        src="/audio/founder-voiceover.mp3?v=20261009_brian_v3"
+        preload="auto"
+        playsInline
+        className="hidden"
       />
     </div>
   );

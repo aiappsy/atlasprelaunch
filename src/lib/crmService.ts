@@ -173,11 +173,11 @@ export function addNewLeadFromRegistration(params: NewLeadRegistrationParams | s
   const leads = getStoredLeads();
   const isObject = typeof params === 'object';
   const email = isObject ? params.email : params;
-  const fullName = isObject ? params.fullName : '';
-  const phone = isObject ? params.phone : '';
-  const whatsapp = isObject ? params.whatsapp : '';
-  const messenger = isObject ? params.messenger : '';
-  const preferredContact = isObject ? params.preferredContact : 'whatsapp';
+  const fullName = (isObject ? params.fullName : '') || '';
+  const phone = (isObject ? params.phone : '') || '';
+  const whatsapp = (isObject ? params.whatsapp : '') || '';
+  const messenger = (isObject ? params.messenger : '') || '';
+  const preferredContact = (isObject ? params.preferredContact : 'whatsapp') || 'whatsapp';
   const tierInfo = isObject ? params.tierInfo : legacyTier || 'Founder Member';
   const inviteCode = isObject ? params.inviteCode : legacyCode || 'ATLAS-DEMO';
 

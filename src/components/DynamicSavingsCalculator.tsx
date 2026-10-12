@@ -457,7 +457,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                     Public Retail (Booking.com / Expedia / Google Flights)
                   </span>
                   <div className="text-xl sm:text-2xl font-mono font-bold text-neutral-400 line-through decoration-red-400/80">
-                    {mode === 'flights' ? result.formattedFlightRetail : result.formattedRetail}
+                    {result.formattedRetail}
                   </div>
                 </div>
                 <div className="text-right text-[11px] text-neutral-500 font-mono">
@@ -472,7 +472,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                     Atlas Member Price (Pure Net Cost)
                   </span>
                   <div className="text-xl sm:text-2xl font-mono font-bold text-emerald-400">
-                    {mode === 'flights' ? result.formattedFlightWholesale : result.formattedWholesale}
+                    {result.formattedWholesale}
                   </div>
                 </div>
                 <div className="text-right text-xs font-mono text-amber-300 font-bold">

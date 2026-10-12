@@ -82,7 +82,7 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
   const filteredLeads = leads.filter((lead) => {
     const matchesSearch =
       lead.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (lead.name && lead.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (lead.fullName && lead.fullName.toLowerCase().includes(searchQuery.toLowerCase())) ||
       lead.inviteCode.toLowerCase().includes(searchQuery.toLowerCase()) ||
       lead.membershipTier.toLowerCase().includes(searchQuery.toLowerCase());
 
