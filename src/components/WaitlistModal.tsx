@@ -122,9 +122,8 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
     setErrorMessage(null);
 
     const cleanInput = enteredCode.trim().replace(/\s+/g, '');
-    const isMasterCode = cleanInput === '123456' || cleanInput === '000000' || cleanInput === '942185';
-    if (!cleanInput || (cleanInput !== verificationCode && !isMasterCode)) {
-      setErrorMessage('Invalid 6-digit verification code. Please check your email or resend code.');
+    if (!cleanInput || cleanInput !== verificationCode) {
+      setErrorMessage('Invalid 6-digit verification code. Please check your inbox or click resend.');
       return;
     }
 
@@ -388,19 +387,30 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
                   </button>
                 </div>
 
-                {/* Instant Test helper pill */}
-                <div className="p-2.5 rounded-xl bg-neutral-950/80 border border-neutral-800 text-[11px] font-mono text-neutral-400 flex items-center justify-between">
-                  <span>Demo code: <span className="text-amber-400 font-bold">{verificationCode}</span></span>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setEnteredCode(verificationCode);
-                      setErrorMessage(null);
-                    }}
-                    className="text-amber-300 hover:underline font-bold text-[10px] uppercase cursor-pointer"
-                  >
-                    Auto-fill
-                  </button>
+                {/* Alternative Verification Channels (WhatsApp / SMS) */}
+                <div className="pt-2 border-t border-neutral-800 space-y-2">
+                  <div className="text-[11px] font-mono text-neutral-400 text-center">
+                    Prefer mobile instant verification?
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <a
+                      href={`https://wa.me/4741300000?text=${encodeURIComponent(`Hi ATLAS Concierge! Please verify my Founder Member registration. Email: ${email.trim()} (Code: ${verificationCode})`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="py-2 px-3 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 font-bold text-[11px] transition flex items-center justify-center gap-1.5"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>Verify via WhatsApp</span>
+                    </a>
+
+                    <a
+                      href={`sms:+4741300000?&body=${encodeURIComponent(`ATLAS Verification Code: ${verificationCode} for ${email.trim()}`)}`}
+                      className="py-2 px-3 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 text-sky-300 font-bold text-[11px] transition flex items-center justify-center gap-1.5"
+                    >
+                      <Phone className="w-3.5 h-3.5 text-sky-400" />
+                      <span>Verify via SMS</span>
+                    </a>
+                  </div>
                 </div>
               </form>
             </div>

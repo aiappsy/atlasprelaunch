@@ -241,9 +241,39 @@ export async function dispatchFounderWelcomeEmail(payload: WelcomeEmailPayload):
 export async function dispatchVerificationCode(
   email: string,
   name: string,
-  code: string
+  code: string,
+  phone?: string,
+  channel?: string
 ): Promise<{ success: boolean; message?: string }> {
-  // 1. Try EmailJS client-side dispatch if configured
+  // 1. Direct call to live Cloud API running Gmail SMTP with SSL/TLS
+  try {
+    const cloudApiUrl = 'https://atlasclub.web.app/api/auth/send-code';
+    const cloudRes = await fetch(cloudApiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        recipientEmail: email,
+        recipientName: name,
+        verificationCode: code,
+        phone: phone || '',
+        channel: channel || 'email',
+      }),
+    });
+
+    if (cloudRes.ok) {
+      const data = await cloudRes.json().catch(() => ({}));
+      return {
+        success: true,
+        message: data.message || 'Verification code sent to your inbox',
+      };
+    }
+  } catch (cloudErr) {
+    console.warn('[Cloud Verification Dispatch Notice]:', cloudErr);
+  }
+
+  // 2. Fallback to EmailJS client-side dispatch if configured
   const emailJsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
   if (emailJsPublicKey) {
     try {
@@ -273,28 +303,6 @@ export async function dispatchVerificationCode(
       }
     } catch (e) {
       console.warn('[EmailJS Client Error]:', e);
-    }
-  }
-
-  // 2. Try Custom Webhook Relay
-  const webhookUrl = import.meta.env.VITE_EMAIL_WEBHOOK_URL;
-  if (webhookUrl) {
-    try {
-      const hookRes = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'verification',
-          email,
-          name,
-          code,
-        }),
-      });
-      if (hookRes.ok) {
-        return { success: true, message: 'Verification code sent via Webhook' };
-      }
-    } catch (e) {
-      console.warn('[Webhook Relay Error]:', e);
     }
   }
 
