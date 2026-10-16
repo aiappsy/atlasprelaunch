@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Calculator,
   Clock,
@@ -22,6 +22,7 @@ import {
   calculateSavings,
   CalculationResult,
 } from '../lib/calculatorModel';
+import { useLanguage } from '../lib/i18n/LanguageContext';
 
 export type CalculatorMode = 'package' | 'flights' | 'hotels';
 
@@ -36,6 +37,8 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
   onCalculationTrigger,
   initialMode = 'package',
 }) => {
+  const { t, isNorwegian } = useLanguage();
+
   // Mode: Package (Both), Flights Only, Hotels Only
   const [mode, setMode] = useState<CalculatorMode>(initialMode);
 
@@ -44,8 +47,17 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
   const [nightsPerTrip, setNightsPerTrip] = useState<number>(5);
   const [peopleTravelling, setPeopleTravelling] = useState<number>(2);
   const [tierId, setTierId] = useState<StayTierId>('premium');
-  const [currency, setCurrency] = useState<CurrencyCode>('USD');
+  const [currency, setCurrency] = useState<CurrencyCode>(isNorwegian ? 'NOK' : 'USD');
   const [flightClass, setFlightClass] = useState<FlightClass>('economy');
+
+  // Sync default currency when language changes
+  useEffect(() => {
+    if (isNorwegian && currency === 'USD') {
+      setCurrency('NOK');
+    } else if (!isNorwegian && currency === 'NOK') {
+      setCurrency('USD');
+    }
+  }, [isNorwegian]);
 
   // Animation pulse state when calculating
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
@@ -93,31 +105,33 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
               <Calculator className="w-3.5 h-3.5 text-amber-400" />
               <span>
                 {mode === 'flights'
-                  ? '✈️ Duffel NDC Flight Calculator'
+                  ? t.calculator.badgeFlights
                   : mode === 'hotels'
-                  ? '🏨 Bedbank Wholesale Hotel Calculator'
-                  : '⚡ Wholesale Travel Savings Calculator'}
+                  ? t.calculator.badgeHotels
+                  : t.calculator.badgePackage}
               </span>
             </div>
             <h2 className="font-cinzel text-2xl sm:text-3xl font-bold uppercase tracking-wide text-neutral-100">
               {mode === 'flights'
-                ? 'Your Annual Flight Savings'
+                ? (isNorwegian ? 'Dine årlige flybesparelser' : 'Your Annual Flight Savings')
                 : mode === 'hotels'
-                ? 'Your Annual Hotel Savings'
-                : 'Your Annual Travel Savings'}
+                ? (isNorwegian ? 'Dine årlige hotellbesparelser' : 'Your Annual Hotel Savings')
+                : (isNorwegian ? 'Dine årlige reisebesparelser' : 'Your Annual Travel Savings')}
             </h2>
             <p className="text-xs sm:text-sm text-neutral-400 mt-1 max-w-xl">
               {mode === 'flights'
-                ? 'Direct commercial airline tickets via modern Duffel NDC. Zero legacy GDS booking fees or retail markups.'
+                ? (isNorwegian ? 'Direkte flybilletter via moderne Duffel NDC. Uten eldre GDS-bookinggebyrer eller provisjoner.' : 'Direct commercial airline tickets via modern Duffel NDC. Zero legacy GDS booking fees or retail markups.')
                 : mode === 'hotels'
-                ? 'Access global bedbank wholesale inventories up to 45% below public Booking.com and Expedia prices.'
-                : 'Compare your genuine net cost across both hotel bedbanks and Duffel NDC flights against public retail portals.'}
+                ? (isNorwegian ? 'Få tilgang til globale hotellgrossister opptil 45% under offentlige priser hos Booking.com og Expedia.' : 'Access global bedbank wholesale inventories up to 45% below public Booking.com and Expedia prices.')
+                : t.calculator.subheading}
             </p>
           </div>
 
           {/* Currency Switcher */}
           <div className="flex items-center gap-2 self-start md:self-auto bg-neutral-900/90 p-1.5 rounded-xl border border-neutral-800">
-            <span className="text-[11px] font-mono text-neutral-400 pl-2">Currency:</span>
+            <span className="text-[11px] font-mono text-neutral-400 pl-2">
+              {isNorwegian ? 'Valuta:' : 'Currency:'}
+            </span>
             {(['USD', 'EUR', 'GBP', 'NOK'] as CurrencyCode[]).map((c) => (
               <button
                 key={c}
@@ -128,7 +142,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                 }}
                 className={`px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition cursor-pointer ${
                   currency === c
-                    ? 'bg-amber-400 text-neutral-950 shadow-md shadow-amber-400/20'
+                    ? 'bg-amber-400 text-neutral-950 shadow-md shadow-amber-400/20 font-bold'
                     : 'text-neutral-400 hover:text-neutral-200'
                 }`}
               >
@@ -151,7 +165,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
               }`}
             >
               <Layers className="w-4 h-4" />
-              <span>Full Package (Flights + Hotels)</span>
+              <span>{isNorwegian ? 'Pakkereise (Fly + Hotell)' : 'Full Package (Flights + Hotels)'}</span>
             </button>
 
             <button
@@ -164,7 +178,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
               }`}
             >
               <Plane className="w-4 h-4" />
-              <span>Duffel NDC Flights Only</span>
+              <span>{isNorwegian ? 'Kun Duffel NDC Fly' : 'Duffel NDC Flights Only'}</span>
             </button>
 
             <button
@@ -177,7 +191,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
               }`}
             >
               <Bed className="w-4 h-4" />
-              <span>Bedbank Hotels Only</span>
+              <span>{isNorwegian ? 'Kun Engroshotell' : 'Bedbank Hotels Only'}</span>
             </button>
           </div>
         </div>
@@ -192,13 +206,15 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                 </div>
                 <div>
                   <span className="text-sm font-bold text-neutral-100 flex items-center gap-2">
-                    <span>Flight Cabin Class:</span>
+                    <span>{isNorwegian ? 'Kabin- og seteklasse:' : 'Flight Cabin Class:'}</span>
                     <span className="text-[11px] font-mono text-sky-300 bg-sky-400/10 border border-sky-400/30 px-2 py-0.5 rounded-full">
-                      Duffel NDC Direct Wholesale
+                      {isNorwegian ? 'Duffel NDC Direkte Engros' : 'Duffel NDC Direct Wholesale'}
                     </span>
                   </span>
                   <span className="text-xs text-neutral-400">
-                    Bypasses legacy GDS (Amadeus/Sabre) booking surcharges and public retail markup.
+                    {isNorwegian
+                      ? 'Går utenom eldre GDS-tillegg (Amadeus/Sabre) og fordyrende kommersielle påslag.'
+                      : 'Bypasses legacy GDS (Amadeus/Sabre) booking surcharges and public retail markup.'}
                   </span>
                 </div>
               </div>
@@ -217,7 +233,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                       : 'bg-neutral-800 border border-neutral-700 text-neutral-300 hover:text-white'
                   }`}
                 >
-                  Economy (~15% Net Save)
+                  {isNorwegian ? 'Økonomi (~15% netto spart)' : 'Economy (~15% Net Save)'}
                 </button>
 
                 <button
@@ -232,7 +248,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                       : 'bg-neutral-800 border border-neutral-700 text-neutral-300 hover:text-white'
                   }`}
                 >
-                  Business (~24% Net Save)
+                  {isNorwegian ? 'Business (~24% netto spart)' : 'Business (~24% Net Save)'}
                 </button>
               </div>
             </div>
@@ -244,7 +260,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
           <div className="pt-4 pb-2">
             <label className="text-xs font-mono font-bold tracking-wider uppercase text-neutral-300 block mb-3 flex items-center gap-2">
               <Building className="w-4 h-4 text-amber-400" />
-              <span>Hotel Accommodation Tier:</span>
+              <span>{isNorwegian ? 'Hotellkategori & standard:' : 'Hotel Accommodation Tier:'}</span>
             </label>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3">
               {STAY_TIERS.map((tier) => {
@@ -277,8 +293,8 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                       </p>
                     </div>
                     <div className="mt-2.5 pt-2 border-t border-neutral-800/80 text-[10px] font-mono text-neutral-400 flex items-center justify-between">
-                      <span>Retail ~${tier.publicRateUSD}/nt</span>
-                      <span className="text-amber-300 font-bold">Atlas ${tier.wholesaleRateUSD}/nt</span>
+                      <span>{isNorwegian ? 'Offentlig' : 'Retail'} ~${tier.publicRateUSD}</span>
+                      <span className="text-amber-300 font-bold">Atlas ${tier.wholesaleRateUSD}</span>
                     </div>
                   </button>
                 );
@@ -294,10 +310,10 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
             <div className="flex items-center justify-between">
               <label htmlFor="trips-input" className="text-xs font-semibold text-neutral-200 flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-amber-400" />
-                <span>Trips per year:</span>
+                <span>{isNorwegian ? 'Reiser per år:' : 'Trips per year:'}</span>
               </label>
               <span className="text-xs font-mono font-bold text-amber-300 px-2.5 py-1 rounded-lg bg-neutral-950 border border-neutral-800">
-                {tripsPerYear} {tripsPerYear === 1 ? 'trip' : 'trips'}
+                {tripsPerYear} {isNorwegian ? (tripsPerYear === 1 ? 'reise' : 'reiser') : (tripsPerYear === 1 ? 'trip' : 'trips')}
               </span>
             </div>
 
@@ -331,7 +347,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                       : 'bg-neutral-800/80 text-neutral-400 hover:text-neutral-200'
                   }`}
                 >
-                  {num} {num === 1 ? 'Trip' : 'Trips'}
+                  {num} {isNorwegian ? (num === 1 ? 'Reise' : 'Reiser') : (num === 1 ? 'Trip' : 'Trips')}
                 </button>
               ))}
             </div>
@@ -343,10 +359,10 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
               <div className="flex items-center justify-between">
                 <label htmlFor="nights-input" className="text-xs font-semibold text-neutral-200 flex items-center gap-1.5">
                   <Clock className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Avg nights per trip:</span>
+                  <span>{isNorwegian ? 'Gj.snitt netter per reise:' : 'Avg nights per trip:'}</span>
                 </label>
                 <span className="text-xs font-mono font-bold text-amber-300 px-2.5 py-1 rounded-lg bg-neutral-950 border border-neutral-800">
-                  {nightsPerTrip} nights
+                  {nightsPerTrip} {isNorwegian ? 'netter' : 'nights'}
                 </span>
               </div>
 
@@ -380,7 +396,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                         : 'bg-neutral-800/80 text-neutral-400 hover:text-neutral-200'
                     }`}
                   >
-                    {num} Nights
+                    {num} {isNorwegian ? 'Netter' : 'Nights'}
                   </button>
                 ))}
               </div>
@@ -392,10 +408,10 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
             <div className="flex items-center justify-between">
               <label htmlFor="people-input" className="text-xs font-semibold text-neutral-200 flex items-center gap-1.5">
                 <Users className="w-3.5 h-3.5 text-amber-400" />
-                <span>{includeFlights ? 'Travelers / Passengers:' : 'Guests:'}</span>
+                <span>{includeFlights ? (isNorwegian ? 'Reisende / Passasjerer:' : 'Travelers / Passengers:') : (isNorwegian ? 'Gjester:' : 'Guests:')}</span>
               </label>
               <span className="text-xs font-mono font-bold text-amber-300 px-2.5 py-1 rounded-lg bg-neutral-950 border border-neutral-800">
-                {peopleTravelling} {peopleTravelling === 1 ? 'person' : 'people'}
+                {peopleTravelling} {isNorwegian ? (peopleTravelling === 1 ? 'person' : 'personer') : (peopleTravelling === 1 ? 'person' : 'people')}
               </span>
             </div>
 
@@ -416,10 +432,10 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
             {/* Quick chips */}
             <div className="flex justify-between gap-1 pt-1">
               {[
-                { label: 'Solo', val: 1 },
-                { label: 'Couple', val: 2 },
-                { label: 'Family (4)', val: 4 },
-                { label: 'Group (6)', val: 6 },
+                { label: isNorwegian ? 'Solo' : 'Solo', val: 1 },
+                { label: isNorwegian ? 'Par' : 'Couple', val: 2 },
+                { label: isNorwegian ? 'Familie (4)' : 'Family (4)', val: 4 },
+                { label: isNorwegian ? 'Gruppe (6)' : 'Group (6)', val: 6 },
               ].map((item) => (
                 <button
                   key={item.val}
@@ -447,21 +463,23 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
             {/* Left Column: Side-by-side Comparative Bars */}
             <div className="md:col-span-6 space-y-3">
               <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block font-semibold">
-                Cost Breakdown ({mode !== 'flights' ? `${result.totalNights} Hotel Nights` : ''}{mode === 'package' ? ' + ' : ''}{includeFlights ? `${result.totalFlightTickets} Flight Tickets` : ''}):
+                {isNorwegian ? 'Kostnadsoversikt' : 'Cost Breakdown'} ({mode !== 'flights' ? `${result.totalNights} ${isNorwegian ? 'Hotellnetter' : 'Hotel Nights'}` : ''}{mode === 'package' ? ' + ' : ''}{includeFlights ? `${result.totalFlightTickets} ${isNorwegian ? 'Flybilletter' : 'Flight Tickets'}` : ''}):
               </span>
 
               {/* Public Retail Cost Bar */}
               <div className="p-4 rounded-2xl bg-neutral-900/80 border border-neutral-800 flex items-center justify-between">
                 <div>
                   <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-wide block">
-                    Public Retail (Booking.com / Expedia / Google Flights)
+                    {isNorwegian ? 'Offentlig pris (Booking.com / Expedia / Google Flights)' : 'Public Retail (Booking.com / Expedia / Google Flights)'}
                   </span>
                   <div className="text-xl sm:text-2xl font-mono font-bold text-neutral-400 line-through decoration-red-400/80">
                     {result.formattedRetail}
                   </div>
                 </div>
                 <div className="text-right text-[11px] text-neutral-500 font-mono">
-                  Includes ~{mode === 'flights' ? (flightClass === 'business' ? '24' : '15') : result.savingsPercentage}% markups
+                  {isNorwegian
+                    ? `Inkluderer ~${mode === 'flights' ? (flightClass === 'business' ? '24' : '15') : result.savingsPercentage}% påslag`
+                    : `Includes ~${mode === 'flights' ? (flightClass === 'business' ? '24' : '15') : result.savingsPercentage}% markups`}
                 </div>
               </div>
 
@@ -469,14 +487,14 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
               <div className="p-4 rounded-2xl bg-neutral-900/90 border border-amber-400/40 flex items-center justify-between shadow-lg shadow-black/40">
                 <div>
                   <span className="text-[11px] font-mono text-amber-300 uppercase tracking-wide block font-semibold">
-                    Atlas Member Price (Pure Net Cost)
+                    {isNorwegian ? 'Atlas Medlemspris (Ren nettopris)' : 'Atlas Member Price (Pure Net Cost)'}
                   </span>
                   <div className="text-xl sm:text-2xl font-mono font-bold text-emerald-400">
                     {result.formattedWholesale}
                   </div>
                 </div>
                 <div className="text-right text-xs font-mono text-amber-300 font-bold">
-                  Wholesale Net
+                  {isNorwegian ? 'Grossistpris' : 'Wholesale Net'}
                 </div>
               </div>
 
@@ -485,7 +503,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                 <div className="p-2.5 rounded-xl bg-neutral-900/60 border border-neutral-800 text-neutral-300 flex items-center justify-between font-mono">
                   <div className="flex items-center gap-1.5">
                     <Bed className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                    <span>Hotels Saved:</span>
+                    <span>{isNorwegian ? 'Hotell spart:' : 'Hotels Saved:'}</span>
                   </div>
                   <span className="text-amber-300 font-bold">
                     {mode === 'flights' ? '$0' : result.formattedHotelSavings}
@@ -495,7 +513,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                 <div className="p-2.5 rounded-xl bg-neutral-900/60 border border-neutral-800 text-neutral-300 flex items-center justify-between font-mono">
                   <div className="flex items-center gap-1.5">
                     <Plane className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                    <span>Flights Saved:</span>
+                    <span>{isNorwegian ? 'Fly spart:' : 'Flights Saved:'}</span>
                   </div>
                   <span className="text-sky-300 font-bold">
                     {includeFlights ? result.formattedFlightSavings : '$0'}
@@ -509,10 +527,14 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
               <div className="relative z-10 space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-bold text-amber-300 uppercase tracking-wider">
-                    {mode === 'flights' ? 'Annual Flight Savings' : mode === 'hotels' ? 'Annual Hotel Savings' : 'Total Annual Member Savings'}
+                    {mode === 'flights'
+                      ? (isNorwegian ? 'Årlig flybesparelse' : 'Annual Flight Savings')
+                      : mode === 'hotels'
+                      ? (isNorwegian ? 'Årlig hotellbesparelse' : 'Annual Hotel Savings')
+                      : (isNorwegian ? 'Total årlig medlemsbesparelse' : 'Total Annual Member Savings')}
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
-                    Save ~{mode === 'flights' ? (flightClass === 'business' ? '24' : '15') : result.savingsPercentage}% Net
+                    {isNorwegian ? 'Spar ~' : 'Save ~'}{mode === 'flights' ? (flightClass === 'business' ? '24' : '15') : result.savingsPercentage}% {isNorwegian ? 'Netto' : 'Net'}
                   </span>
                 </div>
 
@@ -525,7 +547,9 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                 </div>
 
                 <p className="text-xs text-neutral-300 leading-relaxed pt-1">
-                  Pure cash kept in your pocket every year instead of paying commercial retail markups and booking fees.
+                  {isNorwegian
+                    ? 'Ren kontantbesparelse rett i egen lomme hvert år, i stedet for å betale kommersielle påslag og bookinggebyrer.'
+                    : 'Pure cash kept in your pocket every year instead of paying commercial retail markups and booking fees.'}
                 </p>
               </div>
 
@@ -537,7 +561,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                   className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-sm tracking-wide shadow-xl shadow-amber-500/30 transition-all flex items-center justify-center gap-2 group cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4 text-neutral-950" />
-                  <span>Unlock Real Member Rates (Claim Free Spot)</span>
+                  <span>{isNorwegian ? 'Lås opp dine medlemspriser (Start gratis prøve)' : 'Unlock Real Member Rates (Start Free Trial)'}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
@@ -550,40 +574,58 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
           <div className="flex items-center gap-2 mb-3">
             <Info className="w-4 h-4 text-sky-400 shrink-0" />
             <h4 className="text-xs sm:text-sm font-bold text-neutral-200">
-              How Flight Savings Work (The Honest Breakdown)
+              {isNorwegian ? 'Slik fungerer flybesparelsene (Den ærlige oversikten)' : 'How Flight Savings Work (The Honest Breakdown)'}
             </h4>
           </div>
 
           <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-            Airlines operate on thin margins, so unlike hotels (which save up to 45%), flight savings are direct and fee-based. Here is exactly where you save:
+            {isNorwegian
+              ? 'Flyselskaper opererer med lave marginer, så i motsetning til hotell (som sparer opptil 45%), er flybesparelser basert på direkteavtaler og gebyrkutt. Her er nøyaktig hvor du sparer:'
+              : 'Airlines operate on thin margins, so unlike hotels (which save up to 45%), flight savings are direct and fee-based. Here is exactly where you save:'}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
             <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800">
-              <span className="font-bold text-amber-300 block mb-1">1. Zero GDS Surcharges</span>
+              <span className="font-bold text-amber-300 block mb-1">
+                {isNorwegian ? '1. Null GDS-gebyrer' : '1. Zero GDS Surcharges'}
+              </span>
               <p className="text-neutral-400 text-[11px] leading-relaxed">
-                Airlines add $15–$35 per ticket on public sites to cover legacy systems (Amadeus/Sabre). Through Duffel NDC, members connect directly to airline APIs without these penalty fees.
+                {isNorwegian
+                  ? 'Flyselskapene legger på 150–350 kr per billett på offentlige sider for å dekke eldre bookingsystemer. Gjennom Duffel NDC kobler Atlas-medlemmer seg rett på flyselskapenes API uten disse ekstrakostnadene.'
+                  : 'Airlines add $15–$35 per ticket on public sites to cover legacy systems (Amadeus/Sabre). Through Duffel NDC, members connect directly to airline APIs without these penalty fees.'}
               </p>
             </div>
 
             <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800">
-              <span className="font-bold text-sky-300 block mb-1">2. At-Cost Luggage &amp; Seats</span>
+              <span className="font-bold text-sky-300 block mb-1">
+                {isNorwegian ? '2. Bagasje & seter til kostpris' : '2. At-Cost Luggage & Seats'}
+              </span>
               <p className="text-neutral-400 text-[11px] leading-relaxed">
-                Public booking sites often mark up checked baggage by 30%–50%. With Atlas, you pay the airline's direct cost—saving $30–$70 per traveler on baggage alone.
+                {isNorwegian
+                  ? 'Reisebyråer og åpne sider legger ofte på 30%–50% på innsjekket bagasje. Hos Atlas betaler du flyselskapets direkte nettopris – en besparelse på 300–700 kr per reisende bare på bagasje.'
+                  : "Public booking sites often mark up checked baggage by 30%–50%. With Atlas, you pay the airline's direct cost—saving $30–$70 per traveler on baggage alone."}
               </p>
             </div>
 
             <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800">
-              <span className="font-bold text-emerald-300 block mb-1">3. Automated EU261 Guarantee</span>
+              <span className="font-bold text-emerald-300 block mb-1">
+                {isNorwegian ? '3. Automatisk EU261-garanti' : '3. Automated EU261 Guarantee'}
+              </span>
               <p className="text-neutral-400 text-[11px] leading-relaxed">
-                If your flight is delayed by 3+ hours or cancelled, our Duffel integration automatically monitors the flight and secures up to €600 per passenger directly into your account.
+                {isNorwegian
+                  ? 'Hvis flyet ditt er 3+ timer forsinket eller innstilt, overvåker systemet vårt flyvningen automatisk og sikrer opptil 600 € per passasjer direkte inn på din konto.'
+                  : 'If your flight is delayed by 3+ hours or cancelled, our Duffel integration automatically monitors the flight and secures up to €600 per passenger directly into your account.'}
               </p>
             </div>
 
             <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800">
-              <span className="font-bold text-neutral-200 block mb-1">4. Realistic Expectations</span>
+              <span className="font-bold text-neutral-200 block mb-1">
+                {isNorwegian ? '4. Realistiske forventninger' : '4. Realistic Expectations'}
+              </span>
               <p className="text-neutral-400 text-[11px] leading-relaxed">
-                We believe in complete honesty: expect ~15% net savings on typical economy routes, and ~24% on long-haul business class fares.
+                {isNorwegian
+                  ? 'Vi tror på full åpenhet: forvent ca. 15% netto besparelse på vanlige økonomibilletter, og ca. 24% på langdistanse i Business Class.'
+                  : 'We believe in complete honesty: expect ~15% net savings on typical economy routes, and ~24% on long-haul business class fares.'}
               </p>
             </div>
           </div>
@@ -596,16 +638,20 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-mono">
               <Lock className="w-3.5 h-3.5 text-amber-400" />
-              <span>Rate Parity Legal Requirement</span>
+              <span>{isNorwegian ? 'Juridisk krav om prisparitet' : 'Rate Parity Legal Requirement'}</span>
             </div>
             <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-neutral-100">
-              Why Real-Time Rates Require A Free Member Account
+              {isNorwegian ? 'Hvorfor sanntidspriser krever en gratis medlemskonto' : 'Why Real-Time Rates Require A Free Member Account'}
             </h3>
             <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
-              Under global hotel contracts and retail Rate Parity rules (Most Favored Nation clauses), 5-star hotels and airlines are strictly forbidden from showing their wholesale bedbank and direct NDC net prices publicly to non-members on the open web.
+              {isNorwegian
+                ? 'I henhold til globale hotellkontrakter og prisparitetsregler (Rate Parity) er 5-stjerners hoteller og flyselskaper strengt forbudt å vise sine uannonserte grossistpriser og direkte NDC-nettopriser offentlig til ikke-medlemmer på det åpne nettet.'
+                : 'Under global hotel contracts and retail Rate Parity rules (Most Favored Nation clauses), 5-star hotels and airlines are strictly forbidden from showing their wholesale bedbank and direct NDC net prices publicly to non-members on the open web.'}
             </p>
             <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-              The moment you activate your free founder spot and sign in behind our closed-loop member gate, you unlock 100% unrestricted live search and booking across 1.2M+ luxury properties and commercial flights at pure wholesale cost.
+              {isNorwegian
+                ? 'I det øyeblikket du aktiverer din gratis medlemskonto og logger inn i vår lukkede medlemsportal, låser du opp 100% ubegrenset søk og bestilling på over 1,2 millioner luksushoteller og rutefly til ren grossistpris.'
+                : 'The moment you activate your free founder spot and sign in behind our closed-loop member gate, you unlock 100% unrestricted live search and booking across 1.2M+ luxury properties and commercial flights at pure wholesale cost.'}
             </p>
           </div>
 
@@ -615,7 +661,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
             className="shrink-0 w-full md:w-auto px-6 py-4 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-amber-400/20 transition-all scale-100 hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
           >
             <ShieldCheck className="w-4 h-4 text-neutral-950" />
-            <span>Claim Free Spot &amp; Unlock Real Rates</span>
+            <span>{isNorwegian ? 'Start gratis prøve & se priser' : 'Claim Free Spot & Unlock Real Rates'}</span>
             <ArrowRight className="w-4 h-4 text-neutral-950" />
           </button>
         </div>

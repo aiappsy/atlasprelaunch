@@ -14,6 +14,7 @@ import {
   Radio,
   Download,
 } from 'lucide-react';
+import { useLanguage } from '../lib/i18n/LanguageContext';
 
 export interface Chapter {
   time: number;
@@ -70,6 +71,44 @@ export const PODCAST_TRACKS: Record<'summary' | 'deepdive', PodcastTrack> = {
   },
 };
 
+export const PODCAST_TRACKS_NO: Record<'summary' | 'deepdive', PodcastTrack> = {
+  summary: {
+    id: 'summary',
+    badge: 'Konsernbriefing • 6 Min',
+    durationLabel: '6:13 Varighet',
+    title: 'Slik gir lukkede medlemskap tilgang til engrospriser',
+    description:
+      'En uformell samtale om hvordan private klubber omgår prisparitet, åpner hemmelige hotellgrossister, sikrer direkte flyavtaler via Duffel NDC og inkluderer EU261-passasjertrygghet.',
+    audioSrc: '/audio/How_Private_Memberships_Access_Wholesale_Travel.mp3?v=20261009_final',
+    downloadFilename: 'How_Private_Memberships_Access_Wholesale_Travel.mp3',
+    chapters: [
+      { time: 0, label: '00:00 — Reiseportalenes prisillusjon', desc: 'Hvorfor offentlige portaler kunstig blåser opp hotell- og flypriser' },
+      { time: 85, label: '01:25 — Den lukkede grossistkanalen', desc: 'Hvordan 5-stjerners luksushoteller selger overskuddskapasitet til kostpris' },
+      { time: 185, label: '03:05 — Duffel NDC direkte flyavtaler', desc: 'Direkte API-integrasjon mot flyselskapene uten fordyrende GDS-gebyrer' },
+      { time: 275, label: '04:35 — Europeisk reisetrygghet & EU261', desc: 'Automatisk forsinkelseskompensasjon opptil 600 € pluss lovpålagt reisegaranti' },
+      { time: 335, label: '05:35 — Founding Member-fordelen', desc: 'Lås inn halv pris på livstid og delta i trekningen av gratis medlemskap' },
+    ],
+  },
+  deepdive: {
+    id: 'deepdive',
+    badge: 'Dybdeanalyse • 21 Min',
+    durationLabel: '20:53 Varighet',
+    title: 'Slik kutter grossistmedlemskap reiseduopolenes påslag',
+    description:
+      'En grundig undersøkelse av Booking.com og Expedias provisjoner, hotellenes hemmelige grossistkjeder (Hotelbeds, WebBeds), direkte flybestillinger, og hvorfor lukkede klubber har lovlig rett til engrospriser.',
+    audioSrc: '/audio/How_Wholesale_Memberships_Bypass_Travel_Markups.mp3?v=20261009_final',
+    downloadFilename: 'How_Wholesale_Memberships_Bypass_Travel_Markups.mp3',
+    chapters: [
+      { time: 0, label: '00:00 — Reiseportalenes monopol', desc: 'Hvordan søkemotorer og OTAer kunstig driver opp prisene' },
+      { time: 240, label: '04:00 — Institusjonelle grossister', desc: 'Hotelbeds, WebBeds og den lukkede distribusjonskjeden' },
+      { time: 480, label: '08:00 — Prisparitet og det lovlige unntaket', desc: 'Hvorfor lukkede klubber bak passord omgår offentlige prisavtaler' },
+      { time: 720, label: '12:00 — Direkte NDC-flyintegrasjon', desc: 'Kutter ut fordyrende mellomledd på kommersielle flyreiser' },
+      { time: 960, label: '16:00 — Automatisk forsinkelsestrygghet', desc: 'Lovpålagt EU261-utbetaling og reisegaranti' },
+      { time: 1140, label: '19:00 — Founding-fordelen', desc: 'Sikre halv pris for all fremtid før den offisielle lanseringen' },
+    ],
+  },
+};
+
 const SPEED_OPTIONS = [1.0, 1.25, 1.5, 2.0];
 
 interface PodcastPlayerModalProps {
@@ -87,6 +126,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
   onPlaybackStart,
   initialTrack = 'summary',
 }) => {
+  const { isNorwegian } = useLanguage();
   const [activeTrackId, setActiveTrackId] = useState<'summary' | 'deepdive'>(initialTrack);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -96,7 +136,8 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
   const [isMinimized, setIsMinimized] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const currentTrack = PODCAST_TRACKS[activeTrackId];
+  const tracks = isNorwegian ? PODCAST_TRACKS_NO : PODCAST_TRACKS;
+  const currentTrack = tracks[activeTrackId];
 
   // Sync initialTrack when modal opens
   useEffect(() => {
@@ -324,7 +365,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
             <span className="text-xs uppercase font-mono tracking-widest text-amber-300 font-semibold">
-              Atlas Audio Intelligence • Private Member Briefings
+              {isNorwegian ? 'Atlas Lydguide • Eksklusive Medlemsbriefinger' : 'Atlas Audio Intelligence • Private Member Briefings'}
             </span>
           </div>
 
@@ -336,10 +377,10 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
                 onClose();
               }}
               className="p-2 rounded-xl text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 transition cursor-pointer flex items-center gap-1.5 text-xs font-mono"
-              title="Minimize player to bottom bar while browsing"
+              title={isNorwegian ? 'Minimer til bunnlinjen mens du bruker kalkulatoren' : 'Minimize player to bottom bar while browsing'}
             >
               <Minimize2 className="w-4 h-4" />
-              <span className="hidden sm:inline">Minimize Dock</span>
+              <span className="hidden sm:inline">{isNorwegian ? 'Minimer' : 'Minimize Dock'}</span>
             </button>
 
             <button
@@ -350,7 +391,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
                 onClose();
               }}
               className="p-2 rounded-xl text-neutral-400 hover:text-white hover:bg-neutral-800 transition cursor-pointer"
-              title="Close player"
+              title={isNorwegian ? 'Lukk lydspiller' : 'Close player'}
             >
               <X className="w-5 h-5" />
             </button>
@@ -371,7 +412,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>5-Min Club Summary</span>
+              <span>{isNorwegian ? '5-Min Lydoppsummering' : '5-Min Club Summary'}</span>
             </button>
 
             <button
@@ -384,9 +425,9 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
               }`}
             >
               <Radio className="w-3.5 h-3.5" />
-              <span>23-Min Duopoly Deep Dive</span>
+              <span>{isNorwegian ? '23-Min Dybdeanalyse' : '23-Min Duopoly Deep Dive'}</span>
               <span className="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold uppercase">
-                Forensic
+                {isNorwegian ? 'Dybde' : 'Forensic'}
               </span>
             </button>
           </div>
@@ -515,8 +556,12 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
           {/* Bottom Founder Banner */}
           <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-400/15 via-neutral-900 to-neutral-950 border border-amber-400/30 flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="text-center sm:text-left">
-              <p className="text-xs font-bold text-amber-300">Ready to unlock wholesale rates?</p>
-              <p className="text-[11px] text-neutral-400">Lock in your lifetime membership at 50% discount.</p>
+              <p className="text-xs font-bold text-amber-300">
+                {isNorwegian ? 'Klar til å oppleve ekte engrospriser?' : 'Ready to unlock wholesale rates?'}
+              </p>
+              <p className="text-[11px] text-neutral-400">
+                {isNorwegian ? 'Lås inn 50% livstidsrabatt på ditt medlemskap.' : 'Lock in your lifetime membership at 50% discount.'}
+              </p>
             </div>
             <button
               type="button"
@@ -526,7 +571,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
               }}
               className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 transition cursor-pointer flex items-center justify-center gap-2"
             >
-              <span>Lock In Half Price</span>
+              <span>{isNorwegian ? 'Sikre 50% rabatt' : 'Lock In Half Price'}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>

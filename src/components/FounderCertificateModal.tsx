@@ -21,6 +21,7 @@ import {
   FileText,
   Headphones,
 } from 'lucide-react';
+import { useLanguage } from '../lib/i18n/LanguageContext';
 
 export interface FounderCertificateData {
   fullName?: string;
@@ -46,6 +47,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
   data,
   onOpenPodcast,
 }) => {
+  const { isNorwegian } = useLanguage();
   const [activeTab, setActiveTab] = useState<'certificate' | 'email'>('certificate');
   const [isCopied, setIsCopied] = useState(false);
   const [showQR, setShowQR] = useState(false);
@@ -76,13 +78,14 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
     onClose();
   };
 
+  const locale = isNorwegian ? 'nb-NO' : 'en-US';
   const issueDateFormatted = data.issueDate
-    ? new Date(data.issueDate).toLocaleDateString('en-US', {
+    ? new Date(data.issueDate).toLocaleDateString(locale, {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
       })
-    : new Date().toLocaleDateString('en-US', {
+    : new Date().toLocaleDateString(locale, {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
@@ -116,14 +119,14 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-sm sm:text-base font-bold text-neutral-100 font-cinzel">
-                  Founder Member Diploma & Credentials
+                  {isNorwegian ? 'Founding Member Diplom & Rettigheter' : 'Founder Member Diploma & Credentials'}
                 </h3>
                 <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold">
-                  Verified & Issued
+                  {isNorwegian ? 'Verifisert & Utstedt' : 'Verified & Issued'}
                 </span>
               </div>
               <p className="text-[11px] text-neutral-400 font-mono">
-                Holder: <span className="text-amber-300">{data.fullName || data.email}</span> • Registry ID: <span className="text-amber-300 font-bold">{data.inviteCode}</span>
+                {isNorwegian ? 'Medlem:' : 'Holder:'} <span className="text-amber-300">{data.fullName || data.email}</span> • {isNorwegian ? 'Medlemsnr:' : 'Registry ID:'} <span className="text-amber-300 font-bold">{data.inviteCode}</span>
               </p>
             </div>
           </div>
@@ -140,7 +143,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                     : 'text-neutral-400 hover:text-neutral-200'
                 }`}
               >
-                Official Diploma
+                {isNorwegian ? 'Offisielt Diplom' : 'Official Diploma'}
               </button>
               <button
                 type="button"
@@ -151,7 +154,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                     : 'text-neutral-400 hover:text-neutral-200'
                 }`}
               >
-                Welcome Dispatch
+                {isNorwegian ? 'Velkomstmelding' : 'Welcome Dispatch'}
               </button>
             </div>
 
@@ -200,7 +203,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                     <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-[#9c7526]" />
                     <Sparkles className="w-4 h-4 fill-current" />
                     <span className="text-[10px] font-mono tracking-[0.3em] uppercase font-bold text-[#8a6522]">
-                      Sovereign Wholesale Registry
+                      {isNorwegian ? 'Autorisert Engrosregister' : 'Sovereign Wholesale Registry'}
                     </span>
                     <Sparkles className="w-4 h-4 fill-current" />
                     <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-[#9c7526]" />
@@ -214,10 +217,12 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                   {/* Diploma Subtitle */}
                   <div className="space-y-0.5">
                     <p className="font-cinzel text-xs sm:text-sm font-bold tracking-[0.22em] text-[#966b1e] uppercase">
-                      Sovereign Charter & Diploma of Founding Membership
+                      {isNorwegian ? 'Offisiell Grunnleggerattest & Founding Member Diplom' : 'Sovereign Charter & Diploma of Founding Membership'}
                     </p>
                     <p className="font-mono text-[9px] sm:text-[10px] tracking-wider text-[#735a34] uppercase">
-                      Instituted under Private Association Conventions • Geneva & Oslo • Registry Ref. {data.inviteCode}
+                      {isNorwegian
+                        ? `Utstedt av HARD ROCK CAPITAL LTD (Org.nr. 16833237) • London & Oslo • Medlemsref. ${data.inviteCode}`
+                        : `Issued by HARD ROCK CAPITAL LTD (Reg. #16833237) • London & Oslo • Registry Ref. ${data.inviteCode}`}
                     </p>
                   </div>
 
@@ -225,22 +230,26 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
 
                   {/* Conferral Statement */}
                   <p className="font-mono text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-[#7a6037] font-semibold pt-1">
-                    Be it known to all persons present that:
+                    {isNorwegian ? 'Det bekreftes herved overfor alle parter at:' : 'Be it known to all persons present that:'}
                   </p>
 
                   {/* Recipient Full Name */}
                   <div className="py-1">
                     <h2 className="font-cinzel text-2xl sm:text-3xl md:text-4xl font-black text-[#1a150e] tracking-wide uppercase inline-block px-8 py-1 border-b-2 border-[#b8862d]/60">
-                      {data.fullName || 'Accredited Member'}
+                      {data.fullName || (isNorwegian ? 'Akkreditert Medlem' : 'Accredited Member')}
                     </h2>
                     <p className="font-mono text-[10px] sm:text-[11px] text-[#7a6037] mt-1.5">
-                      Registry Email: <strong className="text-[#1a150e]">{data.email}</strong> {data.phone ? `• Priority Mobile: ${data.phone}` : ''}
+                      {isNorwegian ? 'Registrert e-post:' : 'Registry Email:'} <strong className="text-[#1a150e]">{data.email}</strong> {data.phone ? `• ${isNorwegian ? 'Prioritert mobil:' : 'Priority Mobile:'} ${data.phone}` : ''}
                     </p>
                   </div>
 
                   {/* Proclamation Citation Paragraph */}
                   <p className="font-diploma italic text-xs sm:text-sm text-[#382f22] max-w-2xl mx-auto leading-relaxed px-4 pt-1">
-                    Having established verified eligibility and met the charter standards of the Admissions Committee, is hereby inducted as an accredited <strong>Founding Lifetime Member</strong> of Atlas Travel Club, permanently vested with direct wholesale bedbank access, immunity from retail OTA price markups, and sovereign booking privileges in perpetuity.
+                    {isNorwegian ? (
+                      <>Har etter oppfylt søknadskontroll og godkjenning av opptakskomiteen herved blitt innlemmet som akkreditert <strong>Founding Lifetime Member</strong> av Atlas Travel Club, med evigvarende rett til direkte engrospriser hos hotellgrossister, fullt unntak fra provisjonspåslag, og eksklusive bookingprivilegier til ren nettopris.</>
+                    ) : (
+                      <>Having established verified eligibility and met the charter standards of the Admissions Committee, is hereby inducted as an accredited <strong>Founding Lifetime Member</strong> of Atlas Travel Club, permanently vested with direct wholesale bedbank access, immunity from retail OTA price markups, and sovereign booking privileges in perpetuity.</>
+                    )}
                   </p>
 
                   {/* Guaranteed Privileges Grid on Diploma */}
@@ -248,30 +257,36 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                     <div className="p-2.5 rounded-lg bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
                       <div className="flex items-center gap-1.5 text-[#8a6522] font-cinzel text-xs font-bold uppercase">
                         <ShieldCheck className="w-3.5 h-3.5 text-[#9c7526] shrink-0" />
-                        <span>B2B Net Rate Parity</span>
+                        <span>{isNorwegian ? 'Rene Engrospriser' : 'B2B Net Rate Parity'}</span>
                       </div>
                       <p className="text-[10px] font-mono text-[#57462c] mt-0.5">
-                        Direct wholesale pass-through with zero OTA commission markup.
+                        {isNorwegian
+                          ? 'Direkte formidling uten provisjoner eller fordyrende ledd.'
+                          : 'Direct wholesale pass-through with zero OTA commission markup.'}
                       </p>
                     </div>
 
                     <div className="p-2.5 rounded-lg bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
                       <div className="flex items-center gap-1.5 text-[#8a6522] font-cinzel text-xs font-bold uppercase">
                         <Award className="w-3.5 h-3.5 text-[#9c7526] shrink-0" />
-                        <span>50% Lifetime Lock</span>
+                        <span>{isNorwegian ? '50% Livstidsrabatt' : '50% Lifetime Lock'}</span>
                       </div>
                       <p className="text-[10px] font-mono text-[#57462c] mt-0.5">
-                        Annual membership fee locked at half price permanently for life.
+                        {isNorwegian
+                          ? 'Årlig medlemskontingent låst til halv pris for all fremtid.'
+                          : 'Annual membership fee locked at half price permanently for life.'}
                       </p>
                     </div>
 
                     <div className="p-2.5 rounded-lg bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
                       <div className="flex items-center gap-1.5 text-[#8a6522] font-cinzel text-xs font-bold uppercase">
                         <Gift className="w-3.5 h-3.5 text-[#9c7526] shrink-0" />
-                        <span>Sovereign Allocation</span>
+                        <span>{isNorwegian ? 'Medlemsfordeler' : 'Sovereign Allocation'}</span>
                       </div>
                       <p className="text-[10px] font-mono text-[#57462c] mt-0.5">
-                        4 Family Guest Passes & Launch Draw Entry for 1 of 5 Free Memberships.
+                        {isNorwegian
+                          ? '4 familiepass & registrert i trekningen av 5 gratis livstidsmedlemskap.'
+                          : '4 Family Guest Passes & Launch Draw Entry for 1 of 5 Free Memberships.'}
                       </p>
                     </div>
                   </div>
@@ -297,10 +312,10 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                             <Award className="w-5 h-5 mx-auto fill-[#fff7cf]/20" />
                           </div>
                           <span className="text-[8px] sm:text-[9px] font-cinzel font-black text-[#ffffff] tracking-wider uppercase drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
-                            ★ AUTHORIZED ★
+                            ★ {isNorwegian ? 'AUTORISERT' : 'AUTHORIZED'} ★
                           </span>
                           <span className="text-[6px] sm:text-[7px] font-mono text-[#ffe58f] tracking-widest uppercase font-semibold">
-                            SOVEREIGN CHARTER 2026
+                            {isNorwegian ? 'GRUNNLEGGERSTATUTT 2026' : 'SOVEREIGN CHARTER 2026'}
                           </span>
                         </div>
                       </div>
@@ -316,7 +331,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                         Pål Juritzen
                       </div>
                       <div className="text-xs font-mono text-[#66502e] font-semibold">
-                        Founder & Managing Director
+                        {isNorwegian ? 'Grunnlegger & Daglig Leder' : 'Founder & Managing Director'}
                       </div>
                       <div className="text-[10px] font-mono text-[#8a6522] tracking-wider uppercase">
                         Atlas Intelligence & Sovereign Travel Club
@@ -326,8 +341,10 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
 
                   {/* Bottom Legal Registry Line */}
                   <div className="pt-2 text-[9px] font-mono text-[#7a6037] flex flex-col sm:flex-row items-center justify-between border-t border-[#b8862d]/20">
-                    <span>Issued under Great Seal of Atlas • {issueDateFormatted}</span>
-                    <span className="font-bold text-[#8a6522]">CERTIFICATE SERIAL: {data.inviteCode}-VERIFIED</span>
+                    <span>{isNorwegian ? `Utstedt under Atlas' store segl • ${issueDateFormatted}` : `Issued under Great Seal of Atlas • ${issueDateFormatted}`}</span>
+                    <span className="font-bold text-[#8a6522]">
+                      {isNorwegian ? `DIPLOM-ID: ${data.inviteCode}-VERIFISERT` : `CERTIFICATE SERIAL: ${data.inviteCode}-VERIFIED`}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -340,7 +357,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                   className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-xl shadow-amber-500/30 transition transform hover:scale-[1.01]"
                 >
                   <Download className="w-4 h-4" />
-                  <span>Print / Download Diploma PDF</span>
+                  <span>{isNorwegian ? 'Skriv ut / Last ned diplom (PDF)' : 'Print / Download Diploma PDF'}</span>
                 </button>
 
                 <button
@@ -348,8 +365,8 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                   onClick={copyCode}
                   className="py-3 px-4 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-200 font-mono text-xs flex items-center justify-center gap-2 cursor-pointer transition"
                 >
-                  {isCopied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                  <span>{isCopied ? 'Code Copied' : `Copy ID: ${data.inviteCode}`}</span>
+                  {isCopied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-neutral-400" />}
+                  <span>{isCopied ? (isNorwegian ? 'Kopiert!' : 'Code Copied') : (isNorwegian ? `Kopier ID: ${data.inviteCode}` : `Copy ID: ${data.inviteCode}`)}</span>
                 </button>
 
                 <button
@@ -364,7 +381,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                   className="py-3 px-4 rounded-xl bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-neutral-300 hover:text-white font-mono text-xs flex items-center justify-center gap-2 cursor-pointer transition"
                 >
                   <Radio className="w-4 h-4 text-amber-400" />
-                  <span>23-Min Audio Briefing</span>
+                  <span>{isNorwegian ? '23-Min Lydbriefing' : '23-Min Audio Briefing'}</span>
                 </button>
 
                 <a
@@ -386,48 +403,66 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
             <div className="space-y-4">
               <div className="p-4 rounded-2xl bg-neutral-950/80 border border-neutral-800 space-y-2 text-xs font-mono text-neutral-400">
                 <div className="flex items-center justify-between pb-2 border-b border-neutral-800">
-                  <span className="text-neutral-500">Dispatch Status:</span>
+                  <span className="text-neutral-500">{isNorwegian ? 'Utsendelsesstatus:' : 'Dispatch Status:'}</span>
                   <span className="text-emerald-400 font-bold flex items-center gap-1">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>Delivered to Member</span>
+                    <span>{isNorwegian ? 'Levert til medlem' : 'Delivered to Member'}</span>
                   </span>
                 </div>
                 <div>
-                  <span className="text-neutral-500">From: </span>
+                  <span className="text-neutral-500">{isNorwegian ? 'Fra:' : 'From:'} </span>
                   <span className="text-neutral-200">Atlas Travel Club &lt;invitations@atlastravelclub.com&gt;</span>
                 </div>
                 <div>
-                  <span className="text-neutral-500">To: </span>
+                  <span className="text-neutral-500">{isNorwegian ? 'Til:' : 'To:'} </span>
                   <span className="text-neutral-200">{data.email}</span>
                 </div>
                 <div>
-                  <span className="text-neutral-500">Subject: </span>
+                  <span className="text-neutral-500">{isNorwegian ? 'Emne:' : 'Subject:'} </span>
                   <span className="text-amber-300 font-semibold">
-                    Welcome to Atlas Travel Club | Founder Member Early Access Confirmation
+                    {isNorwegian
+                      ? 'Velkommen til Atlas Travel Club | Bekreftelse på Founding Member tidlig tilgang'
+                      : 'Welcome to Atlas Travel Club | Founder Member Early Access Confirmation'}
                   </span>
                 </div>
               </div>
 
               {/* Email Content Body */}
               <div className="p-6 rounded-2xl bg-neutral-950/60 border border-neutral-800 space-y-4 text-xs sm:text-sm text-neutral-300 leading-relaxed font-sans">
-                <p>Hello,</p>
+                <p>{isNorwegian ? 'Hei,' : 'Hello,'}</p>
                 <p>
-                  Thank you for securing your position on the <strong>Atlas Travel Club</strong> early access waitlist.
+                  {isNorwegian ? (
+                    <>Takk for at du har sikret din prioriterte posisjon i <strong>Atlas Travel Club</strong>.</>
+                  ) : (
+                    <>Thank you for securing your position on the <strong>Atlas Travel Club</strong> early access waitlist.</>
+                  )}
                 </p>
                 <p>
-                  As an initial Founder Member, your exclusive privileges are officially recorded:
+                  {isNorwegian
+                    ? 'Som tidlig Founding Member er dine eksklusive medlemsrettigheter offisielt protokollført:'
+                    : 'As an initial Founder Member, your exclusive privileges are officially recorded:'}
                 </p>
 
                 <div className="p-4 rounded-xl bg-neutral-900 border border-amber-400/30 space-y-2 text-xs">
-                  <div className="text-amber-300 font-bold font-mono">1. 50% Lifetime Membership Discount:</div>
+                  <div className="text-amber-300 font-bold font-mono">
+                    1. {isNorwegian ? '50% Livstidsrabatt på medlemskapet:' : '50% Lifetime Membership Discount:'}
+                  </div>
                   <p className="text-neutral-300">
-                    Your club membership is locked at half price for life upon launch.
+                    {isNorwegian
+                      ? 'Din medlemskontingent er låst til halv pris på livstid ved lansering.'
+                      : 'Your club membership is locked at half price for life upon launch.'}
                   </p>
-                  <div className="text-amber-300 font-bold font-mono pt-1">2. Entry in 5 Free Lifetime Memberships Draw:</div>
+                  <div className="text-amber-300 font-bold font-mono pt-1">
+                    2. {isNorwegian ? 'Lodd i trekningen av 5 gratis livstidsmedlemskap:' : 'Entry in 5 Free Lifetime Memberships Draw:'}
+                  </div>
                   <p className="text-neutral-300">
-                    Your email is entered in the launch draw to win 100% free membership with zero annual dues permanently.
+                    {isNorwegian
+                      ? 'Din registrering er automatisk med i trekningen av 5 permanente livstidsmedlemskap med 0 kr i årsavgift.'
+                      : 'Your email is entered in the launch draw to win 100% free membership with zero annual dues permanently.'}
                   </p>
-                  <div className="text-amber-300 font-bold font-mono pt-1">3. Founder Reference Code:</div>
+                  <div className="text-amber-300 font-bold font-mono pt-1">
+                    3. {isNorwegian ? 'Founding Referansekode:' : 'Founder Reference Code:'}
+                  </div>
                   <p className="font-mono text-base font-bold text-amber-400">{data.inviteCode}</p>
                 </div>
 
@@ -435,22 +470,26 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                 <div className="p-4 rounded-xl bg-gradient-to-br from-neutral-900 via-amber-950/20 to-neutral-950 border border-amber-400/30 space-y-3 text-xs">
                   <div className="text-amber-300 font-bold font-mono flex items-center gap-1.5 uppercase tracking-wider text-[11px]">
                     <Radio className="w-3.5 h-3.5 text-amber-400" />
-                    CONFIDENTIAL FOUNDER INTELLIGENCE PACKAGE ATTACHED:
+                    <span>{isNorwegian ? 'VEDLAGT FORTROLIG DOKUMENTASJON FOR FOUNDING MEMBERS:' : 'CONFIDENTIAL FOUNDER INTELLIGENCE PACKAGE ATTACHED:'}</span>
                   </div>
                   <p className="text-neutral-300">
-                    While our membership committee finalizes your private bedbank credentials, we invite you to review our forensic research on why hotel retail prices are rigged:
+                    {isNorwegian
+                      ? 'Mens medlemskomiteen ferdigstiller dine private grossisttilganger, inviterer vi deg til å undersøke vår dybdeanalyse om hvordan offentlige hotellpriser manipuleres:'
+                      : 'While our membership committee finalizes your private bedbank credentials, we invite you to review our forensic research on why hotel retail prices are rigged:'}
                   </p>
 
                   <div className="p-3 rounded-lg bg-neutral-950/80 border border-neutral-800 space-y-1.5">
                     <div className="font-semibold text-neutral-100 flex items-center justify-between">
                       <span className="flex items-center gap-1.5">
                         <Headphones className="w-3.5 h-3.5 text-amber-400" />
-                        <span>Audio Deep Dive: "How Travel Duopolies Rig Hotel Prices"</span>
+                        <span>{isNorwegian ? 'Lydanalyse: «Slik manipulerer reiseduopolene hotellprisene»' : 'Audio Deep Dive: "How Travel Duopolies Rig Hotel Prices"'}</span>
                       </span>
-                      <span className="text-[10px] text-amber-400 font-mono">23:07 Duration</span>
+                      <span className="text-[10px] text-amber-400 font-mono">23:07 {isNorwegian ? 'Varighet' : 'Duration'}</span>
                     </div>
                     <p className="text-[11px] text-neutral-400 leading-relaxed">
-                      An unscripted conversational breakdown of Booking Holdings vs. Expedia Group, Rate Parity MFN clauses, and how closed-loop private clubs bypass the retail price-rigging system.
+                      {isNorwegian
+                        ? 'En grundig gjennomgang av Booking Holdings og Expedia Group, prisparitetsklausuler, og hvordan lukkede private medlemsklubber lovlig kutter mellomleddene.'
+                        : 'An unscripted conversational breakdown of Booking Holdings vs. Expedia Group, Rate Parity MFN clauses, and how closed-loop private clubs bypass the retail price-rigging system.'}
                     </p>
                     <div className="flex items-center gap-3 pt-1">
                       <button
@@ -459,7 +498,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                         className="inline-flex items-center gap-1.5 text-xs text-amber-300 hover:text-amber-200 font-mono font-semibold cursor-pointer"
                       >
                         <Play className="w-3 h-3 fill-current" />
-                        <span>Stream 23-Min Audio Briefing →</span>
+                        <span>{isNorwegian ? 'Hør 23-Min Lydanalyse →' : 'Stream 23-Min Audio Briefing →'}</span>
                       </button>
 
                       <a
@@ -468,7 +507,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                         className="inline-flex items-center gap-1 text-[11px] text-neutral-400 hover:text-white font-mono"
                       >
                         <Download className="w-3 h-3 text-amber-400" />
-                        <span>Download MP3</span>
+                        <span>{isNorwegian ? 'Last ned MP3' : 'Download MP3'}</span>
                       </a>
                     </div>
                   </div>
@@ -477,12 +516,14 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                     <div className="font-semibold text-neutral-100 flex items-center justify-between">
                       <span className="flex items-center gap-1.5">
                         <FileText className="w-3.5 h-3.5 text-amber-400" />
-                        <span>Industry Research Brief No. 001: The OTA Duopoly</span>
+                        <span>{isNorwegian ? 'Forskningsrapport nr. 001: Det globale reiseduopolet' : 'Industry Research Brief No. 001: The OTA Duopoly'}</span>
                       </span>
-                      <span className="text-[10px] text-amber-400 font-mono">14-Page PDF</span>
+                      <span className="text-[10px] text-amber-400 font-mono">{isNorwegian ? '14-Siders PDF' : '14-Page PDF'}</span>
                     </div>
                     <p className="text-[11px] text-neutral-400 leading-relaxed">
-                      Complete institutional research brief with ownership structures, brand portfolios across 25+ consumer sites, and the European vs. US rate-parity regulatory landscape.
+                      {isNorwegian
+                        ? 'Komplett rapport med eierskapsstrukturer, porteføljer på tvers av 25+ merkevarer, og europeisk regelverk for prisparitet.'
+                        : 'Complete institutional research brief with ownership structures, brand portfolios across 25+ consumer sites, and the European vs. US rate-parity regulatory landscape.'}
                     </p>
                     <a
                       href="/docs/OTA_Duopoly_Research_Brief.pdf"
@@ -490,19 +531,21 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                       className="inline-flex items-center gap-1.5 text-xs text-amber-300 hover:text-amber-200 font-mono font-semibold pt-1"
                     >
                       <Download className="w-3 h-3" />
-                      <span>Download 14-Page Industry Research Brief (PDF) →</span>
+                      <span>{isNorwegian ? 'Last ned 14-siders forskningsrapport (PDF) →' : 'Download 14-Page Industry Research Brief (PDF) →'}</span>
                     </a>
                   </div>
                 </div>
 
                 <p className="text-xs text-neutral-400">
-                  We are finalizing direct B2B integrations with institutional bedbanks (Hotelbeds, WebBeds) to bring you wholesale net rates across 1M+ hotels and villas. You will be notified the moment member onboarding opens.
+                  {isNorwegian
+                    ? 'Vi fullfører nå direkte B2B-integrasjoner med institusjonelle grossister (Hotelbeds, WebBeds) for å gi deg uavkortede nettopriser på over 1 million hoteller. Du varsles i samme sekund opptaket åpner.'
+                    : 'We are finalizing direct B2B integrations with institutional bedbanks (Hotelbeds, WebBeds) to bring you wholesale net rates across 1M+ hotels and villas. You will be notified the moment member onboarding opens.'}
                 </p>
 
                 <div className="pt-2 text-xs text-neutral-400 font-mono">
-                  Warm regards,<br />
+                  {isNorwegian ? 'Med vennlig hilsen,' : 'Warm regards,'}<br />
                   <strong>The Atlas Membership Committee</strong><br />
-                  atlastravelclub.com
+                  HARD ROCK CAPITAL LTD • <a href="https://atlasclub.web.app" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">atlasclub.web.app</a>
                 </div>
               </div>
             </div>
@@ -512,14 +555,14 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
         {/* Modal Footer */}
         <div className="px-6 py-4 bg-neutral-950 border-t border-neutral-800 flex items-center justify-between text-xs">
           <span className="text-neutral-500 font-mono">
-            Atlas Travel Club Sovereign Registry
+            {isNorwegian ? 'Atlas Travel Club Medlemsregister' : 'Atlas Travel Club Sovereign Registry'}
           </span>
           <button
             type="button"
             onClick={handleClose}
             className="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-xs font-semibold cursor-pointer transition"
           >
-            Close Certificate
+            {isNorwegian ? 'Lukk diplom' : 'Close Certificate'}
           </button>
         </div>
       </div>

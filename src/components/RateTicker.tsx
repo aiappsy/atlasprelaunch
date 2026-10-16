@@ -9,6 +9,7 @@ import {
   RefreshCw,
   CheckCircle2,
 } from 'lucide-react';
+import { useLanguage } from '../lib/i18n/LanguageContext';
 
 export const REAL_HOTELS = [
   {
@@ -152,6 +153,7 @@ const FLIGHT_TEST_PRESETS = [
 ];
 
 export const RateTicker: React.FC = () => {
+  const { isNorwegian } = useLanguage();
   const [activeTab, setActiveTab] = useState<'hotels' | 'flights'>('hotels');
   const [selectedFlightPreset, setSelectedFlightPreset] = useState(FLIGHT_TEST_PRESETS[0]);
   const [isScanning, setIsScanning] = useState(false);
@@ -172,10 +174,14 @@ export const RateTicker: React.FC = () => {
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
         <div>
           <span className="text-xs font-mono uppercase tracking-widest text-amber-300/90 font-semibold block text-center sm:text-left">
-            Live Rate Parity Arbitrage Audit (Institutional Clearing vs Public OTAs)
+            {isNorwegian
+              ? 'Prissammenligning i sanntid (B2B-grossister mot åpne reisesider)'
+              : 'Live Rate Parity Arbitrage Audit (Institutional Clearing vs Public OTAs)'}
           </span>
           <p className="text-[11px] text-neutral-400 font-mono mt-0.5 text-center sm:text-left">
-            Verify every rate live on Booking.com or Google Flights.
+            {isNorwegian
+              ? 'Sammenlign hver eneste pris direkte mot Booking.com eller Google Flights.'
+              : 'Verify every rate live on Booking.com or Google Flights.'}
           </p>
         </div>
 
@@ -191,7 +197,7 @@ export const RateTicker: React.FC = () => {
             }`}
           >
             <Building2 className="w-3.5 h-3.5" />
-            <span>Hotels (Bedbanks)</span>
+            <span>{isNorwegian ? 'Hoteller (Engros)' : 'Hotels (Bedbanks)'}</span>
           </button>
           <button
             type="button"
@@ -203,7 +209,7 @@ export const RateTicker: React.FC = () => {
             }`}
           >
             <Plane className="w-3.5 h-3.5" />
-            <span>Flights (Duffel NDC)</span>
+            <span>{isNorwegian ? 'Fly (Duffel NDC)' : 'Flights (Duffel NDC)'}</span>
           </button>
         </div>
       </div>
@@ -239,67 +245,67 @@ export const RateTicker: React.FC = () => {
                 </div>
 
                 {/* Direct Verification Link to verify live */}
-                <a
-                  href={dest.verifyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 inline-flex items-center gap-1 text-[10px] font-mono text-neutral-400 hover:text-amber-300 transition-colors"
-                  title={`Open live search on ${dest.otaProvider} to verify this price`}
-                >
-                  <span>Verifiser på {dest.otaProvider}</span>
-                  <ExternalLink className="w-2.5 h-2.5" />
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* FLIGHTS VIEW (DUFFEL NDC) */}
-      {activeTab === 'flights' && (
-        <div className="space-y-4">
-          {/* Flight Route Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-            {REAL_FLIGHTS.map((flight) => (
-              <div
-                key={flight.id}
-                className="p-3.5 rounded-2xl bg-neutral-900/80 border border-neutral-800/90 backdrop-blur-md text-left flex flex-col justify-between hover:border-amber-400/50 transition-all hover:scale-[1.01] shadow-lg shadow-black/40"
-              >
-                <div>
-                  <div className="flex items-center justify-between text-[11px] text-neutral-400 font-mono mb-1">
-                    <span className="text-sky-300 font-semibold">{flight.carrier}</span>
-                    <span className="text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">
-                      -{flight.savingsPct}%
-                    </span>
-                  </div>
-                  <h4 className="text-xs font-semibold text-neutral-200 line-clamp-1">
-                    {flight.route}
-                  </h4>
-                  <p className="text-[10px] text-neutral-400 font-mono mt-0.5">
-                    {flight.notes}
-                  </p>
-                </div>
-
-                <div className="mt-2.5 pt-2 border-t border-neutral-800/80">
-                  <div className="flex items-baseline justify-between text-xs font-mono">
-                    <span className="text-neutral-500 line-through text-[11px]">
-                      OTA: ${flight.publicOTA}
-                    </span>
-                    <span className="text-amber-300 font-bold text-sm">
-                      Duffel NDC: ${flight.atlasWholesale}
-                    </span>
-                  </div>
-
                   <a
-                    href={flight.verifyUrl}
+                    href={dest.verifyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-2 inline-flex items-center gap-1 text-[10px] font-mono text-neutral-400 hover:text-amber-300 transition-colors"
-                    title="Open live search on Google Flights to verify this route"
+                    title={`Open live search on ${dest.otaProvider} to verify this price`}
                   >
-                    <span>Verifiser på Google Flights</span>
+                    <span>{isNorwegian ? `Verifiser på ${dest.otaProvider}` : `Verify on ${dest.otaProvider}`}</span>
                     <ExternalLink className="w-2.5 h-2.5" />
                   </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* FLIGHTS VIEW (DUFFEL NDC) */}
+        {activeTab === 'flights' && (
+          <div className="space-y-4">
+            {/* Flight Route Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+              {REAL_FLIGHTS.map((flight) => (
+                <div
+                  key={flight.id}
+                  className="p-3.5 rounded-2xl bg-neutral-900/80 border border-neutral-800/90 backdrop-blur-md text-left flex flex-col justify-between hover:border-amber-400/50 transition-all hover:scale-[1.01] shadow-lg shadow-black/40"
+                >
+                  <div>
+                    <div className="flex items-center justify-between text-[11px] text-neutral-400 font-mono mb-1">
+                      <span className="text-sky-300 font-semibold">{flight.carrier}</span>
+                      <span className="text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">
+                        -{flight.savingsPct}%
+                      </span>
+                    </div>
+                    <h4 className="text-xs font-semibold text-neutral-200 line-clamp-1">
+                      {flight.route}
+                    </h4>
+                    <p className="text-[10px] text-neutral-400 font-mono mt-0.5">
+                      {flight.notes}
+                    </p>
+                  </div>
+
+                  <div className="mt-2.5 pt-2 border-t border-neutral-800/80">
+                    <div className="flex items-baseline justify-between text-xs font-mono">
+                      <span className="text-neutral-500 line-through text-[11px]">
+                        OTA: ${flight.publicOTA}
+                      </span>
+                      <span className="text-amber-300 font-bold text-sm">
+                        Duffel NDC: ${flight.atlasWholesale}
+                      </span>
+                    </div>
+
+                    <a
+                      href={flight.verifyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-flex items-center gap-1 text-[10px] font-mono text-neutral-400 hover:text-amber-300 transition-colors"
+                      title="Open live search on Google Flights to verify this route"
+                    >
+                      <span>{isNorwegian ? 'Verifiser på Google Flights' : 'Verify on Google Flights'}</span>
+                      <ExternalLink className="w-2.5 h-2.5" />
+                    </a>
                 </div>
               </div>
             ))}
@@ -314,13 +320,15 @@ export const RateTicker: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-xs sm:text-sm font-bold text-neutral-100 flex items-center gap-2">
-                    <span>Test Duffel NDC Wholesale Flight Scanner</span>
+                    <span>{isNorwegian ? 'Test Duffel NDC direkte flyscanner' : 'Test Duffel NDC Wholesale Flight Scanner'}</span>
                     <span className="text-[9px] uppercase px-1.5 py-0.2 rounded bg-sky-400/15 text-sky-300 border border-sky-400/30 font-mono">
-                      Live Test
+                      {isNorwegian ? 'Sanntidstest' : 'Live Test'}
                     </span>
                   </h4>
                   <p className="text-[11px] text-neutral-400 font-mono">
-                    Select a route to simulate raw Duffel NDC airline net pricing vs public Google Flights.
+                    {isNorwegian
+                      ? 'Velg en rute for å simulere uavkortede Duffel NDC-nettopriser mot åpne Google Flights.'
+                      : 'Select a route to simulate raw Duffel NDC airline net pricing vs public Google Flights.'}
                   </p>
                 </div>
               </div>
@@ -351,13 +359,13 @@ export const RateTicker: React.FC = () => {
             <div className="pt-4 grid grid-cols-1 lg:grid-cols-3 gap-4 items-center">
               <div className="space-y-1">
                 <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider">
-                  Selected Route & Carrier Connection
+                  {isNorwegian ? 'Valgt rute & flyselskap' : 'Selected Route & Carrier Connection'}
                 </span>
                 <div className="text-sm font-bold text-neutral-200">
                   {selectedFlightPreset.from} ➔ {selectedFlightPreset.to}
                 </div>
                 <div className="text-xs font-mono text-sky-400 flex items-center gap-1">
-                  <span>Direct NDC Gateway:</span>
+                  <span>{isNorwegian ? 'Direkte NDC-kanal:' : 'Direct NDC Gateway:'}</span>
                   <span className="text-neutral-300">{selectedFlightPreset.carrier}</span>
                 </div>
               </div>
@@ -365,20 +373,26 @@ export const RateTicker: React.FC = () => {
               {/* Price Breakdown Display */}
               <div className="p-3 rounded-xl bg-neutral-900/90 border border-neutral-800 flex items-center justify-around text-center font-mono">
                 <div>
-                  <span className="text-[10px] text-neutral-500 uppercase block">Public OTA</span>
+                  <span className="text-[10px] text-neutral-500 uppercase block">
+                    {isNorwegian ? 'Offentlig pris' : 'Public OTA'}
+                  </span>
                   <span className="text-sm line-through text-neutral-400 font-semibold">
                     ${selectedFlightPreset.retail}
                   </span>
                 </div>
                 <div className="text-neutral-600">➔</div>
                 <div>
-                  <span className="text-[10px] text-amber-400 uppercase font-bold block">Atlas NDC Net</span>
+                  <span className="text-[10px] text-amber-400 uppercase font-bold block">
+                    {isNorwegian ? 'Atlas NDC Netto' : 'Atlas NDC Net'}
+                  </span>
                   <span className="text-base text-amber-300 font-bold">
                     ${selectedFlightPreset.wholesale}
                   </span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-emerald-400 uppercase font-bold block">You Save</span>
+                  <span className="text-[10px] text-emerald-400 uppercase font-bold block">
+                    {isNorwegian ? 'Du sparer' : 'You Save'}
+                  </span>
                   <span className="text-xs text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded">
                     -${selectedFlightPreset.savings} ({selectedFlightPreset.savingsPct}%)
                   </span>
@@ -394,7 +408,11 @@ export const RateTicker: React.FC = () => {
                   className="w-full sm:w-auto flex-1 px-4 py-2.5 rounded-xl bg-gradient-to-r from-sky-400 to-indigo-500 hover:from-sky-300 hover:to-indigo-400 text-neutral-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition cursor-pointer shadow-md"
                 >
                   <RefreshCw className={`w-3.5 h-3.5 ${isScanning ? 'animate-spin' : ''}`} />
-                  <span>{isScanning ? 'Pinging Duffel...' : 'Scan Duffel NDC'}</span>
+                  <span>
+                    {isScanning
+                      ? (isNorwegian ? 'Henter NDC-priser...' : 'Pinging Duffel...')
+                      : (isNorwegian ? 'Kjør Duffel NDC Scan' : 'Scan Duffel NDC')}
+                  </span>
                 </button>
 
                 <a
@@ -403,7 +421,7 @@ export const RateTicker: React.FC = () => {
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto px-3 py-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-neutral-200 hover:text-white text-xs font-mono flex items-center justify-center gap-1.5 transition"
                 >
-                  <span>Verifiser på Google Flights</span>
+                  <span>{isNorwegian ? 'Verifiser på Google Flights' : 'Verify on Google Flights'}</span>
                   <ExternalLink className="w-3 h-3 text-amber-400" />
                 </a>
               </div>
@@ -413,9 +431,17 @@ export const RateTicker: React.FC = () => {
             <div className="mt-3 pt-3 border-t border-neutral-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] font-mono text-neutral-400">
               <div className="flex items-center gap-2 text-emerald-400">
                 <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-                <span>Duffel EU261 Protection Included: Up to €600 compensation automatically credited upon 3h+ disruption.</span>
+                <span>
+                  {isNorwegian
+                    ? 'EU261-passasjertrygghet inkludert: Opptil 600 € i kompensasjon automatisk ved forsinkelser over 3 timer.'
+                    : 'Duffel EU261 Protection Included: Up to €600 compensation automatically credited upon 3h+ disruption.'}
+                </span>
               </div>
-              <span className="text-neutral-500">Zero Agency Booking Fee • At-Cost Airline Settling</span>
+              <span className="text-neutral-500">
+                {isNorwegian
+                  ? '0 kr i byråpåslag • Direkte oppgjør mot flyselskap'
+                  : 'Zero Agency Booking Fee • At-Cost Airline Settling'}
+              </span>
             </div>
           </div>
         </div>

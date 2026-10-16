@@ -10,6 +10,7 @@ import { CrmDashboard } from './components/crm/CrmDashboard';
 import { CrmAuthGate } from './components/crm/CrmAuthGate';
 import { FounderCertificateModal, FounderCertificateData } from './components/FounderCertificateModal';
 import { PodcastPlayerModal } from './components/PodcastPlayerModal';
+import { PrelaunchConcierge } from './components/PrelaunchConcierge';
 import { CalculationResult } from './lib/calculatorModel';
 
 export default function App() {
@@ -355,6 +356,20 @@ export default function App() {
         }}
         onPlaybackStart={() => setIsVideoPlaying(false)}
       />
+
+      {/* Prelaunch AI Concierge (Aura) */}
+      {viewMode === 'site' && (
+        <PrelaunchConcierge
+          onJoinWaitlist={() => setIsWaitlistOpen(true)}
+          onOpenPodcast={(track) => {
+            setPodcastTrack(track);
+            setIsPodcastOpen(true);
+          }}
+          onOpenCalculator={() => {
+            document.getElementById('visual-savings-calculator')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+        />
+      )}
 
       {/* Hidden Master Studio Audio Element (Rendered in DOM with playsInline for iOS Chrome/Safari) */}
       <audio
