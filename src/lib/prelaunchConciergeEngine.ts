@@ -900,37 +900,41 @@ export function getWelcomeMessageData(currency: CurrencyCode) {
 
   if (isNorwegian) {
     return {
-      text: `Hei! Jeg er **Aura**, din personlige AI-concierge for Atlas Travel Club.
+      text: `Hei! Jeg er **Aura**, din personlige AI-concierge for ATLAS Travel Club.
 
-Jeg kan forklare hvordan våre lukkede engrospriser på hotell fungerer, våre eksklusive **7-netters feriesuiter til 3 490 kr**, **Gourmet & Spa med 0 kr i rompris**, eller hvordan du sikrer deg **50% livstidsrabatt som Founding Member (${p.formattedFounding})**.
+Den offisielle lanseringen åpner **mandag 4. januar 2027 kl. 10:00**! 
+
+Jeg kan forklare hvordan våre lukkede engrospriser på hotell fungerer, våre **7-netters ferieleiligheter til 3 490 kr**, **Gourmet & Spa med 0 kr i rompris**, eller hvordan du sikrer deg 1 av våre **100 første Founding-medlemskap (${p.formattedFounding})** som inkluderer et **gratis 3-dagers luksushotellopphold for to** (og sjansen til å vinne all mat dekket!).
 
 Hva kan jeg hjelpe deg med i dag?`,
       action: 'open_waitlist' as const,
-      actionLabel: `Start gratis prøveperiode (${p.formattedFounding})`,
+      actionLabel: `Sikre Founding-plass (${p.formattedFounding})`,
       followUps: [
+        'Hva inkluderer det gratis hotelloppholdet?',
         'Hva er ferieleiligheter til 3 490 kr?',
-        'Hva er Gourmet & Spa med 0 kr i rompris?',
-        'Kan jeg teste gratis uten forpliktelser?',
+        'Hva skjer når dørene åpner 4. januar?',
         'Hvordan fungerer engrospriser på hotell?',
-        'Hva koster medlemskap og 50% rabatt?',
+        'Hva er 100% verdigarantien?',
       ],
     };
   }
 
   return {
-    text: `Hi! I'm **Aura**, your AI concierge for Atlas Travel Club.
+    text: `Hi! I'm **Aura**, your VIP AI concierge for ATLAS Travel Club.
 
-I can explain how our private wholesale hotel rates work, our **7-night condos for 3,490 NOK ($320 USD)**, **Gourmet & Spa Escapes with $0 room rates**, or how to lock in our **50% Founding Lifetime Discount** (${p.formattedFounding}).
+Our official launch opens on **Monday, January 4, 2027 at 10:00 AM CET**!
+
+I can explain how our private wholesale hotel rates work, our **7-night vacation condos for 3,490 NOK ($320 USD)**, **Gourmet & Spa Escapes with $0 room rates**, or how to secure 1 of our **first 100 Founding Memberships (${p.formattedFounding})** which includes a **complimentary 3-day European hotel stay for two** (and entry to win all meals covered!).
 
 What can I help you with today?`,
     action: 'open_waitlist' as const,
-    actionLabel: `Start Free Trial (${p.formattedFounding})`,
+    actionLabel: `Claim Founding Spot (${p.formattedFounding})`,
     followUps: [
+      'What is included in the free hotel stay?',
       'What are 7-night condo stays for 3,490 NOK?',
-      'What is Gourmet & Spa Escapes ($0 room rate)?',
-      'Can I test for free with zero commitment?',
+      'What happens on Launch Day January 4?',
       'How does wholesale hotel pricing work?',
-      'What is the membership price and founding discount?',
+      'What is the 100% money-back guarantee?',
     ],
   };
 }
@@ -942,35 +946,34 @@ export function getFallbackAnswer(currency: CurrencyCode): ConciergeAnswer {
 
   if (isNorwegian) {
     return {
-      text: `Atlas Travel Club er en lukket medlemsklubb som gir deg direkte tilgang til engrospriser på reiser (fra ledende bedbanks og flyselskaper) med 0% kommersielt påslag – vanligvis 20% til 35% lavere enn Booking.com eller Expedia.
+      text: `ATLAS Travel Club er en lukket medlemsklubb (etter Costco-modellen) som gir deg direkte tilgang til engrospriser på reiser med 0% kommersielt påslag – vanligvis 20% til 45% lavere enn Booking.com eller Expedia.
 
-Vårt standardmedlemskap er **${p.formattedRegular}**, men tidlige Founding Members låser inn **50% livstidsrabatt til kun ${p.formattedFounding}**.
+Lanseringen skjer **mandag 4. januar 2027 kl. 10:00**. Medlemskapet koster **${p.formattedRegular}**, og de 100 første mottar et **100% gratis 3-dagers luksushotellopphold for to i Europa (verdi 5 400 kr)**.
 
-Hva er du mest nysgjerrig på? Jeg forklarer gjerne hvorfor man må være medlem for å se prisene, våre hotell- og cruisepriser, metallkortet eller 100% verdigarantien.`,
+Hva er du mest nysgjerrig på? Jeg forklarer gjerne 0 kr i rompris (Connex), 7-netters leiligheter (RVC), 100% provisjonsrefusjon eller 100% verdigarantien.`,
       action: 'open_waitlist',
-      actionLabel: `Sikre 50% livstidsrabatt (${p.formattedFounding})`,
+      actionLabel: `Sikre Founding-plass (${p.formattedFounding})`,
       followUps: [
-        'Hvorfor må jeg bli medlem og ikke teste først?',
+        'Hva inkluderer det gratis hotelloppholdet?',
         'Hvordan fungerer engrospriser på hotell?',
-        'Hva koster medlemskap og 50% rabatt?',
+        'Hva skjer når dørene åpner 4. januar?',
         'Hva er 100% verdigarantien?',
       ],
     };
   }
 
   return {
-    text: `Atlas Travel Club is a private membership club that gives you direct access to wholesale travel rates (from major hotel bedbanks and airlines) with 0% retail markup—typically 20% to 35% lower than Booking.com or Expedia.
+    text: `ATLAS Travel Club is a private membership club (built on the Costco model) giving members direct access to wholesale travel rates with 0% retail markup—typically 20% to 45% lower than Booking.com or Expedia.
 
-Our standard membership is **${p.formattedRegular}**, but early founders lock in **50% off for life at ${p.formattedFounding}**.
+Our official launch opens **Monday, January 4, 2027 at 10:00 AM CET**. Membership is **${p.formattedRegular}**, and the first 100 Founding Members receive a **complimentary 3-day European hotel break for two (worth $520)**.
 
-Could you tell me a bit more about what you're curious about? I'm happy to explain why membership is required before searching, our hotel and cruise savings, the metal Visa card, or our 100% money-back guarantee.`,
+What would you like to know more about? I can explain $0 room rates (Connex), 7-night condo escapes (RVC), 100% commission rebates, or our 100% money-back guarantee.`,
     action: 'open_waitlist',
-    actionLabel: `Claim 50% Off Lifetime Spot (${p.formattedFounding})`,
+    actionLabel: `Claim Founding Spot (${p.formattedFounding})`,
     followUps: [
-      'Why do I have to become a member and can\'t test first?',
+      'What is included in the free hotel stay?',
       'How does wholesale hotel pricing work?',
-      'What is the membership price and founding discount?',
-      'Why are cruise prices identical publicly?',
+      'What happens on Launch Day January 4?',
       'What is the 100% money-back guarantee?',
     ],
   };

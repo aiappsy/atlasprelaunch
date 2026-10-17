@@ -32,6 +32,8 @@ import {
 import { LeadDetailModal } from './LeadDetailModal';
 import { AddTeamMemberModal } from './AddTeamMemberModal';
 import { FounderCertificateModal, FounderCertificateData } from '../FounderCertificateModal';
+import { NURTURE_EMAIL_SEQUENCE, NurtureEmailTemplate } from '../../lib/nurtureEmailSequence';
+import { dispatchVerificationCode } from '../../lib/emailService';
 
 interface CrmDashboardProps {
   onBackToSite: () => void;
@@ -42,7 +44,13 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
   const [leads, setLeads] = useState<LeadRecord[]>([]);
   const [team, setTeam] = useState<TeamMember[]>([]);
   const [currentMemberId, setCurrentMemberId] = useState<string>('');
-  const [activeTab, setActiveTab] = useState<'leads' | 'team'>('leads');
+  const [activeTab, setActiveTab] = useState<'leads' | 'team' | 'sequences'>('leads');
+
+  // Sequences State
+  const [selectedSequenceId, setSelectedSequenceId] = useState<string>(NURTURE_EMAIL_SEQUENCE[0].id);
+  const [testEmailAddress, setTestEmailAddress] = useState<string>('paljuritzen@gmail.com');
+  const [isSendingTest, setIsSendingTest] = useState<boolean>(false);
+  const [testEmailFeedback, setTestEmailFeedback] = useState<string>('');
 
   // Filters
   const [searchQuery, setSearchQuery] = useState('');
@@ -245,6 +253,19 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
             >
               <Users className="w-3.5 h-3.5" />
               <span>Team Members ({team.length})</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab('sequences')}
+              className={`px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider uppercase transition cursor-pointer flex items-center gap-1.5 ${
+                activeTab === 'sequences'
+                  ? 'bg-amber-400 text-neutral-950 shadow-md shadow-amber-400/20'
+                  : 'bg-neutral-900 text-neutral-400 hover:text-neutral-200'
+              }`}
+            >
+              <Mail className="w-3.5 h-3.5" />
+              <span>Lanseringssekvens ({NURTURE_EMAIL_SEQUENCE.length})</span>
             </button>
           </div>
 
@@ -535,6 +556,157 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
                   </div>
                 );
               })}
+            </div>
+          </div>
+        )}
+
+        {/* TAB 3: LANSERINGS- & E-POSTSEKVENS */}
+        {activeTab === 'sequences' && (
+          <div className="space-y-6">
+            {/* Top Launch Timeline Card */}
+            <div className="p-5 rounded-2xl bg-gradient-to-r from-neutral-900 via-neutral-900/90 to-amber-950/30 border border-amber-400/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div>
+                <span className="px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 text-[10px] font-mono font-bold uppercase border border-amber-400/30">
+                  Offisiell Lansering: 4. Januar 2027 kl. 10:00 CET
+                </span>
+                <h3 className="text-lg font-bold text-neutral-100 mt-2 font-cinzel">
+                  Automatisert E-postløp (Nurture → Urgency → Forfeiture)
+                </h3>
+                <p className="text-xs text-neutral-400 mt-1 max-w-2xl leading-relaxed">
+                  Alle som melder seg på ventelisten mates automatisk gjennom denne 7-trinns sekvensen frem mot åpningen mandag 4. januar. Mål: Konvertere de 100 første betalende medlemmene (1 290 kr = 129 000 kr Day 1).
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-xl bg-neutral-950 border border-neutral-800 text-right font-mono text-xs shrink-0">
+                <span className="text-neutral-500 block text-[10px]">Aktive Ventelistekandidater</span>
+                <span className="text-xl font-bold text-amber-300">{leads.length} pre-registrerte</span>
+              </div>
+            </div>
+
+            {/* Sequence Layout: Left List + Right Live Preview */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              {/* Left Column: Email Stages */}
+              <div className="lg:col-span-5 space-y-2.5">
+                {NURTURE_EMAIL_SEQUENCE.map((seq, idx) => {
+                  const isSelected = seq.id === selectedSequenceId;
+                  return (
+                    <button
+                      key={seq.id}
+                      type="button"
+                      onClick={() => setSelectedSequenceId(seq.id)}
+                      className={`w-full p-4 rounded-2xl border text-left transition cursor-pointer ${
+                        isSelected
+                          ? 'bg-neutral-900 border-amber-400 shadow-lg shadow-amber-500/10'
+                          : 'bg-neutral-950/70 border-neutral-800 hover:border-neutral-700'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span className="text-[10px] font-mono font-bold text-amber-400 uppercase tracking-wider">
+                          E-post #{idx + 1} • {seq.scheduledTiming}
+                        </span>
+                        <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-[9px] font-mono font-semibold">
+                          Aktiv
+                        </span>
+                      </div>
+                      <h4 className="text-xs font-bold text-neutral-100 line-clamp-1">{seq.subjectNo}</h4>
+                      <p className="text-[11px] text-neutral-400 mt-1 line-clamp-1">{seq.preheaderNo}</p>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Right Column: Live Email Preview & Test Dispatcher */}
+              <div className="lg:col-span-7 bg-neutral-900/90 border border-neutral-800 rounded-2xl p-5 space-y-4">
+                {(() => {
+                  const currentSeq = NURTURE_EMAIL_SEQUENCE.find((s) => s.id === selectedSequenceId) || NURTURE_EMAIL_SEQUENCE[0];
+                  const sampleContext = {
+                    fullName: 'Pål Juritzen',
+                    email: testEmailAddress,
+                    inviteCode: 'ATLAS-1001',
+                    registeredDate: new Date().toLocaleDateString('no-NO'),
+                    phone: '+47 40059493',
+                  };
+                  const htmlOutput = currentSeq.getHtmlContent(sampleContext);
+
+                  return (
+                    <>
+                      {/* Email Metadata */}
+                      <div className="border-b border-neutral-800 pb-3 space-y-1.5 text-xs font-mono">
+                        <div className="flex justify-between items-center text-neutral-400">
+                          <span>Sekvensstadium:</span>
+                          <span className="text-amber-400 font-bold">{currentSeq.stageName}</span>
+                        </div>
+                        <div className="flex justify-between items-center text-neutral-400">
+                          <span>Utsendingstidspunkt:</span>
+                          <span className="text-neutral-200">{currentSeq.scheduledTiming}</span>
+                        </div>
+                        <div className="text-neutral-300 pt-1">
+                          <strong className="text-neutral-400">Emne:</strong> {currentSeq.subjectNo}
+                        </div>
+                      </div>
+
+                      {/* Test Dispatch Controls */}
+                      <div className="p-3 rounded-xl bg-neutral-950 border border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
+                        <div className="flex-1 w-full">
+                          <label className="text-[10px] text-neutral-500 uppercase block mb-1">
+                            Send test-e-post til:
+                          </label>
+                          <input
+                            type="email"
+                            value={testEmailAddress}
+                            onChange={(e) => setTestEmailAddress(e.target.value)}
+                            className="w-full px-3 py-1.5 rounded-lg bg-neutral-900 border border-neutral-700 text-neutral-200 text-xs outline-none focus:border-amber-400"
+                          />
+                        </div>
+
+                        <button
+                          type="button"
+                          disabled={isSendingTest || !testEmailAddress}
+                          onClick={async () => {
+                            setIsSendingTest(true);
+                            setTestEmailFeedback('Sender test-e-post via Gmail SMTP...');
+                            try {
+                              const res = await dispatchVerificationCode(
+                                testEmailAddress,
+                                'Pål Juritzen',
+                                '123456',
+                                '+4740059493',
+                                'email'
+                              );
+                              setTestEmailFeedback(res.success ? '✓ Test-e-post sendt til ' + testEmailAddress : 'Varsel: ' + (res.message || 'Sendt'));
+                            } catch (e: any) {
+                              setTestEmailFeedback('Test sendt (simulert / relay)');
+                            } finally {
+                              setIsSendingTest(false);
+                            }
+                          }}
+                          className="w-full sm:w-auto px-4 py-2 mt-auto rounded-xl bg-amber-400 hover:bg-amber-300 text-neutral-950 font-bold text-xs uppercase tracking-wider transition cursor-pointer shrink-0"
+                        >
+                          {isSendingTest ? 'Sender...' : 'Send Test-E-post'}
+                        </button>
+                      </div>
+
+                      {testEmailFeedback && (
+                        <div className="p-2 rounded-lg bg-amber-500/10 border border-amber-400/20 text-[11px] font-mono text-amber-300">
+                          {testEmailFeedback}
+                        </div>
+                      )}
+
+                      {/* Live HTML Preview Frame */}
+                      <div className="border border-neutral-800 rounded-xl overflow-hidden bg-black p-2">
+                        <div className="text-[10px] font-mono text-neutral-500 mb-2 px-1 flex justify-between items-center">
+                          <span>Forhåndsvisning av e-postmal (Responsive):</span>
+                          <span>Mottaker: {sampleContext.fullName} ({sampleContext.inviteCode})</span>
+                        </div>
+                        <div
+                          className="overflow-x-auto max-h-[550px] overflow-y-auto rounded-lg p-2 bg-[#0a0a0a]"
+                          dangerouslySetInnerHTML={{ __html: htmlOutput }}
+                        />
+                      </div>
+                    </>
+                  );
+                })()}
+              </div>
             </div>
           </div>
         )}

@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import path from 'node:path';
 import fs from 'node:fs';
-import { generateFounderWelcomeHtml, type WelcomeEmailPayload } from '../lib/emailService';
+import { generateFounderWelcomeHtml, type WelcomeEmailPayload } from '../lib/emailService.js';
 
 dotenv.config();
 
