@@ -2,7 +2,13 @@ import React from 'react';
 import { Building2, Plane, ShieldCheck, Users, Sparkles, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '../lib/i18n/LanguageContext';
 
-export const TrustPillars: React.FC = () => {
+import { PerkExplainerTab } from './PerkExplainerModal';
+
+interface TrustPillarsProps {
+  onOpenPerkModal?: (tab: PerkExplainerTab) => void;
+}
+
+export const TrustPillars: React.FC<TrustPillarsProps> = ({ onOpenPerkModal }) => {
   const { t, language } = useLanguage();
   const isNo = language === 'no';
 
@@ -40,13 +46,20 @@ export const TrustPillars: React.FC = () => {
                 : 'Whole-condo accommodations (1-2 bedrooms, full kitchen, sleeps up to 4-6 guests) in Marbella, Tenerife, Algarve, Crete, and Tuscany. Flat 3,490 NOK ($320 USD) for the entire 7 nights.'}
             </p>
           </div>
-          <div className="flex items-center gap-3 text-[11px] text-neutral-400 pt-1 border-t border-neutral-800">
+          <div className="flex items-center justify-between text-[11px] text-neutral-400 pt-2 border-t border-neutral-800">
             <span className="flex items-center gap-1 text-emerald-400 font-semibold">
               <CheckCircle2 className="w-3.5 h-3.5" />
-              {isNo ? '14 dagers angrefrist' : '14-Day Money Back'}
+              {isNo ? 'Spar opptil 16 000 kr' : 'Save $1,500+ vs OTAs'}
             </span>
-            <span>•</span>
-            <span>{isNo ? 'Spar opptil 12 000 kr' : 'Save $1,100+ vs OTAs'}</span>
+            {onOpenPerkModal && (
+              <button
+                type="button"
+                onClick={() => onOpenPerkModal('rvc')}
+                className="inline-flex items-center gap-1 text-amber-300 hover:text-amber-200 font-mono font-bold text-[11px] underline decoration-amber-400/40 hover:decoration-amber-300 cursor-pointer"
+              >
+                <span>{isNo ? 'Beregn ukesbesparelse →' : 'Calculate savings →'}</span>
+              </button>
+            )}
           </div>
         </div>
 
@@ -54,10 +67,10 @@ export const TrustPillars: React.FC = () => {
         <div className="p-5 rounded-2xl bg-neutral-950/80 border border-rose-400/40 text-left backdrop-blur-md space-y-3 relative overflow-hidden group">
           <div className="flex items-center justify-between">
             <span className="px-2.5 py-0.5 rounded-full bg-rose-400/20 text-rose-300 text-[10px] font-mono font-bold border border-rose-400/30">
-              {isNo ? '0 kr Rompris' : '$0 Room Rate'}
+              {isNo ? '0 kr Rompris (Founding Gave)' : '$0 Room Rate (Founder Gift)'}
             </span>
             <span className="text-xs font-mono font-black text-rose-300">
-              {isNo ? '0 NOK Rom (500 pts)' : '$0 Room (500 pts)'}
+              {isNo ? '0 NOK Rom (Inkludert)' : '$0 Room (Included)'}
             </span>
           </div>
           <div>
@@ -67,17 +80,24 @@ export const TrustPillars: React.FC = () => {
             </h4>
             <p className="text-xs text-neutral-300 mt-1 leading-relaxed">
               {isNo
-                ? 'Gratis hotellopphold for 2 personer på 3–4* boutique- og velværerhoteller i Dolomittene, Schwarzwald, Provence og Toscana. Du betaler kun hotellets faste, rimelige halvpensjonspris ved utsjekk.'
-                : 'Complimentary lodging for 2 guests at 3-4* boutique and wellness hotels across the Alps, Dolomites, and Tuscany. Guests only pay the hotel\'s published fixed half-board at checkout.'}
+                ? 'Gratis 3-dagers hotellopphold for 2 personer på boutique- og velværerhoteller i Dolomittene, Schwarzwald og Toscana. Du betaler kun hotellets faste, rimelige halvpensjon ved utsjekk.'
+                : 'Complimentary 3-day lodging for 2 guests at boutique and wellness hotels across the Alps, Dolomites, and Tuscany. Guests only pay the hotel\'s published fixed half-board at checkout.'}
             </p>
           </div>
-          <div className="flex items-center gap-3 text-[11px] text-neutral-400 pt-1 border-t border-neutral-800">
-            <span className="flex items-center gap-1 text-emerald-400 font-semibold">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              {isNo ? 'Umiddelbar verdikupong' : 'Instant Digital Voucher'}
+          <div className="flex items-center justify-between text-[11px] text-neutral-400 pt-2 border-t border-neutral-800">
+            <span className="flex items-center gap-1 text-rose-400 font-semibold">
+              <Sparkles className="w-3.5 h-3.5" />
+              {isNo ? '3 av 100 vinner all mat' : '3 of 100 win all meals'}
             </span>
-            <span>•</span>
-            <span>{isNo ? 'Spar over 6 700 kr' : 'Save $650+ vs Booking'}</span>
+            {onOpenPerkModal && (
+              <button
+                type="button"
+                onClick={() => onOpenPerkModal('connex')}
+                className="inline-flex items-center gap-1 text-rose-300 hover:text-rose-200 font-mono font-bold text-[11px] underline decoration-rose-400/40 hover:decoration-rose-300 cursor-pointer"
+              >
+                <span>{isNo ? 'Beregn matpris & se hoteller →' : 'Calculate meals & hotels →'}</span>
+              </button>
+            )}
           </div>
         </div>
       </div>

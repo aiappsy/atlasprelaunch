@@ -11,6 +11,7 @@ import { CrmAuthGate } from './components/crm/CrmAuthGate';
 import { FounderCertificateModal, FounderCertificateData } from './components/FounderCertificateModal';
 import { PodcastPlayerModal } from './components/PodcastPlayerModal';
 import { PrelaunchConcierge } from './components/PrelaunchConcierge';
+import { PerkExplainerModal, PerkExplainerTab } from './components/PerkExplainerModal';
 import { CalculationResult } from './lib/calculatorModel';
 
 export default function App() {
@@ -19,6 +20,8 @@ export default function App() {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState<boolean>(false);
   const [isPodcastOpen, setIsPodcastOpen] = useState<boolean>(false);
   const [podcastTrack, setPodcastTrack] = useState<'summary' | 'deepdive'>('summary');
+  const [isPerkExplainerOpen, setIsPerkExplainerOpen] = useState<boolean>(false);
+  const [perkExplainerTab, setPerkExplainerTab] = useState<PerkExplainerTab>('connex');
   const [calculatorMode, setCalculatorMode] = useState<CalculatorMode>('package');
   const [selectedSavings, setSelectedSavings] = useState<CalculationResult | null>(null);
   const [founderCertificateData, setFounderCertificateData] = useState<FounderCertificateData | null>(null);
@@ -61,12 +64,18 @@ export default function App() {
     setIsVideoMuted(true);
   };
 
+  const handleOpenPerkModal = (tab: PerkExplainerTab) => {
+    handleStopVideo();
+    setPerkExplainerTab(tab);
+    setIsPerkExplainerOpen(true);
+  };
+
   // Automatically pause hero video and voiceover when any modal opens
   useEffect(() => {
-    if (isWaitlistOpen || isPodcastOpen || !!founderCertificateData) {
+    if (isWaitlistOpen || isPodcastOpen || isPerkExplainerOpen || !!founderCertificateData) {
       handleStopVideo();
     }
-  }, [isWaitlistOpen, isPodcastOpen, founderCertificateData]);
+  }, [isWaitlistOpen, isPodcastOpen, isPerkExplainerOpen, founderCertificateData]);
 
   useEffect(() => {
     const isAuth = sessionStorage.getItem('atlas_crm_auth') === 'true';
@@ -285,6 +294,7 @@ export default function App() {
           onStopVideo={handleStopVideo}
           onToggleMute={handleToggleMute}
           onUnmuteAndRestart={handleUnmuteAndRestart}
+          onOpenPerkModal={handleOpenPerkModal}
           onOpenPodcast={() => {
             handleStopVideo();
             setPodcastTrack('summary');
@@ -317,7 +327,7 @@ export default function App() {
         />
 
         {/* Club Pillars */}
-        <TrustPillars />
+        <TrustPillars onOpenPerkModal={handleOpenPerkModal} />
       </main>
 
       {/* Footer with Discreet Staff Lock Icon */}
@@ -332,6 +342,18 @@ export default function App() {
         onClose={() => setIsWaitlistOpen(false)}
         calculatedSavings={selectedSavings}
         onViewCertificate={(data) => setFounderCertificateData(data)}
+        onOpenPerkModal={handleOpenPerkModal}
+      />
+
+      {/* Interactive Connex & RVC Explainer & Calculator Modal */}
+      <PerkExplainerModal
+        isOpen={isPerkExplainerOpen}
+        initialTab={perkExplainerTab}
+        onClose={() => setIsPerkExplainerOpen(false)}
+        onClaimSpot={() => {
+          setIsPerkExplainerOpen(false);
+          setIsWaitlistOpen(true);
+        }}
       />
 
       {/* Official Founder Member Certificate Modal */}

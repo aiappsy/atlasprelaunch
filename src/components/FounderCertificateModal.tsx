@@ -268,25 +268,25 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
 
                     <div className="p-2.5 rounded-lg bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
                       <div className="flex items-center gap-1.5 text-[#8a6522] font-cinzel text-xs font-bold uppercase">
-                        <Award className="w-3.5 h-3.5 text-[#9c7526] shrink-0" />
-                        <span>{isNorwegian ? '50% Livstidsrabatt' : '50% Lifetime Lock'}</span>
+                        <Gift className="w-3.5 h-3.5 text-[#9c7526] shrink-0" />
+                        <span>{isNorwegian ? 'Gratis Hotellopphold' : 'Free Hotel Stay'}</span>
                       </div>
                       <p className="text-[10px] font-mono text-[#57462c] mt-0.5">
                         {isNorwegian
-                          ? 'Årlig medlemskontingent låst til halv pris for all fremtid.'
-                          : 'Annual membership fee locked at half price permanently for life.'}
+                          ? '100% gratis 3-dagers hotellopphold for to i Europa (verdi 5 400 kr).'
+                          : '100% free 3-day European hotel stay for two travelers (worth $520).'}
                       </p>
                     </div>
 
                     <div className="p-2.5 rounded-lg bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
                       <div className="flex items-center gap-1.5 text-[#8a6522] font-cinzel text-xs font-bold uppercase">
-                        <Gift className="w-3.5 h-3.5 text-[#9c7526] shrink-0" />
-                        <span>{isNorwegian ? 'Medlemsfordeler' : 'Sovereign Allocation'}</span>
+                        <Sparkles className="w-3.5 h-3.5 text-[#9c7526] shrink-0" />
+                        <span>{isNorwegian ? 'Mattrekning for 3' : '3-Winner Meal Draw'}</span>
                       </div>
                       <p className="text-[10px] font-mono text-[#57462c] mt-0.5">
                         {isNorwegian
-                          ? '4 familiepass & registrert i trekningen av 5 gratis livstidsmedlemskap.'
-                          : '4 Family Guest Passes & Launch Draw Entry for 1 of 5 Free Memberships.'}
+                          ? 'Automatisk lodd i trekningen der 3 av 100 får all gourmetmat dekket.'
+                          : 'Automatic entry in the draw where 3 of 100 win all gourmet meals covered.'}
                       </p>
                     </div>
                   </div>

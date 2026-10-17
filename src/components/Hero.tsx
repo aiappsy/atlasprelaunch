@@ -11,7 +11,7 @@ import {
   Plane,
   Bed,
 } from 'lucide-react';
-import { useLanguage } from '../lib/i18n/LanguageContext';
+import { PerkExplainerTab } from './PerkExplainerModal';
 
 interface HeroProps {
   onJoinWaitlist: () => void;
@@ -19,6 +19,7 @@ interface HeroProps {
   onExploreFlights?: () => void;
   onExploreHotels?: () => void;
   onOpenPodcast?: () => void;
+  onOpenPerkModal?: (tab: PerkExplainerTab) => void;
   isVideoPlaying?: boolean;
   isVideoMuted?: boolean;
   onToggleVideo?: () => void;
@@ -33,6 +34,7 @@ export const Hero: React.FC<HeroProps> = ({
   onExploreFlights,
   onExploreHotels,
   onOpenPodcast,
+  onOpenPerkModal,
   isVideoPlaying = true,
   isVideoMuted = true,
   onToggleVideo,
@@ -115,6 +117,50 @@ export const Hero: React.FC<HeroProps> = ({
           </button>
         </div>
 
+        {/* Scarcity Banner: 100 Founder Spots Available with Free Hotel Stay */}
+        <div className="pt-2 space-y-2 animate-in fade-in duration-700">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-semibold shadow-lg shadow-black/40">
+            <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+            <span>
+              {isNorwegian
+                ? '🎁 Kun 100 plasser • Inkluderer gratis 3-dagers hotellopphold for 2 + 3 vinner all mat dekket!'
+                : '🎁 Strictly 100 Spots • Includes Free 3-Day Hotel Break for 2 + 3 Win All Meals Included!'}
+            </span>
+          </div>
+
+          {/* Scarcity / Waiting List Warning */}
+          <p className="text-[11px] sm:text-xs text-amber-200/90 font-mono font-medium max-w-xl mx-auto px-2">
+            {isNorwegian
+              ? '⏳ Merk: Dersom du ikke fullfører og aktiverer ditt Founding Membership, overføres tilbudet og det gratis hotelloppholdet automatisk til neste person på ventelisten.'
+              : '⏳ Note: If you do not activate your Founding Membership, this offer and your complimentary hotel stay will be forfeited and passed to the next person on the waitlist.'}
+          </p>
+
+          {/* Quick Explainer & Calculator Triggers */}
+          {onOpenPerkModal && (
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-1 text-xs font-mono">
+              <button
+                type="button"
+                onClick={() => onOpenPerkModal('connex')}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 border border-rose-400/30 hover:border-rose-400 text-rose-300 transition cursor-pointer"
+              >
+                <span>🍷</span>
+                <span>{isNorwegian ? 'Connex: 0 kr Rompris (Kalkulator)' : 'Connex: $0 Room Rate (Calculator)'}</span>
+                <span className="text-[10px] text-rose-400">↗</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => onOpenPerkModal('rvc')}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 border border-amber-400/30 hover:border-amber-400 text-amber-300 transition cursor-pointer"
+              >
+                <span>🏖️</span>
+                <span>{isNorwegian ? 'RVC: 7 Netter 3 490 kr (Kalkulator)' : 'RVC: 7-Night Condos $320 (Calculator)'}</span>
+                <span className="text-[10px] text-amber-400">↗</span>
+              </button>
+            </div>
+          )}
+        </div>
+
         {/* Direct Action Tabs: Dedicated Flights vs Hotels Savings Jumpers */}
         <div className="pt-2 flex flex-wrap items-center justify-center gap-2.5">
           <button
@@ -193,16 +239,16 @@ export const Hero: React.FC<HeroProps> = ({
 
       {/* Bottom Floating Bar: 2 Core Guarantees & Live Destination */}
       <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-neutral-300">
-        {/* Left: 50% Lifetime + 5 Free Draws */}
+        {/* Left: Free Hotel Stay + 3 All-Inclusive Meals Winners */}
         <div className="flex items-center gap-3 bg-neutral-950/60 backdrop-blur-md px-4 py-2 rounded-2xl border border-neutral-800/80 shadow-lg">
           <span className="flex items-center gap-1.5 text-amber-300 font-semibold">
-            <Award className="w-3.5 h-3.5" />
-            {isNorwegian ? '50% Livstidsrabatt på medlemskap' : '50% Off Membership For Life'}
+            <Gift className="w-3.5 h-3.5" />
+            {isNorwegian ? 'Gratis 3-dagers hotellopphold for 2' : 'Free 3-Day Hotel Break for 2'}
           </span>
           <span className="text-neutral-600">•</span>
           <span className="flex items-center gap-1.5 text-emerald-300 font-semibold">
-            <Gift className="w-3.5 h-3.5" />
-            {isNorwegian ? 'Trekning: 5 gratis livstidsmedlemskap' : '5 Free Lifetime Memberships Draw'}
+            <Sparkles className="w-3.5 h-3.5" />
+            {isNorwegian ? '3 vinnere får også maten gratis' : '3 Winners Get All Meals Free'}
           </span>
         </div>
 

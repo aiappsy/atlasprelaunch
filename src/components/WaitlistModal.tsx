@@ -23,12 +23,14 @@ import { addNewLeadFromRegistration } from '../lib/crmService';
 import { dispatchFounderWelcomeEmail, dispatchVerificationCode } from '../lib/emailService';
 import { FounderCertificateData } from './FounderCertificateModal';
 import { useLanguage } from '../lib/i18n/LanguageContext';
+import { PerkExplainerTab } from './PerkExplainerModal';
 
 interface WaitlistModalProps {
   isOpen: boolean;
   onClose: () => void;
   calculatedSavings?: CalculationResult | null;
   onViewCertificate?: (data: FounderCertificateData) => void;
+  onOpenPerkModal?: (tab: PerkExplainerTab) => void;
 }
 
 export const WaitlistModal: React.FC<WaitlistModalProps> = ({
@@ -36,6 +38,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
   onClose,
   calculatedSavings,
   onViewCertificate,
+  onOpenPerkModal,
 }) => {
   const { t, isNorwegian } = useLanguage();
   const [step, setStep] = useState<'form' | 'verify' | 'success'>('form');
@@ -135,7 +138,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
     try {
       const tierDesc = calculatedSavings
         ? `${calculatedSavings.totalNights} Nights ($${calculatedSavings.formattedSavings} saved/yr)`
-        : 'Founder Member (50% Off Lifetime)';
+        : 'Founding Member (Inkl. Gratis 3-dagers Hotellopphold)';
 
       const result = await registerSubscriber({
         fullName: fullName.trim(),
@@ -226,7 +229,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
                 {isNorwegian ? 'Søknad om Founding Membership' : 'Founder Member Registration'}
               </h3>
               <span className="text-[11px] text-amber-300 font-mono">
-                {isNorwegian ? '50% livstidsrabatt + 5 gratis medlemskap i loddtrekning' : '50% Off Lifetime + 5 Free Lifetime Draws'}
+                {isNorwegian ? 'Gratis 3-dagers hotellopphold for 2 + 3 vinner all mat inkludert' : 'Free 3-Day Hotel Break for 2 + 3 Win All Meals Included'}
               </span>
             </div>
           </div>
@@ -254,9 +257,9 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
                   </h4>
                   <p className="text-xs text-neutral-400">
                     {isNorwegian ? (
-                      <>Velkommen, <strong className="text-amber-300">{submissionResult.fullName}</strong>. Din prioriterte plass i klubben er bekreftet.</>
+                      <>Velkommen, <strong className="text-amber-300">{submissionResult.fullName}</strong>. Din prioriterte plass og ditt gratis hotellopphold er reservert.</>
                     ) : (
-                      <>Welcome, <strong className="text-amber-300">{submissionResult.fullName}</strong>. Your priority position is authenticated.</>
+                      <>Welcome, <strong className="text-amber-300">{submissionResult.fullName}</strong>. Your priority position and free hotel stay are reserved.</>
                     )}
                   </p>
                 </div>
@@ -285,11 +288,16 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
                 <div className="font-bold text-amber-300">
                   {isNorwegian ? 'Garanterte medlemsrettigheter:' : 'Certified Guarantees:'}
                 </div>
-                <div className="text-[11px] text-neutral-400">
-                  ✓ {isNorwegian ? '50% rabatt på medlemskapet låst for all fremtid' : '50% discount on membership locked for life'}<br />
-                  ✓ {isNorwegian ? 'Registrert i trekningen av 5 gratis livstidsmedlemskap' : 'Entered in the launch draw for 1 of 5 Free Lifetime Memberships'}<br />
-                  ✓ {isNorwegian ? 'Bekreftelse registrert for' : 'Confirmation logged for'} {submissionResult.email} ({submissionResult.phone})
+                <div className="text-[11px] text-neutral-400 space-y-0.5">
+                  <div>✓ {isNorwegian ? '100% gratis 3-dagers hotellopphold for to i Europa (verdi 5 400 kr)' : '100% Free 3-Day European Hotel Break for 2 (worth $520)'}</div>
+                  <div>✓ {isNorwegian ? 'Lodd i trekningen der 3 av 100 får all gourmetmat 100% dekket' : 'Entered in the draw where 3 of 100 win all gourmet meals fully covered'}</div>
+                  <div>✓ {isNorwegian ? 'Bekreftelse registrert for' : 'Confirmation logged for'} {submissionResult.email} ({submissionResult.phone})</div>
                 </div>
+              </div>
+
+              {/* Waiting List Urgency Forfeit Warning */}
+              <div className="p-3 rounded-xl bg-amber-500/15 border border-amber-400/40 text-[11px] font-mono text-amber-200">
+                <span>⚠️ <strong>{isNorwegian ? 'Viktig reservasjon:' : 'Important notice:'}</strong> {isNorwegian ? 'Dersom du ikke fullfører betalingen for ditt Founding Membership ved lansering (1 290 kr), overføres din plass og det gratis hotelloppholdet automatisk til neste person på ventelisten.' : 'If you do not complete your Founding Membership payment at launch (1,290 NOK), your reservation and complimentary hotel break will be automatically forfeited and passed to the next applicant on the waitlist.'}</span>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-2 pt-1">
@@ -359,6 +367,11 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
                     required
                     className="w-full text-center text-2xl sm:text-3xl font-mono font-bold tracking-[0.4em] py-3.5 px-4 rounded-2xl bg-neutral-950 border-2 border-amber-400/60 focus:border-amber-400 text-amber-300 placeholder-neutral-700 outline-none shadow-inner transition"
                   />
+                </div>
+
+                {/* Verification Urgency Notice */}
+                <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-400/25 text-[11px] font-mono text-amber-200/90 text-center">
+                  ⏳ {isNorwegian ? 'Sikkerhetskoden er aktiv nå. Ufullførte søknader frigis umiddelbart til neste søker i ventelisten.' : 'Security code active. Unclaimed spots are immediately forfeited to the next applicant on the waitlist.'}
                 </div>
 
                 {errorMessage && (
@@ -462,15 +475,54 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
               )}
 
               {/* Founder Guarantees Banner */}
-              <div className="p-3 rounded-2xl bg-neutral-950/90 border border-amber-400/40 text-xs text-neutral-300 space-y-1">
-                <div className="flex items-center gap-1.5 text-amber-300 font-bold text-xs">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                  <span>{isNorwegian ? 'Garanterte Founding Member-fordeler:' : 'Guaranteed Founder Member Privileges:'}</span>
+              <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-400/40 text-xs text-neutral-300 space-y-2">
+                <div className="flex items-center justify-between text-amber-300 font-bold text-xs">
+                  <div className="flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                    <span>{isNorwegian ? 'Garanterte Founding Member-fordeler (Kun 100 plasser):' : 'Guaranteed Founder Member Privileges (100 Spots Only):'}</span>
+                  </div>
                 </div>
-                <div className="text-[11px] text-neutral-300 pl-1 space-y-0.5 font-mono">
-                  <div>✓ <strong>{isNorwegian ? '50% livstidsrabatt på årsmedlemskapet' : '50% Off Membership for Life'}</strong></div>
-                  <div>✓ <strong>{isNorwegian ? 'Lodd i trekningen av 5 gratis livstidsmedlemskap' : '5 Free Lifetime Memberships random launch draw entry'}</strong></div>
+
+                <div className="text-[11px] text-neutral-300 pl-1 space-y-1 font-mono">
+                  <div>✓ <strong className="text-amber-200">{isNorwegian ? '100% gratis 3-dagers hotellopphold for 2 personer (verdi 5 400 kr)' : '100% Free 3-Day European Hotel Break for 2 (worth $520)'}</strong></div>
+                  <div>✓ <strong className="text-emerald-300">{isNorwegian ? '3 av de 100 første vinner OGSÅ all gourmetmat (halvpensjon) dekket av ATLAS' : '3 of 100 early members win ALL MEALS (half-board) fully covered by ATLAS'}</strong></div>
+                  <div className="text-[10px] text-neutral-400 pt-0.5 font-sans leading-normal">
+                    {isNorwegian
+                      ? 'ℹ️ Selve rommet er 100% sponset. Du betaler kun hotellets obligatoriske gourmet-halvpensjon (frokost + middag) ved utsjekk (fra ca. €39/dag).'
+                      : 'ℹ️ The hotel room is 100% sponsored. Traveler only covers standard hotel half-board (breakfast + dinner) at check-out (from €39/day).'}
+                  </div>
                 </div>
+
+                {/* Forfeiture Scarcity Warning */}
+                <div className="p-2 rounded-xl bg-amber-500/15 border border-amber-400/30 text-[10.5px] font-mono text-amber-200/90 leading-tight">
+                  ⏳ <strong>{isNorwegian ? 'Viktig:' : 'Important:'}</strong> {isNorwegian
+                    ? 'Dersom du ikke fullfører registreringen, overføres tilbudet og det gratis hotelloppholdet automatisk til neste person på ventelisten.'
+                    : 'If you do not complete registration, this offer and complimentary hotel stay are automatically passed to the next person on the waitlist.'}
+                </div>
+
+                {/* Optional Calculator Deep Dive Links */}
+                {onOpenPerkModal && (
+                  <div className="flex items-center justify-between text-[10px] font-mono pt-1 border-t border-amber-400/20 text-neutral-400">
+                    <span>{isNorwegian ? 'Se detaljer & regnestykker:' : 'Inspect calculations:'}</span>
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => onOpenPerkModal('connex')}
+                        className="text-rose-300 hover:text-rose-200 underline cursor-pointer"
+                      >
+                        🍷 {isNorwegian ? 'Connex 0 kr kalkulator' : 'Connex $0 calc'} ↗
+                      </button>
+                      <span>•</span>
+                      <button
+                        type="button"
+                        onClick={() => onOpenPerkModal('rvc')}
+                        className="text-amber-300 hover:text-amber-200 underline cursor-pointer"
+                      >
+                        🏖️ {isNorwegian ? 'RVC 7-netter kalkulator' : 'RVC 7-night calc'} ↗
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* 1. Full Name */}

@@ -538,10 +538,9 @@ export const PrelaunchConcierge: React.FC<PrelaunchConciergeProps> = ({
             <div className="flex items-center gap-2">
               <span className="text-amber-400 font-bold">{isNorwegian ? 'Founding-kontingent:' : 'Founding Dues:'}</span>
               <span className="text-emerald-400 font-black">{price.formattedFounding}</span>
-              <span className="text-neutral-500 line-through text-[10px]">{price.formattedRegular}</span>
             </div>
             <span className="px-2 py-0.5 rounded-full bg-amber-400/15 text-amber-300 text-[10px] font-bold border border-amber-400/30">
-              {isNorwegian ? 'Gratis Prøveperiode • 50% Låst' : 'Free Trial • 50% Locked for Life'}
+              {isNorwegian ? 'Inkl. Gratis Hotellopphold (5 400 kr)' : 'Incl. Free 3-Day Hotel Break ($520)'}
             </span>
           </div>
 
@@ -620,7 +619,7 @@ export const PrelaunchConcierge: React.FC<PrelaunchConciergeProps> = ({
                 className="shrink-0 px-2.5 py-1 rounded-lg bg-amber-400/10 hover:bg-amber-400/20 border border-amber-400/30 text-amber-300 text-[10px] font-mono font-bold flex items-center gap-1 cursor-pointer transition"
               >
                 <Sparkles className="w-3 h-3 text-amber-400" />
-                <span>{isNorwegian ? 'Gratis Prøve (50%)' : 'Free Trial (50% Off)'}</span>
+                <span>{isNorwegian ? 'Gratis Hotellopphold' : 'Free Hotel Stay'}</span>
               </button>
               {onOpenPodcast && (
                 <button

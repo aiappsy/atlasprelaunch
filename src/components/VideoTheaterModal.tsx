@@ -59,20 +59,20 @@ const SCRIPT_BEATS: ScriptBeat[] = [
   {
     startSec: 23,
     endSec: 31,
-    label: '04. Half Price For Life',
-    headline: 'Lock In Your Membership At Half Price For Life',
+    label: '04. Free European Hotel Break',
+    headline: 'Complimentary 3-Day European Hotel Break For Two',
     narration:
-      'Join our exclusive prelaunch waiting list today to lock in your membership at half price for life.',
-    badge: '50% OFF FOR LIFE',
+      'Join as one of our first 100 Founding Members to receive a complimentary 3-day European hotel stay for two, worth $520.',
+    badge: 'FREE 3-DAY HOTEL STAY',
   },
   {
     startSec: 31,
     endSec: 38,
-    label: '05. 5 Free Lifetime Draws',
-    headline: 'Win 1 of 5 Free Lifetime Memberships',
+    label: '05. Golden Ticket Meal Draw',
+    headline: '3 of 100 Members Win All Gourmet Meals Covered',
     narration:
-      'Plus, five lucky founder members will win a completely free lifetime membership with zero annual dues forever.',
-    badge: '5 FREE LIFETIME PASSES',
+      'Plus, three lucky Founding Members will win their entire gourmet dining and half-board 100% paid by ATLAS.',
+    badge: '3X ALL MEALS COVERED',
   },
 ];
 
@@ -354,7 +354,7 @@ export const VideoTheaterModal: React.FC<VideoTheaterModalProps> = ({
               className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/30 transition flex items-center justify-center gap-2 cursor-pointer"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Claim Founder Spot (50% Off For Life)</span>
+              <span>Claim Founder Spot (Free Hotel Stay Included)</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>

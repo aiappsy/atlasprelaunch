@@ -1,5 +1,5 @@
 // Conversational Prelaunch AI Concierge Knowledge Base & Engine for Atlas Travel Club
-// Base currency: USD. Standard membership: 990 NOK/yr ($95/yr), 50% Founding Lifetime Discount: 495 NOK/yr ($47.50/yr).
+// Base currency: USD. Standard membership: 1 290 NOK/yr ($120/yr). Founding Members get a 100% Free 3-Day European Hotel Break for 2 (worth 5 400 kr) + 3 of 100 win all meals covered!
 // Dynamic language support: When NOK is chosen, responses and UI seamlessly switch to Norwegian!
 
 export type CurrencyCode = 'USD' | 'NOK' | 'EUR' | 'GBP';
@@ -19,37 +19,37 @@ export const MEMBERSHIP_PRICING: Record<CurrencyCode, PriceQuote> = {
     currency: 'USD',
     symbol: '$',
     regularPrice: 120,
-    foundingPrice: 60,
+    foundingPrice: 120,
     formattedRegular: '$120 / year',
-    formattedFounding: '$60 / year',
-    monthlyEquivalent: '$5.00 / mo',
+    formattedFounding: '$120 / year',
+    monthlyEquivalent: '$10.00 / mo',
   },
   NOK: {
     currency: 'NOK',
     symbol: 'kr ',
     regularPrice: 1290,
-    foundingPrice: 645,
+    foundingPrice: 1290,
     formattedRegular: '1 290 kr / år',
-    formattedFounding: '645 kr / år',
-    monthlyEquivalent: '53,75 kr / mnd',
+    formattedFounding: '1 290 kr / år',
+    monthlyEquivalent: '107,50 kr / mnd',
   },
   EUR: {
     currency: 'EUR',
     symbol: '€',
     regularPrice: 110,
-    foundingPrice: 55,
+    foundingPrice: 110,
     formattedRegular: '€110 / year',
-    formattedFounding: '€55 / year',
-    monthlyEquivalent: '€4.58 / mo',
+    formattedFounding: '€110 / year',
+    monthlyEquivalent: '€9.17 / mo',
   },
   GBP: {
     currency: 'GBP',
     symbol: '£',
     regularPrice: 95,
-    foundingPrice: 47.50,
+    foundingPrice: 95,
     formattedRegular: '£95 / year',
-    formattedFounding: '£47.50 / year',
-    monthlyEquivalent: '£3.95 / mo',
+    formattedFounding: '£95 / year',
+    monthlyEquivalent: '£7.92 / mo',
   },
 };
 
@@ -142,36 +142,36 @@ export const PRELAUNCH_QA_DATABASE: QAEntry[] = [
 
       if (isNorwegian) {
         return {
-          text: `Det fantastiske er: **du kan bli medlem helt uten forpliktelser, fordi vi gir deg en gratis prøveperiode!**
+          text: `Det fantastiske er: **du kan sikre deg plass helt trygt, med 100% fornøyd- og verdigaranti!**
 
 Grunnen til at du må opprette et medlemskap først, er utelukkende juridisk. Hotellkontraktene våre forbyr oss strengt å vise uannonserte engrospriser åpent på nettet (dette kalles **prisparitet / Rate Parity**). De hemmelige nettoprisene kan kun gjøres tilgjengelige bak en passordbeskyttet innlogging for en lukket medlemsgruppe.
 
-Med gratis prøveperiode får du full tilgang til å logge inn, søke blant hundretusenvis av 4- og 5-stjerners hoteller over hele verden, og sammenligne våre nettopriser direkte mot Booking.com eller Expedia – **helt uten å binde deg eller betale noe**.
+Når du sikrer deg et av våre 100 første Founding-medlemskap (${p.formattedFounding}), **spanderer ATLAS et 3-dagers hotellopphold for to personer i Europa helt gratis (verdi 5 400 kr)**. Selve rommet er 100% dekket (du betaler kun hotellets lokale gourmet-halvpensjon ved utsjekk).
 
-Og hvis du velger å fortsette som Founding Member, låser du inn **50% livstidsrabatt (${p.formattedFounding})**, og din første reise er i tillegg sikret av vår **100% verdigaranti**. Du tar med andre ord absolutt null økonomisk risiko!`,
+I tillegg trekker vi 3 heldige vinnere blant de 100 som får **OGSÅ MATEN 100% dekket av ATLAS**! Og din første reise er sikret av vår **100% verdigaranti**. Du tar med andre ord absolutt null økonomisk risiko!`,
           action: 'open_waitlist',
-          actionLabel: `Start gratis prøveperiode (${p.formattedFounding})`,
+          actionLabel: `Sikre Founding Member-plass (${p.formattedFounding})`,
           followUps: [
             'Hvordan fungerer engrospriser på hotell?',
-            'Hva koster medlemskap og 50% rabatt?',
+            'Hva inkluderer det gratis hotelloppholdet?',
             'Hva er 100% verdigarantien?',
           ],
         };
       }
 
       return {
-        text: `The best part is: **you can actually become a member with zero commitment, because we give you a completely free trial!**
+        text: `The best part is: **you can secure your spot with complete confidence, backed by our 100% money-back guarantee!**
 
 The reason you have to set up a membership first is purely legal. Hotel supplier contracts strictly prohibit showing wholesale rates openly to the public (this is called **Rate Parity**). Those confidential net rates can legally only be unlocked behind a private, password-protected member login.
 
-With our free trial, you get complete access to log in, search hundreds of thousands of 4- and 5-star properties worldwide, and compare our net rates live against Booking.com or Expedia—**with zero commitment and zero upfront cost**.
+When you secure one of our first 100 Founding Memberships (${p.formattedFounding}), **ATLAS gifts you a complimentary 3-day European hotel stay for two (worth $520)**. The room is 100% sponsored (you only pay the hotel's local gourmet half-board at checkout).
 
-If you choose to stay, you lock in our **50% lifetime Founding Member rate (${p.formattedFounding})**, and your first booking is still backed by our **100% money-back guarantee**. You literally have zero financial risk!`,
+On top of this, 3 lucky winners among the 100 will win **ALL MEALS 100% paid by ATLAS**! Plus, your membership is backed by our **100% money-back guarantee**. You literally have zero financial risk!`,
         action: 'open_waitlist',
-        actionLabel: `Start Free Trial (${p.formattedFounding})`,
+        actionLabel: `Claim Founding Spot (${p.formattedFounding})`,
         followUps: [
           'How does wholesale hotel pricing work?',
-          'What is the membership price and founding discount?',
+          'What is included in the free hotel stay?',
           'What is the 100% money-back guarantee?',
         ],
       };
