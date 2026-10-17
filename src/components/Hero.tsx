@@ -193,33 +193,37 @@ export const Hero: React.FC<HeroProps> = ({
           </button>
 
           {/* Audio Controller Indicator */}
-          {isVideoPlaying && (
-            <button
-              type="button"
-              data-action="toggle-audio"
-              onClick={onToggleMute}
-              className={`px-4 py-2 rounded-full border text-xs font-mono flex items-center gap-2.5 transition-all shadow-xl backdrop-blur-md cursor-pointer ${
-                !isVideoMuted
-                  ? 'bg-emerald-500/20 border-emerald-400 text-emerald-300 shadow-emerald-400/20'
-                  : 'bg-amber-500/20 border-amber-400 text-amber-300 shadow-amber-400/20 animate-pulse'
-              }`}
-              title={!isVideoMuted ? 'Mute Brian Voiceover' : 'Play Brian Voiceover'}
-            >
-              {!isVideoMuted ? (
-                <>
-                  <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-                  <span className="font-semibold text-emerald-300">{isNorwegian ? 'Stemme aktiv (Brian)' : 'Voiceover Active (Brian)'}</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                </>
-              ) : (
-                <>
-                  <VolumeX className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
-                  <span className="text-amber-300 font-bold">{isNorwegian ? 'Klikk for å slå på lyd' : 'Tap to Unmute Voiceover'}</span>
-                  <span className="text-[10px] text-amber-400 font-bold bg-amber-400/20 px-1.5 py-0.5 rounded">1:22</span>
-                </>
-              )}
-            </button>
-          )}
+          <button
+            type="button"
+            data-action="toggle-audio"
+            onClick={isVideoPlaying ? onToggleMute : onUnmuteAndRestart}
+            className={`px-4 py-2 rounded-full border text-xs font-mono flex items-center gap-2.5 transition-all shadow-xl backdrop-blur-md cursor-pointer ${
+              !isVideoMuted
+                ? 'bg-emerald-500/20 border-emerald-400 text-emerald-300 shadow-emerald-400/20 ring-1 ring-emerald-400/50'
+                : 'bg-amber-500/20 border-amber-400 text-amber-300 shadow-amber-400/20 hover:bg-amber-500/30 animate-pulse'
+            }`}
+            title={!isVideoMuted ? (isNorwegian ? 'Demp lanseringsbriefing' : 'Mute Launch Briefing') : (isNorwegian ? 'Spill av lanseringsbriefing' : 'Play Launch Briefing')}
+          >
+            {!isVideoMuted ? (
+              <>
+                <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+                <span className="font-semibold text-emerald-300">
+                  {isNorwegian ? 'Lanseringsbriefing aktiv (ATLAS)' : 'Launch Briefing Active (ATLAS)'}
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+              </>
+            ) : (
+              <>
+                <VolumeX className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
+                <span className="text-amber-300 font-bold">
+                  {isNorwegian ? '🔊 Hør lanseringsintroduksjonen' : '🔊 Listen to Launch Briefing'}
+                </span>
+                <span className="text-[10px] text-amber-400 font-bold bg-amber-400/25 px-1.5 py-0.5 rounded">
+                  {isNorwegian ? '1:15' : '1:20'}
+                </span>
+              </>
+            )}
+          </button>
         </div>
       </div>
 

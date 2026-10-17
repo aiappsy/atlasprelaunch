@@ -13,8 +13,14 @@ import { PodcastPlayerModal } from './components/PodcastPlayerModal';
 import { PrelaunchConcierge } from './components/PrelaunchConcierge';
 import { PerkExplainerModal, PerkExplainerTab } from './components/PerkExplainerModal';
 import { CalculationResult } from './lib/calculatorModel';
+import { useLanguage } from './lib/i18n/LanguageContext';
 
 export default function App() {
+  const { isNorwegian } = useLanguage();
+  const currentVoiceSrc = isNorwegian
+    ? '/audio/founder-voiceover-no.mp3?v=20270104'
+    : '/audio/founder-voiceover-new.mp3?v=20270104';
+
   const [viewMode, setViewMode] = useState<'site' | 'crm'>('site');
   const [isCrmAuthenticated, setIsCrmAuthenticated] = useState<boolean>(false);
   const [isWaitlistOpen, setIsWaitlistOpen] = useState<boolean>(false);
@@ -32,7 +38,7 @@ export default function App() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const voiceAudioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Initialize Brian's studio voiceover with iOS Safari & Chrome WebKit resilience
+  // Initialize authoritative studio launch voiceover (Ryan for English, Finn for Norwegian)
   useEffect(() => {
     const handleEnded = () => {
       setIsVideoMuted(true);
@@ -54,6 +60,19 @@ export default function App() {
       }
     };
   }, []);
+
+  // Update audio source dynamically when user toggles language
+  useEffect(() => {
+    const audioEl = voiceAudioRef.current;
+    if (audioEl) {
+      const wasPlaying = !isVideoMuted && !audioEl.paused;
+      audioEl.src = currentVoiceSrc;
+      audioEl.load();
+      if (wasPlaying) {
+        audioEl.play().catch(() => {});
+      }
+    }
+  }, [currentVoiceSrc, isVideoMuted]);
 
   const handleStopVideo = () => {
     voiceAudioRef.current?.pause();
@@ -142,20 +161,29 @@ export default function App() {
     if (videoRef.current) {
       videoRef.current.muted = true;
       videoRef.current.volume = 0;
+      if (!isVideoPlaying) {
+        videoRef.current.play().catch(() => {});
+        setIsVideoPlaying(true);
+      }
     }
     if (isVideoMuted) {
       const audioEl = voiceAudioRef.current;
       if (audioEl) {
+        if (!audioEl.src || !audioEl.src.includes('founder-voiceover')) {
+          audioEl.src = currentVoiceSrc;
+          audioEl.load();
+        }
         audioEl.muted = false;
         audioEl.volume = 1.0;
         const playPromise = audioEl.play();
         if (playPromise !== undefined) {
           playPromise.catch((err) => {
-            console.warn('iOS audio playback interaction required:', err);
+            console.warn('Audio playback interaction required:', err);
           });
         }
       }
       setIsVideoMuted(false);
+      setIsVideoPlaying(true);
     } else {
       voiceAudioRef.current?.pause();
       setIsVideoMuted(true);
@@ -175,6 +203,7 @@ export default function App() {
     const audioEl = voiceAudioRef.current;
     if (audioEl) {
       audioEl.pause();
+      audioEl.src = currentVoiceSrc;
       audioEl.currentTime = 0;
       audioEl.muted = false;
       audioEl.volume = 1.0;
@@ -187,7 +216,7 @@ export default function App() {
             setIsVideoPlaying(true);
           })
           .catch((err) => {
-            console.warn('iOS play blocked or failed:', err);
+            console.warn('Audio play blocked or failed:', err);
             // Fallback retry
             audioEl.load();
             audioEl.play().catch(() => {});
@@ -394,11 +423,11 @@ export default function App() {
         />
       )}
 
-      {/* Audio Voiceover Element - Temporarily muted until updated January 2027 master voiceover is placed */}
+      {/* Audio Voiceover Element - Master January 2027 Executive Launch Briefing */}
       <audio
         ref={voiceAudioRef}
-        src=""
-        preload="none"
+        src={currentVoiceSrc}
+        preload="auto"
         playsInline
         className="hidden"
       />
