@@ -89,6 +89,8 @@ export interface Translations {
     pillar3Desc: string;
     pillar4Title: string;
     pillar4Desc: string;
+    pillar5Title: string;
+    pillar5Desc: string;
   };
   waitlist: {
     modalTitle: string;
@@ -240,16 +242,18 @@ export const translations: Record<Language, Translations> = {
       freeTrialBanner: 'Zero commitment • Test with our free trial before paying anything',
     },
     pillars: {
-      sectionTitle: 'The Atlas Membership Advantage',
-      sectionSubtitle: 'Wholesale hotel bedbanks, direct airline flights, and automatic Travel Kickback rewards.',
-      pillar1Title: '1M+ Wholesale Hotels',
-      pillar1Desc: 'Direct access to institutional hotel bedbanks (Hotelbeds, WebBeds) without the 20%–50% markups charged by Booking.com and Expedia.',
-      pillar2Title: '300+ Airlines via Duffel NDC',
-      pillar2Desc: 'Direct airline API connections with carriers like SAS, Lufthansa, British Airways, and Emirates at pure net cost with zero booking fees.',
-      pillar3Title: '100% Commission Rebate Vault',
-      pillar3Desc: 'On cruises and luxury bookings with fixed retail pricing, Atlas passes 100% of supplier commissions (10%–16%) directly back to your Rewards Vault. Atlas retains zero travel commissions.',
-      pillar4Title: '4 Family & Companion Passes',
-      pillar4Desc: 'Share full wholesale access with your partner, family members, or travel companions at zero extra fee on your annual membership.',
+      sectionTitle: 'Our 5 Institutional Supplier & Partner Pillars',
+      sectionSubtitle: 'Direct global bedbank agreements, airline NDC APIs, and 100% commission rebate guarantees.',
+      pillar1Title: 'RateHawk & WebBeds (1.2M+ Wholesale Hotels)',
+      pillar1Desc: 'Direct wholesale rates from institutional bedbanks (RateHawk, WebBeds, Hotelbeds) eliminating the 20%–45% markups of Booking.com and Expedia.',
+      pillar2Title: 'Duffel NDC (300+ Airlines Direct)',
+      pillar2Desc: 'Direct airline API connections with carriers like SAS, British Airways, Lufthansa, and Emirates at pure net cost with zero booking fees.',
+      pillar3Title: 'Connex Holiday Plus (3-Day Free Hotel Break)',
+      pillar3Desc: '1,500+ handpicked boutique and wellness hotels in Europe. 100% free room rate ($0)—guests only pay local half-board at checkout.',
+      pillar4Title: 'RVC Signature Resorts (7-Night Condos for Families)',
+      pillar4Desc: 'Spacious 1-2 bedroom condominium suites for 4–6 guests in Spain, Greece, and Italy at a flat 3,490 NOK ($320) for the whole week.',
+      pillar5Title: 'Rewards Vault (100% Commission Rebate)',
+      pillar5Desc: 'On cruises (Royal Caribbean, MSC, Celebrity) and luxury hotels, ATLAS passes 100% of supplier commissions (10%–16%) directly back to you.',
     },
     waitlist: {
       modalTitle: 'Founding Member Application',
@@ -400,16 +404,18 @@ export const translations: Record<Language, Translations> = {
       freeTrialBanner: 'Kun 100 plasser • Inkluderer gratis hotellopphold for to (verdi 5 400 kr)',
     },
     pillars: {
-      sectionTitle: 'Dine eksklusive medlemsfordeler',
-      sectionSubtitle: 'Institusjonelle hotellgrossister, direkte flyavtaler og automatiske reisebonuser.',
-      pillar1Title: 'Over 1 million engroshoteller',
-      pillar1Desc: 'Direkte tilgang til institusjonelle grossister (Hotelbeds, WebBeds) uten de 20%–50% påslagene som legges på hos Booking.com og Expedia.',
-      pillar2Title: '300+ flyselskaper via Duffel NDC',
-      pillar2Desc: 'Direkte flyforbindelser til selskaper som SAS, Lufthansa, British Airways og Emirates til ren kostpris uten fordyrende bookinggebyrer.',
-      pillar3Title: '100% Provisjonsretur (Rewards Vault)',
-      pillar3Desc: 'På cruise og luksusopphold der leverandørene betaler 10%–16% provisjon, overfører Atlas 100% av provisjonen direkte tilbake til ditt personlige Rewards Vault. Atlas beholder 0 kr i reisekommisjon.',
-      pillar4Title: '4 familie- og ledsagerpass',
-      pillar4Desc: 'Del fulle engrosfordeler med partner, familiemedlemmer eller reisefølge uten ekstra kostnad på medlemskapet ditt.',
+      sectionTitle: 'Våre 5 Institusjonelle Leverandør- og Partnersøyler',
+      sectionSubtitle: 'Direkte globale grossistavtaler, flyselskapenes NDC-linjer og 100% provisjonsretur.',
+      pillar1Title: 'RateHawk & WebBeds (1,2 mill. engroshoteller)',
+      pillar1Desc: 'Direkte nettopriser fra globale hotellgrossister (RateHawk, WebBeds, Hotelbeds). Fjerner de 20%–45% påslagene som legges på hos Booking.com og Expedia.',
+      pillar2Title: 'Duffel NDC (300+ flyselskaper direkte)',
+      pillar2Desc: 'Direkte API-forbindelse til selskaper som SAS, Lufthansa, British Airways og Emirates til ren kostpris uten fordyrende bookinggebyrer.',
+      pillar3Title: 'Connex Holiday Plus (3 dager gratis for 2)',
+      pillar3Desc: '1 500 utvalgte boutique- og velværerhoteller i Europa. Rommet er 100% spandert av ATLAS (0 kr). Du betaler kun hotellets lokale mat ved utsjekk.',
+      pillar4Title: 'RVC Signature Resorts (7 netter for familien)',
+      pillar4Desc: 'Romslige ferieleiligheter for opptil 4–6 personer i Spania, Hellas, Italia og Portugal. Fast totalpris på kun 3 490 kr for hele uken.',
+      pillar5Title: 'Rewards Vault (100% Provisjonsretur)',
+      pillar5Desc: 'På cruise (Royal Caribbean, MSC, Celebrity) og luksusopphold der leverandørene betaler 10%–16% provisjon, overfører ATLAS 100% direkte tilbake til deg.',
     },
     waitlist: {
       modalTitle: 'Søknad om Founding Membership',

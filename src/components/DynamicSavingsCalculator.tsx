@@ -180,8 +180,31 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
           </div>
         </div>
 
-        {/* 3 Intuitive Mode Tabs: Pakkereise, Kun Hotell, Kun Fly */}
-        <div className="pt-6 pb-4">
+        {/* Direct Partner Trust Bar */}
+        <div className="pt-4 pb-2 flex flex-wrap items-center justify-center gap-2 text-[11px] font-mono">
+          <span className="text-neutral-400 font-semibold uppercase tracking-wider text-[10px] w-full text-center sm:w-auto">
+            {isNorwegian ? 'Direkte grossist- og leverandørnettverk:' : 'Direct wholesale & supplier network:'}
+          </span>
+          <span className="px-2.5 py-1 rounded-lg bg-neutral-900/90 border border-amber-400/30 text-amber-300 font-bold flex items-center gap-1.5 shadow-sm">
+            <Building className="w-3.5 h-3.5 text-amber-400" />
+            RateHawk &amp; WebBeds
+          </span>
+          <span className="px-2.5 py-1 rounded-lg bg-neutral-900/90 border border-sky-400/30 text-sky-300 font-bold flex items-center gap-1.5 shadow-sm">
+            <Plane className="w-3.5 h-3.5 text-sky-400" />
+            Duffel NDC
+          </span>
+          <span className="px-2.5 py-1 rounded-lg bg-neutral-900/90 border border-emerald-400/30 text-emerald-300 font-bold flex items-center gap-1.5 shadow-sm">
+            <Palmtree className="w-3.5 h-3.5 text-emerald-400" />
+            RVC Resorts
+          </span>
+          <span className="px-2.5 py-1 rounded-lg bg-neutral-900/90 border border-rose-400/30 text-rose-300 font-bold flex items-center gap-1.5 shadow-sm">
+            <Gift className="w-3.5 h-3.5 text-rose-400" />
+            Connex (Holiday Plus)
+          </span>
+        </div>
+
+        {/* 3 Intuitive Mode Tabs: Fly & Hotell, Kun Hotell, Kun Fly */}
+        <div className="pt-3 pb-4">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 p-1.5 rounded-2xl bg-neutral-900/90 border border-neutral-800">
             {/* 1. Fly & Hotell (Unbundled wholesale components) */}
             <button
@@ -673,34 +696,34 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
             <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800">
               <span className="font-bold text-amber-300 block mb-1">
-                {isNorwegian ? '1. Null provisjonspåslag' : '1. Zero Commission Markups'}
+                {isNorwegian ? '1. RateHawk & WebBeds (Hotell)' : '1. RateHawk & WebBeds (Hotels)'}
               </span>
               <p className="text-neutral-400 text-[11px] leading-relaxed">
                 {isNorwegian
-                  ? 'Offentlige portaler (Booking.com, Expedia) legger på 20%–45% i provisjon. Atlas selger rommene til ren nettopris.'
-                  : 'Public booking portals add 20%–45% in retail markups. Atlas provides the rooms at direct institutional cost.'}
+                  ? 'Offentlige portaler (Booking.com, Expedia) legger på 20%–45% på grossistrom. ATLAS gir deg tilgang til RateHawk og WebBeds til 0 kr påslag.'
+                  : 'Public portals (Booking.com, Expedia) add 20%–45% markups. ATLAS provides direct access to RateHawk and WebBeds at 0 markup.'}
               </p>
             </div>
 
             <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800">
               <span className="font-bold text-sky-300 block mb-1">
-                {isNorwegian ? '2. Null GDS-bookinggebyrer' : '2. Zero GDS Booking Fees'}
+                {isNorwegian ? '2. Duffel NDC (Direkte Fly)' : '2. Duffel NDC (Direct Flights)'}
               </span>
               <p className="text-neutral-400 text-[11px] leading-relaxed">
                 {isNorwegian
-                  ? 'Flyselskapene legger på 150–350 kr per billett på åpne sider. Atlas kobler seg rett på flyselskapenes direkte API.'
-                  : 'Airlines add $15–$35 per ticket on public sites. Atlas connects straight to direct airline APIs without penalty surcharges.'}
+                  ? 'Flyselskapene legger på 150–350 kr per billett på åpne sider. ATLAS kobler deg direkte via Duffel NDC til flyselskapenes API uten gebyrer.'
+                  : 'Airlines add $15–$35 per ticket on public sites. ATLAS connects you directly via Duffel NDC to airline APIs without booking fees.'}
               </p>
             </div>
 
             <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800">
               <span className="font-bold text-emerald-300 block mb-1">
-                {isNorwegian ? '3. Bagasje & seter til kostpris' : '3. At-Cost Luggage & Seats'}
+                {isNorwegian ? '3. RVC & Connex (Feriefordeler)' : '3. RVC & Connex (Resorts & Escapes)'}
               </span>
               <p className="text-neutral-400 text-[11px] leading-relaxed">
                 {isNorwegian
-                  ? 'Du betaler flyselskapets faktiske kostnad for innsjekket bagasje og setevalg – en besparelse på 300–700 kr per person.'
-                  : 'You pay actual airline cost for checked bags and seat selection, saving $30–$70 per traveler on baggage alone.'}
+                  ? 'Eksklusive opphold fra 0 kr for 3 dagers hotellrom (Connex) til fast 3 490 kr for 7 netter i ferieleilighet for familien (RVC).'
+                  : 'Exclusive perks from $0 room rates for 3-day hotel breaks (Connex) to flat $320 for 7-night family condo suites (RVC).'}
               </p>
             </div>
 
