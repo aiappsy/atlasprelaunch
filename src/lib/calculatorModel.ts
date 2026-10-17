@@ -20,7 +20,9 @@ export type FlightClass = 'none' | 'economy' | 'business';
 export interface StayTier {
   id: StayTierId;
   name: string;
+  nameNo: string;
   subtitle: string;
+  subtitleNo: string;
   publicRateUSD: number;
   wholesaleRateUSD: number;
   savingsPct: number;
@@ -30,7 +32,9 @@ export const STAY_TIERS: StayTier[] = [
   {
     id: 'boutique',
     name: 'Boutique & 3–4 Star',
+    nameNo: 'Boutique & 3–4 Stjerner',
     subtitle: 'Charming city stays, design hotels & lifestyle properties',
+    subtitleNo: 'Sjarmerende byhoteller, designhoteller & boutique resorts',
     publicRateUSD: 190,
     wholesaleRateUSD: 140,
     savingsPct: 26,
@@ -38,7 +42,9 @@ export const STAY_TIERS: StayTier[] = [
   {
     id: 'premium',
     name: '4-Star Premium',
+    nameNo: '4-Stjerners Premium',
     subtitle: 'Full-service hotels, business properties & beach resorts',
+    subtitleNo: 'Fullservice-hoteller, ferieresorter & forretningshoteller',
     publicRateUSD: 320,
     wholesaleRateUSD: 230,
     savingsPct: 28,
@@ -46,7 +52,9 @@ export const STAY_TIERS: StayTier[] = [
   {
     id: 'luxury',
     name: '5-Star Luxury',
+    nameNo: '5-Stjerners Luksus',
     subtitle: 'Five-star resorts, iconic landmark hotels & spa retreats',
+    subtitleNo: 'Femstjerners resorter, ikoniske luksushoteller & spaopphold',
     publicRateUSD: 550,
     wholesaleRateUSD: 385,
     savingsPct: 30,
@@ -54,7 +62,9 @@ export const STAY_TIERS: StayTier[] = [
   {
     id: 'villa',
     name: 'Suites & Private Villas',
+    nameNo: 'Suiter & Private Villaer',
     subtitle: 'Multi-room penthouses, luxury estates & serviced villas',
+    subtitleNo: 'Penthouses, luksusvillaer og romslige suiter for familien',
     publicRateUSD: 950,
     wholesaleRateUSD: 645,
     savingsPct: 32,
@@ -104,6 +114,15 @@ export function formatCurrencyValue(amount: number, currency: CurrencyCode): str
     return `${rounded.toLocaleString('nb-NO')}${conf.suffix || ' NOK'}`;
   }
   return `${conf.symbol}${rounded.toLocaleString('en-US')}`;
+}
+
+export function formatPerNightRate(amountUSD: number, currency: CurrencyCode): string {
+  const conf = CURRENCIES[currency];
+  const converted = Math.round(amountUSD * conf.rateFromUSD);
+  if (currency === 'NOK') {
+    return `${converted.toLocaleString('nb-NO')} kr`;
+  }
+  return `${conf.symbol}${converted.toLocaleString('en-US')}`;
 }
 
 export function calculateSavings(input: CalculationInput): CalculationResult {
