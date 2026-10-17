@@ -178,7 +178,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
         {/* 3 Intuitive Mode Tabs: Pakkereise, Kun Hotell, Kun Fly */}
         <div className="pt-6 pb-4">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 p-1.5 rounded-2xl bg-neutral-900/90 border border-neutral-800">
-            {/* 1. Pakkereise */}
+            {/* 1. Fly & Hotell (Unbundled wholesale components) */}
             <button
               type="button"
               onClick={() => handleModeSwitch('package')}
@@ -193,10 +193,10 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-xs sm:text-sm font-semibold truncate">
-                  {isNorwegian ? 'Pakkereise (Fly + Hotell)' : 'Package (Flights + Hotels)'}
+                  {isNorwegian ? 'Fly & Hotell' : 'Flights & Hotels'}
                 </div>
                 <div className={`text-[10px] font-mono ${mode === 'package' ? 'text-neutral-900/80' : 'text-neutral-400'}`}>
-                  {isNorwegian ? 'Maksimal besparelse (opptil 45%)' : 'Maximum savings (up to 45%)'}
+                  {isNorwegian ? 'Samlet feriebesparelse (opptil 45%)' : 'Combined savings (up to 45%)'}
                 </div>
               </div>
             </button>
