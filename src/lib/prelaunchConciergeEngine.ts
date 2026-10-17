@@ -904,11 +904,11 @@ export function getWelcomeMessageData(currency: CurrencyCode) {
 
 Den offisielle lanseringen åpner **mandag 4. januar 2027 kl. 10:00**! 
 
-Jeg kan forklare hvordan våre lukkede engrospriser på hotell fungerer, våre **7-netters ferieleiligheter til 3 490 kr**, **Gourmet & Spa med 0 kr i rompris**, eller hvordan du sikrer deg 1 av våre **100 første Founding-medlemskap (${p.formattedFounding})** som inkluderer et **gratis 3-dagers luksushotellopphold for to** (og sjansen til å vinne all mat dekket!).
+Du kan **reservere din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig**. De første 100 medlemmene mottar et **gratis 3-dagers luksushotellopphold for to (verdi 5 400 kr)** og sjansen til å vinne all mat dekket!
 
-Hva kan jeg hjelpe deg med i dag?`,
+Jeg kan også forklare lukkede engrospriser på hotell, våre **7-netters ferieleiligheter til 3 490 kr**, eller **0 kr i rompris (Connex)**. Hva vil du vite mer om?`,
       action: 'open_waitlist' as const,
-      actionLabel: `Sikre Founding-plass (${p.formattedFounding})`,
+      actionLabel: 'Reserver plass gratis (Uten kort)',
       followUps: [
         'Hva inkluderer det gratis hotelloppholdet?',
         'Hva er ferieleiligheter til 3 490 kr?',
@@ -924,11 +924,11 @@ Hva kan jeg hjelpe deg med i dag?`,
 
 Our official launch opens on **Monday, January 4, 2027 at 10:00 AM CET**!
 
-I can explain how our private wholesale hotel rates work, our **7-night vacation condos for 3,490 NOK ($320 USD)**, **Gourmet & Spa Escapes with $0 room rates**, or how to secure 1 of our **first 100 Founding Memberships (${p.formattedFounding})** which includes a **complimentary 3-day European hotel stay for two** (and entry to win all meals covered!).
+You can **reserve your Founding Member spot today for free, no credit card necessary**. The first 100 Founding Members receive a **complimentary 3-day European hotel stay for two (worth $520)** and entry into the draw where 3 of 100 win all meals covered!
 
-What can I help you with today?`,
+I can also explain how wholesale bedbank pricing works, our **7-night vacation condos for 3,490 NOK ($320 USD)**, or **$0 room rates (Connex)**. What can I help you with today?`,
     action: 'open_waitlist' as const,
-    actionLabel: `Claim Founding Spot (${p.formattedFounding})`,
+    actionLabel: 'Reserve Free Spot (No Card Needed)',
     followUps: [
       'What is included in the free hotel stay?',
       'What are 7-night condo stays for 3,490 NOK?',
@@ -948,11 +948,11 @@ export function getFallbackAnswer(currency: CurrencyCode): ConciergeAnswer {
     return {
       text: `ATLAS Travel Club er en lukket medlemsklubb (etter Costco-modellen) som gir deg direkte tilgang til engrospriser på reiser med 0% kommersielt påslag – vanligvis 20% til 45% lavere enn Booking.com eller Expedia.
 
-Lanseringen skjer **mandag 4. januar 2027 kl. 10:00**. Medlemskapet koster **${p.formattedRegular}**, og de 100 første mottar et **100% gratis 3-dagers luksushotellopphold for to i Europa (verdi 5 400 kr)**.
+Lanseringen skjer **mandag 4. januar 2027 kl. 10:00**. **Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig.** Samtlige 100 første medlemmer mottar et **100% gratis 3-dagers luksushotellopphold for to i Europa (verdi 5 400 kr)**.
 
 Hva er du mest nysgjerrig på? Jeg forklarer gjerne 0 kr i rompris (Connex), 7-netters leiligheter (RVC), 100% provisjonsrefusjon eller 100% verdigarantien.`,
       action: 'open_waitlist',
-      actionLabel: `Sikre Founding-plass (${p.formattedFounding})`,
+      actionLabel: 'Reserver plass gratis (Uten kort)',
       followUps: [
         'Hva inkluderer det gratis hotelloppholdet?',
         'Hvordan fungerer engrospriser på hotell?',
@@ -965,11 +965,11 @@ Hva er du mest nysgjerrig på? Jeg forklarer gjerne 0 kr i rompris (Connex), 7-n
   return {
     text: `ATLAS Travel Club is a private membership club (built on the Costco model) giving members direct access to wholesale travel rates with 0% retail markup—typically 20% to 45% lower than Booking.com or Expedia.
 
-Our official launch opens **Monday, January 4, 2027 at 10:00 AM CET**. Membership is **${p.formattedRegular}**, and the first 100 Founding Members receive a **complimentary 3-day European hotel break for two (worth $520)**.
+Our official launch opens **Monday, January 4, 2027 at 10:00 AM CET**. **Reserve your Founding Member spot today for free, no credit card necessary.** The first 100 Founding Members receive a **complimentary 3-day European hotel break for two (worth $520)**.
 
 What would you like to know more about? I can explain $0 room rates (Connex), 7-night condo escapes (RVC), 100% commission rebates, or our 100% money-back guarantee.`,
     action: 'open_waitlist',
-    actionLabel: `Claim Founding Spot (${p.formattedFounding})`,
+    actionLabel: 'Reserve Free Spot (No Card Needed)',
     followUps: [
       'What is included in the free hotel stay?',
       'How does wholesale hotel pricing work?',

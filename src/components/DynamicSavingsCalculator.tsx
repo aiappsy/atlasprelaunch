@@ -467,11 +467,20 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                   <Sparkles className="w-4 h-4 text-neutral-950" />
                   <span>
                     {isNorwegian
-                      ? 'Sikre Founding Member-plass & Gratis Opphold (0 kr nå)'
-                      : 'Claim Founder Spot & Free Hotel Break ($0 Today)'}
+                      ? 'Reserver Founding-plass & Gratis Hotellopphold'
+                      : 'Reserve Founder Spot & Free Hotel Break'}
                   </span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
+
+                <div className="pt-2.5 flex items-center justify-center gap-1.5 text-xs font-mono text-emerald-300 font-semibold text-center">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>
+                    {isNorwegian
+                      ? 'Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig.'
+                      : 'Reserve your Founding Member spot today for free, no credit card necessary.'}
+                  </span>
+                </div>
               </div>
             </div>
           </div>

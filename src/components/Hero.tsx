@@ -10,6 +10,7 @@ import {
   Gift,
   Plane,
   Bed,
+  ShieldCheck,
 } from 'lucide-react';
 import { PerkExplainerTab } from './PerkExplainerModal';
 import { useLanguage } from '../lib/i18n/LanguageContext';
@@ -101,6 +102,16 @@ export const Hero: React.FC<HeroProps> = ({
             <Award className="w-4 h-4 text-amber-400" />
             <span>{t.hero.claimFounder}</span>
           </button>
+        </div>
+
+        {/* Zero-Risk Reassurance: Free to reserve, no card required */}
+        <div className="pt-1 flex items-center justify-center gap-2 text-xs sm:text-sm font-mono text-amber-300 font-semibold drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] animate-in fade-in duration-500">
+          <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+          <span>
+            {isNorwegian
+              ? 'Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig.'
+              : 'Reserve your Founding Member spot today for free, no credit card necessary.'}
+          </span>
         </div>
 
         {/* Scarcity Banner: 100 Founder Spots Available with Free Hotel Stay */}

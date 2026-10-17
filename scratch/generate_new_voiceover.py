@@ -10,7 +10,7 @@ On Monday, January 4th, 2027, ATLAS officially opens. We are releasing exactly 1
 
 Plus, three of the first one hundred will win all gourmet meals fully covered. On launch day, invited candidates have a strict 48-hour claim window before their allocation forfeits to the next in queue.
 
-Backed by our 100% money-back value guarantee on your very first trip. Reserve your Founding Member spot today."""
+Backed by our 100% money-back value guarantee on your very first trip. Reserve your Founding Member spot today for free, no credit card necessary."""
 
 NORWEGIAN_TEXT = """Velkommen til ATLAS. I tiår har reiselivsbransjens største portaler holdt ekte engrospriser på hotell og fly skjult bak påslag på 20 til 45 prosent.
 
@@ -20,7 +20,7 @@ Mandag 4. januar 2027 åpner vi dørene for nøyaktig 100 Founding Members til 1
 
 I tillegg trekker vi tre vinnere blant de 100 som får også all gourmetmat inkludert. På lanseringsdagen gjelder et 48-timers betalingsvindu før plassen går videre til neste på ventelisten.
 
-Støttet av vår 100% fornøyd- og verdigaranti på din aller første reise. Sikre din plass på ventelisten i dag."""
+Støttet av vår 100% fornøyd- og verdigaranti på din aller første reise. Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig."""
 
 async def generate():
     output_dir = os.path.join(os.path.dirname(__file__), '..', 'public', 'audio')

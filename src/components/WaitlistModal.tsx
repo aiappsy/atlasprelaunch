@@ -226,10 +226,11 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
             </div>
             <div>
               <h3 className="text-base font-semibold text-neutral-100 font-cinzel">
-                {isNorwegian ? 'Søknad om Founding Membership' : 'Founder Member Registration'}
+                {isNorwegian ? 'Reserver Founding Member-plass' : 'Reserve Founding Member Spot'}
               </h3>
-              <span className="text-[11px] text-amber-300 font-mono">
-                {isNorwegian ? 'Gratis 3-dagers hotellopphold for 2 + 3 vinner all mat inkludert' : 'Free 3-Day Hotel Break for 2 + 3 Win All Meals Included'}
+              <span className="text-[11px] text-emerald-300 font-mono flex items-center gap-1 font-semibold">
+                <Check className="w-3 h-3 text-emerald-400" />
+                <span>{isNorwegian ? 'Helt gratis • Intet kredittkort nødvendig' : '100% Free • No Credit Card Necessary'}</span>
               </span>
             </div>
           </div>
@@ -474,6 +475,16 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
                 </div>
               )}
 
+              {/* Zero-Risk Reservation Reassurance Banner */}
+              <div className="p-3 rounded-2xl bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 text-xs font-mono font-semibold flex items-center gap-2 shadow-md">
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>
+                  {isNorwegian
+                    ? 'Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig.'
+                    : 'Reserve your Founding Member spot today for free, no credit card necessary.'}
+                </span>
+              </div>
+
               {/* Founder Guarantees Banner */}
               <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-400/40 text-xs text-neutral-300 space-y-2">
                 <div className="flex items-center justify-between text-amber-300 font-bold text-xs">
@@ -689,18 +700,18 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
                   <span>{isNorwegian ? 'Sender sikkerhetskode...' : 'Sending Verification Code...'}</span>
                 ) : (
                   <>
-                    <span>{isNorwegian ? 'Fortsett til e-postverifisering' : 'Continue to Email Verification'}</span>
+                    <span>{isNorwegian ? 'Reserver min plass gratis nå' : 'Reserve My Free Spot Today'}</span>
                     <ArrowRight className="w-4 h-4" />
                   </>
                 )}
               </button>
 
-              <div className="flex items-center gap-1.5 text-[11px] text-neutral-400 pt-0.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-amber-400/80 shrink-0" />
-                <span>
+              <div className="flex items-center gap-1.5 text-[11px] text-neutral-400 pt-0.5 justify-center">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <span className="text-emerald-300/90 font-mono">
                   {isNorwegian
-                    ? 'En sikkerhetskode sendes til e-posten din for å bekrefte adressen før diplomet utstedes.'
-                    : 'Verification code will be sent to confirm your email before diploma issuance.'}
+                    ? '100% gratis reservasjon • Intet kredittkort nødvendig'
+                    : '100% free reservation • No credit card necessary'}
                 </span>
               </div>
             </form>
