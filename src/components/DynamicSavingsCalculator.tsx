@@ -15,6 +15,8 @@ import {
   Lock,
   Gift,
   Check,
+  Palmtree,
+  Utensils,
 } from 'lucide-react';
 import {
   CurrencyCode,
@@ -26,18 +28,21 @@ import {
   formatPerNightRate,
 } from '../lib/calculatorModel';
 import { useLanguage } from '../lib/i18n/LanguageContext';
+import { PerkExplainerTab } from './PerkExplainerModal';
 
 export type CalculatorMode = 'package' | 'flights' | 'hotels';
 
 interface DynamicSavingsCalculatorProps {
   onUnlockSavings: (savings: CalculationResult) => void;
   onCalculationTrigger?: () => void;
+  onOpenPerkModal?: (tab: PerkExplainerTab) => void;
   initialMode?: CalculatorMode;
 }
 
 export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> = ({
   onUnlockSavings,
   onCalculationTrigger,
+  onOpenPerkModal,
   initialMode = 'package',
 }) => {
   const { t, isNorwegian } = useLanguage();
@@ -710,6 +715,87 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
               </p>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* TWO EXCLUSIVE SIGNATURE PERKS: CONNEX & RVC */}
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5 text-left">
+        {/* CARD 1: CONNEX (Founding Member Welcome Gift) */}
+        <div className="p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950 border border-amber-400/50 shadow-2xl flex flex-col justify-between relative overflow-hidden">
+          <div className="space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/40 text-amber-300 text-xs font-mono">
+              <Gift className="w-3.5 h-3.5 text-amber-400" />
+              <span>{isNorwegian ? 'Founding Member Velkomstgave' : 'Founder Welcome Gift'}</span>
+            </div>
+            <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-neutral-100">
+              {isNorwegian ? 'Connex: 3 Dager Gratis Hotell for 2' : 'Connex: 3-Day Free Hotel Break for 2'}
+            </h3>
+            <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+              {isNorwegian
+                ? 'Når du sikrer deg et av de 100 første medlemskapene, spanderer ATLAS et 3-dagers hotellopphold for to personer i Europa (Holiday Plus-nettverket). Rommet koster 0 kr – du betaler kun hotellets lokale gourmet-halvpensjon (frokost & middag) ved utsjekk.'
+                : 'When you claim 1 of the first 100 founder spots, ATLAS covers a 3-day European hotel break for two. The room is 100% free ($0)—you only pay the hotel’s local gourmet half-board (breakfast & dinner) at checkout.'}
+            </p>
+
+            <div className="p-3.5 rounded-xl bg-neutral-950 border border-amber-400/30 flex items-center justify-between text-xs font-mono">
+              <div>
+                <span className="text-neutral-400 block text-[11px]">{isNorwegian ? 'Hotellrompris:' : 'Hotel room cost:'}</span>
+                <span className="text-emerald-400 font-bold text-base">{isNorwegian ? '0 kr (100% Gratis)' : '$0 (100% Free)'}</span>
+              </div>
+              <div className="text-right">
+                <span className="text-neutral-400 block text-[11px]">{isNorwegian ? 'Normal romverdi:' : 'Regular room value:'}</span>
+                <span className="text-amber-300 font-bold text-base">{isNorwegian ? '~5 400 kr' : '~$520'}</span>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => onOpenPerkModal?.('connex')}
+            className="mt-5 w-full py-3.5 px-4 rounded-xl bg-amber-400/15 hover:bg-amber-400/25 border border-amber-400/60 text-amber-200 font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer shadow-md"
+          >
+            <Utensils className="w-4 h-4 text-amber-400" />
+            <span>{isNorwegian ? 'Beregn matpris & se hoteller' : 'Calculate meal price & view hotels'}</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* CARD 2: RVC (Resort Vacation Certificate for Family) */}
+        <div className="p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950 border border-emerald-400/50 shadow-2xl flex flex-col justify-between relative overflow-hidden">
+          <div className="space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/10 border border-emerald-400/40 text-emerald-300 text-xs font-mono">
+              <Palmtree className="w-3.5 h-3.5 text-emerald-400" />
+              <span>{isNorwegian ? 'Fast Medlemsfordel for Familien' : 'Signature Family Perk'}</span>
+            </div>
+            <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-neutral-100">
+              {isNorwegian ? 'RVC: 7 Netter Ferieleilighet (4–6 pers)' : 'RVC: 7-Night Family Resort Suites'}
+            </h3>
+            <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
+              {isNorwegian
+                ? 'Fast medlemspris på romslige ferieleiligheter med stue, separat soverom og fullt kjøkken i Spania (Tenerife/Marbella), Hellas (Kreta), Italia (Toscana) og Portugal (Algarve). Én fast pris for hele uken for hele reisefølget!'
+                : 'Fixed member pricing on spacious condominium suites with living rooms, separate bedrooms, and full kitchens across Spain, Greece, Italy, and Portugal. One flat price for the entire week!'}
+            </p>
+
+            <div className="p-3.5 rounded-xl bg-neutral-950 border border-emerald-400/30 flex items-center justify-between text-xs font-mono">
+              <div>
+                <span className="text-neutral-400 block text-[11px]">{isNorwegian ? 'Fast totalpris (7 netter):' : 'Fixed total price (7 nights):'}</span>
+                <span className="text-emerald-400 font-bold text-base">{isNorwegian ? '3 490 kr totalt' : '$320 total'}</span>
+              </div>
+              <div className="text-right">
+                <span className="text-neutral-400 block text-[11px]">{isNorwegian ? 'Du sparer vs Booking:' : 'You save vs Booking:'}</span>
+                <span className="text-amber-300 font-bold text-base">{isNorwegian ? '~14 500 kr' : '~$1,400+'}</span>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => onOpenPerkModal?.('rvc')}
+            className="mt-5 w-full py-3.5 px-4 rounded-xl bg-emerald-400/15 hover:bg-emerald-400/25 border border-emerald-400/60 text-emerald-200 font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer shadow-md"
+          >
+            <Palmtree className="w-4 h-4 text-emerald-400" />
+            <span>{isNorwegian ? 'Beregn ukesbesparelse for familien' : 'Calculate family weekly savings'}</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
 

@@ -324,6 +324,7 @@ export default function App() {
           initialMode={calculatorMode}
           onUnlockSavings={handleUnlockSavings}
           onCalculationTrigger={handleCalculationTrigger}
+          onOpenPerkModal={handleOpenPerkModal}
         />
 
         {/* Club Pillars */}
