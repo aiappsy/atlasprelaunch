@@ -394,11 +394,11 @@ export default function App() {
         />
       )}
 
-      {/* Hidden Master Studio Audio Element (Rendered in DOM with playsInline for iOS Chrome/Safari) */}
+      {/* Audio Voiceover Element - Temporarily muted until updated January 2027 master voiceover is placed */}
       <audio
         ref={voiceAudioRef}
-        src="/audio/founder-voiceover.mp3?v=20261009_brian_v3"
-        preload="auto"
+        src=""
+        preload="none"
         playsInline
         className="hidden"
       />
