@@ -12,6 +12,7 @@ import {
   Bed,
 } from 'lucide-react';
 import { PerkExplainerTab } from './PerkExplainerModal';
+import { useLanguage } from '../lib/i18n/LanguageContext';
 
 interface HeroProps {
   onJoinWaitlist: () => void;
