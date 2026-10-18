@@ -243,50 +243,61 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                     </p>
                   </div>
 
-                  {/* Proclamation Citation Paragraph */}
-                  <p className="font-diploma italic text-xs sm:text-sm text-[#382f22] max-w-2xl mx-auto leading-relaxed px-4 pt-1">
-                    {isNorwegian ? (
-                      <>Har etter oppfylt søknadskontroll og godkjenning av opptakskomiteen herved blitt innlemmet som akkreditert <strong>Founding Lifetime Member</strong> av Atlas Travel Club, med evigvarende rett til direkte engrospriser hos hotellgrossister, fullt unntak fra provisjonspåslag, og eksklusive bookingprivilegier til ren nettopris.</>
-                    ) : (
-                      <>Having established verified eligibility and met the charter standards of the Admissions Committee, is hereby inducted as an accredited <strong>Founding Lifetime Member</strong> of Atlas Travel Club, permanently vested with direct wholesale bedbank access, immunity from retail OTA price markups, and sovereign booking privileges in perpetuity.</>
-                    )}
-                  </p>
+                  {/* Proclamation Citation Paragraph - Crystal Clear Typography */}
+                  <div className="max-w-2xl mx-auto px-4 pt-2 pb-1 text-center space-y-2">
+                    <p className="font-serif text-sm sm:text-base text-[#1c160c] leading-relaxed font-medium">
+                      {isNorwegian ? (
+                        <>Har etter fullført forhåndsregistrering blitt tildelt prioritert plass som en av klubbens 100 første <strong>Founding Members</strong> i The Atlas Travel Club. Medlemskapet er et <strong>årlig abonnement (1 290 kr/år)</strong> som aktiveres ved offisiell åpning <strong>mandag 4. januar 2027 kl. 10:00 CET</strong>, og gir direkte tilgang til rå grossistpriser på fly og over 1,2 millioner hoteller med 0 kr i påslag.</>
+                      ) : (
+                        <>Having completed verified prelaunch registration, is hereby accredited as one of the club's first 100 <strong>Founding Members</strong> in The Atlas Travel Club. Membership is an <strong>annual subscription (1 290 NOK / year)</strong> activated upon official launch on <strong>Monday, January 4, 2027 at 10:00 AM CET</strong>, granting direct access to raw wholesale hotel bedbank rates and direct airline flights with zero retail markup.</>
+                      )}
+                    </p>
+
+                    {/* Clear Annual Membership Terms & Launch Window Pill */}
+                    <div className="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-1.5 rounded-xl bg-[#ebdfc0] border border-[#b8862d]/50 text-[#59431d] font-mono text-xs font-bold shadow-xs">
+                      <span>💳 {isNorwegian ? 'Årlig medlemskontingent: 1 290 kr/år' : 'Annual Membership Fee: 1 290 NOK/year'}</span>
+                      <span>•</span>
+                      <span>📅 {isNorwegian ? 'Lansering: 4. jan 2027 kl. 10:00' : 'Launch: Jan 4, 2027 at 10:00 CET'}</span>
+                      <span>•</span>
+                      <span>⏳ {isNorwegian ? '48 timers kravfrist' : '48-Hour Claim Window'}</span>
+                    </div>
+                  </div>
 
                   {/* Guaranteed Privileges Grid on Diploma */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 max-w-2xl mx-auto pt-2 text-left">
-                    <div className="p-2.5 rounded-lg bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
+                    <div className="p-3 rounded-xl bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
                       <div className="flex items-center gap-1.5 text-[#8a6522] font-cinzel text-xs font-bold uppercase">
                         <ShieldCheck className="w-3.5 h-3.5 text-[#9c7526] shrink-0" />
-                        <span>{isNorwegian ? 'Rene Engrospriser' : 'B2B Net Rate Parity'}</span>
+                        <span>{isNorwegian ? '0 kr Påslag (Nettopris)' : '0 Markup (Net Rates)'}</span>
                       </div>
-                      <p className="text-[10px] font-mono text-[#57462c] mt-0.5">
+                      <p className="text-[10px] font-mono text-[#57462c] mt-1 leading-normal">
                         {isNorwegian
-                          ? 'Direkte formidling uten provisjoner eller fordyrende ledd.'
-                          : 'Direct wholesale pass-through with zero OTA commission markup.'}
+                          ? 'Rene grossistpriser på 1,2M+ hoteller og fly uten provisjoner.'
+                          : 'Direct wholesale bedbank pass-through on 1.2M+ hotels with zero markup.'}
                       </p>
                     </div>
 
-                    <div className="p-2.5 rounded-lg bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
+                    <div className="p-3 rounded-xl bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
                       <div className="flex items-center gap-1.5 text-[#8a6522] font-cinzel text-xs font-bold uppercase">
                         <Gift className="w-3.5 h-3.5 text-[#9c7526] shrink-0" />
-                        <span>{isNorwegian ? 'Gratis Hotellopphold' : 'Free Hotel Stay'}</span>
+                        <span>{isNorwegian ? 'Gratis 3-Dagers Hotell' : 'Free 3-Day Hotel Break'}</span>
                       </div>
-                      <p className="text-[10px] font-mono text-[#57462c] mt-0.5">
+                      <p className="text-[10px] font-mono text-[#57462c] mt-1 leading-normal">
                         {isNorwegian
-                          ? '100% gratis 3-dagers hotellopphold for to i Europa (verdi 5 400 kr).'
-                          : '100% free 3-day European hotel stay for two travelers (worth $520).'}
+                          ? '100% gratis hotellopphold for 2 i Europa (Connex, verdi 5 400 kr / $520).'
+                          : '100% free European hotel break for two travelers (worth $520 / 5 400 kr).'}
                       </p>
                     </div>
 
-                    <div className="p-2.5 rounded-lg bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
+                    <div className="p-3 rounded-xl bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
                       <div className="flex items-center gap-1.5 text-[#8a6522] font-cinzel text-xs font-bold uppercase">
                         <Sparkles className="w-3.5 h-3.5 text-[#9c7526] shrink-0" />
-                        <span>{isNorwegian ? 'Mattrekning for 3' : '3-Winner Meal Draw'}</span>
+                        <span>{isNorwegian ? 'Gullbillett-Trekning' : 'Golden Ticket Draw'}</span>
                       </div>
-                      <p className="text-[10px] font-mono text-[#57462c] mt-0.5">
+                      <p className="text-[10px] font-mono text-[#57462c] mt-1 leading-normal">
                         {isNorwegian
-                          ? 'Automatisk lodd i trekningen der 3 av 100 får all gourmetmat dekket.'
-                          : 'Automatic entry in the draw where 3 of 100 win all gourmet meals covered.'}
+                          ? '3 av de 100 første vinner OGSÅ all gourmetmat (halvpensjon) dekket.'
+                          : '3 of the 100 early members win ALL gourmet meals (half-board) covered.'}
                       </p>
                     </div>
                   </div>
@@ -443,25 +454,33 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                     : 'As an initial Founder Member, your exclusive privileges are officially recorded:'}
                 </p>
 
-                <div className="p-4 rounded-xl bg-neutral-900 border border-amber-400/30 space-y-2 text-xs">
+                <div className="p-4 rounded-xl bg-neutral-900 border border-amber-400/30 space-y-2.5 text-xs">
                   <div className="text-amber-300 font-bold font-mono">
-                    1. {isNorwegian ? '50% Livstidsrabatt på medlemskapet:' : '50% Lifetime Membership Discount:'}
+                    1. {isNorwegian ? 'Gratis 3-dagers hotellopphold for to (Connex Holiday Plus):' : 'Complimentary 3-Day European Hotel Break for Two (Connex):'}
                   </div>
                   <p className="text-neutral-300">
                     {isNorwegian
-                      ? 'Din medlemskontingent er låst til halv pris på livstid ved lansering.'
-                      : 'Your club membership is locked at half price for life upon launch.'}
+                      ? 'Selve hotellrommet er 100% sponset av ATLAS (verdi 5 400 kr / $520). Du betaler kun hotellets lokale gourmet-halvpensjon ved utsjekk.'
+                      : 'The hotel room is 100% sponsored by ATLAS (worth $520 / 5 400 kr). Traveler only covers local gourmet half-board at check-out.'}
                   </p>
                   <div className="text-amber-300 font-bold font-mono pt-1">
-                    2. {isNorwegian ? 'Lodd i trekningen av 5 gratis livstidsmedlemskap:' : 'Entry in 5 Free Lifetime Memberships Draw:'}
+                    2. {isNorwegian ? 'Gullbillett-trekning (3 vinnere får all mat dekket):' : 'Golden Ticket Draw (3 Winners Win All Meals Covered):'}
                   </div>
                   <p className="text-neutral-300">
                     {isNorwegian
-                      ? 'Din registrering er automatisk med i trekningen av 5 permanente livstidsmedlemskap med 0 kr i årsavgift.'
-                      : 'Your email is entered in the launch draw to win 100% free membership with zero annual dues permanently.'}
+                      ? 'Blant de 100 første medlemmene trekker vi 3 vinnere som får OGSÅ ALL MAT (halvpensjon) 100% dekket av ATLAS.'
+                      : 'Among the first 100 members, 3 winners will have ALL MEALS (half-board) 100% covered by ATLAS.'}
                   </p>
                   <div className="text-amber-300 font-bold font-mono pt-1">
-                    3. {isNorwegian ? 'Founding Referansekode:' : 'Founder Reference Code:'}
+                    3. {isNorwegian ? 'Årlig medlemskontingent (1 290 kr/år) & 48-timers kravfrist:' : 'Annual Membership (1 290 NOK/year) & 48-Hour Claim Window:'}
+                  </div>
+                  <p className="text-neutral-300">
+                    {isNorwegian
+                      ? 'Medlemskapet koster 1 290 kr per år og aktiveres ved offisiell lansering mandag 4. januar 2027 kl. 10:00 CET. Du har 48 timer på å bekrefte plassen før den overføres til neste på ventelisten.'
+                      : 'Membership is an annual subscription of 1 290 NOK/year, activated upon official launch on Monday, January 4, 2027 at 10:00 AM CET. You have 48 hours to activate before your spot is passed to the next applicant.'}
+                  </p>
+                  <div className="text-amber-300 font-bold font-mono pt-1">
+                    4. {isNorwegian ? 'Din personlige Founding-referansekode:' : 'Your Founder Reference Code:'}
                   </div>
                   <p className="font-mono text-base font-bold text-amber-400">{data.inviteCode}</p>
                 </div>
