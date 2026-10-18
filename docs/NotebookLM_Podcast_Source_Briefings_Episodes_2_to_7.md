@@ -65,31 +65,29 @@ Furthermore, ATLAS holds a certified Golden Ticket Draw where **3 out of the 100
 ---
 
 # EPISODE 3: THE RVC VACATION CERTIFICATE SECRET
-## *«The Timeshare Liquidation Loophole: 7-Night 4-Star Resort Suites for Flat €299»*
+## *«The Private Resort Clearance: 7-Night 4-Star Condos for Flat €299»*
 **Target Audio Length:** ~14 Minutes  
 **Funnel Stage:** Email Stage 3 (Day 9 Post-Registration)
 
 ### 🎙️ NotebookLM Host Direction Prompt:
-> *"Take an energetic, conversational podcast approach examining the timeshare and resort condo industry. Demystify the multi-billion-dollar RCI and Panorama timeshare exchange system and explain how unbooked maintenance weeks end up in clearance liquidation. Explain how ATLAS secures whole 1-to-2 bedroom resort apartments sleeping 4 to 6 people in top family destinations (Marbella, Tenerife, Crete, Algarve) for a flat total of €299 (3 490 kr) for the entire week with zero per-person surcharges. Contrast this with Booking.com and Airbnb prices, and highlight the complete absence of timeshare sales pitches."*
+> *"Take an energetic, conversational podcast approach examining the vacation condominium and serviced resort residence industry. Demystify the multi-billion-dollar Panorama/RVC resort network and explain how unbooked institutional resort allocations end up in clearance liquidation. Explain how ATLAS secures whole 1-to-2 bedroom resort apartments sleeping 4 to 6 people in top family destinations (Marbella, Tenerife, Crete, Algarve) for a flat total of €299 (3 490 kr) for the entire week with zero per-person surcharges. Contrast this with Booking.com and Airbnb prices, and emphasize that guests check in as independent private club VIPs with zero sales presentations or ownership meetings."*
 
 ### 📄 Source Briefing Document for NotebookLM:
 
-#### 1. The Legacy Timeshare Paradox
-Over the past 40 years, millions of consumers bought timeshare deeds and vacation ownership points from global operators (Wyndham, Diamond Resorts, Marriott Vacations Worldwide, RCI/Panorama). Owners pay annual maintenance fees ranging from €800 to €1,800 per year.
+#### 1. The Serviced Resort Residence Clearance Model
+Across Europe and the Mediterranean, premier resort communities operate large portfolios of fully equipped 1- and 2-bedroom vacation condominium residences. While these properties are maintained year-round with full resort infrastructure—including heated swimming pools, fitness centers, tennis courts, on-site supermarkets, and restaurants—thousands of unbooked institutional weeks enter clearance during the 60- to 180-day liquidation window before check-in.
 
-However, millions of timeshare owner weeks go deposited into central exchange banks but remain unexchanged and unbooked as the check-in date approaches (the 60 to 180 day liquidation window).
-
-Resort complexes—which feature full amenities like swimming pools, tennis courts, on-site supermarkets, and restaurants—cannot afford to leave entire apartment wings empty. Empty units spend zero money at on-site facilities and generate zero local economic activity.
+Resort operators cannot afford to leave these residential suites unoccupied. An empty apartment generates zero revenue at the resort’s dining, wellness, and recreation facilities, while the property’s fixed operational overhead remains completely unchanged.
 
 #### 2. The Resort Vacation Certificate (RVC) Clearance Network
-Through liquidation agreements with the global Panorama/RCI institutional network, ATLAS accesses **Resort Vacation Certificates (RVC)**:
+Through direct liquidation agreements with the global Panorama / RVC institutional network, ATLAS accesses **Resort Vacation Certificates (RVC)**:
 * **Format:** Whole 7-night consecutive stays (check-in Friday, Saturday, or Sunday).
 * **Accommodations:** Full private condominium apartments featuring 1 or 2 private bedrooms, full kitchen (refrigerator, stove, oven, cookware), dining area, spacious living room with pull-out sofa, and private terrace/balcony.
 * **Capacity:** Comfortably accommodates **4 to 6 guests** (families or travel couples).
 * **Price:** A single, flat clearance rate of **€299 / 3 490 NOK for the ENTIRE 7 nights**.
 
 #### 3. Critical Consumer Clarifications
-* **Zero Timeshare Presentations Required:** These liquidation units are clean excess inventory. Members are NOT subject to timeshare presentations, high-pressure breakfast seminars, or ownership pitches. They check in with an official corporate guest voucher just like any independent hotel guest.
+* **Zero Sales Meetings or Ownership Pitches:** These liquidation units are clean institutional excess allocations. Members are NOT subject to sales presentations, breakfast seminars, or ownership pitches. They check in with an official corporate guest confirmation voucher just like any independent VIP hotel guest.
 * **Zero Per-Person Surcharges:** The price is strictly per condo, not per guest. A family of 4 pays €299 total, which equates to **€10.67 (ca. 120 NOK) per person per night**.
 * **Prime Coastal Destinations:** Inventory covers major European vacation hotspots including:
   * Marbella, Fuengirola & Costa del Sol (Spain)

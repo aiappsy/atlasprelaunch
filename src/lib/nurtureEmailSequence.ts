@@ -210,10 +210,10 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
     preheaderNo: 'Slik sparer en familie over 15 000 kr på én eneste ukesferie med ATLAS.',
     preheaderEn: 'How a family saves over €1,300 (15,000 NOK) on a single summer vacation with ATLAS.',
     podcastTitleNo: 'Episode 3: «Resort-smutthullet: 7-netters ferieleiligheter til fastpris 3 490 kr»',
-    podcastTitleEn: 'Episode 3: "The Timeshare Loophole: 7-Night 4-Star Resort Suites for Flat €299"',
+    podcastTitleEn: 'Episode 3: "The Private Resort Clearance: 7-Night 4-Star Condos for Flat €299"',
     podcastDuration: '14:18 min',
-    podcastDescriptionNo: 'Slik fyller RCI- og Panorama-nettverket ledige 1–2 soveromssuiter for barnefamilier i Spania, Hellas og Italia til 83 kr per person/natt.',
-    podcastDescriptionEn: 'Inside the RCI/Panorama network surplus clearance, offering 1-2 bedroom condominium apartments for up to 6 guests at a flat weekly fee.',
+    podcastDescriptionNo: 'Slik fyller RVC- og Panorama-nettverket ledige 1–2 soveromssuiter for barnefamilier i Spania, Hellas og Italia til 83 kr per person/natt.',
+    podcastDescriptionEn: 'Inside the RVC/Panorama network surplus clearance, offering 1-2 bedroom condominium apartments for up to 6 guests at a flat weekly fee.',
     podcastUrl: 'https://atlasprelaunch.web.app?podcast=summary',
     getHtmlContent: (ctx) => `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #f5f5f5; border: 1px solid #d4af3740; border-radius: 16px; overflow: hidden;">
@@ -249,7 +249,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
               «Resort-smutthullet: 7-netters ferieleiligheter til fastpris 3 490 kr»
             </div>
             <div style="font-size: 12px; color: #9ca3af; line-height: 1.4; margin-bottom: 12px;">
-              Hør hvordan overskuddskapasitet i tusenvis av timeshare- og resortanlegg gjøres tilgjengelig til faste rydningspriser uten omveier via pakkereisegiganter.
+              Hør hvordan overskuddskapasitet i tusenvis av private ferieleiligheter og resortanlegg gjøres tilgjengelig til faste rydningspriser uten omveier via pakkereisegiganter.
             </div>
             <a href="https://atlasprelaunch.web.app?podcast=summary" style="display: inline-block; font-size: 11px; font-family: monospace; font-weight: bold; color: #ffffff; background: linear-gradient(90deg, #0284c7, #38bdf8); text-decoration: none; padding: 7px 14px; border-radius: 6px;">
               ▶ Hør Episoden om Leiligheter
@@ -258,7 +258,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
 
           <p style="font-size: 13px; line-height: 1.6; color: #d1d5db;">
             <strong>Hvorfor er det så rimelig?</strong><br>
-            Gjennom RCI / Panorama-nettverket fyller ATLAS overskuddskapasitet i anlegg som ellers ville stått tomme. Vi legger på <strong>0 kr i provisjon</strong>, og sender den rå grossistprisen direkte til medlemmene.
+            Gjennom Panorama / RVC-nettverket fyller ATLAS overskuddskapasitet i resortanlegg som ellers ville stått tomme. Vi legger på <strong>0 kr i provisjon</strong>, og sender den rå grossistprisen direkte til medlemmene.
           </p>
 
           <div style="text-align: center; margin: 24px 0;">
