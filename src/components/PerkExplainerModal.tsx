@@ -201,7 +201,7 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
           <div className="space-y-6">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/15 border border-rose-400/30 text-rose-300 text-xs font-mono font-bold mb-2">
-                <span>🎁 Founding Member Gave (Inkludert for de 100 første)</span>
+                <span>{isNorwegian ? '🎁 Founding Member Gave (Inkludert for de 100 første)' : '🎁 Founding Member Gift (Included for First 100)'}</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-cinzel font-bold text-white flex items-center gap-2">
                 <span>🍷</span>
@@ -236,7 +236,9 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
                   <Calculator className="w-4 h-4 text-amber-400" />
                   <span>{isNorwegian ? 'Beregn Besparelse & Matkostnad' : 'Calculate Savings & Meal Cost'}</span>
                 </div>
-                <span className="text-[11px] font-mono text-neutral-400">2 personer (Dobbeltrom)</span>
+                <span className="text-[11px] font-mono text-neutral-400">
+                  {isNorwegian ? '2 personer (Dobbeltrom)' : '2 Guests (Double Room)'}
+                </span>
               </div>
 
               {/* Controls */}
@@ -252,7 +254,7 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
                   >
                     {Object.entries(connexDestinations).map(([key, dest]) => (
                       <option key={key} value={key}>
-                        {isNorwegian ? dest.nameNo : dest.nameEn} (€{dest.mealPriceEur}/dag)
+                        {isNorwegian ? dest.nameNo : dest.nameEn} (€{dest.mealPriceEur}/{isNorwegian ? 'dag' : 'day'})
                       </option>
                     ))}
                   </select>
@@ -314,8 +316,8 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
                 <Info className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                 <span>
                   {isNorwegian
-                    ? 'Inkluderer frokostbuffet og 3-4 retters gourmetmiddag. Kupongen gjelder i over 150 hoteller i Europa.'
-                    : 'Includes full breakfast buffet and multi-course gourmet dinner. Valid across 150+ boutique European hotels.'}
+                    ? 'Kupongen dekker 100% av romprisen (0 kr). Hotellenes faste gourmet-halvpensjon (frokostbuffet og fleretters middag) betales direkte til hotellet ved utsjekk. Gjelder på over 1 500 boutique- og velværerhoteller i Europa.'
+                    : 'The voucher covers 100% of the room rate (€0). The published gourmet half-board (breakfast buffet & multi-course dinner) is paid directly to the hotel upon checkout. Valid across 1,500+ boutique & wellness hotels across Europe.'}
                 </span>
               </div>
             </div>
@@ -327,7 +329,7 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
           <div className="space-y-6">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs font-mono font-bold mb-2">
-                <span>🏖️ Fast Clearance-pris for hele familien</span>
+                <span>{isNorwegian ? '🏖️ Fast Clearance-pris for hele familien' : '🏖️ Flat Clearance Rate for the Whole Family'}</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-cinzel font-bold text-white flex items-center gap-2">
                 <span>🏖️</span>
@@ -347,12 +349,12 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
                 <span className="text-base font-bold text-amber-300">{isNorwegian ? '3 490 NOK' : '€299'}</span>
               </div>
               <div className="p-3 rounded-xl bg-neutral-900 border border-neutral-800 text-center">
-                <span className="text-[10px] text-neutral-400 block">Plass til</span>
-                <span className="text-base font-bold text-emerald-400">4–6 Personer</span>
+                <span className="text-[10px] text-neutral-400 block">{isNorwegian ? 'Plass til' : 'Capacity'}</span>
+                <span className="text-base font-bold text-emerald-400">{isNorwegian ? '4–6 Personer' : '4–6 Guests'}</span>
               </div>
               <div className="p-3 rounded-xl bg-neutral-900 border border-neutral-800 text-center col-span-2 sm:col-span-1">
-                <span className="text-[10px] text-neutral-400 block">Trygghet</span>
-                <span className="text-xs font-bold text-sky-300 mt-0.5 block">14 dagers angrefrist</span>
+                <span className="text-[10px] text-neutral-400 block">{isNorwegian ? 'Trygghet' : 'Peace of Mind'}</span>
+                <span className="text-xs font-bold text-sky-300 mt-0.5 block">{isNorwegian ? '14 dagers angrefrist' : '14-Day Money-Back'}</span>
               </div>
             </div>
 
@@ -363,7 +365,9 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
                   <Calculator className="w-4 h-4 text-amber-400" />
                   <span>{isNorwegian ? 'Beregn Feriebesparelse' : 'Calculate Holiday Savings'}</span>
                 </div>
-                <span className="text-[11px] font-mono text-neutral-400">7 sammenhengende netter</span>
+                <span className="text-[11px] font-mono text-neutral-400">
+                  {isNorwegian ? '7 sammenhengende netter' : '7 Consecutive Nights'}
+                </span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
@@ -439,7 +443,7 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
               <div className="text-[11px] text-neutral-400 flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                 <span className="truncate">
-                  Eksempelresort: <strong className="text-neutral-300">{selectedRvc.typicalResort}</strong>
+                  {isNorwegian ? 'Eksempelresort:' : 'Featured Resort:'} <strong className="text-neutral-300">{selectedRvc.typicalResort}</strong>
                 </span>
               </div>
             </div>
@@ -453,7 +457,7 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
               {isNorwegian ? 'Kun 100 Founding Member-plasser' : 'Only 100 Founder Spots Available'}
             </span>
             <span className="text-xs font-bold text-amber-300">
-              {isNorwegian ? '1 290 kr / år • 100% Fornøydgaranti' : '1,290 NOK/yr • 100% Money-Back Guarantee'}
+              {isNorwegian ? '1 290 kr / år • 100% Fornøydgaranti' : '€110 / year (1 290 NOK) • 100% Value Guarantee'}
             </span>
           </div>
 

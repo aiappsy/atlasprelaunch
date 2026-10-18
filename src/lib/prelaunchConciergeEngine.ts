@@ -1,5 +1,5 @@
 // Conversational Prelaunch AI Concierge Knowledge Base & Engine for Atlas Travel Club
-// Base currency: USD. Standard membership: 1 290 NOK/yr ($120/yr). Founding Members get a 100% Free 3-Day European Hotel Break for 2 (worth 5 400 kr) + 3 of 100 win all meals covered!
+// Base currency: EUR (€110/yr) / NOK (1 290 kr/år). Founding Members get a 100% Free 3-Day European Hotel Break for 2 (worth €480 / 5 400 kr) + 3 of 100 win all meals covered!
 // Dynamic language support: When NOK is chosen, responses and UI seamlessly switch to Norwegian!
 
 export type CurrencyCode = 'USD' | 'NOK' | 'EUR' | 'GBP';
@@ -137,7 +137,7 @@ export const PRELAUNCH_QA_DATABASE: QAEntry[] = [
     strongKeywords: ['trial', 'free trial', 'commitment', 'commit', 'forpliktelse', 'prøveperiode', 'test', 'first', 'before', 'teste', 'prøve', 'medlem', 'why', 'hvorfor'],
     weight: 160,
     getAnswer: (currency: CurrencyCode) => {
-      const p = MEMBERSHIP_PRICING[currency] || MEMBERSHIP_PRICING.USD;
+      const p = MEMBERSHIP_PRICING[currency] || MEMBERSHIP_PRICING.EUR;
       const isNorwegian = currency === 'NOK';
 
       if (isNorwegian) {
@@ -214,7 +214,7 @@ On top of this, 3 lucky winners among the 100 will win **ALL MEALS 100% paid by 
     negativeKeywords: ['membership fee', 'kontingent', 'bli medlem pris', 'how much to join', 'test first', 'teste først'],
     weight: 130,
     getAnswer: (currency: CurrencyCode) => {
-      const p = MEMBERSHIP_PRICING[currency] || MEMBERSHIP_PRICING.USD;
+      const p = MEMBERSHIP_PRICING[currency] || MEMBERSHIP_PRICING.EUR;
       const isNorwegian = currency === 'NOK';
 
       if (isNorwegian) {
@@ -230,7 +230,7 @@ På et typisk 4-netters opphold på et 4- eller 5-stjerners hotell sparer du van
           actionLabel: '🎧 Lytt til 23-minutters lydforklaring',
           followUps: [
             'Hvorfor må jeg bli medlem og ikke teste først?',
-            'Hva koster medlemskap og 50% rabatt?',
+            'Hva koster medlemskapet ved lansering?',
             'Hvorfor er cruisepriser like overalt?',
           ],
         };
@@ -243,12 +243,12 @@ Hotels hate having empty rooms, so they quietly sell room blocks to B2B wholesal
 
 That is where Atlas comes in. Because we are a private, password-protected membership club, Rate Parity rules don't apply. We don't take a commission on the room—we pass 100% of the wholesale net rate directly to you at **0% commercial markup**.
 
-On a typical 4-night stay at a 4- or 5-star hotel, that usually puts **$300 to $800 straight back in your pocket**—far exceeding our **${p.formattedFounding}** founding membership fee on your very first trip.`,
+On a typical 4-night stay at a 4- or 5-star hotel, that usually puts **€250 to €700 straight back in your pocket**—far exceeding our **${p.formattedFounding}** annual membership fee on your very first trip.`,
         action: 'open_podcast',
         actionLabel: '🎧 Listen to 23-Min Audio Deep Dive',
         followUps: [
           'Why do I have to become a member and can\'t test first?',
-          'What is the membership price and founding discount?',
+          'What is the annual membership fee?',
           'Why are cruise prices identical publicly?',
         ],
       };
@@ -256,7 +256,7 @@ On a typical 4-night stay at a 4- or 5-star hotel, that usually puts **$300 to $
   },
 
   // =========================================================================
-  // 3. MEMBERSHIP PRICING & 50% FOUNDING DISCOUNT (BILINGUAL)
+  // 3. ANNUAL MEMBERSHIP PRICING & FOUNDING PRIVILEGES (BILINGUAL)
   // =========================================================================
   {
     id: 'membership_pricing',
@@ -269,72 +269,74 @@ On a typical 4-night stay at a 4- or 5-star hotel, that usually puts **$300 to $
       'what is the cost',
       'how much to join',
       'annual fee',
-      'founding discount',
-      'what is 990 kr',
+      'founding privileges',
       'hva koster medlemskap',
       'medlemskontingent',
       'hva koster det å bli medlem',
       'hva er prisen',
       'hva koster det',
       'årspris',
-      '50% rabatt',
+      'årskontingent',
     ],
     patterns: [
       /how much (is|does|costs?) (the )?(membership|club|to join|annual)/i,
       /membership (price|cost|fee|dues)/i,
-      /(annual|monthly) (fee|dues|cost|price)/i,
+      /(annual|yearly) (fee|dues|cost|price|subscription)/i,
       /hva koster (et )?(medlemskap|det å være medlem|det)/i,
       /medlems(pris|kontingent|avgift)/i,
-      /founding member (discount|rate|price)/i,
-      /50% (discount|off|rabatt)/i,
-      /(1290|1 290|990) (kr|nok)/i,
-      /(645|495) (kr|nok)/i,
+      /founding member (perks|rate|price|benefits)/i,
+      /(1290|1 290) (kr|nok)/i,
+      /(110|€110) (eur|euro|euros)/i,
     ],
     strongKeywords: ['membership', 'dues', 'kontingent', 'medlemskap', 'medlemspris', 'årsavgift', 'subscription', 'join fee'],
     negativeKeywords: ['test first', 'teste først', 'why become a member', 'hvorfor bli medlem'],
     weight: 120,
     getAnswer: (currency: CurrencyCode) => {
-      const p = MEMBERSHIP_PRICING[currency] || MEMBERSHIP_PRICING.USD;
+      const p = MEMBERSHIP_PRICING[currency] || MEMBERSHIP_PRICING.EUR;
       const isNorwegian = currency === 'NOK';
 
       if (isNorwegian) {
         return {
-          text: `Vårt standardmedlemskap er **${p.formattedRegular}** (kun ${p.monthlyEquivalent}).
-Til gjengjeld har Atlas **0 kr i bookinggebyr og 0% kommersielt påslag på alt** av hotell, fly, leiebiler og VIP-lounger.
+          text: `👑 **ATLAS Medlemskontingent & Founding Privilegier:**
 
-Nå under forhåndslanseringen får Founding Members **50% livstidsrabatt**, som låser prisen din til kun **${p.formattedFounding}** permanent så lenge medlemskapet holdes aktivt.
+ATLAS er en privat medlemsklubb etter Costco-modellen. Vi tar **0 kr i påslag på fly og over 1 200 000 hoteller**, og gir **100% provisjonsretur** på cruise og luksusopphold.
 
-På toppen av dette har vi **Atlas Travel Kickback**: På vertikaler som cruise og leiebil deler vi 50% av partnerprovisjonen rett tilbake til deg. Disse poengene trekkes automatisk fra din neste årskontingent i Stripe – slik at medlemskapet kan fornye seg helt gratis!
-
-Hver tidlige registrering er også automatisk med i trekningen av **5 gratis livstidsmedlemskap**.`,
+• **Årskontingent ved lansering**: **${p.formattedFounding} per år** (${p.monthlyEquivalent}) ved åpning onsdag 20. januar 2027.
+• **100% Gratis Reservasjon**: Du reserverer plass i dag helt gratis – intet kredittkort nødvendig.
+• **Gave til de 100 første**: Et **3-dagers gratis luksushotellopphold for 2 personer** i Europa (verdi 5 400 kr, 0 kr i rompris via Connex Holiday Plus).
+• **Golden Ticket Mattrekning**: 3 av de 100 første vinner OGSÅ all gourmetmat (halvpensjon) 100% dekket av ATLAS.
+• **100% Fornøyd- & Verdigaranti**: Sparer du ikke inn kontingenten på din aller første reise, refunderer vi 100% av beløpet umiddelbart.`,
           action: 'open_waitlist',
-          actionLabel: `Sikre 50% livstidsrabatt (${p.formattedFounding})`,
+          actionLabel: `Reserver Founding-plass gratis (${p.formattedFounding})`,
           followUps: [
-            'Hvordan fungerer Atlas Travel Kickback på cruise og leiebil?',
+            'Hva inkluderer det gratis hotelloppholdet?',
             'Hvordan fungerer engrospriser på hotell?',
+            'Hva er 7-netters ferieleiligheter til 3 490 kr?',
             'Hva er 100% verdigarantien?',
           ],
         };
       }
 
       return {
-        text: `Our standard membership is **${p.formattedRegular}** (just ${p.monthlyEquivalent} billed annually).
-In return, Atlas gives you **0 kr booking fees and 0% markup** on hotels, NDC flights, car rentals, and VIP airport services.
+        text: `👑 **ATLAS Annual Membership & Founding Member Privileges:**
 
-Right now during prelaunch, Founding Members receive a **50% lifetime discount**, locking in your annual fee at **${p.formattedFounding}** permanently for as long as your membership stays active.
+ATLAS operates on a strict subscription model (like Costco). We charge **0 retail markups on direct NDC flights and 1.2M+ wholesale hotels**, and pass **100% commission rebates** directly to members.
 
-Even better, with **Atlas Travel Kickback**: on categories like cruises and car rentals, we share 50% of the supplier agent commission directly back to your Rewards Vault. This credit automatically offsets your next annual renewal in Stripe!
-
-Every early applicant is also entered into our launch draw to win one of **5 free lifetime memberships**.`,
-          action: 'open_waitlist',
-          actionLabel: `Claim 50% Off Lifetime Spot (${p.formattedFounding})`,
-          followUps: [
-            'How does Atlas Travel Kickback work on cruises and car rentals?',
-            'How does wholesale hotel pricing work?',
-            'What is the 100% money-back guarantee?',
-          ],
-        };
-      },
+• **Annual Dues at Launch**: **${p.formattedFounding} per year** (${p.monthlyEquivalent}) upon official launch on Wednesday, January 20, 2027.
+• **100% Free Reservation**: You can reserve your priority spot today for free – no credit card required.
+• **Founder Gift for the First 100**: A complimentary **3-day European luxury hotel break for 2 guests** (worth €480 / 5 400 kr, €0 room rate via Connex Holiday Plus).
+• **Golden Ticket Food Draw**: 3 of the first 100 members will win ALL gourmet meals (half-board) 100% covered by ATLAS.
+• **100% Value Guarantee**: If your first trip doesn't save you more than your membership fee, we refund 100% of your fee immediately.`,
+        action: 'open_waitlist',
+        actionLabel: `Reserve Founding Spot Free (${p.formattedFounding})`,
+        followUps: [
+          'What is included in the free hotel stay?',
+          'How does wholesale hotel pricing work?',
+          'What are 7-night condo stays for €299 (3 490 kr)?',
+          'What is the 100% value guarantee?',
+        ],
+      };
+    },
   },
 
   // =========================================================================
@@ -370,18 +372,19 @@ Every early applicant is also entered into our launch draw to win one of **5 fre
         return {
           text: `Det kan virke merkelig at alle reisesider viser nøyaktig samme pris på et cruise eller leiebil, men det er en streng bransjeregel: Cruiserederiene og leiebilselskapene håndhever regler for laveste annonserte pris (MAP). Ingen reisebyråer får lov til å underby de offisielle prisene i handlekurven.
 
-I stedet betaler de en agentprovisjon (typisk 8% til 14%) i etterkant av reisen.
+I stedet betaler de en agentprovisjon (typisk 10% til 16%) i etterkant av reisen.
 
 **Hva gjør Atlas annerledes?**
-Vanlige reisebyråer stikker hele denne provisjonen i egen lomme. Siden Atlas er en ren medlemsklubb med 0 kr i påslag, **deler vi denne provisjonen rett tilbake til deg som Atlas Travel Kickback!**
+Vanlige reisebyråer stikker hele denne provisjonen i egen lomme. Siden Atlas er en ren medlemsklubb med 0 kr i påslag, **overfører vi 100% av denne provisjonen rett tilbake til deg som Rewards Vault-kreditt!**
 
-* Din andel (50% av provisjonen) overføres til din Rewards Vault 30–45 dager etter reisen.
-* Beløpet motregnes automatisk mot din neste årskontingent (1 290 kr) i Stripe – slik at medlemskapet ofte fornyer seg helt gratis.
-* På toppen av dette sikrer vi deg eksklusive oppgraderinger og gratis ombordkreditt ($200–$600 per lugar).`,
+• **100% Provisjonsretur**: Hele provisjonen tilfaller deg som medlem.
+• **Trygg Likviditet & Escrow**: Provisjonen godskrives som disponible poeng så snart rederiet utbetaler oppgjøret (30–60 dager etter reisen).
+• **Selvfinansierende**: Disponible poeng kan brukes til reiser eller trekkes fra din neste årskontingent (1 290 kr / €110).
+• **Ekstra fordeler**: Eksklusive lugar-oppgraderinger og gratis ombordkreditt (€180–€550 per lugar).`,
           action: 'open_waitlist',
           actionLabel: 'Bli med på ventelisten for cruise',
           followUps: [
-            'Hva koster medlemskap og 50% rabatt?',
+            'Hva koster medlemskapet ved lansering?',
             'Hvordan fungerer engrospriser på hotell?',
             'Hva er 100% verdigarantien?',
           ],
@@ -391,18 +394,19 @@ Vanlige reisebyråer stikker hele denne provisjonen i egen lomme. Siden Atlas er
       return {
         text: `It's frustrating when every travel website shows the exact same price for a cruise or rental car, but there's a strict industry reason for it: luxury cruise lines and rental firms enforce Minimum Advertised Price (MAP) rules. No agency is permitted to undercut public retail prices in the shopping cart.
 
-Instead, suppliers pay an agency commission (typically 8% to 14%) after the journey is completed.
+Instead, suppliers pay an agency commission (typically 10% to 16%) after the journey is completed.
 
 **What does Atlas do differently?**
 Traditional agencies pocket this entire commission. Because Atlas is a pure membership club with 0 kr markups, **we pass 100% of this supplier commission directly back to you as Rewards Vault points and credits!**
 
-* Your 100% commission rebate lands in your Rewards Vault upon supplier settlement.
-* Spendable points can be redeemed for travel or offset your next annual renewal in Stripe (€110 / 1 290 NOK) – often making your membership completely self-funding!
-* On top of that, we secure exclusive stateroom upgrades and onboard spending credits (€180–€550 per cabin).`,
+• **100% Commission Rebate**: We retain 0% of travel commissions.
+• **Escrow Liquidity**: Commission credits clear into spendable points once funds settle from the supplier (30–60 days post-travel).
+• **Self-Funding**: Spendable points can be redeemed for future travel or offset your next annual renewal in Stripe (€110 / 1 290 NOK) – making your membership completely self-funding!
+• **Exclusive VIP Perks**: Stateroom upgrades and onboard spending credits (€180–€550 per cabin).`,
         action: 'open_waitlist',
         actionLabel: 'Join Waitlist for Cruise Allocations',
         followUps: [
-          'What is the membership fee and founding discount?',
+          'What is the annual membership fee?',
           'How does wholesale hotel pricing work?',
           'What is the 100% money-back guarantee?',
         ],
@@ -505,7 +509,7 @@ You can top it up instantly via SEPA or local bank transfer, and you can add it 
     strongKeywords: ['guarantee', 'refund', 'rgf', 'reisegarantifondet', 'protection', 'safe', 'garanti', 'refusjon', 'verdigaranti'],
     weight: 105,
     getAnswer: (currency: CurrencyCode) => {
-      const p = MEMBERSHIP_PRICING[currency] || MEMBERSHIP_PRICING.USD;
+      const p = MEMBERSHIP_PRICING[currency] || MEMBERSHIP_PRICING.EUR;
       const isNorwegian = currency === 'NOK';
 
       if (isNorwegian) {
@@ -517,7 +521,7 @@ Bestillingene dine er forhåndsbetalte engrosallokeringer med offisielle innsjek
           actionLabel: 'Bli med på risikofri venteliste',
           followUps: [
             'Hvorfor må jeg bli medlem og ikke teste først?',
-            'Hva koster medlemskap og 50% rabatt?',
+            'Hva koster årsmedlemskapet ved lansering?',
             'Hvordan fungerer engrospriser på hotell?',
           ],
         };
@@ -531,7 +535,7 @@ Your bookings are pre-paid corporate allotments with official check-in vouchers,
         actionLabel: 'Join Risk-Free Early Access',
         followUps: [
           'Why do I have to become a member and can\'t test first?',
-          'What is the membership fee and founding discount?',
+          'What is the annual membership fee at launch?',
           'How does wholesale hotel pricing work?',
         ],
       };
@@ -870,7 +874,7 @@ Atlas connects directly to major commercial airlines (including British Airways,
 
       if (isNorwegian) {
         return {
-          text: `🍷 **Atlas Gourmet & Spa Escapes — 0 kr i Rompris:**\n\nGjennom vårt partnerskap med Connex (Holiday Plus) fyller utvalgte 3–4* superior velværerhoteller i Europa ledig kapasitet med en genial modell:\n\n• **Rompris**: **0 NOK** (gratis opphold for 2 personer i 2–4 netter).\n• **100% Transparent Økonomi**: Du betaler kun hotellets offisielle, faste halvpensjonspris (**€35–€60 per person/dag**) for frokost og gourmet fleretters middag direkte ved utsjekk på hotellet.\n• **Dokumentert besparelse**: Sparer typisk **over 6 700 NOK (ca. €550)** per miniferie sammenlignet med Booking.com og Expedia.\n• **Håndplukkede destinasjoner**: Dolomittene (Sør-Tyrol), Chianti (Toscana), Schwarzwald (Tyskland), Salzburg (Østerrike), Gardasjøen og Provence.\n• **Umiddelbar kupongutstedelse**: Aktiver din unike verdikupong (HP-xxxx-ATLAS) direkte på medlemsportalen.`,
+          text: `🍷 **Atlas Gourmet & Spa Escapes — 0 kr i Rompris:**\n\nGjennom vårt partnerskap med Connex (Holiday Plus) fyller over **1 500 utvalgte boutique- og velværerhoteller i Europa** ledig kapasitet med en genial modell:\n\n• **Rompris**: **0 NOK** (verditilgodelappen dekker 100% av romprisen for 2 personer i 2–4 netter).\n• **100% Transparent Økonomi**: Du betaler kun hotellets offisielle, faste halvpensjonspris (**€35–€60 per person/dag**) for frokostbuffet og gourmet fleretters middag direkte ved utsjekk på hotellet.\n• **Dokumentert besparelse**: Sparer typisk **over 6 700 NOK (ca. €550)** per miniferie sammenlignet med Booking.com og Expedia.\n• **Håndplukkede destinasjoner**: Dolomittene (Sør-Tyrol), Chianti (Toscana), Schwarzwald (Tyskland), Salzburg (Østerrike), Gardasjøen og Provence.\n• **Umiddelbar kupongutstedelse**: Aktiver din unike verdikupong (HP-xxxx-ATLAS) direkte på medlemsportalen.`,
           action: 'open_waitlist',
           actionLabel: 'Reserver Founding Member-plass (1 290 kr)',
           followUps: [
@@ -882,7 +886,7 @@ Atlas connects directly to major commercial airlines (including British Airways,
       }
 
       return {
-        text: `🍷 **Atlas Gourmet & Spa Escapes — €0 Room Rates:**\n\nThrough our strategic partnership with Connex (Holiday Plus), curated 3-4* superior wellness & boutique retreats across Europe fill surplus capacity:\n\n• **Room Rate**: **€0** (complimentary 2-4 night lodging for 2 guests).\n• **100% Transparent Economics**: You pay only the hotel's published fixed half-board rate (**€35–€60 per guest/day**) for breakfast and multi-course dinner directly at hotel checkout.\n• **Verified Savings**: Save **€550+ (6,700+ NOK)** per getaway compared to Booking.com.\n• **Curated Destinations**: Dolomites (South Tyrol), Tuscany (Chianti), Black Forest (Germany), Salzburg (Austria), Lake Garda, and Provence.\n• **Instant Digital Voucher**: Unique voucher codes (HP-xxxx-ATLAS) generated instantly on the portal.`,
+        text: `🍷 **Atlas Gourmet & Spa Escapes — €0 Room Rates:**\n\nThrough our strategic partnership with Connex (Holiday Plus), **1,500+ curated boutique & wellness retreats across Europe** fill surplus capacity:\n\n• **Room Rate**: **€0** (the voucher covers 100% of the room rate for 2 guests for 2–4 nights).\n• **100% Transparent Economics**: You pay only the hotel's published fixed half-board rate (**€35–€60 per guest/day**) for breakfast buffet and multi-course dinner directly upon hotel checkout.\n• **Verified Savings**: Save **€550+ (6,700+ NOK)** per getaway compared to Booking.com.\n• **Curated Destinations**: Dolomites (South Tyrol), Tuscany (Chianti), Black Forest (Germany), Salzburg (Austria), Lake Garda, and Provence.\n• **Instant Digital Voucher**: Unique voucher codes (HP-xxxx-ATLAS) generated instantly on the portal.`,
         action: 'open_waitlist',
         actionLabel: `Reserve Founding Spot (${p.formattedFounding})`,
         followUps: [

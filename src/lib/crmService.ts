@@ -87,7 +87,7 @@ const INITIAL_LEADS: LeadRecord[] = [
         id: 'note_2',
         authorId: 'team_alex',
         authorName: 'Alex Rivera',
-        content: 'Family of 4 traveling during summer breaks. Explained the 4 complimentary family passes and 50% lifetime rate lock.',
+        content: 'Family of 4 traveling during summer breaks. Explained the 4 complimentary family passes and €110/yr rate with free 3-day European hotel break.',
         createdAt: '2026-10-02T08:20:00Z',
       },
     ],

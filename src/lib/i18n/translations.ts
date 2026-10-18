@@ -411,7 +411,7 @@ export const translations: Record<Language, Translations> = {
       pillar2Title: 'Duffel NDC (300+ flyselskaper direkte)',
       pillar2Desc: 'Direkte API-forbindelse til selskaper som SAS, Lufthansa, British Airways og Emirates til ren kostpris uten fordyrende bookinggebyrer.',
       pillar3Title: 'Connex Holiday Plus (3 dager gratis for 2)',
-      pillar3Desc: '1 500 utvalgte boutique- og velværerhoteller i Europa. Rommet er 100% spandert av ATLAS (0 kr). Du betaler kun hotellets lokale mat ved utsjekk.',
+      pillar3Desc: '1 500+ utvalgte boutique- og velværerhoteller i Europa. Rommet er 100% spandert av ATLAS (0 kr). Du betaler kun hotellets lokale mat (halvpensjon) ved utsjekk.',
       pillar4Title: 'RVC Signature Resorts (7 netter for familien)',
       pillar4Desc: 'Romslige ferieleiligheter for opptil 4–6 personer i Spania, Hellas, Italia og Portugal. Fast totalpris på kun 3 490 kr for hele uken.',
       pillar5Title: 'Rewards Vault (100% Provisjonsretur)',

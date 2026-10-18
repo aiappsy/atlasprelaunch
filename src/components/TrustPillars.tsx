@@ -47,7 +47,7 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onOpenPerkModal }) =
               {isNo ? 'Founding Member Velkomstgave' : 'Founder Welcome Gift'}
             </span>
             <span className="text-xs font-mono font-black text-rose-300">
-              {isNo ? '0 kr Rompris (Verdi 5 400 kr)' : '$0 Room (Worth $520)'}
+              {isNo ? '0 kr Rompris (Verdi 5 400 kr)' : '€0 Room (Worth €480)'}
             </span>
           </div>
           <div>
@@ -83,7 +83,7 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onOpenPerkModal }) =
               {isNo ? 'Fast Medlemsfordel for Familien' : 'Signature Family Perk'}
             </span>
             <span className="text-xs font-mono font-black text-emerald-300">
-              {isNo ? 'Fast 3 490 kr / Uke' : '$320 USD / Week'}
+              {isNo ? 'Fast 3 490 kr / Uke' : 'Flat €299 / Week (3 490 kr)'}
             </span>
           </div>
           <div>
@@ -98,7 +98,7 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onOpenPerkModal }) =
           <div className="flex items-center justify-between text-[11px] text-neutral-400 pt-2 border-t border-neutral-800">
             <span className="flex items-center gap-1 text-emerald-400 font-semibold">
               <CheckCircle2 className="w-3.5 h-3.5" />
-              {isNo ? 'Spar opptil 16 000 kr vs Booking' : 'Save $1,500+ vs OTAs'}
+              {isNo ? 'Spar opptil 16 000 kr vs Booking' : 'Save €1,350+ vs OTAs'}
             </span>
             {onOpenPerkModal && (
               <button

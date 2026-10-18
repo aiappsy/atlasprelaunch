@@ -86,7 +86,7 @@ export const PODCAST_TRACKS_NO: Record<'summary' | 'deepdive', PodcastTrack> = {
       { time: 85, label: '01:25 — Den lukkede grossistkanalen', desc: 'Hvordan 5-stjerners luksushoteller selger overskuddskapasitet til kostpris' },
       { time: 185, label: '03:05 — Duffel NDC direkte flyavtaler', desc: 'Direkte API-integrasjon mot flyselskapene uten fordyrende GDS-gebyrer' },
       { time: 275, label: '04:35 — Europeisk reisetrygghet & EU261', desc: 'Automatisk forsinkelseskompensasjon opptil 600 € pluss lovpålagt reisegaranti' },
-      { time: 335, label: '05:35 — Founding Member-fordelen', desc: 'Lås inn halv pris på livstid og delta i trekningen av gratis medlemskap' },
+      { time: 335, label: '05:35 — Founding Member-fordelen', desc: 'Gratis 3-dagers hotellopphold for 2, mattrekning og 0 kr påslag ved lansering' },
     ],
   },
   deepdive: {
@@ -104,7 +104,7 @@ export const PODCAST_TRACKS_NO: Record<'summary' | 'deepdive', PodcastTrack> = {
       { time: 480, label: '08:00 — Prisparitet og det lovlige unntaket', desc: 'Hvorfor lukkede klubber bak passord omgår offentlige prisavtaler' },
       { time: 720, label: '12:00 — Direkte NDC-flyintegrasjon', desc: 'Kutter ut fordyrende mellomledd på kommersielle flyreiser' },
       { time: 960, label: '16:00 — Automatisk forsinkelsestrygghet', desc: 'Lovpålagt EU261-utbetaling og reisegaranti' },
-      { time: 1140, label: '19:00 — Founding-fordelen', desc: 'Sikre halv pris for all fremtid før den offisielle lanseringen' },
+      { time: 1140, label: '19:00 — Founding-fordelen', desc: 'Gratis 3-dagers hotellopphold for 2, mattrekning og 0 kr påslag ved lansering' },
     ],
   },
 };
@@ -560,7 +560,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
                 {isNorwegian ? 'Klar til å oppleve ekte engrospriser?' : 'Ready to unlock wholesale rates?'}
               </p>
               <p className="text-[11px] text-neutral-400">
-                {isNorwegian ? 'Lås inn 50% livstidsrabatt på ditt medlemskap.' : 'Lock in your lifetime membership at 50% discount.'}
+                {isNorwegian ? 'Sikre gratis 3-dagers hotellopphold for 2 og 0 kr påslag.' : 'Secure free 3-day European hotel stay for 2 & zero markups.'}
               </p>
             </div>
             <button
@@ -571,7 +571,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
               }}
               className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 transition cursor-pointer flex items-center justify-center gap-2"
             >
-              <span>{isNorwegian ? 'Sikre 50% rabatt' : 'Lock In Half Price'}</span>
+              <span>{isNorwegian ? 'Reserver plass gratis' : 'Reserve Spot Free'}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
