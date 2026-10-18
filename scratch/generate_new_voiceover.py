@@ -6,7 +6,7 @@ ENGLISH_TEXT = """Welcome to ATLAS. For decades, the global travel duopoly has k
 
 ATLAS operates on a pure membership model. Zero markups. Direct wholesale bedbank inventory across 1.2 million hotels, and unbundled direct airline tickets.
 
-On Monday, January 4th, 2027, ATLAS officially opens. We are releasing exactly 100 Founding Memberships at 110 euros. Every single Founding Member receives a complimentary 3-day European luxury hotel break for two, worth over 450 euros.
+On Wednesday, January 20th, 2027, ATLAS officially opens. We are releasing exactly 100 Founding Memberships at 110 euros. Every single Founding Member receives a complimentary 3-day European luxury hotel break for two, worth over 450 euros.
 
 Plus, three of the first one hundred will win all gourmet meals fully covered. On launch day, invited candidates have a strict 48-hour claim window before their allocation forfeits to the next in queue.
 
@@ -16,7 +16,7 @@ NORWEGIAN_TEXT = """Velkommen til ATLAS. I tiår har reiselivsbransjens største
 
 ATLAS endrer spillereglene med en ren medlemsmodell. Null provisjoner. Rå grossistpriser på over 1,2 millioner hoteller og direkte flybilletter.
 
-Mandag 4. januar 2027 åpner vi dørene for nøyaktig 100 Founding Members til 1 290 kroner. Samtlige 100 får et 3-dagers luksushotellopphold for to i Europa helt gratis – en verdi på 5 400 kroner.
+Onsdag 20. januar 2027 åpner vi dørene for nøyaktig 100 Founding Members til 1 290 kroner. Samtlige 100 får et 3-dagers luksushotellopphold for to i Europa helt gratis – en verdi på 5 400 kroner.
 
 I tillegg trekker vi tre vinnere blant de 100 som får også all gourmetmat inkludert. På lanseringsdagen gjelder et 48-timers betalingsvindu før plassen går videre til neste på ventelisten.
 

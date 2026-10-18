@@ -904,7 +904,7 @@ export function getWelcomeMessageData(currency: CurrencyCode) {
     return {
       text: `Hei! Jeg er **Aura**, din personlige AI-concierge for ATLAS Travel Club.
 
-Den offisielle lanseringen åpner **mandag 4. januar 2027 kl. 10:00**! 
+Den offisielle lanseringen åpner **onsdag 20. januar 2027 kl. 10:00**! 
 
 Du kan **reservere din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig**. De første 100 medlemmene mottar et **gratis 3-dagers luksushotellopphold for to (verdi 5 400 kr / ca. €480)** og sjansen til å vinne all mat dekket!
 
@@ -914,7 +914,7 @@ Jeg kan også forklare lukkede engrospriser på hotell, våre **7-netters feriel
       followUps: [
         'Hva inkluderer det gratis hotelloppholdet?',
         'Hva er ferieleiligheter til 3 490 kr?',
-        'Hva skjer når dørene åpner 4. januar?',
+        'Hva skjer når dørene åpner 20. januar?',
         'Hvordan fungerer engrospriser på hotell?',
         'Hva er 100% verdigarantien?',
       ],
@@ -924,7 +924,7 @@ Jeg kan også forklare lukkede engrospriser på hotell, våre **7-netters feriel
   return {
     text: `Hi! I'm **Aura**, your VIP AI concierge for ATLAS Travel Club.
 
-Our official launch opens on **Monday, January 4, 2027 at 10:00 AM CET**!
+Our official launch opens on **Wednesday, January 20, 2027 at 10:00 AM CET**!
 
 You can **reserve your Founding Member spot today for free, no credit card necessary**. The first 100 Founding Members receive a **complimentary 3-day European hotel stay for two (worth €480)** and entry into the draw where 3 of 100 win all meals covered!
 
@@ -934,7 +934,7 @@ I can also explain how wholesale bedbank pricing works, our **7-night vacation c
     followUps: [
       'What is included in the free hotel stay?',
       'What are 7-night condo stays for €299 (3 490 kr)?',
-      'What happens on Launch Day January 4?',
+      'What happens on Launch Day January 20?',
       'How does wholesale hotel pricing work?',
       'What is the 100% money-back guarantee?',
     ],
@@ -943,14 +943,14 @@ I can also explain how wholesale bedbank pricing works, our **7-night vacation c
 
 // Conversational Fallback response
 export function getFallbackAnswer(currency: CurrencyCode): ConciergeAnswer {
-  const p = MEMBERSHIP_PRICING[currency] || MEMBERSHIP_PRICING.USD;
+  const p = MEMBERSHIP_PRICING[currency] || MEMBERSHIP_PRICING.EUR;
   const isNorwegian = currency === 'NOK';
 
   if (isNorwegian) {
     return {
       text: `ATLAS Travel Club er en lukket medlemsklubb (etter Costco-modellen) som gir deg direkte tilgang til engrospriser på reiser med 0% kommersielt påslag – vanligvis 20% til 45% lavere enn Booking.com eller Expedia.
 
-Lanseringen skjer **mandag 4. januar 2027 kl. 10:00**. **Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig.** Samtlige 100 første medlemmer mottar et **100% gratis 3-dagers luksushotellopphold for to i Europa (verdi 5 400 kr)**.
+Lanseringen skjer **onsdag 20. januar 2027 kl. 10:00**. **Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig.** Samtlige 100 første medlemmer mottar et **100% gratis 3-dagers luksushotellopphold for to i Europa (verdi 5 400 kr)**.
 
 Hva er du mest nysgjerrig på? Jeg forklarer gjerne 0 kr i rompris (Connex), 7-netters leiligheter (RVC), 100% provisjonsrefusjon eller 100% verdigarantien.`,
       action: 'open_waitlist',
@@ -958,7 +958,7 @@ Hva er du mest nysgjerrig på? Jeg forklarer gjerne 0 kr i rompris (Connex), 7-n
       followUps: [
         'Hva inkluderer det gratis hotelloppholdet?',
         'Hvordan fungerer engrospriser på hotell?',
-        'Hva skjer når dørene åpner 4. januar?',
+        'Hva skjer når dørene åpner 20. januar?',
         'Hva er 100% verdigarantien?',
       ],
     };
@@ -967,19 +967,19 @@ Hva er du mest nysgjerrig på? Jeg forklarer gjerne 0 kr i rompris (Connex), 7-n
   return {
     text: `ATLAS Travel Club is a private membership club (built on the Costco model) giving members direct access to wholesale travel rates with 0% retail markup—typically 20% to 45% lower than Booking.com or Expedia.
 
-Our official launch opens **Monday, January 4, 2027 at 10:00 AM CET**. **Reserve your Founding Member spot today for free, no credit card necessary.** The first 100 Founding Members receive a **complimentary 3-day European hotel break for two (worth $520)**.
+Our official launch opens **Wednesday, January 20, 2027 at 10:00 AM CET**. **Reserve your Founding Member spot today for free, no credit card necessary.** The first 100 Founding Members receive a **complimentary 3-day European hotel break for two (worth €480)**.
 
-What would you like to know more about? I can explain $0 room rates (Connex), 7-night condo escapes (RVC), 100% commission rebates, or our 100% money-back guarantee.`,
-    action: 'open_waitlist',
-    actionLabel: 'Reserve Free Spot (No Card Needed)',
-    followUps: [
-      'What is included in the free hotel stay?',
-      'How does wholesale hotel pricing work?',
-      'What happens on Launch Day January 4?',
-      'What is the 100% money-back guarantee?',
-    ],
-  };
-}
+What would you like to know more about? I can explain €0 room rates (Connex), 7-night condo escapes (RVC), 100% commission rebates, or our 100% money-back guarantee.`,
+      action: 'open_waitlist',
+      actionLabel: 'Reserve Free Spot (No Card Needed)',
+      followUps: [
+        'What is included in the free hotel stay?',
+        'How does wholesale hotel pricing work?',
+        'What happens on Launch Day January 20?',
+        'What is the 100% money-back guarantee?',
+      ],
+    };
+  }
 
 // Sophisticated Semantic & Multi-Factor Scoring Resolver
 export function matchConciergeQuery(query: string, currency: CurrencyCode): ConciergeAnswer {

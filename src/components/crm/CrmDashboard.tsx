@@ -567,13 +567,13 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
             <div className="p-5 rounded-2xl bg-gradient-to-r from-neutral-900 via-neutral-900/90 to-amber-950/30 border border-amber-400/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
               <div>
                 <span className="px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 text-[10px] font-mono font-bold uppercase border border-amber-400/30">
-                  Offisiell Lansering: 4. Januar 2027 kl. 10:00 CET
+                  Offisiell Lansering: Onsdag 20. Januar 2027 kl. 10:00 CET
                 </span>
                 <h3 className="text-lg font-bold text-neutral-100 mt-2 font-cinzel">
                   Automatisert E-postløp (Nurture → Urgency → Forfeiture)
                 </h3>
                 <p className="text-xs text-neutral-400 mt-1 max-w-2xl leading-relaxed">
-                  Alle som melder seg på ventelisten mates automatisk gjennom denne 7-trinns sekvensen frem mot åpningen mandag 4. januar. Mål: Konvertere de 100 første betalende medlemmene (1 290 kr = 129 000 kr Day 1).
+                  Alle som melder seg på ventelisten mates automatisk gjennom denne 7-trinns sekvensen frem mot åpningen onsdag 20. januar. Mål: Konvertere de 100 første betalende medlemmene (1 290 kr / €110 Day 1).
                 </p>
               </div>
 

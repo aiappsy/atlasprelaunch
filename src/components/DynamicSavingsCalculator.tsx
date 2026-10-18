@@ -415,8 +415,8 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
               {/* Informative Note */}
               <div className="text-[11px] text-neutral-400 leading-relaxed font-light">
                 {isNorwegian
-                  ? 'Beregnet på rå engrospriser. Hoteller og fly aktiveres for live-booking ved offisiell lansering 4. januar 2027.'
-                  : 'Modeled on raw wholesale rates. Live hotel and airline inventory activates at official launch on Jan 4, 2027.'}
+                  ? 'Beregnet på rå engrospriser. Hoteller og fly aktiveres for live-booking ved offisiell lansering onsdag 20. januar 2027.'
+                  : 'Modeled on raw wholesale rates. Live hotel and airline inventory activates at official launch on Wednesday, Jan 20, 2027.'}
               </div>
             </div>
 

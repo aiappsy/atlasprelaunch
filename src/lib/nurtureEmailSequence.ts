@@ -1,7 +1,7 @@
 /**
  * ATLAS Prelaunch 2026/2027 - Automated Email Nurture & Conversion Sequence
  * Legal Entity: HARD ROCK CAPITAL LTD (UK Reg. #16833237)
- * Founder: Pål Juritzen | Target: 100 Founding Members @ 1 290 NOK on January 4, 2027
+ * Founder: Pål Juritzen | Target: 100 Founding Members @ 1 290 NOK (€110) on January 20, 2027
  */
 
 export interface EmailSubscriberContext {
@@ -60,7 +60,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
           </div>
 
           <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 10px; padding: 14px 18px; margin: 20px 0; font-size: 12px; line-height: 1.5; color: #fde68a;">
-            ⏳ <strong>Viktig klausul:</strong> Tildelingen av de 100 gratis hotelloppholdene skjer etter førstemann-til-mølla-prinsippet når dørene åpner mandag 4. januar kl. 10:00 (1 290 kr/år). Dersom du ikke fullfører betalingen innen tidsfristen på 48 timer, overføres din plass og det gratis oppholdet automatisk til neste person på ventelisten.
+            ⏳ <strong>Viktig klausul:</strong> Tildelingen av de 100 gratis hotelloppholdene skjer etter førstemann-til-mølla-prinsippet når dørene åpner onsdag 20. januar kl. 10:00 (1 290 kr / €110 per år). Dersom du ikke fullfører betalingen innen tidsfristen på 48 timer, overføres din plass og det gratis oppholdet automatisk til neste person på ventelisten.
           </div>
 
           <p style="font-size: 13px; line-height: 1.6; color: #9ca3af;">
@@ -253,9 +253,9 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
   {
     id: 'email_5_romjul_teaser',
     stageName: 'Trinn 5: Romjulsoppkjøring & Dato Fastsettelse',
-    scheduledTiming: 'Sendes 28. desember',
-    subjectNo: '📅 Datoen er satt: Mandag 4. januar kl. 10:00 åpner ATLAS',
-    subjectEn: '📅 The Date is Set: Monday January 4 at 10:00 AM ATLAS Opens',
+    scheduledTiming: 'Sendes 14. januar',
+    subjectNo: '📅 Datoen er satt: Onsdag 20. januar kl. 10:00 åpner ATLAS',
+    subjectEn: '📅 The Date is Set: Wednesday January 20 at 10:00 AM ATLAS Opens',
     preheaderNo: 'Kun 100 plasser med gratis 3-dagers hotellopphold. Gjør deg klar.',
     preheaderEn: 'Only 100 spots with complimentary 3-day hotel break. Get ready.',
     getHtmlContent: (ctx) => `
@@ -267,15 +267,15 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
         <div style="padding: 32px;">
           <h2 style="font-size: 20px; color: #f3f4f6; margin-top: 0;">Hei, ${ctx.fullName}.</h2>
           <p style="font-size: 14px; line-height: 1.6; color: #d1d5db;">
-            Håper du har hatt en fantastisk og fredelig julefeiring!
+            Håper du har hatt en fantastisk start på det nye året!
           </p>
           <p style="font-size: 14px; line-height: 1.6; color: #d1d5db;">
-            Nå som vi nærmer oss det nye året og årets største ferieplanleggingsmåned, er datoen for den offisielle lanseringen av <strong>ATLAS Travel Club</strong> offisielt spikret:
+            Nå som vi er i årets største ferieplanleggingsmåned, er datoen for den offisielle lanseringen av <strong>ATLAS Travel Club</strong> offisielt spikret:
           </p>
 
           <div style="background: linear-gradient(135deg, #1f1a0e 0%, #141414 100%); border: 2px solid #fbbf24; border-radius: 14px; padding: 24px; text-align: center; margin: 24px 0;">
             <div style="font-size: 11px; font-mono; color: #f59e0b; text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">OFFISIELL LANSERINGSTIDSPUNKT</div>
-            <div style="font-size: 24px; font-bold; color: #ffffff; margin: 8px 0;">Mandag 4. januar 2027 kl. 10:00</div>
+            <div style="font-size: 24px; font-bold; color: #ffffff; margin: 8px 0;">Onsdag 20. januar 2027 kl. 10:00</div>
             <div style="font-size: 13px; color: #d1d5db;">Kontingent: 1 290 kr / år (€110) • 100% Fornøydgaranti</div>
           </div>
 
@@ -284,11 +284,11 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
           </p>
 
           <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 12px 16px; margin: 18px 0; font-size: 12px; color: #fde68a;">
-            ⚠️ <strong>Husk:</strong> Du har 48 timer på å aktivere plassen din fra mandag 4. januar kl. 10:00. Uavhentede plasser overføres automatisk til neste person på listen onsdag 6. januar kl. 12:00.
+            ⚠️ <strong>Husk:</strong> Du har 48 timer på å aktivere plassen din fra onsdag 20. januar kl. 10:00. Uavhentede plasser overføres automatisk til neste person på listen fredag 22. januar kl. 12:00.
           </div>
 
           <div style="border-top: 1px solid #262626; padding-top: 20px; font-size: 12px; font-family: monospace; color: #6b7280;">
-            Hold et øye med innboksen din mandag 4. januar kl. 10:00 presis!
+            Hold et øye med innboksen din onsdag 20. januar kl. 10:00 presis!
           </div>
         </div>
       </div>
@@ -296,12 +296,12 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
   },
 
   // =========================================================================
-  // EMAIL 6: LAUNCH DAY LIVE (JANUARY 4 AT 10:00)
+  // EMAIL 6: LAUNCH DAY LIVE (JANUARY 20 AT 10:00)
   // =========================================================================
   {
     id: 'email_6_launch_live',
     stageName: 'Trinn 6: Dørene er åpne (Launch Day)',
-    scheduledTiming: 'Sendes mandag 4. januar kl. 10:00',
+    scheduledTiming: 'Sendes onsdag 20. januar kl. 10:00',
     subjectNo: '🚨 DØRENE ER ÅPNE: Sikre ditt Founding Membership & gratis hotellopphold nå',
     subjectEn: '🚨 DOORS ARE OPEN: Claim your Founding Membership & Free Hotel Break Now',
     preheaderNo: 'De 100 plassene tildeles nå. Førstemann til mølla via Stripe.',
@@ -337,7 +337,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
           </div>
 
           <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 8px; padding: 12px 16px; margin: 22px 0; font-size: 12px; color: #fca5a5;">
-            ⏳ <strong>Tidsfrist for reservasjon:</strong> Plassen din holdes i 48 timer. Dersom den ikke aktiveres innen onsdag 6. januar kl. 12:00, frigis det gratis hotelloppholdet automatisk til neste person på ventelisten.
+            ⏳ <strong>Tidsfrist for reservasjon:</strong> Plassen din holdes i 48 timer. Dersom den ikke aktiveres innen fredag 22. januar kl. 12:00, frigis det gratis hotelloppholdet automatisk til neste person på ventelisten.
           </div>
 
           <div style="border-top: 1px solid #262626; padding-top: 20px; font-size: 12px; font-family: monospace; color: #6b7280;">
@@ -355,7 +355,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
   {
     id: 'email_7_final_warning',
     stageName: 'Trinn 7: Siste 12 timer før plass frigis',
-    scheduledTiming: 'Sendes tirsdag 5. januar kl. 20:00 (16t før frist)',
+    scheduledTiming: 'Sendes torsdag 21. januar kl. 20:00 (16t før frist)',
     subjectNo: '⚠️ Siste sjanse: Plassen din frigis til neste på ventelisten i morgen kl. 12:00',
     subjectEn: '⚠️ Final Notice: Your allocation will be transferred to the waitlist tomorrow at 12:00',
     preheaderNo: 'Kun få plasser igjen av de 100. Sikre ditt gratis hotellopphold nå.',
@@ -372,7 +372,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
             Over 80 av våre 100 Founding Member-plasser er allerede revet bort etter lanseringen i går.
           </p>
           <p style="font-size: 14px; line-height: 1.6; color: #d1d5db;">
-            Din reserverte plass og ditt <strong>gratis 3-dagers hotellopphold for to personer i Europa</strong> holdes av frem til <strong>i morgen, onsdag 6. januar kl. 12:00</strong>.
+            Din reserverte plass og ditt <strong>gratis 3-dagers hotellopphold for to personer i Europa</strong> holdes av frem til <strong>i morgen, fredag 22. januar kl. 12:00</strong>.
           </p>
 
           <div style="background: #1c1414; border: 1px solid #ef444460; border-radius: 12px; padding: 20px; margin: 22px 0; text-align: center;">

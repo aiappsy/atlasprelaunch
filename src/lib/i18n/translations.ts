@@ -257,7 +257,7 @@ export const translations: Record<Language, Translations> = {
     },
     waitlist: {
       modalTitle: 'Reserve Founding Member Spot',
-      modalSubtitle: 'Reserve your Founding Member spot today for free, no credit card necessary. At launch on January 4, 2027, you get 48 hours to activate and receive your free 3-day European hotel stay for 2!',
+      modalSubtitle: 'Reserve your Founding Member spot today for free, no credit card necessary. At launch on Wednesday, January 20, 2027, you get 48 hours to activate and receive your free 3-day European hotel stay for 2!',
       step1Title: 'Step 1: Your Details',
       step2Title: 'Step 2: Instant Mobile Verification',
       step3Title: 'Step 3: Membership Confirmed',
@@ -419,7 +419,7 @@ export const translations: Record<Language, Translations> = {
     },
     waitlist: {
       modalTitle: 'Reserver Founding Member-plass',
-      modalSubtitle: 'Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig. Ved lansering 4. januar 2027 har du 48 timer på å aktivere og motta ditt gratis 3-dagers hotellopphold for 2!',
+      modalSubtitle: 'Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig. Ved lansering onsdag 20. januar 2027 har du 48 timer på å aktivere og motta ditt gratis 3-dagers hotellopphold for 2!',
       step1Title: 'Trinn 1: Personopplysninger',
       step2Title: 'Trinn 2: Sikker SMS-verifisering',
       step3Title: 'Trinn 3: Medlemskap & Gave Bekreftet',
