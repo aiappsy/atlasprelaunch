@@ -40,7 +40,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
   onOpenPerkModal,
 }) => {
   const { isNorwegian } = useLanguage();
-  const [currency, setCurrency] = useState<CurrencyCode>(isNorwegian ? 'NOK' : 'USD');
+  const [currency, setCurrency] = useState<CurrencyCode>(isNorwegian ? 'NOK' : 'EUR');
   const [profile, setProfile] = useState<TravelProfileId>('family');
 
   // Custom adjustments (when user clicks custom or fine-tunes)
@@ -109,7 +109,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
   const formattedSavings = formatCurrencyValue(totalSavings, currency);
 
   // ROI vs membership fee (1 290 NOK)
-  const annualMembershipFee = currency === 'NOK' ? 1290 : currency === 'EUR' ? 115 : currency === 'GBP' ? 99 : 125;
+  const annualMembershipFee = currency === 'NOK' ? 1290 : currency === 'EUR' ? 110 : currency === 'GBP' ? 95 : 120;
   const roiMultiplier = Math.max(1, Math.round(totalSavings / annualMembershipFee));
 
   // Build result object for waitlist modal
@@ -164,7 +164,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
             <span className="text-[11px] font-mono text-neutral-400 pl-2 pr-1">
               {isNorwegian ? 'Valuta:' : 'Currency:'}
             </span>
-            {(['NOK', 'EUR', 'USD', 'GBP'] as CurrencyCode[]).map((c) => (
+            {(['EUR', 'NOK', 'USD', 'GBP'] as CurrencyCode[]).map((c) => (
               <button
                 key={c}
                 type="button"
@@ -450,8 +450,8 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                     <Gift className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                     <span>
                       {isNorwegian
-                        ? 'Founding Member-gave: Gratis 3-dagers luksushotellopphold for 2 (verdi 5 400 kr) inkludert.'
-                        : 'Founder perk: Complimentary 3-day luxury hotel break for two (worth $520) included.'}
+                        ? 'Founding Member-gave: Gratis 3-dagers luksushotellopphold for 2 (verdi 5 400 kr / ca. €480) inkludert.'
+                        : 'Founder perk: Complimentary 3-day luxury hotel break for two (worth €480) included.'}
                     </span>
                   </div>
                 </div>
@@ -502,17 +502,17 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
             <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
               {isNorwegian
                 ? 'Når du sikrer deg et av de 100 første medlemskapene, spanderer ATLAS et 3-dagers hotellopphold for to i Europa (Holiday Plus). Rommet er 100% gratis (0 kr). Du betaler kun hotellets lokale mat (frokost & middag) ved utsjekk.'
-                : 'When you claim 1 of the first 100 founder spots, ATLAS covers a 3-day European hotel break for two. The room is 100% free ($0)—you only pay the hotel’s local gourmet half-board at checkout.'}
+                : 'When you claim 1 of the first 100 founder spots, ATLAS covers a 3-day European hotel break for two. The room is 100% free (€0)—you only pay the hotel’s local gourmet half-board at checkout.'}
             </p>
 
             <div className="p-3.5 rounded-xl bg-neutral-950 border border-amber-400/30 flex items-center justify-between text-xs font-mono">
               <div>
                 <span className="text-neutral-400 block text-[11px]">{isNorwegian ? 'Rompris:' : 'Room rate:'}</span>
-                <span className="text-emerald-400 font-bold text-base">{isNorwegian ? '0 kr (100% Gratis)' : '$0 (100% Free)'}</span>
+                <span className="text-emerald-400 font-bold text-base">{isNorwegian ? '0 kr (100% Gratis)' : '€0 (100% Free)'}</span>
               </div>
               <div className="text-right">
                 <span className="text-neutral-400 block text-[11px]">{isNorwegian ? 'Normalverdi:' : 'Regular value:'}</span>
-                <span className="text-amber-300 font-bold text-base">{isNorwegian ? '~5 400 kr' : '~$520'}</span>
+                <span className="text-amber-300 font-bold text-base">{isNorwegian ? '~5 400 kr' : '~€480'}</span>
               </div>
             </div>
           </div>
@@ -541,17 +541,17 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
             <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
               {isNorwegian
                 ? 'Romslige ferieleiligheter med stue, separat soverom og kjøkken i Spania (Tenerife/Marbella), Hellas (Kreta), Italia (Toscana) og Portugal (Algarve). Én fast pris for hele uken for hele familien!'
-                : 'Spacious condominium suites with living rooms, separate bedrooms, and kitchens in Spain, Greece, Italy, and Portugal. One flat price for the entire week for up to 6 guests!'}
+                : 'Spacious condominium suites with living rooms, separate bedrooms, and kitchens in Spain, Greece, Italy, and Portugal. One flat price of €299 for the entire week for up to 6 guests!'}
             </p>
 
             <div className="p-3.5 rounded-xl bg-neutral-950 border border-emerald-400/30 flex items-center justify-between text-xs font-mono">
               <div>
                 <span className="text-neutral-400 block text-[11px]">{isNorwegian ? 'Fast totalpris (7 netter):' : 'Fixed total price (7 nights):'}</span>
-                <span className="text-emerald-400 font-bold text-base">{isNorwegian ? '3 490 kr totalt' : '$320 total'}</span>
+                <span className="text-emerald-400 font-bold text-base">{isNorwegian ? '3 490 kr totalt' : '€299 total'}</span>
               </div>
               <div className="text-right">
                 <span className="text-neutral-400 block text-[11px]">{isNorwegian ? 'Du sparer vs Booking:' : 'You save vs Booking:'}</span>
-                <span className="text-amber-300 font-bold text-base">{isNorwegian ? '~14 500 kr' : '~$1,400+'}</span>
+                <span className="text-amber-300 font-bold text-base">{isNorwegian ? '~14 500 kr' : '~€1,350+'}</span>
               </div>
             </div>
           </div>

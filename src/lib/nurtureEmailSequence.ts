@@ -52,7 +52,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
             <div style="font-size: 26px; font-family: monospace; font-weight: 700; letter-spacing: 3px; color: #fbbf24; margin: 6px 0 16px 0;">${ctx.inviteCode}</div>
             
             <div style="border-top: 1px solid #262626; padding-top: 14px; font-size: 13px; color: #e5e7eb; line-height: 1.6;">
-              <div style="margin-bottom: 6px;">🎁 <strong>100% gratis 3-dagers hotellopphold for 2 personer</strong> i Europa (verdi 5 400 kr / $520)</div>
+              <div style="margin-bottom: 6px;">🎁 <strong>100% gratis 3-dagers hotellopphold for 2 personer</strong> i Europa (verdi 5 400 kr / €480)</div>
               <div style="margin-bottom: 6px;">🌟 <strong>Lodd i trekningen</strong> der 3 av de 100 får OGSÅ all gourmetmat (halvpensjon) dekket</div>
               <div style="margin-bottom: 6px;">🛡️ <strong>100% Fornøyd- & Verdigaranti</strong> på din aller første reise</div>
               <div>⚡ <strong>0 kr påslag for livstid</strong> på fly, leiebil og over 1 000 000 hoteller globalt</div>
@@ -156,9 +156,9 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
     stageName: 'Trinn 3: 7 netters leiligheter til 3 490 kr',
     scheduledTiming: '9 dager etter registrering',
     subjectNo: '🏖️ 7 netter i Marbella eller Tenerife for 3 490 kr? Her er beviset.',
-    subjectEn: '🏖️ 7 nights in Marbella or Tenerife for 3,490 NOK? Here is the proof.',
+    subjectEn: '🏖️ 7 nights in Marbella or Tenerife for €299 (3 490 kr)? Here is the proof.',
     preheaderNo: 'Slik sparer en familie over 15 000 kr på én eneste ukesferie med ATLAS.',
-    preheaderEn: 'How a family saves over 15,000 NOK on a single summer vacation with ATLAS.',
+    preheaderEn: 'How a family saves over €1,300 (15,000 NOK) on a single summer vacation with ATLAS.',
     getHtmlContent: (ctx) => `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #f5f5f5; border: 1px solid #d4af3740; border-radius: 16px; overflow: hidden;">
         <div style="padding: 28px 32px; background: linear-gradient(135deg, #1c1917 0%, #0a0a0a 100%); border-bottom: 1px solid #d4af3730;">
@@ -276,7 +276,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
           <div style="background: linear-gradient(135deg, #1f1a0e 0%, #141414 100%); border: 2px solid #fbbf24; border-radius: 14px; padding: 24px; text-align: center; margin: 24px 0;">
             <div style="font-size: 11px; font-mono; color: #f59e0b; text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">OFFISIELL LANSERINGSTIDSPUNKT</div>
             <div style="font-size: 24px; font-bold; color: #ffffff; margin: 8px 0;">Mandag 4. januar 2027 kl. 10:00</div>
-            <div style="font-size: 13px; color: #d1d5db;">Kontingent: 1 290 kr / år • 100% Fornøydgaranti</div>
+            <div style="font-size: 13px; color: #d1d5db;">Kontingent: 1 290 kr / år (€110) • 100% Fornøydgaranti</div>
           </div>
 
           <p style="font-size: 13px; line-height: 1.6; color: #d1d5db;">
@@ -323,7 +323,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
             <div style="font-size: 26px; font-family: monospace; font-weight: bold; color: #fbbf24; margin: 6px 0 16px 0;">${ctx.inviteCode}</div>
             
             <a href="https://atlasclub.web.app/membership" style="display: inline-block; width: 85%; padding: 16px 0; background: linear-gradient(90deg, #fbbf24, #f59e0b); color: #0a0a0a; text-decoration: none; font-weight: 900; font-size: 15px; border-radius: 10px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 20px rgba(251, 191, 36, 0.4);">
-              Sikre plass & gratis hotell (1 290 kr) ➔
+              Sikre plass & gratis hotell (1 290 kr / €110) ➔
             </a>
             <div style="font-size: 11px; color: #9ca3af; margin-top: 10px;">Sikker betaling via Stripe • 100% Fornøydgaranti</div>
           </div>

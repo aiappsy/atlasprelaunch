@@ -64,7 +64,7 @@ export function generateFounderWelcomeHtml(payload: WelcomeEmailPayload): string
                     <div style="font-size: 24px; font-family: monospace; font-weight: 700; letter-spacing: 2px; color: #fbbf24; margin: 6px 0 16px 0;">${payload.inviteCode}</div>
                     
                     <div style="border-top: 1px solid #262626; padding-top: 12px;">
-                      <div style="font-size: 12px; color: #e5e7eb; margin-bottom: 6px;">✓ <strong>100% Free 3-Day European Hotel Break for 2</strong> (Connex Holiday Plus, worth $520 / 5 400 kr)</div>
+                      <div style="font-size: 12px; color: #e5e7eb; margin-bottom: 6px;">✓ <strong>100% Free 3-Day European Hotel Break for 2</strong> (Connex Holiday Plus, worth €480 / 5 400 kr)</div>
                       <div style="font-size: 12px; color: #e5e7eb; margin-bottom: 6px;">✓ <strong>Golden Ticket Draw Entry</strong> (3 of 100 early members win ALL gourmet meals covered)</div>
                       <div style="font-size: 12px; color: #e5e7eb; margin-bottom: 6px;">✓ <strong>0 kr Retail Markup on Flights & 1.2M+ Wholesale Hotels</strong></div>
                       <div style="font-size: 12px; color: #e5e7eb;">✓ <strong>Strict 48-Hour Claim Window at Launch</strong> (Monday, Jan 4, 2027 at 10:00 CET)</div>

@@ -188,7 +188,7 @@ export function addNewLeadFromRegistration(params: NewLeadRegistrationParams | s
 
   // Derive modeled savings if present
   let modeledSavings = 2500;
-  const match = tierInfo.match(/\$([0-9,]+)/);
+  const match = tierInfo.match(/[€\$]([0-9,]+)/) || tierInfo.match(/([0-9,]+)\s*(EUR|NOK|kr)/i);
   if (match && match[1]) {
     modeledSavings = Number(match[1].replace(/,/g, ''));
   }

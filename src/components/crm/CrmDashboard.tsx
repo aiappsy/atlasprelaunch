@@ -206,7 +206,7 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
           <div className="p-4 rounded-2xl bg-neutral-900/80 border border-neutral-800 text-left">
             <span className="text-[11px] font-mono text-neutral-400 uppercase block mb-1">Modeled Savings Pipeline</span>
             <div className="text-2xl font-bold font-mono text-amber-300">
-              ${totalModeledSavings.toLocaleString()}
+              €{totalModeledSavings.toLocaleString()}
             </div>
             <span className="text-[10px] text-neutral-500 font-mono mt-1 block">Cumulative member value</span>
           </div>
@@ -217,7 +217,7 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
               <span>{hotLeadsCount}</span>
               <Flame className="w-4 h-4 text-red-400" />
             </div>
-            <span className="text-[10px] text-neutral-500 font-mono mt-1 block">&gt; $3,500/yr modeled</span>
+            <span className="text-[10px] text-neutral-500 font-mono mt-1 block">&gt; €3,000/yr modeled</span>
           </div>
 
           <div className="p-4 rounded-2xl bg-neutral-900/80 border border-neutral-800 text-left">
@@ -398,7 +398,7 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
                             {/* Modeled Savings */}
                             <td className="py-3 px-4">
                               <span className="font-cinzel font-bold text-amber-300 text-sm">
-                                ${lead.modeledSavingsUSD.toLocaleString()} / yr
+                                €{lead.modeledSavingsUSD.toLocaleString()} / yr
                               </span>
                               <span className="text-[10px] text-neutral-500 block">
                                 {lead.membershipTier}
@@ -723,7 +723,7 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
           setSelectedCertificateData({
             email: lead.email,
             inviteCode: lead.inviteCode,
-            modeledSavings: '$' + lead.modeledSavingsUSD.toLocaleString(),
+            modeledSavings: '€' + lead.modeledSavingsUSD.toLocaleString(),
             issueDate: lead.createdAt,
           })
         }

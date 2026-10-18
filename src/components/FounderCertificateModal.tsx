@@ -247,15 +247,15 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                   <div className="max-w-2xl mx-auto px-4 pt-2 pb-1 text-center space-y-2">
                     <p className="font-serif text-sm sm:text-base text-[#1c160c] leading-relaxed font-medium">
                       {isNorwegian ? (
-                        <>Har etter fullført forhåndsregistrering blitt tildelt prioritert plass som en av klubbens 100 første <strong>Founding Members</strong> i The Atlas Travel Club. Medlemskapet er et <strong>årlig abonnement (1 290 kr/år)</strong> som aktiveres ved offisiell åpning <strong>mandag 4. januar 2027 kl. 10:00 CET</strong>, og gir direkte tilgang til rå grossistpriser på fly og over 1,2 millioner hoteller med 0 kr i påslag.</>
+                        <>Har etter fullført forhåndsregistrering blitt tildelt prioritert plass som en av klubbens 100 første <strong>Founding Members</strong> i The Atlas Travel Club. Medlemskapet er et <strong>årlig abonnement (1 290 kr / ca. €110 per år)</strong> som aktiveres ved offisiell åpning <strong>mandag 4. januar 2027 kl. 10:00 CET</strong>, og gir direkte tilgang til rå grossistpriser på fly og over 1,2 millioner hoteller med 0 kr i påslag.</>
                       ) : (
-                        <>Having completed verified prelaunch registration, is hereby accredited as one of the club's first 100 <strong>Founding Members</strong> in The Atlas Travel Club. Membership is an <strong>annual subscription (1 290 NOK / year)</strong> activated upon official launch on <strong>Monday, January 4, 2027 at 10:00 AM CET</strong>, granting direct access to raw wholesale hotel bedbank rates and direct airline flights with zero retail markup.</>
+                        <>Having completed verified prelaunch registration, is hereby accredited as one of the club's first 100 <strong>Founding Members</strong> in The Atlas Travel Club. Membership is an <strong>annual subscription (€110 / 1 290 NOK per year)</strong> activated upon official launch on <strong>Monday, January 4, 2027 at 10:00 AM CET</strong>, granting direct access to raw wholesale hotel bedbank rates and direct airline flights with zero retail markup.</>
                       )}
                     </p>
 
                     {/* Clear Annual Membership Terms & Launch Window Pill */}
                     <div className="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-1.5 rounded-xl bg-[#ebdfc0] border border-[#b8862d]/50 text-[#59431d] font-mono text-xs font-bold shadow-xs">
-                      <span>💳 {isNorwegian ? 'Årlig medlemskontingent: 1 290 kr/år' : 'Annual Membership Fee: 1 290 NOK/year'}</span>
+                      <span>💳 {isNorwegian ? 'Årlig medlemskontingent: 1 290 kr/år' : 'Annual Membership Fee: €110/year (1 290 NOK)'}</span>
                       <span>•</span>
                       <span>📅 {isNorwegian ? 'Lansering: 4. jan 2027 kl. 10:00' : 'Launch: Jan 4, 2027 at 10:00 CET'}</span>
                       <span>•</span>
@@ -284,8 +284,8 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                       </div>
                       <p className="text-[10px] font-mono text-[#57462c] mt-1 leading-normal">
                         {isNorwegian
-                          ? '100% gratis hotellopphold for 2 i Europa (Connex, verdi 5 400 kr / $520).'
-                          : '100% free European hotel break for two travelers (worth $520 / 5 400 kr).'}
+                          ? '100% gratis hotellopphold for 2 i Europa (Connex, verdi 5 400 kr / ca. €480).'
+                          : '100% free European hotel break for two travelers (worth €480 / 5 400 kr).'}
                       </p>
                     </div>
 
@@ -460,8 +460,8 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                   </div>
                   <p className="text-neutral-300">
                     {isNorwegian
-                      ? 'Selve hotellrommet er 100% sponset av ATLAS (verdi 5 400 kr / $520). Du betaler kun hotellets lokale gourmet-halvpensjon ved utsjekk.'
-                      : 'The hotel room is 100% sponsored by ATLAS (worth $520 / 5 400 kr). Traveler only covers local gourmet half-board at check-out.'}
+                      ? 'Selve hotellrommet er 100% sponset av ATLAS (verdi 5 400 kr / ca. €480). Du betaler kun hotellets lokale gourmet-halvpensjon ved utsjekk.'
+                      : 'The hotel room is 100% sponsored by ATLAS (worth €480 / 5 400 kr). Traveler only covers local gourmet half-board at check-out.'}
                   </p>
                   <div className="text-amber-300 font-bold font-mono pt-1">
                     2. {isNorwegian ? 'Gullbillett-trekning (3 vinnere får all mat dekket):' : 'Golden Ticket Draw (3 Winners Win All Meals Covered):'}
@@ -472,12 +472,12 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                       : 'Among the first 100 members, 3 winners will have ALL MEALS (half-board) 100% covered by ATLAS.'}
                   </p>
                   <div className="text-amber-300 font-bold font-mono pt-1">
-                    3. {isNorwegian ? 'Årlig medlemskontingent (1 290 kr/år) & 48-timers kravfrist:' : 'Annual Membership (1 290 NOK/year) & 48-Hour Claim Window:'}
+                    3. {isNorwegian ? 'Årlig medlemskontingent (1 290 kr / ca. €110/år) & 48-timers kravfrist:' : 'Annual Membership (€110 / 1 290 NOK per year) & 48-Hour Claim Window:'}
                   </div>
                   <p className="text-neutral-300">
                     {isNorwegian
-                      ? 'Medlemskapet koster 1 290 kr per år og aktiveres ved offisiell lansering mandag 4. januar 2027 kl. 10:00 CET. Du har 48 timer på å bekrefte plassen før den overføres til neste på ventelisten.'
-                      : 'Membership is an annual subscription of 1 290 NOK/year, activated upon official launch on Monday, January 4, 2027 at 10:00 AM CET. You have 48 hours to activate before your spot is passed to the next applicant.'}
+                      ? 'Medlemskapet koster 1 290 kr (ca. €110) per år og aktiveres ved offisiell lansering mandag 4. januar 2027 kl. 10:00 CET. Du har 48 timer på å bekrefte plassen før den overføres til neste på ventelisten.'
+                      : 'Membership is an annual subscription of €110 / year (1 290 NOK), activated upon official launch on Monday, January 4, 2027 at 10:00 AM CET. You have 48 hours to activate before your spot is passed to the next applicant.'}
                   </p>
                   <div className="text-amber-300 font-bold font-mono pt-1">
                     4. {isNorwegian ? 'Din personlige Founding-referansekode:' : 'Your Founder Reference Code:'}

@@ -64,9 +64,9 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
   };
 
   const openMailtoDraft = () => {
-    const subject = encodeURIComponent(`Atlas Founder Member Invitation | 50% Lifetime Rate Lock (${lead.inviteCode})`);
+    const subject = encodeURIComponent(`Atlas Founder Member Invitation | Launch Credentials (${lead.inviteCode})`);
     const body = encodeURIComponent(
-      `Hello ${lead.fullName || ''},\n\nCongratulations on reserving your Founder Member spot for Atlas Travel Club!\n\nAs one of our initial founder members on the waiting list, you have secured two exclusive privileges:\n1. 50% OFF Membership For Life (permanently locked in)\n2. Automatic entry into our launch draw for 1 of 5 Free Lifetime Memberships (zero annual dues forever)\n\nBased on your travel profile, you are projected to save $${lead.modeledSavingsUSD.toLocaleString()} / year using our direct B2B bedbank rates without public retail markups.\n\nYour Founder Reference Code: ${lead.inviteCode}\n\nWhen is your next upcoming journey? I would be delighted to run a private rate audit for your preferred destinations.\n\nWarm regards,\n${currentMember.name}\nAtlas Sales & Concierge Team\nAtlas Travel Club`
+      `Hello ${lead.fullName || ''},\n\nCongratulations on reserving your Founder Member spot for Atlas Travel Club!\n\nAs one of our first 100 Founder Members on the priority registry, you have secured certified privileges:\n1. Annual Founding Membership: €110 / year (1 290 NOK) with 0 markup on institutional wholesale hotels and direct flights\n2. Free 3-Day European Luxury Hotel Break for 2 (worth €480 / 5 400 kr)\n3. Golden Ticket Draw entry where 3 of 100 win ALL meals covered\n\nBased on your travel profile, you are projected to save €${lead.modeledSavingsUSD.toLocaleString()} / year using our direct B2B bedbank wholesale rates.\n\nYour Founder Reference Code: ${lead.inviteCode}\n\nWhen is your next upcoming journey? I would be delighted to run a private rate audit for your preferred destinations.\n\nWarm regards,\n${currentMember.name}\nAtlas Concierge Team\nAtlas Travel Club`
     );
     window.open(`mailto:${lead.email}?subject=${subject}&body=${body}`, '_blank');
   };
@@ -76,7 +76,7 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
     if (!rawNumber) return;
     const phoneClean = rawNumber.replace(/\D/g, '');
     const text = encodeURIComponent(
-      `Hello ${lead.fullName || ''}! This is ${currentMember.name} from Atlas Travel Club Concierge.\n\nCongratulations on reserving your Founder Member spot! You have locked in 50% OFF membership for life and automatic entry into our draw for 1 of 5 Free Lifetime Memberships.\n\nYour Founder Reference Code is: ${lead.inviteCode}.\n\nBased on your travel preferences, you are projected to save ~$${lead.modeledSavingsUSD.toLocaleString()}/year. When is your next planned getaway? I'd love to share an unmasked rate comparison with you.`
+      `Hello ${lead.fullName || ''}! This is ${currentMember.name} from Atlas Travel Club Concierge.\n\nCongratulations on reserving your Founder Member spot! You have secured a complimentary 3-day European hotel break for two (worth €480 / 5 400 kr) and entry into our all-meals draw.\n\nYour Founder Reference Code is: ${lead.inviteCode}.\n\nBased on your travel preferences, you are projected to save ~€${lead.modeledSavingsUSD.toLocaleString()}/year. When is your next planned getaway? I'd love to share an unmasked rate comparison with you.`
     );
     window.open(`https://wa.me/${phoneClean}?text=${text}`, '_blank');
   };
@@ -138,7 +138,7 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
             <div className="p-3 rounded-2xl bg-neutral-950 border border-neutral-800 text-left">
               <span className="text-[10px] font-mono text-neutral-400 uppercase block">Modeled Savings</span>
               <span className="text-lg font-cinzel font-bold text-amber-300">
-                ${lead.modeledSavingsUSD.toLocaleString()} / yr
+                €{lead.modeledSavingsUSD.toLocaleString()} / yr
               </span>
             </div>
 

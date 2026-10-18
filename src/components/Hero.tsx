@@ -108,7 +108,7 @@ export const Hero: React.FC<HeroProps> = ({
           <span>
             {isNorwegian
               ? 'Helt gratis å reservere • Ingen binding • Årlig medlemskap: 1 290 kr ved lansering'
-              : '100% Free reservation • No credit card • Annual membership: 1 290 NOK at launch'}
+              : '100% Free reservation • No credit card • Annual membership: €110 at launch'}
           </span>
         </div>
 

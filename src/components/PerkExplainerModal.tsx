@@ -100,6 +100,10 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
   const connexMealTotalNok = Math.round(selectedConnex.mealPriceEur * 2 * connexNights * eurToNok);
   const connexNetSavingsNok = connexPublicOtaTotal - connexMealTotalNok;
 
+  const connexPublicOtaEur = Math.round(connexPublicOtaTotal / eurToNok);
+  const connexMealTotalEur = Math.round(selectedConnex.mealPriceEur * 2 * connexNights);
+  const connexNetSavingsEur = connexPublicOtaEur - connexMealTotalEur;
+
   // RVC destinations data
   const rvcDestinations: Record<string, { nameNo: string; nameEn: string; otaWeeklyNok: number; typicalResort: string }> = {
     marbella: {
@@ -145,6 +149,11 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
   const rvcNetSavingsNok = selectedRvc.otaWeeklyNok - rvcAtlasFlatPrice;
   const rvcPerPersonPerNight = Math.round(rvcAtlasFlatPrice / (rvcGuests * 7));
 
+  const rvcAtlasFlatPriceEur = 299;
+  const rvcPublicOtaEur = Math.round(selectedRvc.otaWeeklyNok / eurToNok);
+  const rvcNetSavingsEur = rvcPublicOtaEur - rvcAtlasFlatPriceEur;
+  const rvcPerPersonPerNightEur = Math.round(rvcAtlasFlatPriceEur / (rvcGuests * 7));
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md overflow-y-auto animate-in fade-in duration-200">
       <div className="relative w-full max-w-2xl bg-neutral-950 border border-amber-400/35 rounded-3xl shadow-2xl shadow-black/90 p-5 sm:p-7 text-neutral-100 my-auto max-h-[92vh] overflow-y-auto">
@@ -170,7 +179,7 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
             }`}
           >
             <Wine className="w-4 h-4" />
-            <span>{isNorwegian ? 'Connex: 0 kr Rompris' : 'Connex: $0 Room Rate'}</span>
+            <span>{isNorwegian ? 'Connex: 0 kr Rompris' : 'Connex: €0 Room Rate'}</span>
           </button>
 
           <button
@@ -183,7 +192,7 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
             }`}
           >
             <Palmtree className="w-4 h-4" />
-            <span>{isNorwegian ? 'RVC: 7 Netter (3 490 kr)' : 'RVC: 7 Nights ($320)'}</span>
+            <span>{isNorwegian ? 'RVC: 7 Netter (3 490 kr)' : 'RVC: 7 Nights (€299)'}</span>
           </button>
         </div>
 
@@ -200,8 +209,8 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
               </h3>
               <p className="text-xs sm:text-sm text-neutral-300 mt-1 leading-relaxed">
                 {isNorwegian
-                  ? 'Gjennom Connex (Holiday Plus) fyller utvalgte 3–4* superior velværerhoteller i Europa ledig kapasitet. Rommet er 100% dekket av ATLAS (verdi 5 400 kr). Du betaler kun hotellets obligatoriske gourmet-halvpensjon (frokost + fleretters middag) direkte ved utsjekk.'
-                  : 'Through Connex (Holiday Plus), curated 3-4* boutique retreats across Europe fill surplus capacity. The room is 100% sponsored by ATLAS ($520 value). Guests only pay the hotel\'s published half-board (breakfast + multi-course dinner) directly at checkout.'}
+                  ? 'Gjennom Connex (Holiday Plus) fyller utvalgte 3–4* superior velværerhoteller i Europa ledig kapasitet. Rommet er 100% dekket av ATLAS (verdi 5 400 kr / ca. €480). Du betaler kun hotellets obligatoriske gourmet-halvpensjon (frokost + fleretters middag) direkte ved utsjekk.'
+                  : 'Through Connex (Holiday Plus), curated 3-4* boutique retreats across Europe fill surplus capacity. The room is 100% sponsored by ATLAS (€480 value). Guests only pay the hotel\'s published half-board (breakfast + multi-course dinner) directly at checkout.'}
               </p>
             </div>
 
@@ -275,24 +284,28 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
               {/* Live Calculation Output */}
               <div className="p-4 rounded-xl bg-neutral-950 border border-amber-400/20 space-y-2.5 text-xs font-mono">
                 <div className="flex justify-between items-center text-neutral-400">
-                  <span>Pris på Booking.com (Rom m/ mat):</span>
-                  <span className="line-through text-neutral-500">{connexPublicOtaTotal.toLocaleString('no-NO')} kr</span>
+                  <span>{isNorwegian ? 'Pris på Booking.com (Rom m/ mat):' : 'Public Price on Booking.com (Room + meals):'}</span>
+                  <span className="line-through text-neutral-500">
+                    {isNorwegian ? `${connexPublicOtaTotal.toLocaleString('no-NO')} kr` : `€${connexPublicOtaEur.toLocaleString('en-US')}`}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center text-neutral-300">
                   <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>ATLAS Rompris:</span>
+                    <span>{isNorwegian ? 'ATLAS Rompris:' : 'ATLAS Room Rate:'}</span>
                   </span>
-                  <span className="text-emerald-400 font-black text-sm">0 NOK (GAVE)</span>
+                  <span className="text-emerald-400 font-black text-sm">{isNorwegian ? '0 NOK (GAVE)' : '€0 (SPONSORED)'}</span>
                 </div>
                 <div className="flex justify-between items-center text-neutral-400">
-                  <span>Obligatorisk Gourmet-halvpensjon (2 personer):</span>
-                  <span className="text-amber-300 font-semibold">{connexMealTotalNok.toLocaleString('no-NO')} kr</span>
+                  <span>{isNorwegian ? 'Obligatorisk Gourmet-halvpensjon (2 personer):' : 'Fixed Gourmet Half-Board (2 guests):'}</span>
+                  <span className="text-amber-300 font-semibold">
+                    {isNorwegian ? `${connexMealTotalNok.toLocaleString('no-NO')} kr` : `€${connexMealTotalEur.toLocaleString('en-US')}`}
+                  </span>
                 </div>
                 <div className="pt-2 border-t border-neutral-800 flex justify-between items-center text-sm">
-                  <span className="font-bold text-neutral-100">Din Netto Besparelse:</span>
+                  <span className="font-bold text-neutral-100">{isNorwegian ? 'Din Netto Besparelse:' : 'Your Net Savings:'}</span>
                   <span className="font-black text-emerald-400 text-base">
-                    +{connexNetSavingsNok.toLocaleString('no-NO')} kr spart!
+                    {isNorwegian ? `+${connexNetSavingsNok.toLocaleString('no-NO')} kr spart!` : `+€${connexNetSavingsEur.toLocaleString('en-US')} saved!`}
                   </span>
                 </div>
               </div>
@@ -330,8 +343,8 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
             {/* Core RVC Perks Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs font-mono">
               <div className="p-3 rounded-xl bg-neutral-900 border border-neutral-800 text-center">
-                <span className="text-[10px] text-neutral-400 block">Totalpris for 7 Netter</span>
-                <span className="text-base font-bold text-amber-300">3 490 NOK</span>
+                <span className="text-[10px] text-neutral-400 block">{isNorwegian ? 'Totalpris for 7 Netter' : 'Flat Weekly Rate'}</span>
+                <span className="text-base font-bold text-amber-300">{isNorwegian ? '3 490 NOK' : '€299'}</span>
               </div>
               <div className="p-3 rounded-xl bg-neutral-900 border border-neutral-800 text-center">
                 <span className="text-[10px] text-neutral-400 block">Plass til</span>
@@ -397,24 +410,28 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
               {/* RVC Calculation Summary */}
               <div className="p-4 rounded-xl bg-neutral-950 border border-amber-400/20 space-y-2.5 text-xs font-mono">
                 <div className="flex justify-between items-center text-neutral-400">
-                  <span>Pris på Booking.com / Airbnb for leilighet:</span>
-                  <span className="line-through text-neutral-500">{selectedRvc.otaWeeklyNok.toLocaleString('no-NO')} kr</span>
+                  <span>{isNorwegian ? 'Pris på Booking.com / Airbnb for leilighet:' : 'Public Booking.com / Airbnb Price:'}</span>
+                  <span className="line-through text-neutral-500">
+                    {isNorwegian ? `${selectedRvc.otaWeeklyNok.toLocaleString('no-NO')} kr` : `€${rvcPublicOtaEur.toLocaleString('en-US')}`}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center text-neutral-300">
                   <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>ATLAS Fast Totalpris (7 netter):</span>
+                    <span>{isNorwegian ? 'ATLAS Fast Totalpris (7 netter):' : 'ATLAS Flat Weekly Rate (7 nights):'}</span>
                   </span>
-                  <span className="text-emerald-400 font-black text-sm">3 490 NOK</span>
+                  <span className="text-emerald-400 font-black text-sm">{isNorwegian ? '3 490 NOK' : '€299 total'}</span>
                 </div>
                 <div className="flex justify-between items-center text-neutral-400">
-                  <span>Pris per person per natt ({rvcGuests} personer):</span>
-                  <span className="text-sky-300 font-semibold">{rvcPerPersonPerNight} kr / natt</span>
+                  <span>{isNorwegian ? `Pris per person per natt (${rvcGuests} personer):` : `Cost per guest per night (${rvcGuests} guests):`}</span>
+                  <span className="text-sky-300 font-semibold">
+                    {isNorwegian ? `${rvcPerPersonPerNight} kr / natt` : `€${rvcPerPersonPerNightEur} / night`}
+                  </span>
                 </div>
                 <div className="pt-2 border-t border-neutral-800 flex justify-between items-center text-sm">
-                  <span className="font-bold text-neutral-100">Din Netto Familiebesparelse:</span>
+                  <span className="font-bold text-neutral-100">{isNorwegian ? 'Din Netto Familiebesparelse:' : 'Your Net Family Savings:'}</span>
                   <span className="font-black text-emerald-400 text-base">
-                    +{rvcNetSavingsNok.toLocaleString('no-NO')} kr spart!
+                    {isNorwegian ? `+${rvcNetSavingsNok.toLocaleString('no-NO')} kr spart!` : `+€${rvcNetSavingsEur.toLocaleString('en-US')} saved!`}
                   </span>
                 </div>
               </div>

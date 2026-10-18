@@ -141,7 +141,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
 
     try {
       const tierDesc = calculatedSavings
-        ? `${calculatedSavings.totalNights} Nights ($${calculatedSavings.formattedSavings} saved/yr)`
+        ? `${calculatedSavings.totalNights} Nights (${calculatedSavings.formattedSavings} saved/yr)`
         : 'Founding Member (Inkl. Gratis 3-dagers Hotellopphold)';
 
       const result = await registerSubscriber({
@@ -282,7 +282,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
                   {isNorwegian ? 'Garanterte medlemsrettigheter:' : 'Certified Guarantees:'}
                 </div>
                 <div className="text-[11px] text-neutral-400 space-y-0.5">
-                  <div>✓ {isNorwegian ? '100% gratis 3-dagers hotellopphold for to i Europa (verdi 5 400 kr)' : '100% Free 3-Day European Hotel Break for 2 (worth $520)'}</div>
+                  <div>✓ {isNorwegian ? '100% gratis 3-dagers hotellopphold for to i Europa (verdi 5 400 kr / ca. €480)' : '100% Free 3-Day European Hotel Break for 2 (worth €480 / 5 400 kr)'}</div>
                   <div>✓ {isNorwegian ? 'Lodd i trekningen der 3 av 100 får all gourmetmat 100% dekket' : 'Entered in the draw where 3 of 100 win all gourmet meals fully covered'}</div>
                   <div>✓ {isNorwegian ? 'Bekreftelse registrert for' : 'Confirmation logged for'} {submissionResult.email} ({submissionResult.phone})</div>
                 </div>
@@ -290,7 +290,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
 
               {/* Waiting List Urgency Forfeit Warning */}
               <div className="p-3 rounded-xl bg-amber-500/15 border border-amber-400/40 text-[11px] font-mono text-amber-200">
-                <span>⚠️ <strong>{isNorwegian ? 'Viktig reservasjon:' : 'Important notice:'}</strong> {isNorwegian ? 'Dersom du ikke fullfører betalingen for ditt Founding Membership ved lansering (1 290 kr), overføres din plass og det gratis hotelloppholdet automatisk til neste person på ventelisten.' : 'If you do not complete your Founding Membership payment at launch (1,290 NOK), your reservation and complimentary hotel break will be automatically forfeited and passed to the next applicant on the waitlist.'}</span>
+                <span>⚠️ <strong>{isNorwegian ? 'Viktig reservasjon:' : 'Important notice:'}</strong> {isNorwegian ? 'Dersom du ikke fullfører betalingen for ditt Founding Membership ved lansering (1 290 kr / ca. €110), overføres din plass og det gratis hotelloppholdet automatisk til neste person på ventelisten.' : 'If you do not complete your Founding Membership payment at launch (€110 / 1 290 NOK), your reservation and complimentary hotel break will be automatically forfeited and passed to the next applicant on the waitlist.'}</span>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-2 pt-1">
@@ -497,7 +497,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
                 </div>
 
                 <div className="text-[11px] text-neutral-300 pl-1 space-y-1 font-mono">
-                  <div>✓ <strong className="text-amber-200">{isNorwegian ? '100% gratis 3-dagers hotellopphold for 2 personer (verdi 5 400 kr)' : '100% Free 3-Day European Hotel Break for 2 (worth $520)'}</strong></div>
+                  <div>✓ <strong className="text-amber-200">{isNorwegian ? '100% gratis 3-dagers hotellopphold for 2 personer (verdi 5 400 kr / ca. €480)' : '100% Free 3-Day European Hotel Break for 2 (worth €480 / 5 400 kr)'}</strong></div>
                   <div>✓ <strong className="text-emerald-300">{isNorwegian ? '3 av de 100 første vinner OGSÅ all gourmetmat (halvpensjon) dekket av ATLAS' : '3 of 100 early members win ALL MEALS (half-board) fully covered by ATLAS'}</strong></div>
                   <div className="text-[10px] text-neutral-400 pt-0.5 font-sans leading-normal">
                     {isNorwegian
@@ -523,7 +523,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
                         onClick={() => onOpenPerkModal('connex')}
                         className="text-rose-300 hover:text-rose-200 underline cursor-pointer"
                       >
-                        🍷 {isNorwegian ? 'Connex 0 kr kalkulator' : 'Connex $0 calc'} ↗
+                        🍷 {isNorwegian ? 'Connex 0 kr kalkulator' : 'Connex €0 calc'} ↗
                       </button>
                       <span>•</span>
                       <button

@@ -171,7 +171,7 @@ export const PrelaunchConcierge: React.FC<PrelaunchConciergeProps> = ({
 }) => {
   const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [currency, setCurrency] = useState<CurrencyCode>(language === 'no' ? 'NOK' : 'USD');
+  const [currency, setCurrency] = useState<CurrencyCode>(language === 'no' ? 'NOK' : 'EUR');
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [hasUnread, setHasUnread] = useState(true);
@@ -180,7 +180,7 @@ export const PrelaunchConcierge: React.FC<PrelaunchConciergeProps> = ({
   const isNorwegian = language === 'no' || currency === 'NOK';
 
   const [messages, setMessages] = useState<Message[]>(() => {
-    const initCurr: CurrencyCode = language === 'no' ? 'NOK' : 'USD';
+    const initCurr: CurrencyCode = language === 'no' ? 'NOK' : 'EUR';
     const welcome = getWelcomeMessageData(initCurr);
     return [
       {
@@ -203,7 +203,7 @@ export const PrelaunchConcierge: React.FC<PrelaunchConciergeProps> = ({
     if (language === 'no' && currency !== 'NOK') {
       handleCurrencyChange('NOK', false);
     } else if (language === 'en' && currency === 'NOK') {
-      handleCurrencyChange('USD', false);
+      handleCurrencyChange('EUR', false);
     }
   }, [language]);
 
@@ -506,7 +506,7 @@ export const PrelaunchConcierge: React.FC<PrelaunchConciergeProps> = ({
             <div className="flex items-center gap-2">
               {/* Currency Selector Pill */}
               <div className="flex items-center rounded-lg bg-neutral-900 border border-neutral-800 p-0.5 text-[10px] font-mono">
-                {(['USD', 'NOK', 'EUR', 'GBP'] as CurrencyCode[]).map((c) => (
+                {(['EUR', 'NOK', 'USD', 'GBP'] as CurrencyCode[]).map((c) => (
                   <button
                     key={c}
                     type="button"
@@ -540,7 +540,7 @@ export const PrelaunchConcierge: React.FC<PrelaunchConciergeProps> = ({
               <span className="text-emerald-400 font-black">{price.formattedFounding}</span>
             </div>
             <span className="px-2 py-0.5 rounded-full bg-amber-400/15 text-amber-300 text-[10px] font-bold border border-amber-400/30">
-              {isNorwegian ? 'Inkl. Gratis Hotellopphold (5 400 kr)' : 'Incl. Free 3-Day Hotel Break ($520)'}
+              {isNorwegian ? 'Inkl. Gratis Hotellopphold (5 400 kr)' : 'Incl. Free 3-Day Hotel Break (€480)'}
             </span>
           </div>
 
