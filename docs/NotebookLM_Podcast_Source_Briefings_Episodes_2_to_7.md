@@ -178,7 +178,7 @@ Upon checkout completion, all verified Founding 100 members are automatically en
 #### 4. The 100% Value Guarantee (Zero Economic Risk)
 ATLAS institutes a contractual consumer protection guarantee:
 * If an active member does not save more than their annual membership fee (€110 / 1 290 NOK) on their very first completed travel booking compared to public prices on Booking.com or Expedia, ATLAS provides an immediate, unconditional **100% refund of the membership fee**.
-* Bookings are confirmed corporate allotments with legal check-in vouchers, fully compliant with the Norwegian Travel Guarantee Fund (*Reisegarantifondet - RGF*) and European Package Travel Directives.
+* Bookings are confirmed corporate allotments with legal check-in vouchers, backed by our 100% Value Guarantee and European consumer protections.
 
 ---
 

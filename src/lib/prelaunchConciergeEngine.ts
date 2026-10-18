@@ -489,8 +489,6 @@ You can top it up instantly via SEPA or local bank transfer, and you can add it 
       'is there a money back guarantee',
       'is my money safe',
       'what if i do not save money',
-      'reisegarantifondet',
-      'rgf protection',
       'hva er garantien',
       'penger tilbake garanti',
       'er pengene mine trygge',
@@ -500,13 +498,12 @@ You can top it up instantly via SEPA or local bank transfer, and you can add it 
       /guarantee/i,
       /money back/i,
       /refund/i,
-      /reisegarantifondet/i,
       /trygghet/i,
       /sikkerhet/i,
       /verdigaranti/i,
       /is it safe/i,
     ],
-    strongKeywords: ['guarantee', 'refund', 'rgf', 'reisegarantifondet', 'protection', 'safe', 'garanti', 'refusjon', 'verdigaranti'],
+    strongKeywords: ['guarantee', 'refund', 'protection', 'safe', 'garanti', 'refusjon', 'verdigaranti'],
     weight: 105,
     getAnswer: (currency: CurrencyCode) => {
       const p = MEMBERSHIP_PRICING[currency] || MEMBERSHIP_PRICING.EUR;
@@ -516,7 +513,7 @@ You can top it up instantly via SEPA or local bank transfer, and you can add it 
         return {
           text: `Vi holder det helt risikofritt: Hvis Atlas ikke sparer deg for mer enn årskontingenten din (${p.formattedFounding} for Founding Members) på din aller første reise, gir du oss bare beskjed, og **vi refunderer 100% av medlemskontingenten**.
 
-Bestillingene dine er forhåndsbetalte engrosallokeringer med offisielle innsjekkingskuponger, og vi opererer i full overensstemmelse med det norske **Reisegarantifondet (RGF)** og EUs pakkereisedirektiv.`,
+Bestillingene dine er forhåndsbetalte engrosallokeringer med offisielle digitale innsjekkingskuponger direkte fra globale hotellgrossister. Du handler trygt med 14 dagers ubetinget angrefrist og vår 100% verdigaranti.`,
           action: 'open_waitlist',
           actionLabel: 'Bli med på risikofri venteliste',
           followUps: [
@@ -530,7 +527,7 @@ Bestillingene dine er forhåndsbetalte engrosallokeringer med offisielle innsjek
       return {
         text: `We keep it simple and completely risk-free: if Atlas doesn't save you more than your annual membership fee (${p.formattedFounding} for Founding Members) on your very first booking, simply let us know and **we will refund 100% of your membership fee**.
 
-Your bookings are pre-paid corporate allotments with official check-in vouchers, and our platform is instituted in full alignment with the Norwegian Travel Guarantee Fund (Reisegarantifondet - RGF) and European consumer directives.`,
+Your bookings are pre-paid corporate allotments with official digital check-in vouchers issued directly by global bedbanks and hotel partners. You are protected by our 100% Value Guarantee and consumer peace of mind.`,
         action: 'open_waitlist',
         actionLabel: 'Join Risk-Free Early Access',
         followUps: [

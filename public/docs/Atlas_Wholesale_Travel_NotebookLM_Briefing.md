@@ -52,8 +52,8 @@ When a flight is delayed or cancelled, ordinary travelers must endure weeks of b
 ### The Atlas & Duffel EU261 Protection Engine
 Atlas integrates institutional Duffel Travel Protection directly into every airline booking:
 1. **Automated EU261 Disruption Monitoring:** When an eligible flight is delayed by 3 hours or more, or cancelled without notice, our automated tracking engine detects the disruption and secures statutory compensation of **up to €600 per passenger** directly credited to the traveler.
-2. **Statutory European Package Travel Compliance:** Fully aligned with the European Package Travel Directive and Norwegian Reisegarantifond (RGF) requirements, guaranteeing 100% financial insolvency protection.
-3. **Sovereign Member Peace of Mind:** Every booking is audited, protected, and fully backed by institutional guarantees.
+2. **Institutional European Travel & Consumer Protections:** Backed by our 100% Value Guarantee—if a member does not save more than the membership fee on their first trip, 100% of dues are immediately refunded.
+3. **Sovereign Member Peace of Mind:** Every booking is audited, protected, and fully backed by institutional booking confirmations.
 
 ---
 
@@ -62,7 +62,7 @@ Atlas Travel Club rejects the broken retail commission model. We operate on a si
 - **Zero Hotel Commissions:** Bedbank rooms are settled at pure institutional net cost.
 - **Zero Flight Surcharges:** Duffel NDC tickets are passed through at carrier net rates.
 - **4 Family Passes:** A single membership covers the primary member plus spouse, adult children, or companions.
-- **Early Founder Advantage:** Early members unlock a permanent 50% lifetime discount on their annual membership, plus automatic entry into a draw for 5 Free Lifetime Memberships.
+- **Early Founder Advantage:** The first 100 Founding Members secure an annual membership of just €110 / year (1 290 NOK) with a complimentary 3-day European luxury hotel break for 2 (worth €480 / 5 400 kr), plus entry into the draw for all meals covered.
 
 ---
 
