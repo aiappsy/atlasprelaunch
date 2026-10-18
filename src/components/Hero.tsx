@@ -230,7 +230,7 @@ export const Hero: React.FC<HeroProps> = ({
                   {isNorwegian ? '🔊 Hør lanseringsintroduksjonen' : '🔊 Listen to Launch Briefing'}
                 </span>
                 <span className="text-[10px] text-amber-400 font-bold bg-amber-400/25 px-1.5 py-0.5 rounded">
-                  {isNorwegian ? '1:15' : '1:20'}
+                  1:20
                 </span>
               </>
             )}

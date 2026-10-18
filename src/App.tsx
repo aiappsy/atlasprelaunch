@@ -17,9 +17,8 @@ import { useLanguage } from './lib/i18n/LanguageContext';
 
 export default function App() {
   const { isNorwegian } = useLanguage();
-  const currentVoiceSrc = isNorwegian
-    ? '/audio/founder-voiceover-no.mp3?v=20270104'
-    : '/audio/founder-voiceover-new.mp3?v=20270104';
+  // Premier English studio master executive voiceover (Ryan) used globally
+  const currentVoiceSrc = '/audio/founder-voiceover-new.mp3?v=20270104';
 
   const [viewMode, setViewMode] = useState<'site' | 'crm'>('site');
   const [isCrmAuthenticated, setIsCrmAuthenticated] = useState<boolean>(false);
