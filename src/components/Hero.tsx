@@ -8,8 +8,6 @@ import {
   VolumeX,
   Award,
   Gift,
-  Plane,
-  Bed,
   ShieldCheck,
 } from 'lucide-react';
 import { PerkExplainerTab } from './PerkExplainerModal';
@@ -75,7 +73,7 @@ export const Hero: React.FC<HeroProps> = ({
 
 
         {/* Primary Action Button Cluster: "See Your Savings" + "Claim Founder Spot" */}
-        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+        <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           {/* Main Primary Button */}
           <button
             type="button"
@@ -97,7 +95,7 @@ export const Hero: React.FC<HeroProps> = ({
               onStopVideo?.();
               onJoinWaitlist();
             }}
-            className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-neutral-950/70 hover:bg-neutral-900 border border-amber-400/40 hover:border-amber-400 text-amber-300 font-bold text-xs sm:text-sm uppercase tracking-wider backdrop-blur-md shadow-xl transition-all scale-100 hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-neutral-950/70 hover:bg-neutral-900 border border-amber-400/40 hover:border-amber-400 text-amber-300 font-bold text-xs sm:text-sm uppercase tracking-wider backdrop-blur-md shadow-xl transition-all scale-100 hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
           >
             <Award className="w-4 h-4 text-amber-400" />
             <span>{t.hero.claimFounder}</span>
@@ -105,84 +103,17 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
 
         {/* Zero-Risk Reassurance: Free to reserve, no card required */}
-        <div className="pt-1 flex items-center justify-center gap-2 text-xs sm:text-sm font-mono text-amber-300 font-semibold drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] animate-in fade-in duration-500">
+        <div className="pt-2 flex items-center justify-center gap-2 text-xs sm:text-sm font-mono text-neutral-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
           <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
           <span>
             {isNorwegian
-              ? 'Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig.'
-              : 'Reserve your Founding Member spot today for free, no credit card necessary.'}
+              ? 'Helt gratis å reservere • Ingen binding • Årlig medlemskap: 1 290 kr ved lansering'
+              : '100% Free reservation • No credit card • Annual membership: 1 290 NOK at launch'}
           </span>
         </div>
 
-        {/* Scarcity Banner: 100 Founder Spots Available with Free Hotel Stay */}
-        <div className="pt-2 space-y-2 animate-in fade-in duration-700">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-semibold shadow-lg shadow-black/40">
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
-            <span>
-              {isNorwegian
-                ? '🎁 Kun 100 plasser • Inkluderer gratis 3-dagers hotellopphold for 2 + 3 vinner all mat dekket!'
-                : '🎁 Strictly 100 Spots • Includes Free 3-Day Hotel Break for 2 + 3 Win All Meals Included!'}
-            </span>
-          </div>
-
-          {/* Scarcity / Waiting List Warning */}
-          <p className="text-[11px] sm:text-xs text-amber-200/90 font-mono font-medium max-w-xl mx-auto px-2">
-            {isNorwegian
-              ? '⏳ Merk: Dersom du ikke fullfører og aktiverer ditt Founding Membership, overføres tilbudet og det gratis hotelloppholdet automatisk til neste person på ventelisten.'
-              : '⏳ Note: If you do not activate your Founding Membership, this offer and your complimentary hotel stay will be forfeited and passed to the next person on the waitlist.'}
-          </p>
-
-          {/* Quick Explainer & Calculator Triggers */}
-          {onOpenPerkModal && (
-            <div className="flex flex-wrap items-center justify-center gap-2 pt-1 text-xs font-mono">
-              <button
-                type="button"
-                onClick={() => onOpenPerkModal('connex')}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 border border-rose-400/30 hover:border-rose-400 text-rose-300 transition cursor-pointer"
-              >
-                <span>🍷</span>
-                <span>{isNorwegian ? 'Connex: 0 kr Rompris (Kalkulator)' : 'Connex: $0 Room Rate (Calculator)'}</span>
-                <span className="text-[10px] text-rose-400">↗</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onOpenPerkModal('rvc')}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 border border-amber-400/30 hover:border-amber-400 text-amber-300 transition cursor-pointer"
-              >
-                <span>🏖️</span>
-                <span>{isNorwegian ? 'RVC: 7 Netter 3 490 kr (Kalkulator)' : 'RVC: 7-Night Condos $320 (Calculator)'}</span>
-                <span className="text-[10px] text-amber-400">↗</span>
-              </button>
-            </div>
-          )}
-        </div>
-
-        {/* Direct Action Tabs: Dedicated Flights vs Hotels Savings Jumpers */}
-        <div className="pt-2 flex flex-wrap items-center justify-center gap-2.5">
-          <button
-            type="button"
-            onClick={onExploreFlights || onExploreSavings}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-neutral-900/90 hover:bg-neutral-800 border border-sky-400/50 hover:border-sky-300 text-xs font-mono text-sky-300 font-semibold transition-all cursor-pointer shadow-lg backdrop-blur-md group"
-          >
-            <Plane className="w-4 h-4 text-sky-400" />
-            <span>{isNorwegian ? '✈️ Beregn flybesparelser (~15–24% netto)' : '✈️ Calculate Flight Savings (~15–24% Net)'}</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-          </button>
-
-          <button
-            type="button"
-            onClick={onExploreHotels || onExploreSavings}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-neutral-900/90 hover:bg-neutral-800 border border-amber-400/50 hover:border-amber-300 text-xs font-mono text-amber-300 font-semibold transition-all cursor-pointer shadow-lg backdrop-blur-md group"
-          >
-            <Bed className="w-4 h-4 text-amber-400" />
-            <span>{isNorwegian ? '🏨 Beregn hotellbesparelser (Opptil 45% netto)' : '🏨 Calculate Hotel Savings (Up to 45% Net)'}</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-          </button>
-        </div>
-
         {/* Video & Sound Controls Bar */}
-        <div className="pt-3 flex items-center justify-center gap-2.5 flex-wrap">
+        <div className="pt-4 flex items-center justify-center gap-2.5 flex-wrap">
           {/* Stop / Resume Video Button */}
           <button
             type="button"
