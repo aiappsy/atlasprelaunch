@@ -19,6 +19,7 @@ import {
   TrendingUp,
   Phone,
   MessageCircle,
+  Headphones,
 } from 'lucide-react';
 import { LeadRecord, TeamMember, LeadStatus } from '../../lib/crmTypes';
 import {
@@ -610,6 +611,13 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
                       </div>
                       <h4 className="text-xs font-bold text-neutral-100 line-clamp-1">{seq.subjectNo}</h4>
                       <p className="text-[11px] text-neutral-400 mt-1 line-clamp-1">{seq.preheaderNo}</p>
+                      {seq.podcastTitleNo && (
+                        <div className="flex items-center gap-1.5 text-[10px] text-amber-300/90 mt-2 font-mono">
+                          <Headphones className="w-3 h-3 text-amber-400 shrink-0" />
+                          <span className="truncate">{seq.podcastTitleNo}</span>
+                          <span className="text-neutral-500 shrink-0">({seq.podcastDuration})</span>
+                        </div>
+                      )}
                     </button>
                   );
                 })}
@@ -643,6 +651,18 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
                         <div className="text-neutral-300 pt-1">
                           <strong className="text-neutral-400">Emne:</strong> {currentSeq.subjectNo}
                         </div>
+                        {currentSeq.podcastTitleNo && (
+                          <div className="pt-2 mt-2 border-t border-neutral-800/60 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs text-amber-300">
+                            <div className="flex items-center gap-2 truncate">
+                              <Headphones className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                              <strong className="text-amber-300">Inkludert Podcast:</strong>
+                              <span className="text-neutral-200 truncate">{currentSeq.podcastTitleNo}</span>
+                            </div>
+                            <span className="px-2 py-0.5 rounded bg-amber-400/10 text-amber-300 text-[10px] shrink-0 font-bold">
+                              {currentSeq.podcastDuration}
+                            </span>
+                          </div>
+                        )}
                       </div>
 
                       {/* Test Dispatch Controls */}
