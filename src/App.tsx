@@ -151,6 +151,7 @@ export default function App() {
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const podcastParam = urlParams.get('podcast');
+        const hubParam = urlParams.get('hub');
         if (podcastParam) {
           const validTracks: PodcastTrackId[] = [
             'summary', 'deepdive', 'lounges', 'hotel-blueprint', 'connex',
@@ -159,7 +160,13 @@ export default function App() {
           if (validTracks.includes(podcastParam as PodcastTrackId)) {
             setPodcastTrack(podcastParam as PodcastTrackId);
             setIsPodcastOpen(true);
+          } else if (podcastParam === 'all' || podcastParam === 'vault') {
+            setPodcastTrack('summary');
+            setIsPodcastOpen(true);
           }
+        } else if (hubParam === 'podcasts' || hubParam === 'podcast' || hash === '#podcasts') {
+          setPodcastTrack('summary');
+          setIsPodcastOpen(true);
         }
         const perkParam = urlParams.get('perk');
         if (perkParam === 'connex' || perkParam === 'rvc' || perkParam === 'lounges') {

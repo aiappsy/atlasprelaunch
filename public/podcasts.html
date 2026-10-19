@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATLAS Travel Club — Podcast Vault & Audio Briefings</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090e;
+      --card-bg: rgba(18, 22, 34, 0.75);
+      --card-border: rgba(212, 175, 55, 0.2);
+      --card-hover: rgba(26, 32, 50, 0.95);
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-dark: #aa820a;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #3b82f6;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 20% 15%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 85%, rgba(59, 130, 246, 0.06) 0%, transparent 40%);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      padding-bottom: 120px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      padding: 40px 24px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: #07090e;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 2px;
+      padding: 6px 14px;
+      border-radius: 8px;
+    }
+
+    .logo-text {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--gold-light);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold-light);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-outline:hover {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    .header-content h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .header-content h1 span {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-content p {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 800px;
+      line-height: 1.6;
+    }
+
+    .controls-bar {
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .tabs {
+      display: flex;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: var(--gold);
+      color: #07090e;
+      font-weight: 700;
+    }
+
+    .search-input {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      width: 280px;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--gold);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      background: var(--card-hover);
+      border-color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.1);
+    }
+
+    .card.now-playing {
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.08);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--gold-light);
+      margin-bottom: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .card-badge.deepdive {
+      background: rgba(59, 130, 246, 0.15);
+      color: #93c5fd;
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+
+    .card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 16px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .play-btn {
+      flex: 1;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: #07090e;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .play-btn:hover {
+      filter: brightness(1.15);
+      transform: scale(1.02);
+    }
+
+    .icon-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text);
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    /* Floating Master Audio Player Bar */
+    .master-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 13, 20, 0.95);
+      border-top: 1px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(20px);
+      padding: 16px 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .player-inner {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .player-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 250px;
+    }
+
+    .player-disc {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #07090e;
+      font-size: 20px;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+      animation: spin 10s linear infinite;
+      animation-play-state: paused;
+    }
+
+    .player-disc.playing {
+      animation-play-state: running;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .player-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      max-width: 260px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .player-sub {
+      font-size: 12px;
+      color: var(--gold-light);
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .round-ctrl {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .round-ctrl:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .round-play {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: #07090e;
+      border: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+      transition: transform 0.2s;
+    }
+
+    .round-play:hover {
+      transform: scale(1.08);
+    }
+
+    .scrubber-container {
+      flex: 1;
+      max-width: 500px;
+      min-width: 200px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .time-txt {
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-muted);
+      width: 42px;
+    }
+
+    .slider {
+      flex: 1;
+      accent-color: var(--gold);
+      height: 5px;
+      cursor: pointer;
+    }
+
+    .speed-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--gold-light);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 100px;
+      right: 24px;
+      background: #10b981;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      z-index: 10000;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .scrubber-container {
+        order: 3;
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="top-bar">
+      <div class="logo-container">
+        <span class="logo-badge">ATLAS VIP</span>
+        <span class="logo-text">PODCAST VAULT</span>
+      </div>
+      <div class="nav-links">
+        <button class="btn-outline" onclick="toggleLanguage()" id="langBtn">🌐 Bytt til Norsk</button>
+        <a href="https://atlasprelaunch.web.app" class="btn-outline">🚀 Prelaunch App</a>
+        <a href="https://atlasclub.web.app" class="btn-outline">👑 ATLAS Main</a>
+      </div>
+    </div>
+    <div class="header-content">
+      <h1 id="headerTitle">The Wholesale Travel <span>Audio Archive</span></h1>
+      <p id="headerSubtitle">
+        Complete library of unscripted masterclasses, technical briefings, and insider revelations on closed-loop travel club economics, secret hotel liquidation, wholesale airline APIs, and consumer rights.
+      </p>
+    </div>
+  </header>
+
+  <div class="controls-bar">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="filterCategory('all', this)" id="tabAll">All Tracks (15)</button>
+      <button class="tab-btn" onclick="filterCategory('core', this)" id="tabCore">Core Nurture (9)</button>
+      <button class="tab-btn" onclick="filterCategory('deepdive', this)" id="tabDeep">Deep Dives (6)</button>
+    </div>
+    <input type="text" class="search-input" id="searchBox" placeholder="Search episodes or topics..." oninput="handleSearch()">
+  </div>
+
+  <main class="container" id="podcastGrid">
+    <!-- Cards will be populated by JS -->
+  </main>
+
+  <!-- Master Player Bar -->
+  <div class="master-player">
+    <div class="player-inner">
+      <div class="player-info">
+        <div class="player-disc" id="playerDisc">🎧</div>
+        <div>
+          <div class="player-title" id="currentTrackTitle">Select an episode to begin</div>
+          <div class="player-sub" id="currentTrackCategory">ATLAS Private Audio Archive</div>
+        </div>
+      </div>
+
+      <div class="player-controls">
+        <button class="round-ctrl" onclick="seekRelative(-15)" title="Rewind 15s">↺ 15</button>
+        <button class="round-play" onclick="togglePlay()" id="masterPlayBtn" title="Play / Pause">▶</button>
+        <button class="round-ctrl" onclick="seekRelative(15)" title="Fast Forward 15s">15 ↻</button>
+        <button class="speed-btn" onclick="cyclePlaybackRate()" id="speedBtn" title="Playback Speed">1.0x</button>
+      </div>
+
+      <div class="scrubber-container">
+        <span class="time-txt" id="currentTimeTxt">0:00</span>
+        <input type="range" class="slider" id="seekBar" min="0" max="100" value="0" oninput="handleSeek(this.value)">
+        <span class="time-txt" id="durationTxt">0:00</span>
+      </div>
+
+      <button class="btn-outline" style="padding: 6px 12px; font-size: 12px;" onclick="copyCurrentEpisodeLink()" id="shareCurrentBtn">
+        🔗 Share Episode Link
+      </button>
+    </div>
+  </div>
+
+  <audio id="audioElement" preload="metadata"></audio>
+  <div class="toast" id="toastMsg">Link copied to clipboard!</div>
+
+  <script>
+    const EPISODES = [
+      {
+        id: "ep1",
+        category: "core",
+        trackId: "hotel-blueprint",
+        badgeEn: "Core Episode 1 • Hotels",
+        badgeNo: "Kjerneepisode 1 • Hotell",
+        titleEn: "How to Bypass Hidden Hotel Markups",
+        titleNo: "Slik omgår du skjulte hotellpåslag",
+        descEn: "How rate parity agreements enforce identical prices on public booking portals, and how closed-loop private travel clubs legally unlock raw wholesale bedbank rates.",
+        descNo: "Hvordan prisparitetsklausuler tvinger åpne portaler til like priser, og hvordan lukkede medlemsklubber lovlig kutter ut mellomleddene.",
+        file: "How_to_Bypass_Hidden_Hotel_Markups.m4a",
+        size: "11.6 MB",
+        duration: "12:05"
+      },
+      {
+        id: "ep2",
+        category: "core",
+        trackId: "connex",
+        badgeEn: "Core Episode 2 • Free Stays",
+        badgeNo: "Kjerneepisode 2 • Gratis Opphold",
+        titleEn: "The Math Behind €0 Hotel Stays",
+        titleNo: "Matematikken bak 0 kr hotellovernattinger",
+        descEn: "The complete breakdown of Connex Group corporate vouchers: why 4-star properties trade empty rooms for on-site food and beverage revenue.",
+        descNo: "Gjennomgang av Connex-kuponger: hvorfor 4-stjerners hoteller gir bort tomme rom gratis for å fylle restauranter og spa.",
+        file: "The_Math_Behind_Zero_Euro_Hotel_Stays.m4a",
+        size: "11.1 MB",
+        duration: "11:32"
+      },
+      {
+        id: "ep3",
+        category: "core",
+        trackId: "flights",
+        badgeEn: "Core Episode 3 • Flights",
+        badgeNo: "Kjerneepisode 3 • Fly",
+        titleEn: "How Flight Middlemen Inflate Ticket Prices",
+        titleNo: "Slik pumper fly-mellommenn opp billettprisene",
+        descEn: "Legacy GDS markup structures vs. direct IATA/NDC airline API connections. How ATLAS bypasses consolidator fees to deliver pure net airfares.",
+        descNo: "Gammeldagse GDS-påslag mot direkte IATA NDC API-er. Slik kutter ATLAS bort gebyrene og gir deg ren engrospris på flybilletter.",
+        file: "How_Flight_Middlemen_Inflate_Ticket_Prices.m4a",
+        size: "11.8 MB",
+        duration: "12:18"
+      },
+      {
+        id: "ep4",
+        category: "core",
+        trackId: "delays",
+        badgeEn: "Core Episode 4 • Passenger Rights",
+        badgeNo: "Kjerneepisode 4 • Passasjerrettigheter",
+        titleEn: "How APIs Force Flight Delay Payouts",
+        titleNo: "Slik tvinger API-er flyselskapene til utbetalinger",
+        descEn: "Why 85% of delayed flyers never collect their €250–€600 compensation, and how real-time flight tracking triggers automated EU261 claims.",
+        descNo: "Hvorfor 85% av passasjerer aldri henter sine 250–600 € i erstatning, og hvordan sanntids API-overvåking automatiserer utbetalingene.",
+        file: "How_APIs_Force_Flight_Delay_Payouts.m4a",
+        size: "10.2 MB",
+        duration: "10:41"
+      },
+      {
+        id: "ep5",
+        category: "core",
+        trackId: "lounges",
+        badgeEn: "Core Episode 5 • Airport Lounges",
+        badgeNo: "Kjerneepisode 5 • Flyplasslounger",
+        titleEn: "Wholesale Airport Lounges Without Credit Cards",
+        titleNo: "Engros flyplasslounger uten dyre kredittkort",
+        descEn: "How DragonPass and Collinson B2B wholesale access bypasses high-annual-fee credit cards to deliver VIP lounge access for $24–$28.",
+        descNo: "Hvordan DragonPass og direkte B2B-engrosavtaler gir VIP lounge-adgang til $24–$28 uten rådyre kredittkortgebyrer.",
+        file: "Wholesale_Airport_Lounges_Without_Credit_Cards.m4a",
+        size: "10.3 MB",
+        duration: "10:42"
+      },
+      {
+        id: "ep6",
+        category: "core",
+        trackId: "commissions",
+        badgeEn: "Core Episode 6 • Commissions",
+        badgeNo: "Kjerneepisode 6 • Provisjoner",
+        titleEn: "How ATLAS Returns Hidden Travel Commissions",
+        titleNo: "Slik refunderer ATLAS skjulte provisjoner til deg",
+        descEn: "Cruises, packages, and luxury chains pay 10%–16% commission behind your back. ATLAS passes 100% back into your member Rewards Vault.",
+        descNo: "Cruiseselskaper og luksuskjeder betaler 10–16% provisjon i hemmelighet. ATLAS sender 100% tilbake til medlemmets Rewards Vault.",
+        file: "How_ATLAS_Returns_Hidden_Travel_Commissions.m4a",
+        size: "9.6 MB",
+        duration: "10:02"
+      },
+      {
+        id: "ep7",
+        category: "core",
+        trackId: "resorts",
+        badgeEn: "Core Episode 7 • Luxury Resorts",
+        badgeNo: "Kjerneepisode 7 • Luksusresorter",
+        titleEn: "How Luxury Resorts Secretly Liquidate Empty Suites",
+        titleNo: "Slik dumper luksusresorter tomme suiter i hemmelighet",
+        descEn: "5-star resorts cannot discount publicly without destroying their brand equity. Discover how opaque closed-loop distribution liquidates unsold suites.",
+        descNo: "5-stjerners resorter kan ikke dumpe priser offentlig. Hør hvordan ugjennomsiktig engrosdistribusjon gir private klubber ekstreme rabatter.",
+        file: "How_Luxury_Resorts_Secretly_Liquidate_Empty_Suites.m4a",
+        size: "41.3 MB",
+        duration: "43:03"
+      },
+      {
+        id: "ep8",
+        category: "core",
+        trackId: "guarantee",
+        badgeEn: "Core Episode 8 • Guarantee",
+        badgeNo: "Kjerneepisode 8 • Garanti",
+        titleEn: "How ATLAS Guarantees Wholesale Savings",
+        titleNo: "Slik garanterer ATLAS at medlemskapet lønner seg",
+        descEn: "The legal and mathematical framework of the ATLAS 100% Value Guarantee. Why joining ATLAS carries zero financial risk.",
+        descNo: "Det juridiske og matematiske rammeverket bak ATLAS 100% Verdigaranti. Hvorfor medlemskapet bærer null finansiell risiko.",
+        file: "How_ATLAS_Travel_Club_Guarantees_Wholesale_Savings.m4a",
+        size: "10.3 MB",
+        duration: "10:46"
+      },
+      {
+        id: "ep9",
+        category: "core",
+        trackId: "launch",
+        badgeEn: "Core Episode 9 • Grand Launch",
+        badgeNo: "Kjerneepisode 9 • Storlansering",
+        titleEn: "The Zero-Markup Travel Membership Revolution",
+        titleNo: "Revolusjonen: Reis til 0 kr påslag med ATLAS",
+        descEn: "The full vision of ATLAS Travel Club, the Costco model applied to global travel, and what happens when the doors open on Jan 20, 2027.",
+        descNo: "Den komplette visjonen for ATLAS Travel Club, Costco-modellen overført til global reisevirksomhet, og hva som skjer ved lanseringen.",
+        file: "ATLAS_Travel_Club_Zero_Markup_Membership.m4a",
+        size: "9.0 MB",
+        duration: "09:22"
+      },
+      {
+        id: "deep1",
+        category: "deepdive",
+        trackId: "deepdive",
+        badgeEn: "Deep Dive • Masterclass",
+        badgeNo: "Dybdedykk • Masterclass",
+        titleEn: "The ATLAS Travel Club Launch Playbook",
+        titleNo: "ATLAS Travel Club Lanserings-Playbook",
+        descEn: "Comprehensive 45-minute deep-dive covering founder perks, hotel bedbanks, EU261 integrations, and our long-term roadmap.",
+        descNo: "Omfattende 45-minutters dybdeanalyse som dekker stifterfordeler, hotellbedbanker, EU261 og fremtidsplaner.",
+        file: "The_ATLAS_Travel_Club_Launch_Playbook.m4a",
+        size: "43.5 MB",
+        duration: "45:18"
+      },
+      {
+        id: "deep2",
+        category: "deepdive",
+        trackId: "deepdive-duopoly",
+        badgeEn: "Deep Dive • Market Disruption",
+        badgeNo: "Dybdedykk • Markedsdisrupsjon",
+        titleEn: "How ATLAS Disrupts the Travel Duopoly",
+        titleNo: "Slik utfordrer ATLAS reiseduopolet",
+        descEn: "How Booking Holdings and Expedia Group maintain a 92% market chokehold, and how private subscription clubs break the duopoly.",
+        descNo: "Hvordan to gigantkonsern kontrollerer 92% av markedet, og hvordan abonnementsmodeller bryter fri fra deres gebyrer.",
+        file: "How_ATLAS_Disrupts_the_Travel_Duopoly.m4a",
+        size: "42.3 MB",
+        duration: "44:06"
+      },
+      {
+        id: "deep3",
+        category: "deepdive",
+        trackId: "deepdive-free-rooms",
+        badgeEn: "Deep Dive • Hospitality Economics",
+        badgeNo: "Dybdedykk • Hotelløkonomi",
+        titleEn: "Why Luxury Hotels Give Away Free Rooms",
+        titleNo: "Hvorfor luksushoteller gir bort gratisrom",
+        descEn: "The operational mathematics of hotel marginal costs vs. food, beverage, and amenities upsells during shoulder seasons.",
+        descNo: "Driftsmatematikken bak marginalkostnader per hotellrom mot ekstrainntekter på mat, drikke og opplevelser.",
+        file: "Why_Luxury_Hotels_Give_Away_Free_Rooms.m4a",
+        size: "40.4 MB",
+        duration: "42:07"
+      },
+      {
+        id: "deep4",
+        category: "deepdive",
+        trackId: "deepdive-markup-bypass",
+        badgeEn: "Deep Dive • Wholesale Strategy",
+        badgeNo: "Dybdedykk • Engros-strategi",
+        titleEn: "How Travel Clubs Bypass Retail Markups",
+        titleNo: "Slik omgår reiseklubber utsalgspriser",
+        descEn: "Behind the scenes of closed-user-group credentialing and how contractual rate parity is legally honored without surcharges.",
+        descNo: "Bak kulissene i lukkede medlemsnettverk og hvordan prisparitet overholdes juridisk uten at medlemmet betaler overpris.",
+        file: "How_Travel_Clubs_Bypass_Retail_Markups.m4a",
+        size: "40.3 MB",
+        duration: "42:00"
+      },
+      {
+        id: "deep5",
+        category: "deepdive",
+        trackId: "deepdive-subscriptions",
+        badgeEn: "Deep Dive • Business Model",
+        badgeNo: "Dybdedykk • Forretningsmodell",
+        titleEn: "How Travel Subscriptions Kill Hidden Commissions",
+        titleNo: "Hvordan abonnement fjerner skjulte provisjoner",
+        descEn: "Why the alignment of interests between club and member is the only way to achieve truly transparent travel pricing.",
+        descNo: "Hvorfor felles interesser mellom klubb og medlem er den eneste måten å oppnå 100% transparente reisepriser på.",
+        file: "How_Travel_Subscriptions_Kill_Hidden_Commissions.m4a",
+        size: "22.8 MB",
+        duration: "23:45"
+      },
+      {
+        id: "briefing1",
+        category: "deepdive",
+        trackId: "summary",
+        badgeEn: "Executive Summary • 6 Min",
+        badgeNo: "Kortversjon • 6 Min",
+        titleEn: "The Closed-User-Group Advantage",
+        titleNo: "Fordelen med lukkede brukergrupper",
+        descEn: "The concise 6-minute executive briefing designed for quick listening during commutes or executive reviews.",
+        descNo: "Konsis 6-minutters orientering tilpasset rask lytting på farten eller før møter.",
+        file: "how-private-clubs-get-wholesale-hotel-rates.m4a",
+        size: "7.6 MB",
+        duration: "06:13"
+      }
+    ];
+
+    let currentLanguage = 'en';
+    let currentFilter = 'all';
+    let currentEpisode = null;
+    let playbackRates = [1.0, 1.25, 1.5, 2.0];
+    let currentRateIdx = 0;
+
+    const audio = document.getElementById('audioElement');
+    const masterPlayBtn = document.getElementById('masterPlayBtn');
+    const playerDisc = document.getElementById('playerDisc');
+    const currentTrackTitle = document.getElementById('currentTrackTitle');
+    const currentTrackCategory = document.getElementById('currentTrackCategory');
+    const seekBar = document.getElementById('seekBar');
+    const currentTimeTxt = document.getElementById('currentTimeTxt');
+    const durationTxt = document.getElementById('durationTxt');
+    const speedBtn = document.getElementById('speedBtn');
+    const toastMsg = document.getElementById('toastMsg');
+
+    function renderEpisodes() {
+      const grid = document.getElementById('podcastGrid');
+      grid.innerHTML = '';
+
+      const query = document.getElementById('searchBox').value.toLowerCase().trim();
+
+      const filtered = EPISODES.filter(ep => {
+        if (currentFilter !== 'all' && ep.category !== currentFilter) return false;
+        if (!query) return true;
+        const title = (currentLanguage === 'no' ? ep.titleNo : ep.titleEn).toLowerCase();
+        const desc = (currentLanguage === 'no' ? ep.descNo : ep.descEn).toLowerCase();
+        return title.includes(query) || desc.includes(query) || ep.file.toLowerCase().includes(query);
+      });
+
+      filtered.forEach(ep => {
+        const isPlayingThis = currentEpisode && currentEpisode.id === ep.id && !audio.paused;
+        const card = document.createElement('div');
+        card.className = `card ${currentEpisode && currentEpisode.id === ep.id ? 'now-playing' : ''}`;
+        
+        const badge = currentLanguage === 'no' ? ep.badgeNo : ep.badgeEn;
+        const title = currentLanguage === 'no' ? ep.titleNo : ep.titleEn;
+        const desc = currentLanguage === 'no' ? ep.descNo : ep.descEn;
+
+        card.innerHTML = `
+          <div>
+            <div class="card-badge ${ep.category === 'deepdive' ? 'deepdive' : ''}">
+              <span>${ep.category === 'deepdive' ? '🎙️' : '✨'}</span> ${badge}
+            </div>
+            <h3 class="card-title">${title}</h3>
+            <p class="card-desc">${desc}</p>
+          </div>
+          <div>
+            <div class="card-meta">
+              <span>⏱️ ${ep.duration}</span>
+              <span>💾 ${ep.size}</span>
+            </div>
+            <div class="card-actions">
+              <button class="play-btn" onclick="playEpisode('${ep.id}')">
+                <span>${isPlayingThis ? '⏸' : '▶'}</span>
+                <span>${isPlayingThis ? (currentLanguage === 'no' ? 'Pause' : 'Pause') : (currentLanguage === 'no' ? 'Spill av' : 'Play Episode')}</span>
+              </button>
+              <a href="/audio/${ep.file}" download class="icon-btn" title="Download Audio File">
+                ⬇
+              </a>
+              <button class="icon-btn" onclick="copyEpisodeLink('${ep.trackId}')" title="Copy Web Link">
+                🔗
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function playEpisode(epId) {
+      const ep = EPISODES.find(e => e.id === epId);
+      if (!ep) return;
+
+      if (currentEpisode && currentEpisode.id === ep.id) {
+        if (audio.paused) {
+          audio.play();
+        } else {
+          audio.pause();
+        }
+        return;
+      }
+
+      currentEpisode = ep;
+      audio.src = `/audio/${ep.file}`;
+      audio.load();
+      audio.play();
+
+      currentTrackTitle.textContent = currentLanguage === 'no' ? ep.titleNo : ep.titleEn;
+      currentTrackCategory.textContent = currentLanguage === 'no' ? ep.badgeNo : ep.badgeEn;
+
+      renderEpisodes();
+    }
+
+    function togglePlay() {
+      if (!currentEpisode) {
+        playEpisode(EPISODES[0].id);
+        return;
+      }
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+
+    function seekRelative(sec) {
+      if (!audio) return;
+      audio.currentTime = Math.max(0, Math.min(audio.duration || 0, audio.currentTime + sec));
+    }
+
+    function handleSeek(val) {
+      if (!audio || !audio.duration) return;
+      audio.currentTime = (val / 100) * audio.duration;
+    }
+
+    function cyclePlaybackRate() {
+      currentRateIdx = (currentRateIdx + 1) % playbackRates.length;
+      const rate = playbackRates[currentRateIdx];
+      audio.playbackRate = rate;
+      speedBtn.textContent = rate.toFixed(1) + 'x';
+    }
+
+    function formatTime(secs) {
+      if (isNaN(secs) || secs < 0) return '0:00';
+      const m = Math.floor(secs / 60);
+      const s = Math.floor(secs % 60);
+      return `${m}:${s < 10 ? '0' : ''}${s}`;
+    }
+
+    audio.addEventListener('play', () => {
+      masterPlayBtn.textContent = '⏸';
+      playerDisc.classList.add('playing');
+      renderEpisodes();
+    });
+
+    audio.addEventListener('pause', () => {
+      masterPlayBtn.textContent = '▶';
+      playerDisc.classList.remove('playing');
+      renderEpisodes();
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      if (!audio.duration) return;
+      seekBar.value = (audio.currentTime / audio.duration) * 100;
+      currentTimeTxt.textContent = formatTime(audio.currentTime);
+      durationTxt.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      durationTxt.textContent = formatTime(audio.duration);
+    });
+
+    function filterCategory(cat, btn) {
+      currentFilter = cat;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderEpisodes();
+    }
+
+    function handleSearch() {
+      renderEpisodes();
+    }
+
+    function toggleLanguage() {
+      currentLanguage = currentLanguage === 'en' ? 'no' : 'en';
+      const langBtn = document.getElementById('langBtn');
+      const headerTitle = document.getElementById('headerTitle');
+      const headerSubtitle = document.getElementById('headerSubtitle');
+      const tabAll = document.getElementById('tabAll');
+      const tabCore = document.getElementById('tabCore');
+      const tabDeep = document.getElementById('tabDeep');
+
+      if (currentLanguage === 'no') {
+        langBtn.textContent = '🌐 Switch to English';
+        headerTitle.innerHTML = 'Det komplette <span>Lydarkivet</span>';
+        headerSubtitle.textContent = 'Komplett samling av masterclasses, tekniske orienteringer og innsikt i lukkede reiseklubber, hotell-engrospriser, NDC fly-APIer og passasjerrettigheter.';
+        tabAll.textContent = 'Alle episoder (15)';
+        tabCore.textContent = 'Kjerneeposter (9)';
+        tabDeep.textContent = 'Dybdedykk (6)';
+      } else {
+        langBtn.textContent = '🌐 Bytt til Norsk';
+        headerTitle.innerHTML = 'The Wholesale Travel <span>Audio Archive</span>';
+        headerSubtitle.textContent = 'Complete library of unscripted masterclasses, technical briefings, and insider revelations on closed-loop travel club economics, secret hotel liquidation, wholesale airline APIs, and consumer rights.';
+        tabAll.textContent = 'All Tracks (15)';
+        tabCore.textContent = 'Core Nurture (9)';
+        tabDeep.textContent = 'Deep Dives (6)';
+      }
+
+      if (currentEpisode) {
+        currentTrackTitle.textContent = currentLanguage === 'no' ? currentEpisode.titleNo : currentEpisode.titleEn;
+        currentTrackCategory.textContent = currentLanguage === 'no' ? currentEpisode.badgeNo : currentEpisode.badgeEn;
+      }
+
+      renderEpisodes();
+    }
+
+    function showToast(msg) {
+      toastMsg.textContent = msg;
+      toastMsg.classList.add('show');
+      setTimeout(() => toastMsg.classList.remove('show'), 2500);
+    }
+
+    function copyEpisodeLink(trackId) {
+      const url = `https://atlasprelaunch.web.app/?podcast=${trackId}`;
+      navigator.clipboard.writeText(url).then(() => {
+        showToast('Direct app link copied: ' + url);
+      }).catch(() => {
+        prompt('Copy link:', url);
+      });
+    }
+
+    function copyCurrentEpisodeLink() {
+      if (!currentEpisode) return;
+      copyEpisodeLink(currentEpisode.trackId);
+    }
+
+    // Auto-load track if URL parameter ?play=trackId is provided
+    window.addEventListener('DOMContentLoaded', () => {
+      renderEpisodes();
+      const params = new URLSearchParams(window.location.search);
+      const playParam = params.get('play') || params.get('podcast');
+      if (playParam) {
+        const found = EPISODES.find(e => e.trackId === playParam || e.id === playParam);
+        if (found) {
+          playEpisode(found.id);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

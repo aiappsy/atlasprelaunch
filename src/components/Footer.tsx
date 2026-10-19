@@ -27,6 +27,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCrm, onOpenCompliance, onO
       <div className="flex flex-wrap items-center justify-center gap-3 text-neutral-400 text-[11px] font-mono">
         {onOpenCompliance ? (
           <>
+            <a
+              href="/podcasts.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-400/90 hover:text-amber-300 transition underline underline-offset-4 decoration-amber-400/30 cursor-pointer font-semibold inline-flex items-center gap-1"
+            >
+              <span>🎙️</span>
+              <span>{isNorwegian ? 'Podcast Arkiv (15 episoder)' : 'Podcast Vault (15 episodes)'}</span>
+            </a>
+            <span className="text-neutral-700">•</span>
             <button
               type="button"
               onClick={() => onOpenCompliance('guarantee')}
