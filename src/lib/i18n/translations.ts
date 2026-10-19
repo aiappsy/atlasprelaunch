@@ -297,8 +297,8 @@ export const translations: Record<Language, Translations> = {
       lifetimeDiscount: 'Free 3-Day European Hotel Break Voucher',
       downloadBtn: 'Download Certificate',
       closeBtn: 'Close',
-      perk1: '100% free 3-day European hotel stay for 2 travelers (worth €480 / 5 400 kr)',
-      perk2: 'Automatic entry into the draw where 3 of 100 win all gourmet meals fully covered',
+      perk1: 'Complimentary European weekend break for 2 travelers (worth up to €400 / 4,500 NOK)',
+      perk2: 'Full access to wholesale net rates across 2.5M hotels and direct commission credits',
       perk3: '0 kr retail markups on flights and 1,200,000+ wholesale hotels (€110 / 1 290 NOK per year)',
     },
     podcast: {
@@ -401,7 +401,7 @@ export const translations: Record<Language, Translations> = {
       tripsUnit: 'turer',
       nightsUnit: 'netter',
       peopleUnit: 'gjester',
-      freeTrialBanner: 'Kun 100 plasser • Inkluderer gratis hotellopphold for to (verdi 5 400 kr)',
+      freeTrialBanner: 'Kun 100 plasser • Inkluderer Europeisk Weekend-opphold for to og 100% verdigaranti',
     },
     pillars: {
       sectionTitle: 'Våre 5 Institusjonelle Leverandør- og Partnersøyler',
@@ -440,7 +440,7 @@ export const translations: Record<Language, Translations> = {
       resendIn: 'Send ny kode om',
       resendBtn: 'Send ny kode',
       successTitle: 'Velkommen til Atlas Travel Club',
-      successDesc: 'Din Founding Member-posisjon og ditt gratis 3-dagers hotellopphold for to er reservert. Du er også automatisk registrert i trekningen der 3 heldige får OGSÅ MATEN 100% dekket!',
+      successDesc: 'Din Founding Member-posisjon og ditt Europeiske Weekend-opphold for 2 personer er nå midlertidig reservert.',
       founderNumberLabel: 'Founding Member Sertifikat',
       sharePrompt: 'Del din personlige invitasjonslenke med venner for å rykke frem i køen:',
       copyLinkBtn: 'Kopier invitasjonslenke',

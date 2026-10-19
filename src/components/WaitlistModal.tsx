@@ -282,8 +282,8 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
                   {isNorwegian ? 'Garanterte medlemsrettigheter:' : 'Certified Guarantees:'}
                 </div>
                 <div className="text-[11px] text-neutral-400 space-y-0.5">
-                  <div>✓ {isNorwegian ? '100% gratis 3-dagers hotellopphold for to i Europa (verdi 5 400 kr / ca. €480)' : '100% Free 3-Day European Hotel Break for 2 (worth €480 / 5 400 kr)'}</div>
-                  <div>✓ {isNorwegian ? 'Lodd i trekningen der 3 av 100 får all gourmetmat 100% dekket' : 'Entered in the draw where 3 of 100 win all gourmet meals fully covered'}</div>
+                  <div>✓ {isNorwegian ? 'Europeisk weekend-opphold for 2 personer (verdi inntil 4 500 kr / ca. €400)' : 'Complimentary European weekend break for 2 (worth up to €400)'}</div>
+                  <div>✓ {isNorwegian ? 'Full tilgang til rå engrospriser på fly og 2,5M hoteller for alltid' : 'Full access to wholesale net rates on flights & 2.5M hotels for life'}</div>
                   <div>✓ {isNorwegian ? 'Bekreftelse registrert for' : 'Confirmation logged for'} {submissionResult.email} ({submissionResult.phone})</div>
                 </div>
               </div>

@@ -373,8 +373,8 @@ export const PrelaunchConcierge: React.FC<PrelaunchConciergeProps> = ({
           message: query,
           history: messages.slice(-4).map((m) => ({ sender: m.sender, text: m.text })),
           systemContext: isNorwegian
-            ? `Du er Aura, concierge for ATLAS Travel Club forhåndslansering (atlastravelclub.com, operert av HARD ROCK CAPITAL LTD). Valuta: NOK. Årskontingent: 1 290 kr / år ved lansering onsdag 20. januar 2027. Det er 100% gratis å reservere plass i dag – intet kredittkort nødvendig. De 100 første Founding Members mottar et gratis 3-dagers luksushotellopphold for to i Europa (verdi 5 400 kr, 0 kr i rompris via European Allotments), og 3 vinnere får all gourmetmat dekket. ATLAS selger fly og hotell til rå engrospris med 0 kr påslag og gir 100% provisjonsretur på cruise. Svar kort, elegant og konverserende på norsk uten lange informasjons-dumps.`
-            : `You are Aura, executive AI concierge for ATLAS Travel Club prelaunch (atlastravelclub.com, operated by HARD ROCK CAPITAL LTD). Currency: ${currency}. Dues: €110 / year (1 290 NOK) at launch on Wednesday, January 20, 2027. 100% free reservation today, no credit card required. The first 100 Founding Members receive a complimentary 3-day European luxury hotel break for two (worth €480 / 5 400 kr, €0 room rate via European Allotments), and 3 winners win all gourmet meals covered. ATLAS sells flights and wholesale hotels at pure net wholesale with 0 markup, and gives 100% commission rebate on cruises. Answer warmly, concisely, and conversationally in 2-3 short paragraphs without information overload.`,
+            ? `Du er Aura, concierge for ATLAS Travel Club forhåndslansering (atlastravelclub.com, operert av HARD ROCK CAPITAL LTD). Valuta: NOK. Årskontingent: 1 290 kr / år ved lansering onsdag 20. januar 2027. Det er 100% gratis å reservere plass i dag – intet kredittkort nødvendig. De 100 første Founding Members mottar et utvalgt Europeisk Weekend-opphold for to i Europa (verdi inntil 4 500 kr / ca. €400) som Founding-gave. ATLAS selger fly og hotell til rå engrospris med 0 kr påslag og gir 100% provisjonsretur på cruise. Svar kort, elegant og konverserende på norsk uten lange informasjons-dumps.`
+            : `You are Aura, executive AI concierge for ATLAS Travel Club prelaunch (atlastravelclub.com, operated by HARD ROCK CAPITAL LTD). Currency: ${currency}. Dues: €110 / year (1 290 NOK) at launch on Wednesday, January 20, 2027. 100% free reservation today, no credit card required. The first 100 Founding Members receive a complimentary European weekend break for two (worth up to €400 / 4,500 NOK) as a Founding Gift. ATLAS sells flights and wholesale hotels at pure net wholesale with 0 markup, and gives 100% commission rebate on cruises. Answer warmly, concisely, and conversationally in 2-3 short paragraphs without information overload.`,
         }),
       });
 
@@ -550,7 +550,7 @@ export const PrelaunchConcierge: React.FC<PrelaunchConciergeProps> = ({
               <span className="text-emerald-400 font-black">{price.formattedFounding}</span>
             </div>
             <span className="px-2 py-0.5 rounded-full bg-amber-400/15 text-amber-300 text-[10px] font-bold border border-amber-400/30">
-              {isNorwegian ? 'Inkl. Gratis Hotellopphold (5 400 kr)' : 'Incl. Free 3-Day Hotel Break (€480)'}
+              {isNorwegian ? 'Inkl. Europeisk Weekend-opphold' : 'Incl. European Weekend Break'}
             </span>
           </div>
 

@@ -47,7 +47,7 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onOpenPerkModal }) =
               {isNo ? 'Founding Member Velkomstgave' : 'Founder Welcome Gift'}
             </span>
             <span className="text-xs font-mono font-black text-rose-300">
-              {isNo ? '0 kr Rompris (Verdi 5 400 kr)' : '€0 Room (Worth €480)'}
+              {isNo ? 'Verdi inntil 4 500 kr' : 'Worth up to €400'}
             </span>
           </div>
           <div>
@@ -62,7 +62,7 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onOpenPerkModal }) =
           <div className="flex items-center justify-between text-[11px] text-neutral-400 pt-2 border-t border-neutral-800">
             <span className="flex items-center gap-1 text-rose-400 font-semibold">
               <Sparkles className="w-3.5 h-3.5" />
-              {isNo ? '3 av 100 vinner OGSÅ maten' : '3 of 100 win all meals'}
+              {isNo ? 'Eksklusiv Founding-gave' : 'Exclusive Founder Gift'}
             </span>
             {onOpenPerkModal && (
               <button
@@ -70,7 +70,7 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onOpenPerkModal }) =
                 onClick={() => onOpenPerkModal('voucher')}
                 className="inline-flex items-center gap-1 text-rose-300 hover:text-rose-200 font-mono font-bold text-[11px] underline decoration-rose-400/40 hover:decoration-rose-300 cursor-pointer"
               >
-                <span>{isNo ? 'Beregn matpris & se hoteller →' : 'Calculate meals & hotels →'}</span>
+                <span>{isNo ? 'Se detaljer om oppholdet →' : 'View stay details →'}</span>
               </button>
             )}
           </div>

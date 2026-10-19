@@ -1,5 +1,5 @@
 // Conversational Prelaunch AI Concierge Knowledge Base & Engine for Atlas Travel Club
-// Base currency: EUR (€110/yr) / NOK (1 290 kr/år). Founding Members get a 100% Free 3-Day European Hotel Break for 2 (worth €480 / 5 400 kr) + 3 of 100 win all meals covered!
+// Base currency: EUR (€110/yr) / NOK (1 290 kr/år). Founding Members get a 100% Free 3-Day European Hotel Break for 2 (worth €480 / 4 500 kr) + 3 of 100 win all meals covered!
 // Dynamic language support: When NOK is chosen, responses and UI seamlessly switch to Norwegian!
 
 export type CurrencyCode = 'USD' | 'NOK' | 'EUR' | 'GBP';
@@ -573,7 +573,7 @@ Your bookings are pre-paid corporate allotments with official digital check-in v
 1. **Send inn krav på 60 sekunder**: Åpne refusjonsportalen, oppgi bookingreferanse og en enkel skjermdump/lenke til offentlig pris på Booking.com eller Expedia.
 2. **Automatisk forhåndsvalidering**: Systemet beregner umiddelbart besparelsesdifferansen mot din årskontingent (${fee}).
 3. **48-timers saksbehandlingsfrist**: Hard Rock Capital Ltd verifiserer kravet innen 2 virkedager, og 100% av kontingenten utbetales direkte til ditt betalingskort via Stripe.
-4. **Du beholder fordelene**: Du beholder din utstedte Europeiske hotellopphold-kupong (verdi 5 400 kr) og alle opptjente Rewards Vault-poeng.`,
+4. **Du beholder fordelene**: Du beholder din utstedte Europeiske hotellopphold-kupong (verdi inntil 4 500 kr) og alle opptjente Rewards Vault-poeng.`,
           action: 'open_refund_modal',
           actionLabel: 'Krev 100% Verdigaranti Nå',
           followUps: [
@@ -1158,7 +1158,7 @@ export function getWelcomeMessageData(currency: CurrencyCode) {
 
 Den offisielle lanseringen åpner **onsdag 20. januar 2027 kl. 10:00**! 
 
-Du kan **reservere din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig**. De første 100 medlemmene mottar et **gratis 3-dagers luksushotellopphold for to (verdi 5 400 kr / ca. €480)** og sjansen til å vinne all mat dekket!
+Du kan **reservere din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig**. De første 100 medlemmene mottar et **gratis 3-dagers luksushotellopphold for to (verdi inntil 4 500 kr / ca. €480)** og sjansen til å vinne all mat dekket!
 
 Jeg kan også forklare lukkede engrospriser på hotell, våre **7-netters ferieleiligheter fra 3 490 kr (€299)**, eller **0 kr i rompris (Europeisk Hotellkupong)**. Hva vil du vite mer om?`,
       action: 'open_waitlist' as const,
@@ -1202,7 +1202,7 @@ export function getFallbackAnswer(currency: CurrencyCode): ConciergeAnswer {
     return {
       text: `ATLAS Travel Club er en lukket medlemsklubb (etter Costco-modellen) som gir deg direkte tilgang til engrospriser på reiser med 0% kommersielt påslag – vanligvis 20% til 45% lavere enn Booking.com eller Expedia.
 
-Lanseringen skjer **onsdag 20. januar 2027 kl. 10:00**. **Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig.** Samtlige 100 første medlemmer mottar et **100% gratis 3-dagers luksushotellopphold for to i Europa (verdi 5 400 kr)**.
+Lanseringen skjer **onsdag 20. januar 2027 kl. 10:00**. **Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig.** Samtlige 100 første medlemmer mottar et **100% gratis 3-dagers luksushotellopphold for to i Europa (verdi inntil 4 500 kr)**.
 
 Hva er du mest nysgjerrig på? Jeg forklarer gjerne 0 kr i rompris (Europeisk Hotellkupong), 7-netters leiligheter (RVC), 100% provisjonsrefusjon eller 100% verdigarantien.`,
       action: 'open_waitlist',

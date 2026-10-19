@@ -523,7 +523,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
             className="mt-5 w-full py-3.5 px-4 rounded-xl bg-amber-400/15 hover:bg-amber-400/25 border border-amber-400/60 text-amber-200 font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer shadow-md"
           >
             <Utensils className="w-4 h-4 text-amber-400" />
-            <span>{isNorwegian ? 'Beregn matpris & se hoteller' : 'Calculate meal price & view hotels'}</span>
+            <span>{isNorwegian ? 'Se detaljer om oppholdet' : 'View stay details'}</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

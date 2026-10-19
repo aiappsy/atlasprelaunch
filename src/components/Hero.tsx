@@ -180,14 +180,14 @@ export const Hero: React.FC<HeroProps> = ({
           <span className="text-neutral-600">•</span>
           <span className="flex items-center gap-1.5 text-emerald-300 font-semibold">
             <Sparkles className="w-3.5 h-3.5" />
-            {isNorwegian ? '3 vinnere får også maten gratis' : '3 Winners Get All Meals Free'}
+            {isNorwegian ? '100% Fornøyd- & Verdigaranti' : '100% Value Guarantee'}
           </span>
         </div>
 
         {/* Right: Live Luxury Destination Pill */}
         <div className="flex items-center gap-2 bg-neutral-950/60 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-neutral-800/80 text-[11px] shadow-lg">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-neutral-300 font-medium">White Dunes Luxury Suites • Paros</span>
+          <span className="text-neutral-300 font-medium">Europeiske Luksusdestinasjoner</span>
           <span className="text-neutral-600">•</span>
           <span className="text-emerald-400 font-bold">{isNorwegian ? 'Spar 45% netto' : 'Save 45% Net'}</span>
         </div>
