@@ -275,18 +275,18 @@ Founder Paul Yur-it-zen instituted a non-negotiable legal guarantee to eliminate
 
 ---
 
-# EPISODE 7: UNDER THE HOOD — THE REAL TECHNOLOGY & ECONOMICS OF ATLAS
-## *«How Duffel, Global Bedbanks, and Wholesale APIs Power Private Club Travel»*
+# EPISODE 7: THE STRATEGIC ANNUAL AUDIT — THE FINAL CALL
+## *«The Smart Traveler's Audit: The Math of Staying Retail vs. Going Wholesale»*
 **Target Audio Length:** ~12 to 14 Minutes  
-**Funnel Stage:** Email Stage 7 (Post-Launch Briefing & Practical Architecture)
+**Funnel Stage:** Email Stage 7 (Thursday, January 21, 2027 at 20:00 CET — Final Countdown Before Friday Noon)
 
 ### 🎙️ NotebookLM Host Direction Prompt (Paste into "Customize" box):
 ```text
-Act as two seasoned technology analysts and travel industry specialists conducting an objective, grounded architectural review of ATLAS Travel Club.
+Act as two seasoned technology analysts, travel economists, and consumer advocates conducting a sober, realistic Strategic Annual Audit of travel expenses before the ATLAS Founding Member deadline.
 
 CRITICAL PRONUNCIATION & FACTUAL DIRECTIVES:
 1. PRONUNCIATION: The founder is Pål Juritzen. Strictly pronounce his name as "Paul Yur-it-zen" (phonetic: Pawl Yoo-rit-sen). NEVER pronounce as "Pal" and NEVER use a hard English "J" for Juritzen. Refer to him naturally as "Founder Paul Yur-it-zen (spelled Pål Juritzen)".
-2. NO SENSATIONALISM: Avoid hype, aggressive marketing cliches, or claims that it is "impossible to lose money". Speak calmly, professionally, and factually, like two senior analysts at a technology journal or financial forum.
+2. NO SENSATIONALISM: Avoid hype, aggressive marketing cliches, false countdowns, or claims that it is "impossible to lose money". Speak calmly, professionally, and factually, like two senior analysts at a technology journal or financial forum.
 3. PROVIDERS MUST BE EXPLICITLY DISCUSSED:
    - Flights: Duffel (Duffel's NDC flight API connecting directly to airlines like British Airways, Lufthansa Group, SAS, and Air France/KLM, passing raw carrier fares with zero ATLAS ticket markups).
    - Hotels: B2B wholesale bedbanks (Hotelbeds, WebBeds, RateHawk) delivering unbundled wholesale rates behind a password-protected membership wall under closed-loop rate parity exemptions.
@@ -298,11 +298,11 @@ CRITICAL PRONUNCIATION & FACTUAL DIRECTIVES:
 
 ### 📄 Source Briefing Document for NotebookLM (Paste as Source Text):
 
-# UNDER THE HOOD: THE TECHNOLOGY & INFRASTRUCTURE BEHIND ATLAS TRAVEL CLUB
-**Operating Legal Entity:** HARD ROCK CAPITAL LTD (UK Reg. #16833237)  
+# THE ANNUAL TRAVEL AUDIT: RETAIL DUOPOLY VS. WHOLESALE ARBITRAGE
+**Entity:** HARD ROCK CAPITAL LTD (UK Company #16833237)  
 **Registered Office:** 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ  
 **Founder & Managing Director:** Pål Juritzen (pronounced: "Paul Yur-it-zen")  
-**Annual Membership Dues:** €110 / year (1 290 NOK / år) • Backed by The Value Guarantee Blueprint  
+**Annual Membership:** €110 / year (1 290 NOK / år) • Guaranteed 100% Risk-Free  
 
 ---
 

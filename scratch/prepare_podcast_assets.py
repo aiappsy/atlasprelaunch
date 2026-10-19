@@ -33,7 +33,7 @@ with open(r"C:\Users\paul\.gemini\antigravity\scratch\atlasprelaunch\docs\Notebo
 gf_prompt_match = re.search(r"```text\s*([\s\S]*?)```", gf_content)
 gf_prompt = gf_prompt_match.group(1).strip() if gf_prompt_match else ""
 
-gf_source_match = re.search(r"(# THE ATLAS TRAVEL CLUB LAUNCH DOSSIER[\s\S]*)", gf_content)
+gf_source_match = re.search(r"(# THE GRAND FINALE[\s\S]*)", gf_content)
 gf_source = gf_source_match.group(1).strip() if gf_source_match else gf_content
 
 with open(os.path.join(ASSETS_DIR, "ep8_grand_finale_prompt.txt"), "w", encoding="utf-8") as f:
@@ -52,8 +52,8 @@ episodes = [
     (3, "EPISODE 3: THE RVC VACATION CERTIFICATE SECRET", "EPISODE 4: THE TRAVEL DUOPOLY & THE 100% COMMISSION REBATE"),
     (4, "EPISODE 4: THE TRAVEL DUOPOLY & THE 100% COMMISSION REBATE", "EPISODE 5: THE LAUNCH COUNTDOWN & FOUNDING 100 PLAYBOOK"),
     (5, "EPISODE 5: THE LAUNCH COUNTDOWN & FOUNDING 100 PLAYBOOK", "EPISODE 6: THE LIVE PLATFORM REVEAL — INSIDE THE WHOLESALE ENGINE"),
-    (6, "EPISODE 6: THE LIVE PLATFORM REVEAL — INSIDE THE WHOLESALE ENGINE", "EPISODE 7: UNDER THE HOOD — THE REAL TECHNOLOGY & ECONOMICS OF ATLAS"),
-    (7, "EPISODE 7: UNDER THE HOOD — THE REAL TECHNOLOGY & ECONOMICS OF ATLAS", None),
+    (6, "EPISODE 6: THE LIVE PLATFORM REVEAL — INSIDE THE WHOLESALE ENGINE", "EPISODE 7: THE STRATEGIC ANNUAL AUDIT — THE FINAL CALL"),
+    (7, "EPISODE 7: THE STRATEGIC ANNUAL AUDIT — THE FINAL CALL", None),
 ]
 
 for num, start_marker, end_marker in episodes:

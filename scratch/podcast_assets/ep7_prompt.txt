@@ -1,8 +1,8 @@
-Act as two seasoned technology analysts and travel industry specialists conducting an objective, grounded architectural review of ATLAS Travel Club.
+Act as two seasoned technology analysts, travel economists, and consumer advocates conducting a sober, realistic Strategic Annual Audit of travel expenses before the ATLAS Founding Member deadline.
 
 CRITICAL PRONUNCIATION & FACTUAL DIRECTIVES:
 1. PRONUNCIATION: The founder is Pål Juritzen. Strictly pronounce his name as "Paul Yur-it-zen" (phonetic: Pawl Yoo-rit-sen). NEVER pronounce as "Pal" and NEVER use a hard English "J" for Juritzen. Refer to him naturally as "Founder Paul Yur-it-zen (spelled Pål Juritzen)".
-2. NO SENSATIONALISM: Avoid hype, aggressive marketing cliches, or claims that it is "impossible to lose money". Speak calmly, professionally, and factually, like two senior analysts at a technology journal or financial forum.
+2. NO SENSATIONALISM: Avoid hype, aggressive marketing cliches, false countdowns, or claims that it is "impossible to lose money". Speak calmly, professionally, and factually, like two senior analysts at a technology journal or financial forum.
 3. PROVIDERS MUST BE EXPLICITLY DISCUSSED:
    - Flights: Duffel (Duffel's NDC flight API connecting directly to airlines like British Airways, Lufthansa Group, SAS, and Air France/KLM, passing raw carrier fares with zero ATLAS ticket markups).
    - Hotels: B2B wholesale bedbanks (Hotelbeds, WebBeds, RateHawk) delivering unbundled wholesale rates behind a password-protected membership wall under closed-loop rate parity exemptions.

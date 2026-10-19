@@ -1,7 +1,8 @@
-# ATLAS TRAVEL CLUB — NOTEBOOKLM EXECUTIVE LAUNCH BRIEFING
-**The Architecture of Net Wholesale Travel: Technology, Partners, and Honest Economics**
+# ATLAS TRAVEL CLUB — NOTEBOOKLM GRAND FINALE CLOSING BRIEFING
+**The Pre-Launch Master Closing Podcast: Connecting the Dots & Final Call**
+*Release Timing: 24 to 48 Hours Before Launch (Monday Jan 18 / Tuesday Jan 19, 2027)*  
 *Official Launch: Wednesday, January 20, 2027 at 10:00 AM CET*  
-*Operating Legal Entity: HARD ROCK CAPITAL LTD (UK Reg. #16833237)*  
+*Legal Entity: HARD ROCK CAPITAL LTD (UK Reg. #16833237)*  
 *Registered Address: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ*  
 *Founder & Executive Director: Pål Juritzen (pronounced: "Paul Yur-it-zen")*  
 *Membership: €110 / year (1 290 NOK / år) • 0 kr Retail Markup • The 100% Value Guarantee Blueprint*
@@ -31,7 +32,7 @@ CRITICAL PRONUNCIATION & FACTUAL DIRECTIVES FOR CO-HOSTS:
 
 ### 📄 Source Briefing Document for NotebookLM (Paste as Source Text):
 
-# THE ATLAS TRAVEL CLUB LAUNCH DOSSIER: WHOLESALE TRAVEL ARCHITECTURE
+# THE GRAND FINALE: WHY ATLAS CHANGES EUROPEAN TRAVEL FOREVER
 **Legal Entity:** HARD ROCK CAPITAL LTD (UK Company #16833237)  
 **Registered Office:** 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom  
 **Founder & Managing Director:** Pål Juritzen (pronounced: "Paul Yur-it-zen")  
