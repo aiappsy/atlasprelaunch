@@ -62,17 +62,17 @@ const SCRIPT_BEATS: ScriptBeat[] = [
     label: '04. Free European Hotel Break',
     headline: 'Complimentary 3-Day European Hotel Break For Two',
     narration:
-      'Join as one of our first 100 Founding Members to receive a complimentary 3-day European hotel stay for two, worth $520.',
-    badge: 'FREE 3-DAY HOTEL STAY',
+      'Join as one of our first 100 Founding Members to receive a complimentary European weekend break for two, worth up to $480.',
+    badge: 'COMPLIMENTARY WEEKEND BREAK',
   },
   {
     startSec: 31,
     endSec: 38,
-    label: '05. Golden Ticket Meal Draw',
-    headline: '3 of 100 Members Win All Gourmet Meals Covered',
+    label: '05. 100% Value Guarantee',
+    headline: '100% Money-Back Satisfaction Guarantee',
     narration:
-      'Plus, three lucky Founding Members will win their entire gourmet dining and half-board 100% paid by ATLAS.',
-    badge: '3X ALL MEALS COVERED',
+      'If your first stay or annual trips do not save more than your annual dues, ATLAS refunds 100% of your fee immediately.',
+    badge: '100% VALUE GUARANTEE',
   },
 ];
 

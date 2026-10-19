@@ -142,7 +142,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
     try {
       const tierDesc = calculatedSavings
         ? `${calculatedSavings.totalNights} Nights (${calculatedSavings.formattedSavings} saved/yr)`
-        : 'Founding Member (Inkl. Gratis 3-dagers Hotellopphold)';
+        : 'Founding Member (Inkl. Europeisk Weekend-opphold)';
 
       const result = await registerSubscriber({
         fullName: fullName.trim(),
@@ -497,12 +497,12 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
                 </div>
 
                 <div className="text-[11px] text-neutral-300 pl-1 space-y-1 font-mono">
-                  <div>✓ <strong className="text-amber-200">{isNorwegian ? '100% gratis 3-dagers hotellopphold for 2 personer (verdi 5 400 kr / ca. €480)' : '100% Free 3-Day European Hotel Break for 2 (worth €480 / 5 400 kr)'}</strong></div>
-                  <div>✓ <strong className="text-emerald-300">{isNorwegian ? '3 av de 100 første vinner OGSÅ all gourmetmat (halvpensjon) dekket av ATLAS' : '3 of 100 early members win ALL MEALS (half-board) fully covered by ATLAS'}</strong></div>
+                  <div>✓ <strong className="text-amber-200">{isNorwegian ? 'Europeisk weekend-opphold for 2 personer (verdi inntil 4 500 kr / ca. €400)' : 'Complimentary European Weekend Break for 2 (worth up to €400)'}</strong></div>
+                  <div>✓ <strong className="text-emerald-300">{isNorwegian ? 'Full tilgang til rå engrospriser på fly og 2,5M hoteller for alltid' : 'Full access to wholesale net rates on flights & 2.5M hotels for life'}</strong></div>
                   <div className="text-[10px] text-neutral-400 pt-0.5 font-sans leading-normal">
                     {isNorwegian
-                      ? 'ℹ️ Selve rommet er 100% sponset. Du betaler kun hotellets obligatoriske gourmet-halvpensjon (frokost + middag) ved utsjekk (fra ca. €39/dag).'
-                      : 'ℹ️ The hotel room is 100% sponsored. Traveler only covers standard hotel half-board (breakfast + dinner) at check-out (from €39/day).'}
+                      ? 'ℹ️ Eksklusiv Founding Member-velkomstgave på utvalgte destinasjoner i Europa.'
+                      : 'ℹ️ Exclusive Founding Member welcome gift across curated European destinations.'}
                   </div>
                 </div>
 

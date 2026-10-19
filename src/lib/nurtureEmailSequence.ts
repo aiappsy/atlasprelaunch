@@ -66,8 +66,8 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
             <div style="font-size: 26px; font-family: monospace; font-weight: 700; letter-spacing: 3px; color: #fbbf24; margin: 6px 0 16px 0;">${ctx.inviteCode}</div>
             
             <div style="border-top: 1px solid #262626; padding-top: 14px; font-size: 13px; color: #e5e7eb; line-height: 1.6;">
-              <div style="margin-bottom: 6px;">🎁 <strong>100% gratis 3-dagers hotellopphold for 2 personer</strong> i Europa (verdi 5 400 kr / €480)</div>
-              <div style="margin-bottom: 6px;">🌟 <strong>Lodd i trekningen</strong> der 3 av de 100 får OGSÅ all gourmetmat (halvpensjon) dekket</div>
+              <div style="margin-bottom: 6px;">🎁 <strong>Europeisk weekend-opphold for 2 personer</strong> i Europa (verdi inntil 4 500 kr / ca. €400)</div>
+              <div style="margin-bottom: 6px;">⚡ <strong>Rå engrospriser for livstid</strong> på fly og over 1 200 000 hoteller globalt</div>
               <div style="margin-bottom: 6px;">🛡️ <strong>100% Fornøyd- & Verdigaranti</strong> på ditt første hotellopphold (2+ netter), ferieleilighet eller samlede årsreiser</div>
               <div>⚡ <strong>0 kr påslag for livstid</strong> på fly, leiebil og over 1 200 000 hoteller globalt</div>
             </div>
@@ -113,13 +113,13 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
     scheduledTiming: '4 dager etter registrering',
     subjectNo: '🍷 Hvordan kan hotellrommet være 100% gratis? (Sannheten om hotell-allotments)',
     subjectEn: '🍷 How can the hotel room be 100% free? (the Allotment Protocol)',
-    preheaderNo: 'Her er den transparente matematikken bak ditt 3-dagers hotellopphold for to.',
-    preheaderEn: 'Here is the transparent math behind your complimentary 3-day hotel stay.',
+    preheaderNo: 'Her er matematikken bak hvordan ATLAS sikrer eksklusive weekend-opphold for to.',
+    preheaderEn: 'Here is how ATLAS secures curated European weekend escapes for two.',
     podcastTitleNo: 'Episode 2: «Sannheten om 0 kr rompris: Hotell-Allotment-Modellen»',
     podcastTitleEn: 'Episode 2: "The Math Behind Zero-Euro Hotel Stays"',
     podcastDuration: '05:45 min',
-    podcastDescriptionNo: 'Slik utnytter European Hospitality Allotment ledige hotellsenger i Europa, og hvorfor du kun betaler hotellets faste gourmet-halvpensjon ved utsjekk.',
-    podcastDescriptionEn: 'How European Hospitality Allotment fills European boutique retreat capacity at zero room rates, while guests only settle fixed half-board on checkout.',
+    podcastDescriptionNo: 'Slik samarbeider utvalgte boutique- og spahoteller med private klubber for å tilby eksklusive weekend-opphold.',
+    podcastDescriptionEn: 'How European boutique and wellness retreats partner with private clubs to allocate exclusive short breaks.',
     podcastUrl: 'https://atlasprelaunch.web.app?perk=voucher&podcast=voucher',
     getHtmlContent: (ctx) => `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #f5f5f5; border: 1px solid #d4af3740; border-radius: 16px; overflow: hidden;">
@@ -130,7 +130,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
         <div style="padding: 32px;">
           <h2 style="font-size: 20px; color: #f3f4f6; margin-top: 0;">Hei, ${ctx.fullName}.</h2>
           <p style="font-size: 14px; line-height: 1.6; color: #d1d5db;">
-            Når folk hører at de første 100 Founding-medlemmene i ATLAS får et <strong>gratis 3-dagers hotellopphold for to personer i Europa</strong>, er det første spørsmålet: <em>«Hva er haken?»</em>
+            Når folk hører at de første 100 Founding-medlemmene i ATLAS mottar et <strong>Europeisk Weekend-opphold for to personer i Europa</strong> som velkomstgave, er det første spørsmålet: <em>«Hvordan er dette mulig?»</em>
           </p>
           <p style="font-size: 14px; line-height: 1.6; color: #d1d5db;">
             Svaret er at det finnes ingen hake – men en genial, transparent forretningsmodell basert på <strong>overskuddskapasitet</strong>.
@@ -462,7 +462,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
     scheduledTiming: 'Onsdag 13. januar 2027 kl. 10:00 CET (T-7 dager)',
     subjectNo: '📅 7 dager igjen: Onsdag 20. januar kl. 10:00 åpner ATLAS',
     subjectEn: '📅 7 Days to Go: Wednesday January 20 at 10:00 AM CET ATLAS Opens',
-    preheaderNo: 'Kun 100 plasser med gratis 3-dagers hotellopphold. Gjør deg klar.',
+    preheaderNo: 'Kun 100 plasser med Europeisk Weekend-opphold for 2. Gjør deg klar.',
     preheaderEn: 'Only 100 spots with complimentary 3-day hotel break. Get ready.',
     podcastTitleNo: 'Episode 8: «Lanseringsmanualen: 20. januar kl. 10:00»',
     podcastTitleEn: 'Episode 8: "ATLAS Travel Club Zero-Markup Membership"',

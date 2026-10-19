@@ -62,7 +62,7 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
 
   if (!isOpen) return null;
 
-  // Hotellpass destinations & half-board daily rates per guest (EUR converted to NOK @ 11.8)
+  // Curated destinations & standard rates per guest (EUR converted to NOK @ 11.8)
   const voucherDestinations: Record<string, { nameNo: string; nameEn: string; country: string; mealPriceEur: number; otaNightlyNok: number }> = {
     dolomites: {
       nameNo: 'Dolomittene (Sør-Tyrol)',
@@ -296,22 +296,22 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
               </h3>
               <p className="text-xs sm:text-sm text-neutral-300 mt-1 leading-relaxed">
                 {isNorwegian
-                  ? 'Gjennom European Hospitality Allotment fyller utvalgte 3–4* superior velværerhoteller i Europa ledig kapasitet. Rommet er 100% dekket av ATLAS (verdi 5 400 kr / ca. €480). Du betaler kun hotellets obligatoriske gourmet-halvpensjon (frokost + fleretters middag) direkte ved utsjekk.'
-                  : 'Through European Hospitality Allotment, curated 3-4* boutique retreats across Europe fill surplus capacity. The room is 100% sponsored by ATLAS (€480 value). Guests only pay the hotel\'s published half-board (breakfast + multi-course dinner) directly at checkout.'}
+                  ? 'Som Founding Member mottar du et utvalgt Europeisk Weekend-opphold for to personer på håndplukkede boutique-, landlige- og velværesteder i Europa. Oppholdet er en eksklusiv velkomstgave fra ATLAS med verdi inntil 4 500 kr (ca. €400).'
+                  : 'As a Founding Member, you receive a curated European Weekend Break for two travelers across handpicked boutique, countryside, and wellness retreats in Europe. The stay is an exclusive welcome perk from ATLAS worth up to €400.'}
               </p>
             </div>
 
-            {/* Golden Ticket 3-Winner Highlight */}
+            {/* Founding Perk Highlight */}
             <div className="p-3.5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-amber-400/20 to-amber-500/15 border border-amber-400/50 flex items-start gap-3">
               <Sparkles className="w-5 h-5 text-amber-300 shrink-0 mt-0.5" />
               <div className="text-xs">
                 <span className="font-bold text-amber-200 block">
-                  {isNorwegian ? '🌟 Golden Ticket: 3 av 100 vinner OGSÅ all mat dekket!' : '🌟 Golden Ticket: 3 of 100 win ALL meals covered!'}
+                  {isNorwegian ? '🌟 Founding Member Velkomstgave (Verdi inntil 4 500 kr)' : '🌟 Founding Member Welcome Gift (Value up to €400)'}
                 </span>
                 <span className="text-neutral-300">
                   {isNorwegian
-                    ? 'Blant de 100 første Founding-medlemmene trekker vi 3 vinnere som får sin gourmet-halvpensjon 100% refundert av ATLAS. Da er hele oppholdet 100% gratis!'
-                    : 'Among the first 100 Founding Members, 3 will win their half-board gourmet dining 100% covered by ATLAS. A totally free luxury getaway!'}
+                    ? 'Inkludert for de 100 første medlemmene som reserverer plass. Gir deg en herlig weekend-tur for to personer til europeiske destinasjoner.'
+                    : 'Included for the first 100 members who reserve a spot. Gives you a memorable weekend getaway for two to top European destinations.'}
                 </span>
               </div>
             </div>
@@ -386,15 +386,15 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
                   <span className="text-emerald-400 font-black text-sm">{isNorwegian ? '0 NOK (GAVE)' : '€0 (SPONSORED)'}</span>
                 </div>
                 <div className="flex justify-between items-center text-neutral-400">
-                  <span>{isNorwegian ? 'Obligatorisk Gourmet-halvpensjon (2 personer):' : 'Fixed Gourmet Half-Board (2 guests):'}</span>
+                  <span>{isNorwegian ? 'Destinasjons- og hotellopphold:' : 'Destination & Hotel Stay:'}</span>
                   <span className="text-amber-300 font-semibold">
-                    {isNorwegian ? `${voucherMealTotalNok.toLocaleString('no-NO')} kr` : `€${voucherMealTotalEur.toLocaleString('en-US')}`}
+                    {isNorwegian ? 'Inkludert for 2 personer' : 'Included for 2 guests'}
                   </span>
                 </div>
                 <div className="pt-2 border-t border-neutral-800 flex justify-between items-center text-sm">
-                  <span className="font-bold text-neutral-100">{isNorwegian ? 'Din Netto Besparelse:' : 'Your Net Savings:'}</span>
+                  <span className="font-bold text-neutral-100">{isNorwegian ? 'Din Medlemsfordel:' : 'Your Member Benefit:'}</span>
                   <span className="font-black text-emerald-400 text-base">
-                    {isNorwegian ? `+${voucherNetSavingsNok.toLocaleString('no-NO')} kr spart!` : `+€${voucherNetSavingsEur.toLocaleString('en-US')} saved!`}
+                    {isNorwegian ? `Verdi inntil 4 500 kr` : `Value up to €400`}
                   </span>
                 </div>
               </div>
@@ -403,8 +403,8 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
                 <Info className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                 <span>
                   {isNorwegian
-                    ? 'Kupongen dekker 100% av romprisen (0 kr). Hotellenes faste gourmet-halvpensjon (frokostbuffet og fleretters middag) betales direkte til hotellet ved utsjekk. Gjelder på over 1 500 boutique- og velværerhoteller i Europa.'
-                    : 'The voucher covers 100% of the room rate (€0). The published gourmet half-board (breakfast buffet & multi-course dinner) is paid directly to the hotel upon checkout. Valid across 1,500+ boutique & wellness hotels across Europe.'}
+                    ? 'Gjelder på utvalgte boutique- og velværehoteller i Europa for Founding Members. Nærmere detaljer og bookinginstruksjoner aktiveres ved medlemskapsstart.'
+                    : 'Valid across selected boutique and wellness retreats in Europe for Founding Members. Full reservation details activate upon membership onboarding.'}
                 </span>
               </div>
             </div>

@@ -146,14 +146,12 @@ export const PRELAUNCH_QA_DATABASE: QAEntry[] = [
 
 Grunnen til at du må opprette et medlemskap først, er utelukkende juridisk. Hotellkontraktene våre forbyr oss strengt å vise uannonserte engrospriser åpent på nettet (dette kalles **prisparitet / Rate Parity**). De hemmelige nettoprisene kan kun gjøres tilgjengelige bak en passordbeskyttet innlogging for en lukket medlemsgruppe.
 
-Når du sikrer deg et av våre 100 første Founding-medlemskap (${p.formattedFounding}), **spanderer ATLAS et 3-dagers hotellopphold for to personer i Europa helt gratis (verdi 5 400 kr)**. Selve rommet er 100% dekket (du betaler kun hotellets lokale gourmet-halvpensjon ved utsjekk).
-
-I tillegg trekker vi 3 heldige vinnere blant de 100 som får **OGSÅ MATEN 100% dekket av ATLAS**! Og din første reise er sikret av vår **100% verdigaranti**. Du tar med andre ord absolutt null økonomisk risiko!`,
+Når du sikrer deg et av våre 100 første Founding-medlemskap (${p.formattedFounding}), **spanderer ATLAS et utvalgt Europeisk Weekend-opphold for to personer i Europa (verdi inntil 4 500 kr / ca. €400)** som eksklusiv Founding Member-gave. Og din første reise er sikret av vår **100% verdigaranti**. Du tar med andre ord absolutt null økonomisk risiko!`,
           action: 'open_waitlist',
           actionLabel: `Sikre Founding Member-plass (${p.formattedFounding})`,
           followUps: [
             'Hvordan fungerer engrospriser på hotell?',
-            'Hva inkluderer det gratis hotelloppholdet?',
+            'Hva inkluderer det europeiske weekend-oppholdet?',
             'Hva er 100% verdigarantien?',
           ],
         };
@@ -164,14 +162,12 @@ I tillegg trekker vi 3 heldige vinnere blant de 100 som får **OGSÅ MATEN 100% 
 
 The reason you have to set up a membership first is purely legal. Hotel supplier contracts strictly prohibit showing wholesale rates openly to the public (this is called **Rate Parity**). Those confidential net rates can legally only be unlocked behind a private, password-protected member login.
 
-When you secure one of our first 100 Founding Memberships (${p.formattedFounding}), **ATLAS gifts you a complimentary 3-day European hotel stay for two (worth €480)**. The room is 100% sponsored (you only pay the hotel's local gourmet half-board at checkout).
-
-On top of this, 3 lucky winners among the 100 will win **ALL MEALS 100% paid by ATLAS**! Plus, your membership is backed by our **100% money-back guarantee**. You literally have zero financial risk!`,
+When you secure one of our first 100 Founding Memberships (${p.formattedFounding}), **ATLAS gifts you a complimentary European Weekend Break for two (worth up to €400)** as an exclusive Founding Member gift. Plus, your membership is backed by our **100% money-back guarantee**. You literally have zero financial risk!`,
         action: 'open_waitlist',
         actionLabel: `Claim Founding Spot (${p.formattedFounding})`,
         followUps: [
           'How does wholesale hotel pricing work?',
-          'What is included in the free hotel stay?',
+          'What is included in the European weekend break?',
           'What is the 100% money-back guarantee?',
         ],
       };
@@ -303,13 +299,12 @@ ATLAS er en privat medlemsklubb etter Costco-modellen. Vi tar **0 kr i påslag p
 
 • **Årskontingent ved lansering**: **${p.formattedFounding} per år** (${p.monthlyEquivalent}) ved åpning onsdag 20. januar 2027.
 • **100% Gratis Reservasjon**: Du reserverer plass i dag helt gratis – intet kredittkort nødvendig.
-• **Gave til de 100 første**: Et **3-dagers gratis luksushotellopphold for 2 personer** i Europa (verdi 5 400 kr, 0 kr i rompris via European Hospitality Allotment).
-• **Golden Ticket Mattrekning**: 3 av de 100 første vinner OGSÅ all gourmetmat (halvpensjon) 100% dekket av ATLAS.
+• **Gave til de 100 første**: Et **Europeisk Weekend-opphold for 2 personer** i Europa (verdi inntil 4 500 kr / ca. €400) inkludert som Founding Member-gave.
 • **100% Fornøyd- & Verdigaranti**: Sparer du ikke inn kontingenten på ditt første hotellopphold (2+ netter), ferieleilighet eller samlede årsreiser, refunderer vi 100% av beløpet umiddelbart.`,
           action: 'open_waitlist',
           actionLabel: `Reserver Founding-plass gratis (${p.formattedFounding})`,
           followUps: [
-            'Hva inkluderer det gratis hotelloppholdet?',
+            'Hva inkluderer det europeiske weekend-oppholdet?',
             'Hvordan fungerer engrospriser på hotell?',
             'Hva er ferieleiligheter fra 3 490 kr?',
             'Hva er 100% verdigarantien?',
@@ -324,13 +319,12 @@ ATLAS operates on a strict subscription model (like Costco). We charge **0 retai
 
 • **Annual Dues at Launch**: **${p.formattedFounding} per year** (${p.monthlyEquivalent}) upon official launch on Wednesday, January 20, 2027.
 • **100% Free Reservation**: You can reserve your priority spot today for free – no credit card required.
-• **Founder Gift for the First 100**: A complimentary **3-day European luxury hotel break for 2 guests** (worth €480 / 5 400 kr, €0 room rate via European Hospitality Allotment).
-• **Golden Ticket Food Draw**: 3 of the first 100 members will win ALL gourmet meals (half-board) 100% covered by ATLAS.
+• **Founder Gift for the First 100**: A complimentary **European Weekend Break for 2 guests** (worth up to €400 / 4,500 NOK) included as an exclusive Founding Member gift.
 • **100% Value Guarantee**: If your first hotel stay (2+ nights), vacation condo, or cumulative annual travel doesn't save you more than your membership fee, we refund 100% of your fee immediately.`,
         action: 'open_waitlist',
         actionLabel: `Reserve Founding Spot Free (${p.formattedFounding})`,
         followUps: [
-          'What is included in the free hotel stay?',
+          'What is included in the European weekend break?',
           'How does wholesale hotel pricing work?',
           'What are 7-night condo stays for €299 (3 490 kr)?',
           'What is the 100% value guarantee?',
@@ -579,7 +573,7 @@ Your bookings are pre-paid corporate allotments with official digital check-in v
 1. **Send inn krav på 60 sekunder**: Åpne refusjonsportalen, oppgi bookingreferanse og en enkel skjermdump/lenke til offentlig pris på Booking.com eller Expedia.
 2. **Automatisk forhåndsvalidering**: Systemet beregner umiddelbart besparelsesdifferansen mot din årskontingent (${fee}).
 3. **48-timers saksbehandlingsfrist**: Hard Rock Capital Ltd verifiserer kravet innen 2 virkedager, og 100% av kontingenten utbetales direkte til ditt betalingskort via Stripe.
-4. **Du beholder fordelene**: Du beholder din utstedte Europeisk 3-dagers hotellkupong (verdi 5 400 kr) og alle opptjente Rewards Vault-poeng.`,
+4. **Du beholder fordelene**: Du beholder din utstedte Europeiske hotellopphold-kupong (verdi 5 400 kr) og alle opptjente Rewards Vault-poeng.`,
           action: 'open_refund_modal',
           actionLabel: 'Krev 100% Verdigaranti Nå',
           followUps: [
@@ -1103,7 +1097,7 @@ Atlas connects directly to major commeResort Allotment Networkal airlines (inclu
       'gratis rom',
       'voucher',
       'European Hospitality Allotment',
-      'halvpensjon',
+      'weekend',
       'velvære',
       'alpeferie',
       'dolomittene',
@@ -1116,11 +1110,11 @@ Atlas connects directly to major commeResort Allotment Networkal airlines (inclu
       /0 kr|0kr/i,
       /Hotellpass/i,
       /European Hospitality Allotment/i,
-      /halvpensjon/i,
-      /half-board/i,
+      /weekend/i,
+      /short-break/i,
       /velvære/i,
     ],
-    strongKeywords: ['spa', 'gourmet', 'voucher', 'halvpensjon', 'velvære', 'dolomittene', 'European Hospitality Allotment'],
+    strongKeywords: ['spa', 'gourmet', 'voucher', 'weekend', 'velvære', 'dolomittene', 'European Hospitality Allotment'],
     weight: 120,
     getAnswer: (currency: CurrencyCode) => {
       const p = MEMBERSHIP_PRICING[currency];
@@ -1128,7 +1122,7 @@ Atlas connects directly to major commeResort Allotment Networkal airlines (inclu
 
       if (isNorwegian) {
         return {
-          text: `🍷 **Atlas Gourmet & Spa Escapes — 0 kr i Rompris:**\n\nGjennom vårt partnerskap med European Hospitality Allotment fyller over **1 500 utvalgte boutique- og velværerhoteller i Europa** ledig kapasitet med en genial modell:\n\n• **Rompris**: **0 NOK** (verditilgodelappen dekker 100% av romprisen for 2 personer i 2–4 netter).\n• **100% Transparent Økonomi**: Du betaler kun hotellets offisielle, faste halvpensjonspris (**€35–€60 per person/dag**) for frokostbuffet og gourmet fleretters middag direkte ved utsjekk på hotellet.\n• **Dokumentert besparelse**: Sparer typisk **over 6 700 NOK (ca. €550)** per miniferie sammenlignet med Booking.com og Expedia.\n• **Håndplukkede destinasjoner**: Dolomittene (Sør-Tyrol), Chianti (Toscana), Schwarzwald (Tyskland), Salzburg (Østerrike), Gardasjøen og Provence.\n• **Umiddelbar kupongutstedelse**: Aktiver din unike verdikupong (ATLAS-HB-xxxx) direkte på medlemsportalen.`,
+          text: `🍷 **Atlas Weekend & Boutique Escapes:**\n\nSom Founding Member mottar du et utvalgt **Europeisk Weekend-opphold for to personer** (verdi inntil 4 500 kr / ca. €400):\n\n• **Inkludert som velkomstgave**: Rom for 2 personer på utvalgte boutique-, landlige- eller velværehoteller i Europa.\n• **100% Transparent**: Ingen skjulte påslag eller ubehagelige forpliktelser.\n• **Attraktive destinasjoner**: Destinasjoner i Italia, Tyskland, Østerrike, Sveits og Frankrike.\n• **Eksklusiv fordel**: Reservert for de 100 første Founding Members ved lansering.`,
           action: 'open_waitlist',
           actionLabel: 'Reserver Founding Member-plass (1 290 kr)',
           followUps: [
@@ -1140,7 +1134,7 @@ Atlas connects directly to major commeResort Allotment Networkal airlines (inclu
       }
 
       return {
-        text: `🍷 **Atlas Gourmet & Spa Escapes — €0 Room Rates:**\n\nThrough our strategic partnership with European Hospitality Allotment, **1,500+ curated boutique & wellness retreats across Europe** fill surplus capacity:\n\n• **Room Rate**: **€0** (the voucher covers 100% of the room rate for 2 guests for 2–4 nights).\n• **100% Transparent Economics**: You pay only the hotel's published fixed half-board rate (**€35–€60 per guest/day**) for breakfast buffet and multi-course dinner directly upon hotel checkout.\n• **Verified Savings**: Save **€550+ (6,700+ NOK)** per getaway compared to Booking.com.\n• **Curated Destinations**: Dolomites (South Tyrol), Tuscany (Chianti), Black Forest (Germany), Salzburg (Austria), Lake Garda, and Provence.\n• **Instant Digital Voucher**: Unique voucher codes (ATLAS-HB-xxxx) generated instantly on the portal.`,
+        text: `🍷 **Atlas Gourmet & Spa Escapes — €0 Room Rates:**\n\nThrough our strategic partnership with European Hospitality Allotment, **1,500+ curated boutique & wellness retreats across Europe** fill surplus capacity:\n\n• **Room Rate**: **€0** (the voucher covers 100% of the room rate for 2 guests for 2–4 nights).\n• **100% Transparent Economics**: Curated boutique getaway without hidden booking markups.\n• **Verified Savings**: Exceptional value on unique European short breaks.\n• **Curated Destinations**: Dolomites (South Tyrol), Tuscany (Chianti), Black Forest (Germany), Salzburg (Austria), Lake Garda, and Provence.\n• **Instant Digital Voucher**: Unique voucher codes (ATLAS-HB-xxxx) generated instantly on the portal.`,
         action: 'open_waitlist',
         actionLabel: `Reserve Founding Spot (${p.formattedFounding})`,
         followUps: [
@@ -1170,7 +1164,7 @@ Jeg kan også forklare lukkede engrospriser på hotell, våre **7-netters feriel
       action: 'open_waitlist' as const,
       actionLabel: 'Reserver plass gratis (Uten kort)',
       followUps: [
-        'Hva inkluderer det gratis hotelloppholdet?',
+        'Hva inkluderer det europeiske weekend-oppholdet?',
         'Hva er ferieleiligheter fra 3 490 kr?',
         'Hva skjer når dørene åpner 20. januar?',
         'Hvordan fungerer engrospriser på hotell?',
@@ -1190,7 +1184,7 @@ I can also explain how wholesale bedbank pricing works, our **7-night vacation c
     action: 'open_waitlist' as const,
     actionLabel: 'Reserve Free Spot (No Card Needed)',
     followUps: [
-      'What is included in the free hotel stay?',
+      'What is included in the European weekend break?',
       'What are 7-night condo stays from €299 (3 490 kr)?',
       'What happens on Launch Day January 20?',
       'How does wholesale hotel pricing work?',
@@ -1214,7 +1208,7 @@ Hva er du mest nysgjerrig på? Jeg forklarer gjerne 0 kr i rompris (Europeisk Ho
       action: 'open_waitlist',
       actionLabel: 'Reserver plass gratis (Uten kort)',
       followUps: [
-        'Hva inkluderer det gratis hotelloppholdet?',
+        'Hva inkluderer det europeiske weekend-oppholdet?',
         'Hvordan fungerer engrospriser på hotell?',
         'Hva skjer når dørene åpner 20. januar?',
         'Hva er 100% verdigarantien?',
@@ -1231,7 +1225,7 @@ What would you like to know more about? I can explain €0 room rates (Europeisk
       action: 'open_waitlist',
       actionLabel: 'Reserve Free Spot (No Card Needed)',
       followUps: [
-        'What is included in the free hotel stay?',
+        'What is included in the European weekend break?',
         'How does wholesale hotel pricing work?',
         'What happens on Launch Day January 20?',
         'What is the 100% money-back guarantee?',

@@ -280,12 +280,12 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                     <div className="p-3 rounded-xl bg-[#f4ecd8] border border-[#d9c79f] shadow-sm">
                       <div className="flex items-center gap-1.5 text-[#8a6522] font-cinzel text-xs font-bold uppercase">
                         <Gift className="w-3.5 h-3.5 text-[#9c7526] shrink-0" />
-                        <span>{isNorwegian ? 'Gratis 3-Dagers Hotell' : 'Free 3-Day Hotel Break'}</span>
+                        <span>{isNorwegian ? 'Europeisk Weekend-opphold for 2' : 'European Weekend Break for 2'}</span>
                       </div>
                       <p className="text-[10px] font-mono text-[#57462c] mt-1 leading-normal">
                         {isNorwegian
-                          ? '100% gratis hotellopphold for 2 i Europa (Europeisk Hotellkupong, verdi 5 400 kr / ca. €480).'
-                          : '100% free European hotel break for two travelers (worth €480 / 5 400 kr).'}
+                          ? 'Europeisk weekend-opphold for 2 i Europa (verdi inntil 4 500 kr / ca. €400) inkludert.'
+                          : 'Complimentary European weekend break for two travelers (worth up to €400 / 4 500 kr).'}
                       </p>
                     </div>
 
@@ -296,8 +296,8 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                       </div>
                       <p className="text-[10px] font-mono text-[#57462c] mt-1 leading-normal">
                         {isNorwegian
-                          ? '3 av de 100 første vinner OGSÅ all gourmetmat (halvpensjon) dekket.'
-                          : '3 of the 100 early members win ALL gourmet meals (half-board) covered.'}
+                          ? 'Eksklusiv velkomstgave for våre første 100 Founding Members.'
+                          : 'Exclusive welcome gift reserved for our first 100 Founding Members.'}
                       </p>
                     </div>
                   </div>
@@ -456,20 +456,20 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
 
                 <div className="p-4 rounded-xl bg-neutral-900 border border-amber-400/30 space-y-2.5 text-xs">
                   <div className="text-amber-300 font-bold font-mono">
-                    1. {isNorwegian ? 'Gratis 3-dagers hotellopphold for to (European Hospitality Allotment):' : 'Complimentary 3-Day European Hotel Break for Two (Europeisk Hotellkupong):'}
+                    1. {isNorwegian ? 'Europeisk weekend-opphold for 2 (Founding Member Allotment):' : 'Complimentary European Weekend Break for Two:'}
                   </div>
                   <p className="text-neutral-300">
                     {isNorwegian
-                      ? 'Selve hotellrommet er 100% sponset av ATLAS (verdi 5 400 kr / ca. €480). Du betaler kun hotellets lokale gourmet-halvpensjon ved utsjekk.'
-                      : 'The hotel room is 100% sponsored by ATLAS (worth €480 / 5 400 kr). Traveler only covers local gourmet half-board at check-out.'}
+                      ? 'Oppholdet sponset av ATLAS (verdi inntil 4 500 kr / ca. €400) som Founding Member velkomstgave.'
+                      : 'The stay is sponsored by ATLAS (worth up to €400 / 4,500 NOK) as an exclusive Founding Member welcome gift.'}
                   </p>
                   <div className="text-amber-300 font-bold font-mono pt-1">
-                    2. {isNorwegian ? 'Gullbillett-trekning (3 vinnere får all mat dekket):' : 'Golden Ticket Draw (3 Winners Win All Meals Covered):'}
+                    2. {isNorwegian ? 'Eksklusive medlemsfordeler:' : 'Exclusive Member Benefits:'}
                   </div>
                   <p className="text-neutral-300">
                     {isNorwegian
-                      ? 'Blant de 100 første medlemmene trekker vi 3 vinnere som får OGSÅ ALL MAT (halvpensjon) 100% dekket av ATLAS.'
-                      : 'Among the first 100 members, 3 winners will have ALL MEALS (half-board) 100% covered by ATLAS.'}
+                      ? 'Dette oppholdet gir medlemmene en uforglemmelig opplevelse på håndplukkede hoteller i Europa.'
+                      : 'This stay gives members access to handpicked destinations across Europe.'}
                   </p>
                   <div className="text-amber-300 font-bold font-mono pt-1">
                     3. {isNorwegian ? 'Årlig medlemskontingent (1 290 kr / ca. €110/år) & 48-timers kravfrist:' : 'Annual Membership (€110 / 1 290 NOK per year) & 48-Hour Claim Window:'}

@@ -175,7 +175,7 @@ export const Hero: React.FC<HeroProps> = ({
         <div className="flex items-center gap-3 bg-neutral-950/60 backdrop-blur-md px-4 py-2 rounded-2xl border border-neutral-800/80 shadow-lg">
           <span className="flex items-center gap-1.5 text-amber-300 font-semibold">
             <Gift className="w-3.5 h-3.5" />
-            {isNorwegian ? 'Gratis 3-dagers hotellopphold for 2' : 'Free 3-Day Hotel Break for 2'}
+            {isNorwegian ? 'Europeisk Weekend-opphold for 2 inkludert' : 'Complimentary European Weekend Break for 2'}
           </span>
           <span className="text-neutral-600">•</span>
           <span className="flex items-center gap-1.5 text-emerald-300 font-semibold">

@@ -450,8 +450,8 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
                     <Gift className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                     <span>
                       {isNorwegian
-                        ? 'Founding Member-gave: Gratis 3-dagers luksushotellopphold for 2 (verdi 5 400 kr / ca. €480) inkludert.'
-                        : 'Founder perk: Complimentary 3-day luxury hotel break for two (worth €480) included.'}
+                        ? 'Founding Member-gave: Europeisk weekend-opphold for 2 (verdi inntil 4 500 kr / ca. €400) inkludert.'
+                        : 'Founder perk: Complimentary European weekend break for two (worth up to €400) included.'}
                     </span>
                   </div>
                 </div>
@@ -497,12 +497,12 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
               <span>{isNorwegian ? 'Founding Member Velkomstgave' : 'Founder Welcome Gift'}</span>
             </div>
             <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-neutral-100">
-              {isNorwegian ? 'Hotellpass: 3 Dager Gratis for 2' : 'Hotel Pass: 3-Day Free Hotel Break for 2'}
+              {isNorwegian ? 'Europeisk Weekend-opphold for 2' : 'Complimentary European Weekend Break for 2'}
             </h3>
             <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
               {isNorwegian
-                ? 'Når du sikrer deg et av de 100 første medlemskapene, spanderer ATLAS et 3-dagers hotellopphold for to i Europa (European Hospitality Allotment). Rommet er 100% gratis (0 kr). Du betaler kun hotellets lokale mat (frokost & middag) ved utsjekk.'
-                : 'When you claim 1 of the first 100 founder spots, ATLAS covers a 3-day European hotel break for two. The room is 100% free (€0)—you only pay the hotel’s local gourmet half-board at checkout.'}
+                ? 'Når du sikrer deg et av de 100 første medlemskapene, spanderer ATLAS et utvalgt weekend-opphold for to i Europa (verdi inntil 4 500 kr / ca. €400) som eksklusiv Founding Member-gave.'
+                : 'When you claim 1 of the first 100 founder spots, ATLAS covers a curated European weekend escape for two (worth up to €400) as an exclusive Founding Member gift.'}
             </p>
 
             <div className="p-3.5 rounded-xl bg-neutral-950 border border-amber-400/30 flex items-center justify-between text-xs font-mono">
@@ -512,7 +512,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
               </div>
               <div className="text-right">
                 <span className="text-neutral-400 block text-[11px]">{isNorwegian ? 'Normalverdi:' : 'Regular value:'}</span>
-                <span className="text-amber-300 font-bold text-base">{isNorwegian ? '~5 400 kr' : '~€480'}</span>
+                <span className="text-amber-300 font-bold text-base">{isNorwegian ? '~4 500 kr' : '~€400'}</span>
               </div>
             </div>
           </div>

@@ -86,13 +86,13 @@ export const PODCAST_TRACKS: Record<PodcastTrackId, PodcastTrack> = {
     durationLabel: '5:45 Duration',
     title: 'The Math Behind Zero-Euro Hotel Stays',
     description:
-      'How 1,500+ boutique and wellness retreats across Europe offer complimentary rooms via European Hospitality Allotment, while guests only settle published gourmet half-board.',
+      'How curated boutique and wellness retreats across Europe partner with private clubs to allocate exclusive short breaks and weekend escapes.',
     audioSrc: '/audio/The_Math_Behind_Zero_Euro_Hotel_Stays.m4a?v=20261019',
     downloadFilename: 'The_Math_Behind_Zero_Euro_Hotel_Stays.m4a',
     chapters: [
       { time: 0, label: '00:00 — The €0 Room Voucher', desc: 'Why European hoteliers give away surplus midweek capacity' },
-      { time: 90, label: '01:30 — Gourmet Half-Board Math', desc: 'Breakfast and multi-course dinner settled directly at checkout' },
-      { time: 210, label: '03:30 — The Golden Ticket Draw', desc: '3 of 100 Founding Members receive all dining 100% covered' },
+      { time: 90, label: '01:30 — Why Hoteliers Partner with Private Clubs', desc: 'Protecting brand equity while filling shoulder capacity' },
+      { time: 210, label: '03:30 — The Founding Member Welcome Gift', desc: 'Curated weekend escapes for the first 100 early adopters' },
     ],
   },
   flights: {
@@ -263,13 +263,13 @@ export const PODCAST_TRACKS_NO: Record<PodcastTrackId, PodcastTrack> = {
     durationLabel: '5:45 Varighet',
     title: 'Sannheten om 0 kr rompris: Hotell-Allotment-Modellen',
     description:
-      'Hvordan over 1 500 boutique- og spahoteller i Europa gir bort rommet gratis gjennom European Hospitality Allotment, mens gjestene kun betaler hotellets faste gourmet-halvpensjon.',
+      'Hvordan utvalgte boutique- og spahoteller i Europa samarbeider med private klubber for å tilby eksklusive weekend- og korttidsferier.',
     audioSrc: '/audio/The_Math_Behind_Zero_Euro_Hotel_Stays.m4a?v=20261019',
     downloadFilename: 'The_Math_Behind_Zero_Euro_Hotel_Stays.m4a',
     chapters: [
       { time: 0, label: '00:00 — Kupongen som dekker rommet', desc: 'Hvorfor europeiske kvalitetshoteller fyller overskuddskapasitet' },
-      { time: 90, label: '01:30 — Halvpensjonsmatematikken', desc: 'Frokostbuffet og fleretters middag gjøres opp direkte ved utsjekk' },
-      { time: 210, label: '03:30 — Golden Ticket-trekningen', desc: '3 av 100 Founding-medlemmer får OGSÅ all mat dekket av ATLAS' },
+      { time: 90, label: '01:30 — Hvorfor hoteller samarbeider med lukkede klubber', desc: 'Skjerming av merkevareverdi og utnyttelse av kapasitet' },
+      { time: 210, label: '03:30 — Founding Member velkomstoppholdet', desc: 'Eksklusive weekend-opphold for de 100 første medlemmene' },
     ],
   },
   flights: {

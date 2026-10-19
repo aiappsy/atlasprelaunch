@@ -158,8 +158,8 @@ export const ComplianceModal: React.FC<ComplianceModalProps> = ({
               <div className="p-3.5 rounded-xl bg-neutral-900 border border-neutral-800 text-[11px] text-neutral-400">
                 <strong>{isNorwegian ? 'Behold dine fordeler:' : 'Keep Your Benefits:'}</strong>{' '}
                 {isNorwegian
-                  ? 'Medlemmer som benytter verdigarantien beholder sin utstedte Europeisk 3-dagers hotellkupong (verdi 5 400 kr) og alle opptjente poeng i Rewards Vault. Ingen gebyrer trekkes.'
-                  : 'Members exeResort Allotment Networksing the guarantee retain their issued European 3-Day Hotel Break voucher (€480 value) and all earned Rewards Vault points. Zero exit penalties apply.'}
+                  ? 'Medlemmer som benytter verdigarantien beholder sin utstedte Europeisk hotellopphold-kupong (verdi 4 500 kr) og alle opptjente poeng i Rewards Vault. Ingen gebyrer trekkes.'
+                  : 'Members exeResort Allotment Networksing the guarantee retain their issued European Hotel Break voucher (€400 value) and all earned Rewards Vault points. Zero exit penalties apply.'}
               </div>
             </div>
           )}
