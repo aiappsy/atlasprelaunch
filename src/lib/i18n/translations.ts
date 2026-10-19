@@ -176,8 +176,8 @@ export const translations: Record<Language, Translations> = {
     hero: {
       topBadge: '👑 EXCLUSIVE TO FIRST 100 • PRELAUNCH FOUNDING MEMBERS',
       titleLine1: 'Join as an ATLAS Founding Member.',
-      titleLine2: 'Get a Free 3-Day European Hotel Break.',
-      description: 'The first 100 Founding Members receive a complimentary 3-day European luxury hotel break for two (worth €480), and 3 members win all gourmet meals covered. Reserve your spot free today – no credit card required.',
+      titleLine2: 'Complimentary European Weekend Break.',
+      description: 'The first 100 Founding Members receive a complimentary European weekend escape for two (worth up to €400) and lifetime access to wholesale net rates. Reserve your spot free today – no credit card required.',
       unmutePrompt: 'Click to Unmute Voiceover & Music (1:20)',
       seeSavings: 'See Your Savings (Calculator)',
       claimFounder: 'Reserve Spot Free (No Card Needed)',
@@ -187,7 +187,7 @@ export const translations: Record<Language, Translations> = {
       hotelTabSub: 'Wholesale net rates',
       packageTab: 'Flights & Hotels',
       packageTabSub: 'Combined wholesale savings',
-      drawNotice: '🎁 100 Free Hotel Breaks Guaranteed • 3 of 100 Win All Meals Fully Included',
+      drawNotice: '🎁 Complimentary European Weekend Break for Two • 100% Value Guarantee',
       freeTrialPill: 'Only 100 Spots • 100% Value Guarantee',
     },
     ticker: {
@@ -338,8 +338,8 @@ export const translations: Record<Language, Translations> = {
     hero: {
       topBadge: '👑 PRELAUNCH KUN FOR DE 100 FØRSTE • FOUNDING MEMBERS',
       titleLine1: 'Bli Founding Member i ATLAS.',
-      titleLine2: 'Få 3-dagers luksushotellopphold gratis.',
-      description: 'De 100 første Founding-medlemmene mottar et 3-dagers luksushotellopphold for to i Europa helt gratis (verdi 5 400 kr), og 3 vinnere får all mat dekket. Reserver din plass gratis i dag – intet kredittkort nødvendig.',
+      titleLine2: 'Europeisk Weekend-opphold for to inkludert.',
+      description: 'De 100 første Founding-medlemmene mottar et utvalgt Europeisk Weekend-opphold for to personer i Europa (verdi inntil 4 500 kr / ca. €400) som velkomstgave. Reserver din plass gratis i dag – intet kredittkort nødvendig.',
       unmutePrompt: 'Klikk for musikk og introduksjon (1:20)',
       seeSavings: 'Beregn din besparelse',
       claimFounder: 'Reserver plass gratis • Uten kort',
@@ -349,7 +349,7 @@ export const translations: Record<Language, Translations> = {
       hotelTabSub: 'Uavkortede nettopriser',
       packageTab: 'Fly & Hotell',
       packageTabSub: 'Samlet feriebesparelse',
-      drawNotice: '🎁 100 gratis hotellopphold garantert • 3 av 100 vinner også all gourmetmat inkludert',
+      drawNotice: '🎁 Europeisk Weekend-opphold for to inkludert • 100% Fornøyd- & Verdigaranti',
       freeTrialPill: 'Kun 100 plasser totalt • 100% Fornøydgaranti',
     },
     ticker: {
