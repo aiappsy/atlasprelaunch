@@ -38,9 +38,9 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onOpenPerkModal }) =
         </p>
       </div>
 
-      {/* Featured 2 Flagship Allotments (Connex & RVC with Direct Calculators) */}
+      {/* Featured 2 Flagship Allotments (Hotellpass & RVC with Direct Calculators) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Card 1: Connex 0 kr Rompris */}
+        {/* Card 1: Hotellpass 0 kr Rompris */}
         <div className="p-5 rounded-2xl bg-neutral-950/80 border border-rose-400/40 text-left backdrop-blur-md space-y-3 relative overflow-hidden group">
           <div className="flex items-center justify-between">
             <span className="px-2.5 py-0.5 rounded-full bg-rose-400/20 text-rose-300 text-[10px] font-mono font-bold border border-rose-400/30">
@@ -67,7 +67,7 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onOpenPerkModal }) =
             {onOpenPerkModal && (
               <button
                 type="button"
-                onClick={() => onOpenPerkModal('connex')}
+                onClick={() => onOpenPerkModal('voucher')}
                 className="inline-flex items-center gap-1 text-rose-300 hover:text-rose-200 font-mono font-bold text-[11px] underline decoration-rose-400/40 hover:decoration-rose-300 cursor-pointer"
               >
                 <span>{isNo ? 'Beregn matpris & se hoteller →' : 'Calculate meals & hotels →'}</span>
@@ -113,7 +113,7 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onOpenPerkModal }) =
         </div>
       </div>
 
-      {/* 3 Core Commercial Pillars: RateHawk/WebBeds, Duffel Flights, Rewards Vault Cruise */}
+      {/* 3 Core CommeResort Allotment Networkal Pillars: RateHawk/WebBeds, Duffel Flights, Rewards Vault Cruise */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Pillar 1: RateHawk & WebBeds Hotels */}
         <div className="p-5 rounded-2xl bg-neutral-950/70 border border-neutral-800/80 backdrop-blur-md text-left hover:border-amber-400/40 transition flex flex-col justify-between">

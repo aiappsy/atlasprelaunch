@@ -529,8 +529,8 @@ export const RefundClaimModal: React.FC<RefundClaimModalProps> = ({
               <div className="p-3.5 rounded-xl bg-amber-400/5 border border-amber-400/20 text-[11px] text-amber-300/90 text-left leading-relaxed">
                 <strong>{isNorwegian ? '100% Trygghet:' : '100% Peace of Mind:'}</strong>{' '}
                 {isNorwegian
-                  ? 'Du beholder din utstedte Connex 3-dagers hotellkupong (verdi 5 400 kr) og alle opptjente Rewards Vault-poeng. Refusjonen tilbakeføres direkte til ditt betalingskort.'
-                  : 'You retain your issued Connex 3-Day European Hotel Voucher (worth €480) and all earned Rewards Vault points. The refund will be credited directly to your original payment card.'}
+                  ? 'Du beholder din utstedte Europeisk 3-dagers hotellkupong (verdi 5 400 kr) og alle opptjente Rewards Vault-poeng. Refusjonen tilbakeføres direkte til ditt betalingskort.'
+                  : 'You retain your issued European 3-Day European Hotel Voucher (worth €480) and all earned Rewards Vault points. The refund will be credited directly to your original payment card.'}
               </div>
 
               <button

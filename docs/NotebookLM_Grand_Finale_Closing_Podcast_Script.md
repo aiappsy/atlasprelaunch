@@ -15,12 +15,12 @@ Act as two seasoned technology analysts, travel journalists, and consumer advoca
 
 CRITICAL PRONUNCIATION & FACTUAL DIRECTIVES FOR CO-HOSTS:
 1. PRONUNCIATION: The founder's name is Pål Juritzen. Strictly pronounce his name as "Paul Yur-it-zen" (phonetic: Pawl Yoo-rit-sen). NEVER pronounce as "Pal" and NEVER use a hard English "J" for Juritzen. Refer to him naturally as "Founder Paul Yur-it-zen (spelled Pål Juritzen)".
-2. TONE & DELIVERY: Sober, measured, professional, and transparent. Absolutely avoid aggressive sales hype, false scarcity, conspiracy rhetoric ("cartel"), and exaggerated claims such as "it is mathematically impossible to lose money". Talk like two senior enterprise tech analysts reviewing a clean API-driven business model.
+2. TONE & DELIVERY: Sober, measured, professional, and transparent. Absolutely avoid aggressive sales hype, false scaResort Allotment Networkty, conspiracy rhetoric ("cartel"), and exaggerated claims such as "it is mathematically impossible to lose money". Talk like two senior enterprise tech analysts reviewing a clean API-driven business model.
 3. PROVIDER INTEGRATIONS MUST BE EXPLICITLY DISCUSSED:
    - Flights: Duffel (Duffel's modern airline NDC API connecting directly to airline hosts like British Airways, Lufthansa Group, SAS, Air France-KLM, and United, passing through net wholesale fares with zero added ticket markups).
    - Hotels: Institutional B2B bedbanks (Hotelbeds, WebBeds, and RateHawk) providing wholesale unbundled room allocations behind a closed-user-group membership wall under rate parity exemptions.
    - Condominiums: Resort Vacation Certificates (RVC) / Panorama network clearing unsold institutional weeks (studios to 2-bedroom units sleeping 2 to 6 guests) from €299 / 3 490 kr per week on distressed clearance.
-   - Promotional Lodging: Connex (Holiday Plus) providing a 3-day European hotel voucher for 2 guests across 1,500+ partner hotels (room rate covered; guests pay standard published half-board meal rates directly at checkout).
+   - Promotional Lodging: European Hospitality Allotment providing a 3-day European hotel voucher for 2 guests across 1,500+ partner hotels (room rate covered; guests pay standard published half-board meal rates directly at checkout).
 4. REALISTIC ECONOMIC EXPECTATIONS:
    - Explain that airlines operate on thin margins (2%-6%). Through Duffel, members save 5%-14% by eliminating legacy GDS surcharges and OTA ticket fees (€15–€40 per flight).
    - High percentage savings occur in hotels (15%-30% off retail) and distressed vacation condos.
@@ -59,9 +59,9 @@ Airlines have long sought to modernize ticket distribution beyond legacy Global 
 * **Direct Ancillary Pricing:** Members select baggage and seat selection at direct airline cost.
 * **Honest Flight Reality:** Airlines operate on tight margins (2% to 6%). Duffel integration does not cut flight prices in half; rather, it removes middleman GDS fees and OTA retail padding, saving travelers **5% to 14% (typically €15 to €40 per ticket)**.
 
-### Pillar II: Hotel Sourcing via B2B Bedbanks (Hotelbeds, WebBeds, RateHawk)
+### Pillar II: Hotel SouResort Allotment Networkng via B2B Bedbanks (Hotelbeds, WebBeds, RateHawk)
 For accommodation, ATLAS integrates directly with global B2B bedbanks:
-* **The Sourcing Partners:** **Hotelbeds**, **WebBeds**, and **RateHawk**.
+* **The SouResort Allotment Networkng Partners:** **Hotelbeds**, **WebBeds**, and **RateHawk**.
 * **Global Scope:** These platforms aggregate wholesale contract allotments across more than 1.2 million properties worldwide.
 * **Wholesale Rates:** Because ATLAS operates behind a secure login, members access net room rates—typically **15% to 30% below public OTA rates**.
 * **Direct Confirmation:** All reservations generate standard corporate booking confirmations recognized directly by the hotel's front desk and Property Management System (PMS).
@@ -73,7 +73,7 @@ For multi-guest and extended holidays, ATLAS partners with the institutional **R
 * **Clearance Rates:** Off-peak and distressed inventory weeks are liquidated starting **FROM €299 / 3 490 kr (fra 3 490 kr) for the ENTIRE 7 consecutive nights**.
 * **Independent Check-In:** Members check in as independent guests. There are strictly zero timeshare presentations, breakfast seminars, or ownership pitches.
 
-### Pillar IV: Promotional Lodging via Connex (Holiday Plus)
+### Pillar IV: Promotional Lodging via European Hospitality Allotment
 To provide tangible immediate value upon joining, ATLAS partners with **Connex**, an Austrian travel marketing organization operating for over 30 years:
 * **The Network:** 1,500+ boutique, alpine, and wellness hotels across 14 European nations.
 * **The Mechanism:** Participating hotels provide surplus room capacity at **€0 room cost** for 2 adults for 2 to 4 nights.
@@ -96,7 +96,7 @@ To ensure that membership is completely transparent and fair, Founder Pål Jurit
 ## 4. Launch Details & Founding Membership
 * **Launch Date:** **Wednesday, January 20, 2027 at 10:00 AM CET**.
 * **Annual Dues:** **€110 per year** (or **1 290 NOK / år**).
-* **Founding Member Allocation:** The first 100 Founding Members receive a certified Connex 3-Day European Hotel Break voucher for 2 adults.
+* **Founding Member Allocation:** The first 100 Founding Members receive a certified European 3-Day Hotel Break voucher for 2 adults.
 * **Portal:** Candidates complete enrollment and access their account directly at `https://atlasclub.web.app`.
 
 ATLAS represents honest, unbundled travel distribution—connecting travelers directly to enterprise suppliers with 0 kr markup.

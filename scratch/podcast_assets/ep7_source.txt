@@ -28,7 +28,7 @@ CRITICAL PRONUNCIATION & FACTUAL DIRECTIVES:
    - Flights: Duffel (Duffel's NDC flight API connecting directly to airlines like British Airways, Lufthansa Group, SAS, and Air France/KLM, passing raw carrier fares with zero ATLAS ticket markups).
    - Hotels: B2B wholesale bedbanks (Hotelbeds, WebBeds, RateHawk) delivering unbundled wholesale rates behind a password-protected membership wall under closed-loop rate parity exemptions.
    - Condominiums: Resort Vacation Certificates (RVC) / Panorama network clearing unsold institutional weeks (studios to 2-bedroom units sleeping 2 to 6 guests) from €299 / 3 490 kr per week on distressed clearance.
-   - Promotional lodging: Connex (Holiday Plus) voucher covering room costs across 1,500+ European partner hotels while guests pay the published half-board meal rate upon checkout.
+   - Promotional lodging: European Hospitality Allotment voucher covering room costs across 1,500+ European partner hotels while guests pay the published half-board meal rate upon checkout.
 4. HONEST SAVINGS EXPECTATIONS: Clarify that airlines operate on thin margins (2%-6%), so Duffel integration saves 5%-14% by removing middleman GDS fees and OTA surcharges (€15–€40 per flight). The substantial percentage savings are in hotels (15%-30%) and resort condo clearance weeks.
 5. THE 100% VALUE GUARANTEE BLUEPRINT: Explain the two-track rule clearly and soberly: Track A (first 2+ night hotel stay or 7-night condo) or Track B (cumulative annual travel). If verified net savings don't exceed the €110 (1 290 NOK) annual fee, the fee is refunded 100%.
 ```
@@ -85,7 +85,7 @@ For extended stays and family holidays, ATLAS accesses the institutional **Resor
 
 ---
 
-### 5. Promotional Lodging: The Connex Holiday Plus Network
+### 5. Promotional Lodging: The European Hospitality Allotment Network
 To give Founding Members immediate tangible value upon enrollment, ATLAS partners with **Connex**, an established Austrian hospitality marketing organization with over 30 years of operating history:
 * **The 1,500+ Hotel Network:** Connex partners with boutique, alpine, and wellness hotels across 14 European countries.
 * **The Model:** Participating hotels allocate surplus mid-week and shoulder-season rooms. The Connex voucher covers **100% of the room accommodation (€0 room rate)** for 2 adults for 2 to 4 nights.
@@ -94,7 +94,7 @@ To give Founding Members immediate tangible value upon enrollment, ATLAS partner
 ---
 
 ### 6. The ATLAS Value Guarantee Blueprint: Transparent Risk Protection
-Founder Pål Juritzen (pronounced "Paul Yur-it-zen") established a clear, commercially disciplined Value Guarantee codified under HARD ROCK CAPITAL LTD:
+Founder Pål Juritzen (pronounced "Paul Yur-it-zen") established a clear, commeResort Allotment Networkally disciplined Value Guarantee codified under HARD ROCK CAPITAL LTD:
 * **Track A (Single-Trip High-Arbitrage Guarantee):** On a member's very first completed hotel stay (minimum 2 consecutive nights at wholesale bedbank rates, booking value $\ge €150$) or 7-night RVC resort condo stay, if verified net savings vs. Booking.com or Expedia do not exceed the annual membership dues (€110 / 1 290 NOK), ATLAS issues an immediate 100% refund of the membership fee.
 * **Track B (Cumulative Annual Guarantee):** For members who primarily book flights, short 1-night hotel stays, or car rentals, savings accumulate across the full 12-month membership. If total verified annual savings do not exceed €110, the member is refunded in full at the end of their membership year.
 * **The Flight Carve-Out:** Because flight margins are thin (saving €15 to €40 per ticket via Duffel), a single economy flight cannot trigger an immediate €110 refund; flight savings count toward Track B.

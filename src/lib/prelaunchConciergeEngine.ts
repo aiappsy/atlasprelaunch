@@ -241,7 +241,7 @@ På et typisk 4-netters opphold på et 4- eller 5-stjerners hotell sparer du van
 
 Hotels hate having empty rooms, so they quietly sell room blocks to B2B wholesale suppliers (bedbanks like WebBeds and Hotelbeds) at deep 20% to 40% discounts. But hotel contracts legally forbid anyone from advertising those wholesale rates publicly—that is called **Rate Parity**.
 
-That is where Atlas comes in. Because we are a private, password-protected membership club, Rate Parity rules don't apply. We don't take a commission on the room—we pass 100% of the wholesale net rate directly to you at **0% commercial markup**.
+That is where Atlas comes in. Because we are a private, password-protected membership club, Rate Parity rules don't apply. We don't take a commission on the room—we pass 100% of the wholesale net rate directly to you at **0% commeResort Allotment Networkal markup**.
 
 On a typical 4-night stay at a 4- or 5-star hotel, that usually puts **€250 to €700 straight back in your pocket**—far exceeding our **${p.formattedFounding}** annual membership fee on your very first trip.`,
         action: 'open_podcast',
@@ -303,7 +303,7 @@ ATLAS er en privat medlemsklubb etter Costco-modellen. Vi tar **0 kr i påslag p
 
 • **Årskontingent ved lansering**: **${p.formattedFounding} per år** (${p.monthlyEquivalent}) ved åpning onsdag 20. januar 2027.
 • **100% Gratis Reservasjon**: Du reserverer plass i dag helt gratis – intet kredittkort nødvendig.
-• **Gave til de 100 første**: Et **3-dagers gratis luksushotellopphold for 2 personer** i Europa (verdi 5 400 kr, 0 kr i rompris via Connex Holiday Plus).
+• **Gave til de 100 første**: Et **3-dagers gratis luksushotellopphold for 2 personer** i Europa (verdi 5 400 kr, 0 kr i rompris via European Hospitality Allotment).
 • **Golden Ticket Mattrekning**: 3 av de 100 første vinner OGSÅ all gourmetmat (halvpensjon) 100% dekket av ATLAS.
 • **100% Fornøyd- & Verdigaranti**: Sparer du ikke inn kontingenten på ditt første hotellopphold (2+ netter), ferieleilighet eller samlede årsreiser, refunderer vi 100% av beløpet umiddelbart.`,
           action: 'open_waitlist',
@@ -324,7 +324,7 @@ ATLAS operates on a strict subscription model (like Costco). We charge **0 retai
 
 • **Annual Dues at Launch**: **${p.formattedFounding} per year** (${p.monthlyEquivalent}) upon official launch on Wednesday, January 20, 2027.
 • **100% Free Reservation**: You can reserve your priority spot today for free – no credit card required.
-• **Founder Gift for the First 100**: A complimentary **3-day European luxury hotel break for 2 guests** (worth €480 / 5 400 kr, €0 room rate via Connex Holiday Plus).
+• **Founder Gift for the First 100**: A complimentary **3-day European luxury hotel break for 2 guests** (worth €480 / 5 400 kr, €0 room rate via European Hospitality Allotment).
 • **Golden Ticket Food Draw**: 3 of the first 100 members will win ALL gourmet meals (half-board) 100% covered by ATLAS.
 • **100% Value Guarantee**: If your first hotel stay (2+ nights), vacation condo, or cumulative annual travel doesn't save you more than your membership fee, we refund 100% of your fee immediately.`,
         action: 'open_waitlist',
@@ -579,7 +579,7 @@ Your bookings are pre-paid corporate allotments with official digital check-in v
 1. **Send inn krav på 60 sekunder**: Åpne refusjonsportalen, oppgi bookingreferanse og en enkel skjermdump/lenke til offentlig pris på Booking.com eller Expedia.
 2. **Automatisk forhåndsvalidering**: Systemet beregner umiddelbart besparelsesdifferansen mot din årskontingent (${fee}).
 3. **48-timers saksbehandlingsfrist**: Hard Rock Capital Ltd verifiserer kravet innen 2 virkedager, og 100% av kontingenten utbetales direkte til ditt betalingskort via Stripe.
-4. **Du beholder fordelene**: Du beholder din utstedte Connex 3-dagers luksushotellkupong (verdi 5 400 kr) og alle opptjente Rewards Vault-poeng.`,
+4. **Du beholder fordelene**: Du beholder din utstedte Europeisk 3-dagers hotellkupong (verdi 5 400 kr) og alle opptjente Rewards Vault-poeng.`,
           action: 'open_refund_modal',
           actionLabel: 'Krev 100% Verdigaranti Nå',
           followUps: [
@@ -596,7 +596,7 @@ Your bookings are pre-paid corporate allotments with official digital check-in v
 1. **Submit in 60 seconds**: Open our digital claim portal, provide your booking reference and a link or screenshot of the public retail rate on Booking.com or Expedia.
 2. **Automated Pre-Validation**: The engine instantly calculates your savings delta against the annual fee (${fee}).
 3. **48-Hour SLA**: Hard Rock Capital Ltd verifies the claim within 2 business days, and a 100% refund is wired directly to your payment card via Stripe.
-4. **Keep Your Day-One Perks**: You retain your issued Connex 3-Day European Hotel Break voucher (€480 value) and any earned Rewards Vault points. Zero exit penalties apply.`,
+4. **Keep Your Day-One Perks**: You retain your issued European 3-Day Hotel Break voucher (€480 value) and any earned Rewards Vault points. Zero exit penalties apply.`,
         action: 'open_refund_modal',
         actionLabel: 'Submit Value Guarantee Claim Now',
         followUps: [
@@ -621,7 +621,7 @@ Your bookings are pre-paid corporate allotments with official digital check-in v
       'flyplasslounge',
       'loungetilgang',
       'transit copilot',
-      'dragonpass',
+      'VIP Lounge Pass',
       'priority pass',
     ],
     patterns: [
@@ -638,7 +638,7 @@ Your bookings are pre-paid corporate allotments with official digital check-in v
 
       if (isNorwegian) {
         return {
-          text: `Atlas-medlemmer har tilgang til over **1 300 VIP-flyplasslounger i 140 land** (det globale DragonPass- og Priority Pass-nettverket):
+          text: `Atlas-medlemmer har tilgang til over **1 300 VIP-flyplasslounger i 140 land** (det globale VIP Lounge Pass- og Priority Pass-nettverket):
 
 * **Engrospris per inngang**: Mens drop-in i døren koster 450–650 kr, eller krever dyre kredittkort med 5 000–8 000 kr i årsgebyr, kjøper Atlas-medlemmer digitale adgangspass til **rå nettopris (ca. 250–320 kr / €22–€28)**.
 * **Alt inkludert**: Gratis varme buffeter, baristakaffe, premium vin og brennevin, rolige arbeidssoner, dusjer og lynraskt privat Wi-Fi.
@@ -655,7 +655,7 @@ Your bookings are pre-paid corporate allotments with official digital check-in v
       }
 
       return {
-        text: `Atlas members enjoy direct digital access to **1,300+ VIP airport lounges across 140 countries** (via the global DragonPass / Priority Pass network):
+        text: `Atlas members enjoy direct digital access to **1,300+ VIP airport lounges across 140 countries** (via the global VIP Lounge Pass / Priority Pass network):
 
 * **Net Wholesale Entry**: While walk-up day passes cost €45 to €65 (or require credit cards charging €500–€800/yr), Atlas members purchase digital lounge passes at **pure B2B net cost (€22–€28 / ca. 250–320 kr)**.
 * **All-Inclusive Amenities**: Complimentary chef buffets, barista coffee, open bars with wines and spirits, quiet work suites, showers, and high-speed Wi-Fi.
@@ -1017,7 +1017,7 @@ Atlas kobler seg direkte til flyselskapene (bl.a. SAS, Norwegian, British Airway
       return {
         text: `Traditional booking portals often add distribution surcharges and credit card processing padding to every airfare.
 
-Atlas connects directly to major commercial airlines (including British Airways, SAS, Lufthansa, and Emirates) through modern Duffel NDC channels at **0% markup**. The biggest savings (usually 10% to 22%) are found on Business and Premium Economy long-haul flights.`,
+Atlas connects directly to major commeResort Allotment Networkal airlines (including British Airways, SAS, Lufthansa, and Emirates) through modern Duffel NDC channels at **0% markup**. The biggest savings (usually 10% to 22%) are found on Business and Premium Economy long-haul flights.`,
         action: 'open_calculator',
         actionLabel: '📊 Calculate Annual Flight Savings',
         followUps: [
@@ -1042,7 +1042,7 @@ Atlas connects directly to major commercial airlines (including British Airways,
       'resort',
       'signature resorts',
       'ukesopphold',
-      'rci',
+      'Resort Allotment Network',
       'marbella leilighet',
       'tenerife leilighet',
       'condo',
@@ -1055,10 +1055,10 @@ Atlas connects directly to major commercial airlines (including British Airways,
       /ukesopphold/i,
       /signature resort/i,
       /3 490|3490/i,
-      /rci/i,
+      /Resort Allotment Network/i,
       /condo/i,
     ],
-    strongKeywords: ['resort', 'resorts', 'ferieleilighet', 'leilighet', 'condo', 'ukesopphold', 'rci', 'tenerife', 'marbella'],
+    strongKeywords: ['resort', 'resorts', 'ferieleilighet', 'leilighet', 'condo', 'ukesopphold', 'Resort Allotment Network', 'tenerife', 'marbella'],
     weight: 120,
     getAnswer: (currency: CurrencyCode) => {
       const p = MEMBERSHIP_PRICING[currency];
@@ -1066,7 +1066,7 @@ Atlas connects directly to major commercial airlines (including British Airways,
 
       if (isNorwegian) {
         return {
-          text: `🏖️ **Atlas Signature Resorts — 7 Netters Ferieleiligheter:**\n\nGjennom lukkede avtaler om overskuddskapasitet (RCI/Panorama-nettverket) får medlemmer tilgang til romslige ferieleiligheter til restplasspriser:\n\n• **Restplasspriser**: Fra kun **3 490 NOK (€299)** for **7 sammenhengende netter** ved clearance (ingen per-person eller per-døgn gebyrer!).\n• **Varierte enheter**: Fra studioleiligheter til 1- og 2-roms suiter med kjøkken og stue – plass til **2 til 6 personer** (avhengig av leilighetsstørrelse og sesong).\n• **Førsteklasses destinasjoner**: Marbella (Spania), Tenerife (Kanariøyene), Algarve (Portugal), Kreta (Hellas), Toscana (Italia) og Mallorca.\n• **100% Trygghet**: 14 dagers ubetinget angrefrist med full refusjon om du ikke finner ønsket uke.\n• **Ren frihet**: Du bestiller oppholdet separat og kombinerer med egne flybilletter til nettopris (0 kr påslag).`,
+          text: `🏖️ **Atlas Signature Resorts — 7 Netters Ferieleiligheter:**\n\nGjennom lukkede avtaler om overskuddskapasitet (Resort Allotment Network-nettverket) får medlemmer tilgang til romslige ferieleiligheter til restplasspriser:\n\n• **Restplasspriser**: Fra kun **3 490 NOK (€299)** for **7 sammenhengende netter** ved clearance (ingen per-person eller per-døgn gebyrer!).\n• **Varierte enheter**: Fra studioleiligheter til 1- og 2-roms suiter med kjøkken og stue – plass til **2 til 6 personer** (avhengig av leilighetsstørrelse og sesong).\n• **Førsteklasses destinasjoner**: Marbella (Spania), Tenerife (Kanariøyene), Algarve (Portugal), Kreta (Hellas), Toscana (Italia) og Mallorca.\n• **100% Trygghet**: 14 dagers ubetinget angrefrist med full refusjon om du ikke finner ønsket uke.\n• **Ren frihet**: Du bestiller oppholdet separat og kombinerer med egne flybilletter til nettopris (0 kr påslag).`,
           action: 'open_waitlist',
           actionLabel: `Reserver Founding Member-plass (${p.formattedFounding})`,
           followUps: [
@@ -1078,7 +1078,7 @@ Atlas connects directly to major commercial airlines (including British Airways,
       }
 
       return {
-        text: `🏖️ **Atlas Signature Resorts — 7-Night Condominium Stays:**\n\nThrough private liquidation agreements with the RCI/Panorama network, Atlas members access spacious vacation condominiums at clearance rates:\n\n• **Clearance Pricing**: From just **€299** (3 490 kr) for **7 consecutive nights** on last-minute clearance weeks (zero per-person surcharges!).\n• **Diverse Accommodations**: Ranging from studio suites to 1- and 2-bedroom condominium apartments with full kitchens and living areas—sleeping **2 to 6 guests** (pricing and availability vary by unit size and season).\n• **Top Tier Destinations**: Marbella (Costa del Sol), Tenerife (Canary Islands), Algarve (Portugal), Crete (Greece), Tuscany (Italy), and Mallorca.\n• **100% Peace of Mind**: 14-day money-back guarantee if you do not find a matching week.\n• **Pure Freedom**: Self-directed accommodation—book flights separately at net wholesale rates with zero markup.`,
+        text: `🏖️ **Atlas Signature Resorts — 7-Night Condominium Stays:**\n\nThrough private liquidation agreements with the Resort Allotment Network network, Atlas members access spacious vacation condominiums at clearance rates:\n\n• **Clearance Pricing**: From just **€299** (3 490 kr) for **7 consecutive nights** on last-minute clearance weeks (zero per-person surcharges!).\n• **Diverse Accommodations**: Ranging from studio suites to 1- and 2-bedroom condominium apartments with full kitchens and living areas—sleeping **2 to 6 guests** (pricing and availability vary by unit size and season).\n• **Top Tier Destinations**: Marbella (Costa del Sol), Tenerife (Canary Islands), Algarve (Portugal), Crete (Greece), Tuscany (Italy), and Mallorca.\n• **100% Peace of Mind**: 14-day money-back guarantee if you do not find a matching week.\n• **Pure Freedom**: Self-directed accommodation—book flights separately at net wholesale rates with zero markup.`,
           action: 'open_waitlist',
           actionLabel: `Reserve Founding Spot (${p.formattedFounding})`,
           followUps: [
@@ -1094,15 +1094,15 @@ Atlas connects directly to major commercial airlines (including British Airways,
   // 12. ATLAS GOURMET & SPA ESCAPES (0 KR ROOM / COMPLIMENTARY STAYS)
   // =========================================================================
   {
-    id: 'connex_spa_gourmet',
+    id: 'hotel_voucher_gourmet',
     category: 'gourmet_spa',
     exactPhrases: [
       'gourmet og spa',
       'spa breaks',
       '0 kr rom',
       'gratis rom',
-      'connex',
-      'holiday plus',
+      'voucher',
+      'European Hospitality Allotment',
       'halvpensjon',
       'velvære',
       'alpeferie',
@@ -1114,13 +1114,13 @@ Atlas connects directly to major commercial airlines (including British Airways,
       /gourmet/i,
       /spa/i,
       /0 kr|0kr/i,
-      /connex/i,
-      /holiday plus/i,
+      /Hotellpass/i,
+      /European Hospitality Allotment/i,
       /halvpensjon/i,
       /half-board/i,
       /velvære/i,
     ],
-    strongKeywords: ['spa', 'gourmet', 'connex', 'halvpensjon', 'velvære', 'dolomittene', 'holiday plus'],
+    strongKeywords: ['spa', 'gourmet', 'voucher', 'halvpensjon', 'velvære', 'dolomittene', 'European Hospitality Allotment'],
     weight: 120,
     getAnswer: (currency: CurrencyCode) => {
       const p = MEMBERSHIP_PRICING[currency];
@@ -1128,7 +1128,7 @@ Atlas connects directly to major commercial airlines (including British Airways,
 
       if (isNorwegian) {
         return {
-          text: `🍷 **Atlas Gourmet & Spa Escapes — 0 kr i Rompris:**\n\nGjennom vårt partnerskap med Connex (Holiday Plus) fyller over **1 500 utvalgte boutique- og velværerhoteller i Europa** ledig kapasitet med en genial modell:\n\n• **Rompris**: **0 NOK** (verditilgodelappen dekker 100% av romprisen for 2 personer i 2–4 netter).\n• **100% Transparent Økonomi**: Du betaler kun hotellets offisielle, faste halvpensjonspris (**€35–€60 per person/dag**) for frokostbuffet og gourmet fleretters middag direkte ved utsjekk på hotellet.\n• **Dokumentert besparelse**: Sparer typisk **over 6 700 NOK (ca. €550)** per miniferie sammenlignet med Booking.com og Expedia.\n• **Håndplukkede destinasjoner**: Dolomittene (Sør-Tyrol), Chianti (Toscana), Schwarzwald (Tyskland), Salzburg (Østerrike), Gardasjøen og Provence.\n• **Umiddelbar kupongutstedelse**: Aktiver din unike verdikupong (HP-xxxx-ATLAS) direkte på medlemsportalen.`,
+          text: `🍷 **Atlas Gourmet & Spa Escapes — 0 kr i Rompris:**\n\nGjennom vårt partnerskap med European Hospitality Allotment fyller over **1 500 utvalgte boutique- og velværerhoteller i Europa** ledig kapasitet med en genial modell:\n\n• **Rompris**: **0 NOK** (verditilgodelappen dekker 100% av romprisen for 2 personer i 2–4 netter).\n• **100% Transparent Økonomi**: Du betaler kun hotellets offisielle, faste halvpensjonspris (**€35–€60 per person/dag**) for frokostbuffet og gourmet fleretters middag direkte ved utsjekk på hotellet.\n• **Dokumentert besparelse**: Sparer typisk **over 6 700 NOK (ca. €550)** per miniferie sammenlignet med Booking.com og Expedia.\n• **Håndplukkede destinasjoner**: Dolomittene (Sør-Tyrol), Chianti (Toscana), Schwarzwald (Tyskland), Salzburg (Østerrike), Gardasjøen og Provence.\n• **Umiddelbar kupongutstedelse**: Aktiver din unike verdikupong (ATLAS-HB-xxxx) direkte på medlemsportalen.`,
           action: 'open_waitlist',
           actionLabel: 'Reserver Founding Member-plass (1 290 kr)',
           followUps: [
@@ -1140,7 +1140,7 @@ Atlas connects directly to major commercial airlines (including British Airways,
       }
 
       return {
-        text: `🍷 **Atlas Gourmet & Spa Escapes — €0 Room Rates:**\n\nThrough our strategic partnership with Connex (Holiday Plus), **1,500+ curated boutique & wellness retreats across Europe** fill surplus capacity:\n\n• **Room Rate**: **€0** (the voucher covers 100% of the room rate for 2 guests for 2–4 nights).\n• **100% Transparent Economics**: You pay only the hotel's published fixed half-board rate (**€35–€60 per guest/day**) for breakfast buffet and multi-course dinner directly upon hotel checkout.\n• **Verified Savings**: Save **€550+ (6,700+ NOK)** per getaway compared to Booking.com.\n• **Curated Destinations**: Dolomites (South Tyrol), Tuscany (Chianti), Black Forest (Germany), Salzburg (Austria), Lake Garda, and Provence.\n• **Instant Digital Voucher**: Unique voucher codes (HP-xxxx-ATLAS) generated instantly on the portal.`,
+        text: `🍷 **Atlas Gourmet & Spa Escapes — €0 Room Rates:**\n\nThrough our strategic partnership with European Hospitality Allotment, **1,500+ curated boutique & wellness retreats across Europe** fill surplus capacity:\n\n• **Room Rate**: **€0** (the voucher covers 100% of the room rate for 2 guests for 2–4 nights).\n• **100% Transparent Economics**: You pay only the hotel's published fixed half-board rate (**€35–€60 per guest/day**) for breakfast buffet and multi-course dinner directly upon hotel checkout.\n• **Verified Savings**: Save **€550+ (6,700+ NOK)** per getaway compared to Booking.com.\n• **Curated Destinations**: Dolomites (South Tyrol), Tuscany (Chianti), Black Forest (Germany), Salzburg (Austria), Lake Garda, and Provence.\n• **Instant Digital Voucher**: Unique voucher codes (ATLAS-HB-xxxx) generated instantly on the portal.`,
         action: 'open_waitlist',
         actionLabel: `Reserve Founding Spot (${p.formattedFounding})`,
         followUps: [
@@ -1166,7 +1166,7 @@ Den offisielle lanseringen åpner **onsdag 20. januar 2027 kl. 10:00**!
 
 Du kan **reservere din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig**. De første 100 medlemmene mottar et **gratis 3-dagers luksushotellopphold for to (verdi 5 400 kr / ca. €480)** og sjansen til å vinne all mat dekket!
 
-Jeg kan også forklare lukkede engrospriser på hotell, våre **7-netters ferieleiligheter fra 3 490 kr (€299)**, eller **0 kr i rompris (Connex)**. Hva vil du vite mer om?`,
+Jeg kan også forklare lukkede engrospriser på hotell, våre **7-netters ferieleiligheter fra 3 490 kr (€299)**, eller **0 kr i rompris (Europeisk Hotellkupong)**. Hva vil du vite mer om?`,
       action: 'open_waitlist' as const,
       actionLabel: 'Reserver plass gratis (Uten kort)',
       followUps: [
@@ -1186,7 +1186,7 @@ Our official launch opens on **Wednesday, January 20, 2027 at 10:00 AM CET**!
 
 You can **reserve your Founding Member spot today for free, no credit card necessary**. The first 100 Founding Members receive a **complimentary 3-day European hotel stay for two (worth €480)** and entry into the draw where 3 of 100 win all meals covered!
 
-I can also explain how wholesale bedbank pricing works, our **7-night vacation condos from €299 (fra 3 490 kr)**, or **€0 room rates (Connex)**. What can I help you with today?`,
+I can also explain how wholesale bedbank pricing works, our **7-night vacation condos from €299 (fra 3 490 kr)**, or **€0 room rates (Europeisk Hotellkupong)**. What can I help you with today?`,
     action: 'open_waitlist' as const,
     actionLabel: 'Reserve Free Spot (No Card Needed)',
     followUps: [
@@ -1210,7 +1210,7 @@ export function getFallbackAnswer(currency: CurrencyCode): ConciergeAnswer {
 
 Lanseringen skjer **onsdag 20. januar 2027 kl. 10:00**. **Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig.** Samtlige 100 første medlemmer mottar et **100% gratis 3-dagers luksushotellopphold for to i Europa (verdi 5 400 kr)**.
 
-Hva er du mest nysgjerrig på? Jeg forklarer gjerne 0 kr i rompris (Connex), 7-netters leiligheter (RVC), 100% provisjonsrefusjon eller 100% verdigarantien.`,
+Hva er du mest nysgjerrig på? Jeg forklarer gjerne 0 kr i rompris (Europeisk Hotellkupong), 7-netters leiligheter (RVC), 100% provisjonsrefusjon eller 100% verdigarantien.`,
       action: 'open_waitlist',
       actionLabel: 'Reserver plass gratis (Uten kort)',
       followUps: [
@@ -1227,7 +1227,7 @@ Hva er du mest nysgjerrig på? Jeg forklarer gjerne 0 kr i rompris (Connex), 7-n
 
 Our official launch opens **Wednesday, January 20, 2027 at 10:00 AM CET**. **Reserve your Founding Member spot today for free, no credit card necessary.** The first 100 Founding Members receive a **complimentary 3-day European hotel break for two (worth €480)**.
 
-What would you like to know more about? I can explain €0 room rates (Connex), 7-night condo escapes (RVC), 100% commission rebates, or our 100% money-back guarantee.`,
+What would you like to know more about? I can explain €0 room rates (Europeisk Hotellkupong), 7-night condo escapes (RVC), 100% commission rebates, or our 100% money-back guarantee.`,
       action: 'open_waitlist',
       actionLabel: 'Reserve Free Spot (No Card Needed)',
       followUps: [

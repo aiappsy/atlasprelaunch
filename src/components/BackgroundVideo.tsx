@@ -97,7 +97,7 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
           isCalculating ? 'scale-105 filter brightness-110' : ''
         } ${!isPlaying ? 'filter brightness-80' : ''}`}
       >
-        <source src="/video/luxury-hotel-commercial.mp4?v=20261009_v3" type="video/mp4" />
+        <source src="/video/luxury-hotel-commeResort Allotment Networkal.mp4?v=20261009_v3" type="video/mp4" />
         <source src="/video/luxury-ocean-drone.mp4" type="video/mp4" />
       </video>
 

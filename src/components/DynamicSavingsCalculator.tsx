@@ -487,9 +487,9 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
         </div>
       </div>
 
-      {/* TWO PROMINENT PRELAUNCH PERKS: CONNEX & RVC WITH DIRECT CALCULATORS */}
+      {/* TWO PROMINENT PRELAUNCH PERKS: Hotellpass & RVC WITH DIRECT CALCULATORS */}
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5 text-left">
-        {/* Card 1: Connex 3 Dager Gratis Hotell */}
+        {/* Card 1: Hotellpass 3 Dager Gratis Hotell */}
         <div className="p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950 border border-amber-400/50 shadow-2xl flex flex-col justify-between relative overflow-hidden">
           <div className="space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/40 text-amber-300 text-xs font-mono">
@@ -497,11 +497,11 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
               <span>{isNorwegian ? 'Founding Member Velkomstgave' : 'Founder Welcome Gift'}</span>
             </div>
             <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-neutral-100">
-              {isNorwegian ? 'Connex: 3 Dager Gratis Hotell for 2' : 'Connex: 3-Day Free Hotel Break for 2'}
+              {isNorwegian ? 'Hotellpass: 3 Dager Gratis for 2' : 'Hotel Pass: 3-Day Free Hotel Break for 2'}
             </h3>
             <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
               {isNorwegian
-                ? 'Når du sikrer deg et av de 100 første medlemskapene, spanderer ATLAS et 3-dagers hotellopphold for to i Europa (Holiday Plus). Rommet er 100% gratis (0 kr). Du betaler kun hotellets lokale mat (frokost & middag) ved utsjekk.'
+                ? 'Når du sikrer deg et av de 100 første medlemskapene, spanderer ATLAS et 3-dagers hotellopphold for to i Europa (European Hospitality Allotment). Rommet er 100% gratis (0 kr). Du betaler kun hotellets lokale mat (frokost & middag) ved utsjekk.'
                 : 'When you claim 1 of the first 100 founder spots, ATLAS covers a 3-day European hotel break for two. The room is 100% free (€0)—you only pay the hotel’s local gourmet half-board at checkout.'}
             </p>
 
@@ -519,7 +519,7 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
 
           <button
             type="button"
-            onClick={() => onOpenPerkModal?.('connex')}
+            onClick={() => onOpenPerkModal?.('voucher')}
             className="mt-5 w-full py-3.5 px-4 rounded-xl bg-amber-400/15 hover:bg-amber-400/25 border border-amber-400/60 text-amber-200 font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer shadow-md"
           >
             <Utensils className="w-4 h-4 text-amber-400" />

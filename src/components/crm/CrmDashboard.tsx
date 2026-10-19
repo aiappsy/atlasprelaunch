@@ -79,11 +79,11 @@ const CRM_PODCAST_ITEMS: CrmPodcastItem[] = [
     category: 'core',
     badge: 'Core 2 • 0 kr Opphold',
     title: 'The Math Behind €0 Hotel Stays (Matematikken bak 0 kr hotellovernattinger)',
-    desc: 'The complete breakdown of Connex Group corporate vouchers: why 4-star properties trade empty rooms for on-site food and beverage revenue.',
+    desc: 'The complete breakdown of European hospitality corporate vouchers: why 4-star properties trade empty rooms for on-site food and beverage revenue.',
     file: 'The_Math_Behind_Zero_Euro_Hotel_Stays.m4a',
     size: '11.1 MB',
     duration: '11:32',
-    trackId: 'connex'
+    trackId: 'voucher'
   },
   {
     id: 'ep3',
@@ -112,7 +112,7 @@ const CRM_PODCAST_ITEMS: CrmPodcastItem[] = [
     category: 'core',
     badge: 'Core 5 • Flyplasslounger',
     title: 'Wholesale Airport Lounges Without Credit Cards (Engros flyplasslounger uten dyre kredittkort)',
-    desc: 'How DragonPass and Collinson B2B wholesale access bypasses high-annual-fee credit cards to deliver VIP lounge access for $24–$28.',
+    desc: 'How global B2B airport lounge networks B2B wholesale access bypasses high-annual-fee credit cards to deliver VIP lounge access for $24–$28.',
     file: 'Wholesale_Airport_Lounges_Without_Credit_Cards.m4a',
     size: '10.3 MB',
     duration: '10:42',

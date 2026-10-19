@@ -76,12 +76,12 @@ During off-peak dates and last-minute distressed windows, weekly stays are clear
 And you check in as an independent VIP guest with an official corporate voucher. Absolutely zero timeshare presentations, zero breakfast seminars, and zero ownership pitches. It is clean, serviced resort accommodation.
 
 **RACHEL:**  
-- **Pillar IV is the Connex Holiday Plus Network.**  
+- **Pillar IV is the European Hospitality Allotment Network.**  
 Connex is an established Austrian travel marketing organization that has operated for over 30 years with more than 1,500 partner hotels across 14 European nations. 
 Participating boutique, alpine, and wellness hotels provide surplus room capacity where the **room cost is 100% covered (€0 room rate)** for 2 adults for 2 to 4 nights. In exchange, guests agree to dine at the hotel, paying the hotel's standard published half-board—breakfast and a multi-course dinner, typically €35 to €60 per person per day—directly at the front desk upon checkout. 
 
 **MICHAEL:**  
-And for the first 100 Founding Members who activate on launch day, ATLAS provides a complimentary Connex 3-Day European Hotel Break voucher for two adults as a welcome gift.
+And for the first 100 Founding Members who activate on launch day, ATLAS provides a complimentary European 3-Day Hotel Break voucher for two adults as a welcome gift.
 
 **RACHEL:**  
 Now, Michael, let’s talk about the consumer protection framework that Founder **Pål Juritzen**—strictly pronounced **“Paul Yur-it-zen”**—instituted: **The ATLAS Value Guarantee Blueprint**.

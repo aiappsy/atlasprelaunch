@@ -45,7 +45,7 @@ Mellom registrering og lanseringsdag sendes en automatisert sekvens som bygger t
 | E-post | Utsending | Tema / Emnefelt | Psykologisk Hensikt |
 | :--- | :--- | :--- | :--- |
 | **#1** | **Dag 0** (Umiddelbart) | `👑 Velkommen til ATLAS: Din Founding Member-kvote er reservert` | Bekrefter posisjon, tildeler invite-kode, etablerer **48t tapsaversjonsregelen**. |
-| **#2** | **Dag 4** | `🍷 Hvordan kan hotellrommet være 100% gratis? (Sannheten om Connex)` | Fjerner skepsis. Viser overskuddsmodellen og transparent halvpensjonsøkonomi. |
+| **#2** | **Dag 4** | `🍷 Hvordan kan hotellrommet være 100% gratis? (Sannheten om hotell-allotments)` | Fjerner skepsis. Viser overskuddsmodellen og transparent halvpensjonsøkonomi. |
 | **#3** | **Dag 9** | `🏖️ 7 netter i Marbella eller Tenerife for 3 490 kr? Her er beviset` | Viser familiebesparelsen på 15 000 kr via RVC / Panorama-nettverket. |
 | **#4** | **Dag 16** | `🕵️ Hvorfor koster hoteller det samme på alle nettsider? (Prisparitet)` | Avslører Booking/Expedia-duopolet og forklarer hvorfor lukkede klubber har lov til 0 kr påslag. |
 | **#5** | **28. des** (Romjul) | `📅 Datoen er satt: Mandag 4. januar kl. 10:00 åpner ATLAS` | Skaper forventning midt i ferieplanleggingen. Varsler om at kun 100 av 400+ får plassen. |
@@ -110,7 +110,7 @@ Reiselivsjournalister elsker saker om overprising og utfordrere til reisebyråen
 ## 6. Sjekkliste for Gründerskap & Drift
 
 - [x] Prelaunch-app oppdatert og rullet ut på `atlasprelaunch.web.app` og `atlaslaunch.web.app`.
-- [x] Connex 0 kr kalkulator & RVC 7-netters kalkulator tilgjengelig i modal uten å forstørre skjemaet.
+- [x] Hotellpass 0 kr kalkulator & RVC 7-netters kalkulator tilgjengelig i modal uten å forstørre skjemaet.
 - [x] Tapsaversjons- og køregler («overføres til neste på ventelisten») integrert på alle berøringspunkter.
 - [x] E-postsekvens forberedt i `src/lib/nurtureEmailSequence.ts`.
 - [ ] Pål poster det første «Rate Parity»-innlegget på LinkedIn / Facebook i begynnelsen av november.

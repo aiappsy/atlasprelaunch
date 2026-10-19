@@ -35,7 +35,7 @@ const SCRIPT_BEATS: ScriptBeat[] = [
     label: '01. The Retail Trap',
     headline: 'Bypass Heavy Public Retail Markups',
     narration:
-      'Every time you book luxury hotels on public travel portals, you pay heavy commission markups that subsidize commercial ads and TV campaigns.',
+      'Every time you book luxury hotels on public travel portals, you pay heavy commission markups that subsidize commeResort Allotment Networkal ads and TV campaigns.',
     badge: 'RATE PARITY EXEMPT',
   },
   {

@@ -19,7 +19,7 @@ Welcome back to our pre-launch series on ATLAS Travel Club. I’m Rachel, and wi
 That’s right, Rachel. Because if you’ve been following our earlier episodes, we talked a lot about the consumer benefits—the €0 room voucher from Connex in Austria, the 7-night vacation condos starting from €299, and the 100% Value Guarantee. But today, we want to address the smart, skeptical traveler who asks: *“Okay, this sounds intriguing, but what is the actual technology behind this? Who are the real suppliers? And what are the realistic savings—especially on flights?”*
 
 **RACHEL:**  
-And that distinction matters enormously. Let’s start with aviation, because this is where most travel clubs either over-promise or mislead consumers. Anyone who claims you’re going to get 50% or 60% off an economy airline ticket is simply not telling you the truth. Commercial airlines operate on razor-thin operating margins—typically between 2% and 6%. 
+And that distinction matters enormously. Let’s start with aviation, because this is where most travel clubs either over-promise or mislead consumers. Anyone who claims you’re going to get 50% or 60% off an economy airline ticket is simply not telling you the truth. CommeResort Allotment Networkal airlines operate on razor-thin operating margins—typically between 2% and 6%. 
 
 **MICHAEL:**  
 Exactly. When an airline sells an economy seat for €120, they aren’t sitting on a 40% profit margin. So how does ATLAS deliver wholesale pricing on flights? Rachel, you’ve spent a lot of time looking at their flight integration partner, **Duffel**. Tell us how Duffel works.
@@ -79,7 +79,7 @@ And the pricing mechanism is institutional clearance. In resort communities in t
 And to be 100% clear: you check in as an independent VIP guest with an official corporate confirmation voucher. There are zero timeshare presentations, zero breakfast sales seminars, and zero ownership pitches. It is clean excess inventory liquidation.
 
 **RACHEL:**  
-And the fourth pillar is **Connex** and their **Holiday Plus** program. Connex is an established Austrian loyalty marketing firm that has operated for over 30 years. They partner with more than 1,500 alpine, boutique, and wellness retreats in 14 European nations. The hotel covers 100% of the room cost for 2 adults for 2 to 4 nights because they want guests in their dining room. The guests simply pay the hotel’s standard published half-board—breakfast buffet and a multi-course dinner, typically €35 to €60 per person per day—directly at the front desk upon checkout.
+And the fourth pillar is **Connex** and their **European Hospitality Allotment** program. Connex is an established Austrian loyalty marketing firm that has operated for over 30 years. They partner with more than 1,500 alpine, boutique, and wellness retreats in 14 European nations. The hotel covers 100% of the room cost for 2 adults for 2 to 4 nights because they want guests in their dining room. The guests simply pay the hotel’s standard published half-board—breakfast buffet and a multi-course dinner, typically €35 to €60 per person per day—directly at the front desk upon checkout.
 
 **MICHAEL:**  
 It’s a win-win: the hotel fills an otherwise empty room and earns restaurant revenue, while the traveler gets luxury lodging with zero room charge.
@@ -95,10 +95,10 @@ Founder Paul Yur-it-zen established an airtight two-track blueprint codified und
 - **Track B is the Cumulative Annual Guarantee:** For members who primarily book flights, short 1-night hotel stays, or car rentals, savings accumulate over the 12-month membership. If total verified annual savings don’t reach €110, you receive a full 100% refund at year-end.
 
 **RACHEL:**  
-And there is a very sensible anti-exploitation rule here that every honest traveler will appreciate: a member cannot book a single €45 budget flight, save €15, and immediately demand a €110 refund. Flight savings accumulate toward Track B. Track A applies to high-margin lodging, where recouping the €110 fee on trip one is normal. And even if a member exercises the guarantee, they keep their complimentary Connex hotel voucher.
+And there is a very sensible anti-exploitation rule here that every honest traveler will appreciate: a member cannot book a single €45 budget flight, save €15, and immediately demand a €110 refund. Flight savings accumulate toward Track B. Track A applies to high-margin lodging, where recouping the €110 fee on trip one is normal. And even if a member exeResort Allotment Networkses the guarantee, they keep their complimentary Connex hotel voucher.
 
 **MICHAEL:**  
-That’s what makes this whole proposition so refreshing. It’s not trying to sound like a miracle cure or an infomercial. It’s simply modern travel infrastructure:
+That’s what makes this whole proposition so refreshing. It’s not trying to sound like a miracle cure or an infomeResort Allotment Networkal. It’s simply modern travel infrastructure:
 1. **Duffel** for direct, unbundled NDC airline bookings with 0 kr markup.
 2. **Hotelbeds, WebBeds, and RateHawk** for wholesale B2B hotel bedbank rates.
 3. **RVC / Panorama** for 7-night vacation condo liquidation from €299.

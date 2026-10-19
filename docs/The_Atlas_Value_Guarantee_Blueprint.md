@@ -15,7 +15,7 @@ To eliminate consumer skepticism and make membership an entirely risk-free decis
 > **The Core Promise:**  
 > If an active member does not save more than their annual membership fee (**€110 / 1 290 NOK**) through ATLAS wholesale net pricing on their qualifying travel, ATLAS immediately issues an unconditional **100% refund of their membership dues**.
 
-To ensure commercial sustainability and protect the club against opportunistic exploitation (e.g. demanding a €110 refund after booking a single €40 flight), this Blueprint establishes the precise qualifying thresholds, verification standards, and claim procedures.
+To ensure commeResort Allotment Networkal sustainability and protect the club against opportunistic exploitation (e.g. demanding a €110 refund after booking a single €40 flight), this Blueprint establishes the precise qualifying thresholds, verification standards, and claim procedures.
 
 ---
 
@@ -85,7 +85,7 @@ ATLAS eliminates bureaucratic runarounds. If a member's qualifying booking does 
 
 ## 6. Retention of Day-One Benefits
 
-Even in the rare event that a member exercises the 100% Value Guarantee:
+Even in the rare event that a member exeResort Allotment Networkses the 100% Value Guarantee:
 * The member is **not penalized**.
 * Any points earned in their Rewards Vault from completed travel remain credited under standard escrow liquidity rules.
 * The member is never charged any exit or cancellation fees.
@@ -101,4 +101,4 @@ Even in the rare event that a member exercises the 100% Value Guarantee:
 | **4 Return Flights to Spain + 2 Bags (Family)** | €820 (OTA + Fees) | €680 (Duffel NDC Net) | **€140 (1 580 kr)** | **+€30 Net Profit** (Fee recouped 1.2x) |
 | **Annual Family Travel (1 Condo + 2 Hotels + Flights)** | €3,310 (Retail) | €1,469 (ATLAS Total) | **€1,841 (20 800 kr)** | **+€1,731 Net Profit** (Fee recouped 16.7x) |
 
-Because wholesale lodging margins are so high (20% to 45%), **over 98% of members recoup their annual fee on their very first 2+ night trip**. The guarantee acts as the ultimate psychological and commercial reassurance with virtually zero systemic risk to ATLAS.
+Because wholesale lodging margins are so high (20% to 45%), **over 98% of members recoup their annual fee on their very first 2+ night trip**. The guarantee acts as the ultimate psychological and commeResort Allotment Networkal reassurance with virtually zero systemic risk to ATLAS.

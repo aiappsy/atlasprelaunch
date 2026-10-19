@@ -63,7 +63,7 @@ When a member logs into their dashboard on launch day, they enter an unmasked B2
   * The member saves **€270 (over 3 000 NOK)** on a single 3-night European city stay—more than double the entire annual membership fee on day one!
 
 #### B. The Instant Connex €0 Room Voucher Generator
-* The moment a Founding Member completes their activation, the system automatically generates their certified **Connex Holiday Plus Hotel Break Certificate** (`HP-ATLAS-2027`).
+* The moment a Founding Member completes their activation, the system automatically generates their certified **European Hospitality Allotment Hotel Break Certificate** (`ATLAS-HB-2027`).
 * **Certified Retail Value:** **€480 (5 400 kr)**.
 * **How It Works Live:** Covers 100% of the room charge (€0 room rate) for 2 adults for 2 to 4 consecutive nights across 1,500+ handpicked boutique, alpine, and wellness hotels in 14 European nations (the Italian Dolomites, Austrian Alps, Black Forest, Tuscany, and Provence).
 * **Transparent Dining Math:** The member pays only the hotel’s standard, published half-board (buffet breakfast and gourmet multi-course evening dinner) directly at checkout—typically €35 to €60 per person per day.

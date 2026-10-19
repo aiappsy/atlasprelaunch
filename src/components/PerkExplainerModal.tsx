@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '../lib/i18n/LanguageContext';
 
-export type PerkExplainerTab = 'connex' | 'rvc' | 'lounges';
+export type PerkExplainerTab = 'voucher' | 'rvc' | 'lounges';
 
 interface PerkExplainerModalProps {
   isOpen: boolean;
@@ -34,7 +34,7 @@ interface PerkExplainerModalProps {
 export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
   isOpen,
   onClose,
-  initialTab = 'connex',
+  initialTab = 'voucher',
   onClaimSpot,
 }) => {
   const { isNorwegian } = useLanguage();
@@ -47,9 +47,9 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
     }
   }, [isOpen, initialTab]);
 
-  // Connex Calculator State
-  const [connexNights, setConnexNights] = useState<number>(2);
-  const [connexRegion, setConnexRegion] = useState<string>('dolomites');
+  // Hotellpass Calculator State
+  const [voucherNights, setHotellpassNights] = useState<number>(2);
+  const [voucherRegion, setHotellpassRegion] = useState<string>('dolomites');
 
   // RVC Calculator State
   const [rvcDestination, setRvcDestination] = useState<string>('marbella');
@@ -62,8 +62,8 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
 
   if (!isOpen) return null;
 
-  // Connex destinations & half-board daily rates per guest (EUR converted to NOK @ 11.8)
-  const connexDestinations: Record<string, { nameNo: string; nameEn: string; country: string; mealPriceEur: number; otaNightlyNok: number }> = {
+  // Hotellpass destinations & half-board daily rates per guest (EUR converted to NOK @ 11.8)
+  const voucherDestinations: Record<string, { nameNo: string; nameEn: string; country: string; mealPriceEur: number; otaNightlyNok: number }> = {
     dolomites: {
       nameNo: 'Dolomittene (Sør-Tyrol)',
       nameEn: 'Dolomites (South Tyrol)',
@@ -72,7 +72,7 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
       otaNightlyNok: 2700,
     },
     tuscany: {
-      nameNo: 'Chianti & Val d\'Orcia',
+      nameNo: 'Chianti & Val d\'OResort Allotment Networka',
       nameEn: 'Tuscany (Chianti)',
       country: 'Italia',
       mealPriceEur: 45,
@@ -101,16 +101,16 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
     },
   };
 
-  const selectedConnex = connexDestinations[connexRegion] || connexDestinations.dolomites;
+  const selectedVoucher = voucherDestinations[voucherRegion] || voucherDestinations.dolomites;
   const eurToNok = 11.8;
-  const connexPublicOtaTotal = selectedConnex.otaNightlyNok * connexNights;
-  const connexAtlasRoomCost = 0;
-  const connexMealTotalNok = Math.round(selectedConnex.mealPriceEur * 2 * connexNights * eurToNok);
-  const connexNetSavingsNok = connexPublicOtaTotal - connexMealTotalNok;
+  const voucherPublicOtaTotal = selectedVoucher.otaNightlyNok * voucherNights;
+  const voucherAtlasRoomCost = 0;
+  const voucherMealTotalNok = Math.round(selectedVoucher.mealPriceEur * 2 * voucherNights * eurToNok);
+  const voucherNetSavingsNok = voucherPublicOtaTotal - voucherMealTotalNok;
 
-  const connexPublicOtaEur = Math.round(connexPublicOtaTotal / eurToNok);
-  const connexMealTotalEur = Math.round(selectedConnex.mealPriceEur * 2 * connexNights);
-  const connexNetSavingsEur = connexPublicOtaEur - connexMealTotalEur;
+  const voucherPublicOtaEur = Math.round(voucherPublicOtaTotal / eurToNok);
+  const voucherMealTotalEur = Math.round(selectedVoucher.mealPriceEur * 2 * voucherNights);
+  const voucherNetSavingsEur = voucherPublicOtaEur - voucherMealTotalEur;
 
   // RVC destinations data
   const rvcDestinations: Record<string, { nameNo: string; nameEn: string; otaWeeklyNok: number; typicalResort: string }> = {
@@ -245,15 +245,15 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1.5 bg-neutral-900/90 rounded-2xl border border-neutral-800/80 mb-6">
           <button
             type="button"
-            onClick={() => setActiveTab('connex')}
+            onClick={() => setActiveTab('voucher')}
             className={`py-2.5 px-3 rounded-xl text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
-              activeTab === 'connex'
+              activeTab === 'voucher'
                 ? 'bg-gradient-to-r from-amber-400 to-amber-500 text-neutral-950 shadow-md shadow-amber-500/20'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'
             }`}
           >
             <Wine className="w-4 h-4 shrink-0" />
-            <span className="truncate">{isNorwegian ? 'Connex: 0 kr Rom' : 'Connex: €0 Room'}</span>
+            <span className="truncate">{isNorwegian ? 'Hotellpass: 0 kr Rom' : 'Hotel Pass: €0 Room'}</span>
           </button>
 
           <button
@@ -283,8 +283,8 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
           </button>
         </div>
 
-        {/* TAB 1: CONNEX HOTEL BREAKS */}
-        {activeTab === 'connex' && (
+        {/* TAB 1: Hotellpass HOTEL BREAKS */}
+        {activeTab === 'voucher' && (
           <div className="space-y-6">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/15 border border-rose-400/30 text-rose-300 text-xs font-mono font-bold mb-2">
@@ -296,8 +296,8 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
               </h3>
               <p className="text-xs sm:text-sm text-neutral-300 mt-1 leading-relaxed">
                 {isNorwegian
-                  ? 'Gjennom Connex (Holiday Plus) fyller utvalgte 3–4* superior velværerhoteller i Europa ledig kapasitet. Rommet er 100% dekket av ATLAS (verdi 5 400 kr / ca. €480). Du betaler kun hotellets obligatoriske gourmet-halvpensjon (frokost + fleretters middag) direkte ved utsjekk.'
-                  : 'Through Connex (Holiday Plus), curated 3-4* boutique retreats across Europe fill surplus capacity. The room is 100% sponsored by ATLAS (€480 value). Guests only pay the hotel\'s published half-board (breakfast + multi-course dinner) directly at checkout.'}
+                  ? 'Gjennom European Hospitality Allotment fyller utvalgte 3–4* superior velværerhoteller i Europa ledig kapasitet. Rommet er 100% dekket av ATLAS (verdi 5 400 kr / ca. €480). Du betaler kun hotellets obligatoriske gourmet-halvpensjon (frokost + fleretters middag) direkte ved utsjekk.'
+                  : 'Through European Hospitality Allotment, curated 3-4* boutique retreats across Europe fill surplus capacity. The room is 100% sponsored by ATLAS (€480 value). Guests only pay the hotel\'s published half-board (breakfast + multi-course dinner) directly at checkout.'}
               </p>
             </div>
 
@@ -335,11 +335,11 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
                     {isNorwegian ? 'Velg Destinasjon / Hotellregion:' : 'Select Destination / Region:'}
                   </label>
                   <select
-                    value={connexRegion}
-                    onChange={(e) => setConnexRegion(e.target.value)}
+                    value={voucherRegion}
+                    onChange={(e) => setHotellpassRegion(e.target.value)}
                     className="w-full px-3 py-2 rounded-xl bg-neutral-950 border border-neutral-700 text-neutral-200 text-xs focus:border-amber-400 outline-none"
                   >
-                    {Object.entries(connexDestinations).map(([key, dest]) => (
+                    {Object.entries(voucherDestinations).map(([key, dest]) => (
                       <option key={key} value={key}>
                         {isNorwegian ? dest.nameNo : dest.nameEn} (€{dest.mealPriceEur}/{isNorwegian ? 'dag' : 'day'})
                       </option>
@@ -356,9 +356,9 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
                       <button
                         key={n}
                         type="button"
-                        onClick={() => setConnexNights(n)}
+                        onClick={() => setHotellpassNights(n)}
                         className={`flex-1 py-2 rounded-xl text-xs font-mono font-bold border transition ${
-                          connexNights === n
+                          voucherNights === n
                             ? 'bg-amber-400 text-neutral-950 border-amber-400'
                             : 'bg-neutral-950 text-neutral-300 border-neutral-700 hover:border-neutral-500'
                         }`}
@@ -375,7 +375,7 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
                 <div className="flex justify-between items-center text-neutral-400">
                   <span>{isNorwegian ? 'Pris på Booking.com (Rom m/ mat):' : 'Public Price on Booking.com (Room + meals):'}</span>
                   <span className="line-through text-neutral-500">
-                    {isNorwegian ? `${connexPublicOtaTotal.toLocaleString('no-NO')} kr` : `€${connexPublicOtaEur.toLocaleString('en-US')}`}
+                    {isNorwegian ? `${voucherPublicOtaTotal.toLocaleString('no-NO')} kr` : `€${voucherPublicOtaEur.toLocaleString('en-US')}`}
                   </span>
                 </div>
                 <div className="flex justify-between items-center text-neutral-300">
@@ -388,13 +388,13 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
                 <div className="flex justify-between items-center text-neutral-400">
                   <span>{isNorwegian ? 'Obligatorisk Gourmet-halvpensjon (2 personer):' : 'Fixed Gourmet Half-Board (2 guests):'}</span>
                   <span className="text-amber-300 font-semibold">
-                    {isNorwegian ? `${connexMealTotalNok.toLocaleString('no-NO')} kr` : `€${connexMealTotalEur.toLocaleString('en-US')}`}
+                    {isNorwegian ? `${voucherMealTotalNok.toLocaleString('no-NO')} kr` : `€${voucherMealTotalEur.toLocaleString('en-US')}`}
                   </span>
                 </div>
                 <div className="pt-2 border-t border-neutral-800 flex justify-between items-center text-sm">
                   <span className="font-bold text-neutral-100">{isNorwegian ? 'Din Netto Besparelse:' : 'Your Net Savings:'}</span>
                   <span className="font-black text-emerald-400 text-base">
-                    {isNorwegian ? `+${connexNetSavingsNok.toLocaleString('no-NO')} kr spart!` : `+€${connexNetSavingsEur.toLocaleString('en-US')} saved!`}
+                    {isNorwegian ? `+${voucherNetSavingsNok.toLocaleString('no-NO')} kr spart!` : `+€${voucherNetSavingsEur.toLocaleString('en-US')} saved!`}
                   </span>
                 </div>
               </div>
@@ -424,8 +424,8 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
               </h3>
               <p className="text-xs sm:text-sm text-neutral-300 mt-1 leading-relaxed">
                 {isNorwegian
-                  ? 'Gjennom overskuddsallokeringer fra RCI / Panorama får ATLAS-medlemmer tilgang til romslige ferieleiligheter (fra studio til 1- og 2-roms suiter med kjøkken og stue) for 2–6 personer til restplasspriser fra kun 3 490 kr for alle 7 nettene.'
-                  : 'Through liquidation allotments via the RCI / Panorama network, ATLAS members unlock spacious vacation condos (studios, 1- and 2-bedroom suites with kitchens and living areas) sleeping 2 to 6 guests at clearance rates starting from €299 for the entire week.'}
+                  ? 'Gjennom overskuddsallokeringer fra Resort Allotment Network får ATLAS-medlemmer tilgang til romslige ferieleiligheter (fra studio til 1- og 2-roms suiter med kjøkken og stue) for 2–6 personer til restplasspriser fra kun 3 490 kr for alle 7 nettene.'
+                  : 'Through liquidation allotments via the Resort Allotment Network network, ATLAS members unlock spacious vacation condos (studios, 1- and 2-bedroom suites with kitchens and living areas) sleeping 2 to 6 guests at clearance rates starting from €299 for the entire week.'}
               </p>
             </div>
 

@@ -53,7 +53,7 @@ const SCRIPT_BEATS: ScriptBeat[] = [
     startSec: 29.5,
     endSec: 43.9,
     badge: 'DIRECT NDC AIRLINE FARES',
-    headline: 'Wholesale Commercial Flights Without GDS Fees',
+    headline: 'Wholesale CommeResort Allotment Networkal Flights Without GDS Fees',
     subtext: 'Direct connection to airline networks via modern NDC. No legacy GDS booking fees on Economy and Business Class.',
   },
   {

@@ -28,7 +28,7 @@ export default function App() {
   const [isPodcastOpen, setIsPodcastOpen] = useState<boolean>(false);
   const [podcastTrack, setPodcastTrack] = useState<PodcastTrackId>('summary');
   const [isPerkExplainerOpen, setIsPerkExplainerOpen] = useState<boolean>(false);
-  const [perkExplainerTab, setPerkExplainerTab] = useState<PerkExplainerTab>('connex');
+  const [perkExplainerTab, setPerkExplainerTab] = useState<PerkExplainerTab>('voucher');
   const [isComplianceOpen, setIsComplianceOpen] = useState<boolean>(false);
   const [complianceTab, setComplianceTab] = useState<'guarantee' | 'wholesale' | 'passenger_rights' | 'escrow' | 'governance'>('guarantee');
   const [isRefundModalOpen, setIsRefundModalOpen] = useState<boolean>(false);
@@ -154,7 +154,7 @@ export default function App() {
         const hubParam = urlParams.get('hub');
         if (podcastParam) {
           const validTracks: PodcastTrackId[] = [
-            'summary', 'deepdive', 'lounges', 'hotel-blueprint', 'connex',
+            'summary', 'deepdive', 'lounges', 'hotel-blueprint', 'voucher',
             'flights', 'delays', 'commissions', 'resorts', 'guarantee', 'launch'
           ];
           if (validTracks.includes(podcastParam as PodcastTrackId)) {
@@ -169,7 +169,7 @@ export default function App() {
           setIsPodcastOpen(true);
         }
         const perkParam = urlParams.get('perk');
-        if (perkParam === 'connex' || perkParam === 'rvc' || perkParam === 'lounges') {
+        if (perkParam === 'voucher' || perkParam === 'rvc' || perkParam === 'lounges') {
           setPerkExplainerTab(perkParam as PerkExplainerTab);
           setIsPerkExplainerOpen(true);
         }
@@ -349,7 +349,7 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen w-full bg-neutral-950 text-neutral-100 flex flex-col justify-between overflow-x-hidden selection:bg-amber-400 selection:text-neutral-900">
-      {/* Unified Background Commercial Video with Built-in Studio Voiceover & Music */}
+      {/* Unified Background CommeResort Allotment Networkal Video with Built-in Studio Voiceover & Music */}
       <BackgroundVideo
         videoRef={videoRef}
         isCalculating={isCalculatingVideoPulse}
@@ -438,7 +438,7 @@ export default function App() {
         onOpenPerkModal={handleOpenPerkModal}
       />
 
-      {/* Interactive Connex & RVC Explainer & Calculator Modal */}
+      {/* Interactive Hotellpass & RVC Explainer & Calculator Modal */}
       <PerkExplainerModal
         isOpen={isPerkExplainerOpen}
         initialTab={perkExplainerTab}

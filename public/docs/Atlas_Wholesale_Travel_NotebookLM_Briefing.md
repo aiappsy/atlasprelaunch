@@ -28,8 +28,8 @@ The global consumer travel industry is governed by an artificial pricing illusio
 
 ATLAS Travel Club, founded by Pål Juritzen (pronounced: "Paul Yur-it-zen") and operated by HARD ROCK CAPITAL LTD, introduces a sovereign, closed-loop wholesale model—operating on the transparent "Costco membership model" for travel:
 - **0% Retail Markup on 1,200,000+ Hotels & Resorts** via institutional B2B Bedbanks (RateHawk, WebBeds, Hotelbeds).
-- **Direct Airline Net Fares across 300+ Commercial Carriers** via direct Duffel NDC (New Distribution Capability) integration.
-- **Connex Holiday Plus Partnership:** Complimentary room rates (€0 room rate) across 1,500+ European boutique & wellness hotels with only published half-board paid directly at checkout.
+- **Direct Airline Net Fares across 300+ CommeResort Allotment Networkal Carriers** via direct Duffel NDC (New Distribution Capability) integration.
+- **European Hospitality Allotment Partnership:** Complimentary room rates (€0 room rate) across 1,500+ European boutique & wellness hotels with only published half-board paid directly at checkout.
 - **RVC Resort Residences:** 7-night vacation condominium stays (studios, 1- and 2-bedroom units sleeping 2 to 6 guests) starting **from €299 (fra 3 490 kr)** for the entire week on last-minute clearance.
 - **100% Commission Rebate on Cruises & Luxury Hotels:** Backend commissions (10%–16%) credited 100% into the member's Rewards Vault (with transparent 30–60 day post-travel escrow settlement).
 - **Automated EU261 Flight Disruption Compensation:** Up to €600 per passenger automatically tracked and claimed via Duffel integration.
@@ -38,7 +38,7 @@ ATLAS Travel Club, founded by Pål Juritzen (pronounced: "Paul Yur-it-zen") and 
 
 ## 2. Topic 1: The Hotel Duopoly & Secret B2B Bedbanks
 ### The Myth of Public "Deals"
-Consumer platforms spend billions of dollars each quarter on Google Search ads and television commercials. To fund these multi-billion-dollar marketing budgets, they enforce strict "Rate Parity" and "Most Favored Nation" (MFN) contractual clauses on hotels. If a luxury hotel advertises a suite on its own public website for less than its Booking.com listing, the aggregator algorithmically downgrades the hotel’s ranking.
+Consumer platforms spend billions of dollars each quarter on Google Search ads and television commeResort Allotment Networkals. To fund these multi-billion-dollar marketing budgets, they enforce strict "Rate Parity" and "Most Favored Nation" (MFN) contractual clauses on hotels. If a luxury hotel advertises a suite on its own public website for less than its Booking.com listing, the aggregator algorithmically downgrades the hotel’s ranking.
 
 ### How Five-Star Hotels Clear Inventory Anonymously
 Hotels face a perishable inventory dilemma: a high-end luxury room or villa that sits empty tonight represents a 100% loss of revenue that can never be recovered. Because public rate parity contracts forbid them from discounting publicly, hotels quietly dump their excess luxury capacity into private, institutional B2B Bedbanks—principally **RateHawk, WebBeds, and Hotelbeds**.
@@ -49,7 +49,7 @@ These B2B bedbank clearing rates are traditionally reserved exclusively for corp
 
 ## 3. Topic 2: The Airline Revolution — Duffel NDC vs. Legacy GDS
 ### The Problem with Public Flight Booking
-In commercial aviation, the public has long believed that flight ticket prices are identical everywhere. However, traditional travel agencies and public flight search engines rely on ancient distribution infrastructure called GDS (Global Distribution Systems—such as Amadeus, Sabre, and Travelport).
+In commeResort Allotment Networkal aviation, the public has long believed that flight ticket prices are identical everywhere. However, traditional travel agencies and public flight search engines rely on ancient distribution infrastructure called GDS (Global Distribution Systems—such as Amadeus, Sabre, and Travelport).
 - For every ticket booked via legacy GDS, legacy networks extract high distribution surcharges.
 - Major airlines (including British Airways, Lufthansa Group, SAS, Air France/KLM, and Emirates) have introduced **GDS penalty surcharges ranging from $15 to $35 per ticket** on public retail channels to penalize bookings made through legacy pipes.
 - Public OTAs also heavily mark up ancillary services: charging a **30% to 50% premium on checked luggage and seat selection**.

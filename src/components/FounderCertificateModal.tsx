@@ -284,7 +284,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
                       </div>
                       <p className="text-[10px] font-mono text-[#57462c] mt-1 leading-normal">
                         {isNorwegian
-                          ? '100% gratis hotellopphold for 2 i Europa (Connex, verdi 5 400 kr / ca. €480).'
+                          ? '100% gratis hotellopphold for 2 i Europa (Europeisk Hotellkupong, verdi 5 400 kr / ca. €480).'
                           : '100% free European hotel break for two travelers (worth €480 / 5 400 kr).'}
                       </p>
                     </div>
@@ -456,7 +456,7 @@ export const FounderCertificateModal: React.FC<FounderCertificateModalProps> = (
 
                 <div className="p-4 rounded-xl bg-neutral-900 border border-amber-400/30 space-y-2.5 text-xs">
                   <div className="text-amber-300 font-bold font-mono">
-                    1. {isNorwegian ? 'Gratis 3-dagers hotellopphold for to (Connex Holiday Plus):' : 'Complimentary 3-Day European Hotel Break for Two (Connex):'}
+                    1. {isNorwegian ? 'Gratis 3-dagers hotellopphold for to (European Hospitality Allotment):' : 'Complimentary 3-Day European Hotel Break for Two (Europeisk Hotellkupong):'}
                   </div>
                   <p className="text-neutral-300">
                     {isNorwegian

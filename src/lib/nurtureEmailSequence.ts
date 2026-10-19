@@ -104,23 +104,23 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
   },
 
   // =========================================================================
-  // STAGE 2: THE CONNEX SECRET (DAY 4)
+  // STAGE 2: the Allotment Protocol (DAY 4)
   // =========================================================================
   {
-    id: 'email_2_connex_secret',
+    id: 'email_2_hotel_allotment_secret',
     stageNumber: 2,
     stageName: 'Trinn 2: Sannheten om 0 kr rompris',
     scheduledTiming: '4 dager etter registrering',
-    subjectNo: '🍷 Hvordan kan hotellrommet være 100% gratis? (Sannheten om Connex)',
-    subjectEn: '🍷 How can the hotel room be 100% free? (The Connex Secret)',
+    subjectNo: '🍷 Hvordan kan hotellrommet være 100% gratis? (Sannheten om hotell-allotments)',
+    subjectEn: '🍷 How can the hotel room be 100% free? (the Allotment Protocol)',
     preheaderNo: 'Her er den transparente matematikken bak ditt 3-dagers hotellopphold for to.',
     preheaderEn: 'Here is the transparent math behind your complimentary 3-day hotel stay.',
-    podcastTitleNo: 'Episode 2: «Sannheten om 0 kr rompris: Connex-modellen»',
+    podcastTitleNo: 'Episode 2: «Sannheten om 0 kr rompris: Hotell-Allotment-Modellen»',
     podcastTitleEn: 'Episode 2: "The Math Behind Zero-Euro Hotel Stays"',
     podcastDuration: '05:45 min',
-    podcastDescriptionNo: 'Slik utnytter Connex Holiday Plus ledige hotellsenger i Europa, og hvorfor du kun betaler hotellets faste gourmet-halvpensjon ved utsjekk.',
-    podcastDescriptionEn: 'How Connex Holiday Plus fills European boutique retreat capacity at zero room rates, while guests only settle fixed half-board on checkout.',
-    podcastUrl: 'https://atlasprelaunch.web.app?perk=connex&podcast=connex',
+    podcastDescriptionNo: 'Slik utnytter European Hospitality Allotment ledige hotellsenger i Europa, og hvorfor du kun betaler hotellets faste gourmet-halvpensjon ved utsjekk.',
+    podcastDescriptionEn: 'How European Hospitality Allotment fills European boutique retreat capacity at zero room rates, while guests only settle fixed half-board on checkout.',
+    podcastUrl: 'https://atlasprelaunch.web.app?perk=voucher&podcast=voucher',
     getHtmlContent: (ctx) => `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #f5f5f5; border: 1px solid #d4af3740; border-radius: 16px; overflow: hidden;">
         <div style="padding: 28px 32px; background: linear-gradient(135deg, #1c1917 0%, #0a0a0a 100%); border-bottom: 1px solid #d4af3730;">
@@ -137,9 +137,9 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
           </p>
 
           <div style="background: #171717; border-left: 4px solid #f59e0b; padding: 18px 20px; border-radius: 0 12px 12px 0; margin: 20px 0;">
-            <h4 style="margin: 0 0 8px 0; color: #fbbf24; font-size: 14px;">Slik fungerer Connex Holiday Plus-modellen:</h4>
+            <h4 style="margin: 0 0 8px 0; color: #fbbf24; font-size: 14px;">Slik fungerer European Hospitality Allotment-modellen:</h4>
             <p style="font-size: 13px; line-height: 1.6; color: #d1d5db; margin: 0;">
-              Over hele Europa (Dolomittene, Schwarzwald, Provence, Salzburg, Gardasjøen) har <strong>over 1 500 boutique- og velværerhoteller</strong> ledige rom i midtuke- og skuldresesonger. Gjennom Connex stiller hotellene selve <strong>rommet til 0 kr disposisjon</strong>. Verditilgodelappen dekker 100% av romprisen for 2 gjester.
+              Over hele Europa (Dolomittene, Schwarzwald, Provence, Salzburg, Gardasjøen) har <strong>over 1 500 boutique- og velværerhoteller</strong> ledige rom i midtuke- og skuldresesonger. Gjennom europeiske hotell-allotments stiller hotellene selve <strong>rommet til 0 kr disposisjon</strong>. Verditilgodelappen dekker 100% av romprisen for 2 gjester.
             </p>
           </div>
 
@@ -149,12 +149,12 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
               🎧 Podcast Episode 2 Inkludert (05:45 min)
             </div>
             <div style="font-size: 13px; font-weight: bold; color: #ffffff; margin-bottom: 6px;">
-              «Sannheten om 0 kr rompris: Connex-modellen»
+              «Sannheten om 0 kr rompris: Hotell-Allotment-Modellen»
             </div>
             <p style="font-size: 12px; color: #9ca3af; line-height: 1.4; margin-bottom: 12px;">
               Hør hvorfor europeiske hoteller heller vil gi bort rommet gratis enn å la sengene stå tomme – og hvordan matematikken går opp for både gjest og hotelleier.
             </p>
-            <a href="https://atlasprelaunch.web.app?perk=connex&podcast=connex" style="display: inline-block; font-size: 11px; font-family: monospace; font-weight: bold; color: #0a0a0a; background: linear-gradient(90deg, #fbbf24, #f59e0b); text-decoration: none; padding: 7px 14px; border-radius: 6px;">
+            <a href="https://atlasprelaunch.web.app?perk=voucher&podcast=voucher" style="display: inline-block; font-size: 11px; font-family: monospace; font-weight: bold; color: #0a0a0a; background: linear-gradient(90deg, #fbbf24, #f59e0b); text-decoration: none; padding: 7px 14px; border-radius: 6px;">
               ▶ Hør Forklaringen i Lydspilleren
             </a>
           </div>
@@ -178,7 +178,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
     subjectNo: '✈️ Hvorfor koster flybilletter mer hos reisebyråer? (Duffel NDC-avsløringen)',
     subjectEn: '✈️ Why do flights cost more through agencies? (The Duffel NDC reveal)',
     preheaderNo: 'Slik kutter vi ut fordyrende GDS-mellomledd og selger fly til ren nettopris.',
-    preheaderEn: 'How we bypass legacy GDS markups to deliver commercial flights at pure net cost.',
+    preheaderEn: 'How we bypass legacy GDS markups to deliver commeResort Allotment Networkal flights at pure net cost.',
     podcastTitleNo: 'Episode 3: «Hvorfor mellomledd blåser opp flybillettpriser»',
     podcastTitleEn: 'Episode 3: "How Flight Middlemen Inflate Ticket Prices"',
     podcastDuration: '06:10 min',
@@ -296,7 +296,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
     podcastTitleNo: 'Episode 5: «Flyplasslounger til engrospris uten dyre kredittkort»',
     podcastTitleEn: 'Episode 5: "Wholesale Airport Lounges Without Credit Cards"',
     podcastDuration: '05:19 min',
-    podcastDescriptionNo: 'Kutt fordyrende ledd: digitale loungebekreftelser til 270–310 kr (via DragonPass), pass til familie uten påslag, og Transit Copilot sanntidsradar.',
+    podcastDescriptionNo: 'Kutt fordyrende ledd: digitale loungebekreftelser til 270–310 kr (via global B2B lounge access), pass til familie uten påslag, og Transit Copilot sanntidsradar.',
     podcastDescriptionEn: 'How ATLAS unbundles airport perks: digital lounge passes at pure wholesale cost (€24–€28), family companion rates, and real-time Transit Copilot layover radar.',
     podcastUrl: 'https://atlasprelaunch.web.app?perk=lounges&podcast=lounges',
     getHtmlContent: (ctx) => `

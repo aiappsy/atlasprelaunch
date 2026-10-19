@@ -506,7 +506,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
                   </div>
                 </div>
 
-                {/* Forfeiture Scarcity Warning */}
+                {/* Forfeiture ScaResort Allotment Networkty Warning */}
                 <div className="p-2 rounded-xl bg-amber-500/15 border border-amber-400/30 text-[10.5px] font-mono text-amber-200/90 leading-tight">
                   ⏳ <strong>{isNorwegian ? 'Viktig:' : 'Important:'}</strong> {isNorwegian
                     ? 'Dersom du ikke fullfører registreringen, overføres tilbudet og det gratis hotelloppholdet automatisk til neste person på ventelisten.'
@@ -520,10 +520,10 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({
                     <div className="flex items-center gap-2">
                       <button
                         type="button"
-                        onClick={() => onOpenPerkModal('connex')}
+                        onClick={() => onOpenPerkModal('voucher')}
                         className="text-rose-300 hover:text-rose-200 underline cursor-pointer"
                       >
-                        🍷 {isNorwegian ? 'Connex 0 kr kalkulator' : 'Connex €0 calc'} ↗
+                        🍷 {isNorwegian ? 'Hotellpass 0 kr kalkulator' : 'Hotel Pass €0 calc'} ↗
                       </button>
                       <span>•</span>
                       <button

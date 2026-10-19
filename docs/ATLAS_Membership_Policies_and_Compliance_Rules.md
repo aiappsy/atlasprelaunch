@@ -10,7 +10,7 @@
 
 ## 1. Primary Corporate Governance & Legal Identity
 
-1. **Governing Entity**: All commercial transactions, supplier contracts, digital check-in vouchers, and membership agreements are legally issued and guaranteed exclusively by **HARD ROCK CAPITAL LTD**, incorporated in England & Wales under company registration number **16833237**.
+1. **Governing Entity**: All commeResort Allotment Networkal transactions, supplier contracts, digital check-in vouchers, and membership agreements are legally issued and guaranteed exclusively by **HARD ROCK CAPITAL LTD**, incorporated in England & Wales under company registration number **16833237**.
 2. **Founder & Executive Leadership**: The platform was founded and is directed by **Pål Juritzen** (phonetic: `"Paul Yur-it-zen"`). Direct executive contact: `paljuritzen@gmail.com` | `+47 40059493`.
 3. **Strictly Forbidden Corporate Names**: The platform does NOT operate under "Atlas Global AS" or "ATLAS VIP Platform Inc.". Any external correspondence or integration agreement must reference **HARD ROCK CAPITAL LTD**.
 4. **Closed-Loop Wholesale Arbitrage (The Costco Model)**:
@@ -42,7 +42,7 @@ For all other travel—including economy flights, 1-night budget stays, and car 
 2. If at the end of the 12-month membership year, the total combined net savings realized across all completed bookings do not exceed **€110 (1 290 NOK)**, ATLAS refunds 100% of the membership fee upon request.
 
 ### D. Anti-Exploitation Guardrails (Airline Margin Reality):
-1. **Economy Flights Carve-Out**: Commercial aviation operates on razor-thin net carrier margins (2% to 6%). ATLAS passes unbundled net fares with **0% markup**, saving members 8% to 14% (typically **€15 to €40 per ticket** in avoided GDS booking surcharges and baggage inflation). A member **CANNOT** claim an immediate €110 single-booking refund based on a single cheap €45 flight ticket. Flight savings accumulate toward the **Track B Cumulative Annual Savings** total.
+1. **Economy Flights Carve-Out**: CommeResort Allotment Networkal aviation operates on razor-thin net carrier margins (2% to 6%). ATLAS passes unbundled net fares with **0% markup**, saving members 8% to 14% (typically **€15 to €40 per ticket** in avoided GDS booking surcharges and baggage inflation). A member **CANNOT** claim an immediate €110 single-booking refund based on a single cheap €45 flight ticket. Flight savings accumulate toward the **Track B Cumulative Annual Savings** total.
 2. **Single 1-Night Budget Stays (< €100)**: Single-night stays under €100 (hostels, budget roadside motels) accumulate under Track B.
 3. **Canceled / No-Show Bookings**: Stays that are canceled, refunded by the supplier, or resulted in a guest no-show are ineligible for value claims.
 
@@ -64,20 +64,20 @@ Price comparisons must be verifiable on **Booking.com**, **Expedia**, or the hot
 2. **Automated Claim Engine**: Members submit claims via the dedicated digital portal (`RefundClaimModal`). The system automatically validates booking dates, calculates the savings deficit, generates a unique tracking ID (`VGB-CLAIM-xxxx`), and routes the claim to the verification queue.
 3. **Resolution SLA**: HARD ROCK CAPITAL LTD verifies claims within **2 business days (48 hours)**.
 4. **Stripe Payout**: Upon approval, a 100% refund of the €110 / 1 290 NOK membership dues is processed directly to the member's original payment card (clearing in 3 to 5 business days).
-5. **No Penalty Retention**: Members who exercise the guarantee **retain their earned Rewards Vault points** and their complimentary **€480 Connex 3-Day European Hotel Break voucher**.
+5. **No Penalty Retention**: Members who exeResort Allotment Networkse the guarantee **retain their earned Rewards Vault points** and their complimentary **€480 European 3-Day Hotel Break voucher**.
 
 ---
 
 ## 4. VIP Member Privileges & Regulatory Frameworks
 
 ### A. Airport Lounge Network & Transit Copilot
-* **Lounge Coverage**: Direct digital access to 1,300+ VIP lounges across 140 countries (DragonPass / Priority Pass international network).
+* **Lounge Coverage**: Direct digital access to 1,300+ VIP lounges across 140 countries (VIP Lounge Pass / Priority Pass international network).
 * **Net Wholesale Pass Cost**: Available to members and their traveling companions at pure B2B net cost (**€22 to €28 per entry**, saving up to 60% vs. €45–€65 walk-up retail rates).
 * **Included Amenities**: Complimentary hot buffet dining, barista coffee, open bars with wines and spirits, quiet rest suites, private workstations, showers, and private high-speed Wi-Fi.
 * **Transit Copilot**: Real-time terminal navigation, boarding gate radar alerts, connection transfer time calculation, and nearest-lounge directions.
 
 ### B. Automated EU261 / UK261 Flight Disruption Cash Recovery
-* **Statutory Rights**: Under Regulation EC 261/2004 and UK261, commercial airline passengers are legally entitled to statutory non-taxable cash compensation for flight delays of 3+ hours, cancellations, or denied boarding:
+* **Statutory Rights**: Under Regulation EC 261/2004 and UK261, commeResort Allotment Networkal airline passengers are legally entitled to statutory non-taxable cash compensation for flight delays of 3+ hours, cancellations, or denied boarding:
   - Short-haul (< 1,500 km): **€250 per passenger**
   - Medium-haul (1,500–3,500 km): **€400 per passenger**
   - Long-haul (> 3,500 km): **€600 per passenger**
@@ -104,4 +104,4 @@ Price comparisons must be verifiable on **Booking.com**, **Expedia**, or the hot
 ---
 
 ## 5. Compliance Verification & Audit Trail
-All member transactions, digital certificate issuances, guarantee claims, and commission ledger movements are audited under English commercial law by HARD ROCK CAPITAL LTD. Members may inspect their personal data and transaction records at any time via the member portal in full compliance with UK GDPR and Data Protection Act 2018.
+All member transactions, digital certificate issuances, guarantee claims, and commission ledger movements are audited under English commeResort Allotment Networkal law by HARD ROCK CAPITAL LTD. Members may inspect their personal data and transaction records at any time via the member portal in full compliance with UK GDPR and Data Protection Act 2018.

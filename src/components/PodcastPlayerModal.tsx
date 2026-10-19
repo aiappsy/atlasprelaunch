@@ -28,7 +28,7 @@ export type PodcastTrackId =
   | 'deepdive'
   | 'lounges'
   | 'hotel-blueprint'
-  | 'connex'
+  | 'voucher'
   | 'flights'
   | 'delays'
   | 'commissions'
@@ -80,13 +80,13 @@ export const PODCAST_TRACKS: Record<PodcastTrackId, PodcastTrack> = {
       { time: 210, label: '03:30 — Zero Markup Model', desc: 'How ATLAS passes 100% of wholesale discounts to members' },
     ],
   },
-  connex: {
-    id: 'connex',
+  voucher: {
+    id: 'voucher',
     badge: 'European Hotel Break • 6 Min',
     durationLabel: '5:45 Duration',
     title: 'The Math Behind Zero-Euro Hotel Stays',
     description:
-      'How 1,500+ boutique and wellness retreats across Europe offer complimentary rooms via Connex Holiday Plus, while guests only settle published gourmet half-board.',
+      'How 1,500+ boutique and wellness retreats across Europe offer complimentary rooms via European Hospitality Allotment, while guests only settle published gourmet half-board.',
     audioSrc: '/audio/The_Math_Behind_Zero_Euro_Hotel_Stays.m4a?v=20261019',
     downloadFilename: 'The_Math_Behind_Zero_Euro_Hotel_Stays.m4a',
     chapters: [
@@ -105,7 +105,7 @@ export const PODCAST_TRACKS: Record<PodcastTrackId, PodcastTrack> = {
     audioSrc: '/audio/How_Flight_Middlemen_Inflate_Ticket_Prices.m4a?v=20261019',
     downloadFilename: 'How_Flight_Middlemen_Inflate_Ticket_Prices.m4a',
     chapters: [
-      { time: 0, label: '00:00 — The GDS Tax', desc: 'Why commercial airfares carry hidden distribution markups' },
+      { time: 0, label: '00:00 — The GDS Tax', desc: 'Why commeResort Allotment Networkal airfares carry hidden distribution markups' },
       { time: 100, label: '01:40 — Duffel NDC Architecture', desc: 'Direct carrier integration for net fares, seats, and bags' },
       { time: 220, label: '03:40 — Realistic Flight Savings', desc: 'Saving 5% to 14% on flights with zero platform markup' },
     ],
@@ -137,7 +137,7 @@ export const PODCAST_TRACKS: Record<PodcastTrackId, PodcastTrack> = {
     downloadFilename: 'Wholesale_Airport_Lounges_Without_Credit_Cards.m4a',
     chapters: [
       { time: 0, label: '00:00 — Unbundling Airport Logistics', desc: 'Why €500–€800 credit card fees are an unnecessary tax on travelers' },
-      { time: 70, label: '01:10 — DragonPass & Net Wholesale Entry', desc: 'Buying digital QR lounge passes at pure €24–€28 cost vs. €65 walk-up' },
+      { time: 70, label: '01:10 — VIP Lounge Pass & Net Wholesale Entry', desc: 'Buying digital QR lounge passes at pure €24–€28 cost vs. €65 walk-up' },
       { time: 130, label: '02:10 — Companion & Family Passes', desc: 'No markup on spouses and kids: identical wholesale pass pricing' },
       { time: 173, label: '02:53 — Duffel NDC Airline Ancillaries', desc: 'Fast-track security and priority boarding at raw airline cost' },
       { time: 220, label: '03:40 — Transit Copilot Layover Intelligence', desc: 'Departure gate radars and walking time calculations between gates' },
@@ -217,7 +217,7 @@ export const PODCAST_TRACKS: Record<PodcastTrackId, PodcastTrack> = {
       { time: 0, label: '00:00 — The Retail Travel Monopoly', desc: 'How public search engines and OTAs artificially inflate travel rates' },
       { time: 240, label: '04:00 — Institutional Bedbank Pipelines', desc: 'Hotelbeds, WebBeds, and the secret wholesale supply chain' },
       { time: 480, label: '08:00 — Price Parity Laws & The Legal Exemption', desc: 'Why password-protected closed-loop clubs bypass retail parity' },
-      { time: 720, label: '12:00 — Direct NDC Airline Integration', desc: 'Cutting out legacy GDS fees on commercial flights' },
+      { time: 720, label: '12:00 — Direct NDC Airline Integration', desc: 'Cutting out legacy GDS fees on commeResort Allotment Networkal flights' },
       { time: 960, label: '16:00 — Built-In Disruption & Protection', desc: 'Automated EU261 flight cash recovery and 100% Value Guarantee' },
       { time: 1140, label: '19:00 — The Founder Membership Advantage', desc: 'Free 3-day European hotel break for 2 and launch privileges' },
     ],
@@ -253,17 +253,17 @@ export const PODCAST_TRACKS_NO: Record<PodcastTrackId, PodcastTrack> = {
     downloadFilename: 'How_to_Bypass_Hidden_Hotel_Markups.m4a',
     chapters: [
       { time: 0, label: '00:00 — Prisparitetsklausuler', desc: 'Hvorfor Booking.com og Expedia har identiske priser' },
-      { time: 90, label: '01:30 — Den hemmelige grossistkanalen', desc: 'Hotelbeds og overskuddskapasitet bak passord' },
+      { time: 90, label: '01:30 — Den hemmelige grossistkanalen', desc: 'Grossist-bedbanks og overskuddskapasitet bak passord' },
       { time: 210, label: '03:30 — 0 kr påslag-modellen', desc: 'Slik viderefører ATLAS 100% av engrosrabatten' },
     ],
   },
-  connex: {
-    id: 'connex',
-    badge: 'Connex Velvære • 6 Min',
+  voucher: {
+    id: 'voucher',
+    badge: 'Hotellpass Velvære • 6 Min',
     durationLabel: '5:45 Varighet',
-    title: 'Sannheten om 0 kr rompris: Connex-modellen',
+    title: 'Sannheten om 0 kr rompris: Hotell-Allotment-Modellen',
     description:
-      'Hvordan over 1 500 boutique- og spahoteller i Europa gir bort rommet gratis gjennom Connex Holiday Plus, mens gjestene kun betaler hotellets faste gourmet-halvpensjon.',
+      'Hvordan over 1 500 boutique- og spahoteller i Europa gir bort rommet gratis gjennom European Hospitality Allotment, mens gjestene kun betaler hotellets faste gourmet-halvpensjon.',
     audioSrc: '/audio/The_Math_Behind_Zero_Euro_Hotel_Stays.m4a?v=20261019',
     downloadFilename: 'The_Math_Behind_Zero_Euro_Hotel_Stays.m4a',
     chapters: [
@@ -314,7 +314,7 @@ export const PODCAST_TRACKS_NO: Record<PodcastTrackId, PodcastTrack> = {
     downloadFilename: 'Wholesale_Airport_Lounges_Without_Credit_Cards.m4a',
     chapters: [
       { time: 0, label: '00:00 — Slutt på tvungne buffetpakker', desc: 'Hvorfor 5 000–8 000 kr i årsgebyr for kredittkort er unødvendig' },
-      { time: 70, label: '01:10 — DragonPass & rå nettopris', desc: 'Digitale loungebekreftelser til 250–320 kr vs. 650 kr i døren' },
+      { time: 70, label: '01:10 — VIP Lounge Pass & rå nettopris', desc: 'Digitale loungebekreftelser til 250–320 kr vs. 650 kr i døren' },
       { time: 130, label: '02:10 — Gjestepass til familie', desc: 'Null påslag på ledsagere: nøyaktig samme engrospris' },
       { time: 173, label: '02:53 — Duffel NDC flytilvalg', desc: 'Fast-track og prioritert ombordstigning til offisiell flypris' },
       { time: 220, label: '03:40 — Transit Copilot layover-radar', desc: 'Sanntids gatevarsler og gangtidsberegninger på store flyplasser' },
@@ -459,7 +459,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
       deepdive: 1253,
       lounges: 319,
       'hotel-blueprint': 373,
-      connex: 345,
+      voucher: 345,
       flights: 370,
       delays: 321,
       commissions: 308,
@@ -526,7 +526,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
       deepdive: 1253,
       lounges: 319,
       'hotel-blueprint': 373,
-      connex: 345,
+      voucher: 345,
       flights: 370,
       delays: 321,
       commissions: 308,
@@ -768,7 +768,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
               className="px-3 py-1.5 rounded-xl bg-neutral-900 border border-neutral-700 text-neutral-200 text-xs focus:border-amber-400 outline-none font-sans cursor-pointer"
             >
               <option value="summary">{isNorwegian ? 'Ep. 1: Hotellengros (6 min)' : 'Ep. 1: Wholesale Hotels (6 min)'}</option>
-              <option value="connex">{isNorwegian ? 'Ep. 2: Connex 0 kr rompris (6 min)' : 'Ep. 2: Connex €0 Room Rate (6 min)'}</option>
+              <option value="Hotellpass">{isNorwegian ? 'Ep. 2: 0 kr Rompris: Hotell-Allotments (6 min)' : 'Ep. 2: €0 Room Rate: Hotel Allotments (6 min)'}</option>
               <option value="flights">{isNorwegian ? 'Ep. 3: Duffel NDC Direktefly (6 min)' : 'Ep. 3: Duffel NDC Direct Flights (6 min)'}</option>
               <option value="delays">{isNorwegian ? 'Ep. 4: Automatisert EU261 (5 min)' : 'Ep. 4: Automated EU261 Telemetry (5 min)'}</option>
               <option value="lounges">{isNorwegian ? 'Ep. 5: Flyplasslounger (5 min)' : 'Ep. 5: Wholesale Airport Lounges (5 min)'}</option>

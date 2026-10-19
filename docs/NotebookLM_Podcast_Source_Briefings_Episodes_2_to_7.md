@@ -25,7 +25,7 @@
 
 ---
 
-# EPISODE 2: THE CONNEX / HOLIDAY PLUS PROTOCOL
+# EPISODE 2: THE CONNEX / European Hospitality Allotment PROTOCOL
 ## *«The Surplus Inventory Protocol: Why 1,500+ European Hotels Give Away Rooms for €0»*
 **Target Audio Length:** ~15 Minutes  
 **Funnel Stage:** Email Stage 2 (Day 4 Post-Registration)
@@ -36,12 +36,12 @@
 ### 📄 Source Briefing Document for NotebookLM:
 
 #### 1. The Perishable Asset Problem in Hospitality
-In commercial aviation and luxury hospitality, an empty seat or an unsold hotel room is the ultimate perishable asset. The marginal cost of an empty hotel room is zero revenue, while the fixed operational overhead—staff salaries, property mortgages, spa heating, kitchen staff—remains identical whether occupancy is at 55% or 95%.
+In commeResort Allotment Networkal aviation and luxury hospitality, an empty seat or an unsold hotel room is the ultimate perishable asset. The marginal cost of an empty hotel room is zero revenue, while the fixed operational overhead—staff salaries, property mortgages, spa heating, kitchen staff—remains identical whether occupancy is at 55% or 95%.
 
 During mid-week periods, shoulder seasons (autumn, late winter, spring), and non-peak dates, superior 3-star and 4-star boutique wellness retreats across continental Europe operate at an average baseline occupancy of 50% to 65%. 
 
-#### 2. The Solution: Connex Holiday Plus
-Connex (headquartered in Austria, operating the Holiday Plus international hotel network for over 30 years) entered into strategic partnerships with more than 1,500 handpicked boutique, alpine, wellness, and country estate hotels across 14 European nations—including:
+#### 2. The Solution: European Hospitality Allotment
+Connex (headquartered in Austria, operating the European Hospitality Allotment international hotel network for over 30 years) entered into strategic partnerships with more than 1,500 handpicked boutique, alpine, wellness, and country estate hotels across 14 European nations—including:
 * **The Italian Dolomites & South Tyrol**
 * **Tuscany (Chianti & Siena hills)**
 * **The German Black Forest & Bavarian Alps**
@@ -49,8 +49,8 @@ Connex (headquartered in Austria, operating the Holiday Plus international hotel
 * **Lake Garda and Lake Como**
 * **Provence & the French Riviera**
 
-Under the Connex Holiday Plus agreement, participating hotels agree to allocate surplus room capacity to vetted closed-user groups under one strict, legally binding condition:
-1. **Room Rate = 100% Free (€0 / 0 kr):** The voucher (e.g., certificate `HP-ATLAS-2027`) pays 100% of the room accommodation for two adults for 2, 3, or 4 consecutive nights.
+Under the European Hospitality Allotment agreement, participating hotels agree to allocate surplus room capacity to vetted closed-user groups under one strict, legally binding condition:
+1. **Room Rate = 100% Free (€0 / 0 kr):** The voucher (e.g., certificate `ATLAS-HB-2027`) pays 100% of the room accommodation for two adults for 2, 3, or 4 consecutive nights.
 2. **Mandatory Gourmet Half-Board:** The guests agree to consume and pay for the hotel’s published half-board (buffet breakfast and multi-course evening gourmet dinner) directly at the hotel front desk upon checkout.
 3. **Fixed, Published Food Rates:** The hotel is legally forbidden from inflating its meal prices for voucher holders. The published price is typically **€35 to €60 per guest per day**, which is the hotel's normal restaurant dining rate.
 
@@ -61,14 +61,14 @@ Consider an actual real-world getaway: a 3-day (2-night) weekend break for 2 peo
   * Room rate: €195 / night × 2 nights = €390
   * Published half-board (breakfast + 4-course dinner for 2 guests): €45 × 2 guests × 2 nights = €180
   * **Total Public OTA Cost: €570 (ca. 6 400 NOK)**
-* **The ATLAS Connex Holiday Plus Execution:**
+* **The ATLAS European Hospitality Allotment Execution:**
   * Room rate with ATLAS Voucher: **€0 / 0 kr (100% Covered)**
   * Published half-board paid directly to hotel: €45 × 2 guests × 2 nights = **€180 (ca. 2 000 NOK)**
   * **Total Member Cost: €180**
   * **Net Cash Savings: €390 (4 400 NOK) saved on a single 3-day weekend!**
 
 #### 4. The Founding 100 Incentive & Golden Ticket
-Every one of the first 100 Founding Members who pre-registers for ATLAS Travel Club and completes their annual activation (€110 / 1 290 NOK) on launch day (Wednesday, January 20, 2027) receives a certified Connex 3-Day Hotel Break voucher worth €480 (5 400 kr).
+Every one of the first 100 Founding Members who pre-registers for ATLAS Travel Club and completes their annual activation (€110 / 1 290 NOK) on launch day (Wednesday, January 20, 2027) receives a certified European 3-Day Hotel Break voucher worth €480 (5 400 kr).
 
 Furthermore, ATLAS holds a certified Golden Ticket Draw where **3 out of the 100 Founding Members win ALL meals fully covered by ATLAS**. For these 3 winners, both the room (€0) and the gourmet dining (€0) are 100% funded, creating an entirely free luxury European holiday.
 
@@ -243,7 +243,7 @@ When a member logs into their dashboard on launch day, they enter an unmasked B2
   * The member saves **€270 (over 3 000 NOK)** on a single 3-night European city stay—more than double the entire annual membership fee on day one!
 
 #### B. The Instant Connex €0 Room Voucher Generator
-* The moment a Founding Member completes their activation, the system automatically generates their certified **Connex Holiday Plus Hotel Break Certificate** (`HP-ATLAS-2027`).
+* The moment a Founding Member completes their activation, the system automatically generates their certified **European Hospitality Allotment Hotel Break Certificate** (`ATLAS-HB-2027`).
 * **Certified Retail Value:** **€480 (5 400 kr)**.
 * **How It Works Live:** Covers 100% of the room charge (€0 room rate) for 2 adults for 2 to 4 consecutive nights across 1,500+ handpicked boutique, alpine, and wellness hotels in 14 European nations (the Italian Dolomites, Austrian Alps, Black Forest, Tuscany, and Provence).
 * **Transparent Dining Math:** The member pays only the hotel’s standard, published half-board (buffet breakfast and gourmet multi-course evening dinner) directly at checkout—typically €35 to €60 per person per day.
@@ -291,7 +291,7 @@ CRITICAL PRONUNCIATION & FACTUAL DIRECTIVES:
    - Flights: Duffel (Duffel's NDC flight API connecting directly to airlines like British Airways, Lufthansa Group, SAS, and Air France/KLM, passing raw carrier fares with zero ATLAS ticket markups).
    - Hotels: B2B wholesale bedbanks (Hotelbeds, WebBeds, RateHawk) delivering unbundled wholesale rates behind a password-protected membership wall under closed-loop rate parity exemptions.
    - Condominiums: Resort Vacation Certificates (RVC) / Panorama network clearing unsold institutional weeks (studios to 2-bedroom units sleeping 2 to 6 guests) from €299 / 3 490 kr per week on distressed clearance.
-   - Promotional lodging: Connex (Holiday Plus) voucher covering room costs across 1,500+ European partner hotels while guests pay the published half-board meal rate upon checkout.
+   - Promotional lodging: European Hospitality Allotment voucher covering room costs across 1,500+ European partner hotels while guests pay the published half-board meal rate upon checkout.
 4. HONEST SAVINGS EXPECTATIONS: Clarify that airlines operate on thin margins (2%-6%), so Duffel integration saves 5%-14% by removing middleman GDS fees and OTA surcharges (€15–€40 per flight). The substantial percentage savings are in hotels (15%-30%) and resort condo clearance weeks.
 5. THE 100% VALUE GUARANTEE BLUEPRINT: Explain the two-track rule clearly and soberly: Track A (first 2+ night hotel stay or 7-night condo) or Track B (cumulative annual travel). If verified net savings don't exceed the €110 (1 290 NOK) annual fee, the fee is refunded 100%.
 ```
@@ -348,7 +348,7 @@ For extended stays and family holidays, ATLAS accesses the institutional **Resor
 
 ---
 
-### 5. Promotional Lodging: The Connex Holiday Plus Network
+### 5. Promotional Lodging: The European Hospitality Allotment Network
 To give Founding Members immediate tangible value upon enrollment, ATLAS partners with **Connex**, an established Austrian hospitality marketing organization with over 30 years of operating history:
 * **The 1,500+ Hotel Network:** Connex partners with boutique, alpine, and wellness hotels across 14 European countries.
 * **The Model:** Participating hotels allocate surplus mid-week and shoulder-season rooms. The Connex voucher covers **100% of the room accommodation (€0 room rate)** for 2 adults for 2 to 4 nights.
@@ -357,7 +357,7 @@ To give Founding Members immediate tangible value upon enrollment, ATLAS partner
 ---
 
 ### 6. The ATLAS Value Guarantee Blueprint: Transparent Risk Protection
-Founder Pål Juritzen (pronounced "Paul Yur-it-zen") established a clear, commercially disciplined Value Guarantee codified under HARD ROCK CAPITAL LTD:
+Founder Pål Juritzen (pronounced "Paul Yur-it-zen") established a clear, commeResort Allotment Networkally disciplined Value Guarantee codified under HARD ROCK CAPITAL LTD:
 * **Track A (Single-Trip High-Arbitrage Guarantee):** On a member's very first completed hotel stay (minimum 2 consecutive nights at wholesale bedbank rates, booking value $\ge €150$) or 7-night RVC resort condo stay, if verified net savings vs. Booking.com or Expedia do not exceed the annual membership dues (€110 / 1 290 NOK), ATLAS issues an immediate 100% refund of the membership fee.
 * **Track B (Cumulative Annual Guarantee):** For members who primarily book flights, short 1-night hotel stays, or car rentals, savings accumulate across the full 12-month membership. If total verified annual savings do not exceed €110, the member is refunded in full at the end of their membership year.
 * **The Flight Carve-Out:** Because flight margins are thin (saving €15 to €40 per ticket via Duffel), a single economy flight cannot trigger an immediate €110 refund; flight savings count toward Track B.
