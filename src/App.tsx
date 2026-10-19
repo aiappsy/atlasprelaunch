@@ -9,7 +9,7 @@ import { Footer } from './components/Footer';
 import { CrmDashboard } from './components/crm/CrmDashboard';
 import { CrmAuthGate } from './components/crm/CrmAuthGate';
 import { FounderCertificateModal, FounderCertificateData } from './components/FounderCertificateModal';
-import { PodcastPlayerModal } from './components/PodcastPlayerModal';
+import { PodcastPlayerModal, PodcastTrackId } from './components/PodcastPlayerModal';
 import { PrelaunchConcierge } from './components/PrelaunchConcierge';
 import { PerkExplainerModal, PerkExplainerTab } from './components/PerkExplainerModal';
 import { ComplianceModal } from './components/ComplianceModal';
@@ -26,7 +26,7 @@ export default function App() {
   const [isCrmAuthenticated, setIsCrmAuthenticated] = useState<boolean>(false);
   const [isWaitlistOpen, setIsWaitlistOpen] = useState<boolean>(false);
   const [isPodcastOpen, setIsPodcastOpen] = useState<boolean>(false);
-  const [podcastTrack, setPodcastTrack] = useState<'summary' | 'deepdive'>('summary');
+  const [podcastTrack, setPodcastTrack] = useState<PodcastTrackId>('summary');
   const [isPerkExplainerOpen, setIsPerkExplainerOpen] = useState<boolean>(false);
   const [perkExplainerTab, setPerkExplainerTab] = useState<PerkExplainerTab>('connex');
   const [isComplianceOpen, setIsComplianceOpen] = useState<boolean>(false);
@@ -145,6 +145,29 @@ export default function App() {
         setViewMode('crm');
       } else {
         setViewMode('site');
+      }
+
+      // Check for deep-linked podcast or perk parameters
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const podcastParam = urlParams.get('podcast');
+        if (podcastParam) {
+          const validTracks: PodcastTrackId[] = [
+            'summary', 'deepdive', 'lounges', 'hotel-blueprint', 'connex',
+            'flights', 'delays', 'commissions', 'resorts', 'guarantee', 'launch'
+          ];
+          if (validTracks.includes(podcastParam as PodcastTrackId)) {
+            setPodcastTrack(podcastParam as PodcastTrackId);
+            setIsPodcastOpen(true);
+          }
+        }
+        const perkParam = urlParams.get('perk');
+        if (perkParam === 'connex' || perkParam === 'rvc' || perkParam === 'lounges') {
+          setPerkExplainerTab(perkParam as PerkExplainerTab);
+          setIsPerkExplainerOpen(true);
+        }
+      } catch (err) {
+        console.warn('URL param parse error:', err);
       }
     };
     checkRoute();
