@@ -386,13 +386,13 @@ export const PrelaunchConcierge: React.FC<PrelaunchConciergeProps> = ({
             followUps: isNorwegian
               ? [
                   'Hva inkluderer det gratis hotelloppholdet?',
-                  'Hva er ferieleiligheter til 3 490 kr?',
+                  'Hva er ferieleiligheter fra 3 490 kr?',
                   'Hva koster medlemskapet ved lansering?',
                   'Hva er 100% verdigarantien?',
                 ]
               : [
                   'What is included in the free hotel stay?',
-                  'What are 7-night condo stays for €299 (3 490 kr)?',
+                  'What are 7-night condo stays from €299 (3 490 kr)?',
                   'What are the annual membership fees?',
                   'What is the 100% value guarantee?',
                 ],

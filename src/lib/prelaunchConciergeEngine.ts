@@ -809,7 +809,7 @@ Atlas connects directly to major commercial airlines (including British Airways,
 
       if (isNorwegian) {
         return {
-          text: `🏖️ **Atlas Signature Resorts — 7 Netters Ferieleiligheter:**\n\nGjennom lukkede avtaler om overskuddskapasitet (RCI/Panorama-nettverket) får medlemmer tilgang til romslige ferieleiligheter til fast lavpris:\n\n• **Fast totalpris**: Kun **3 490 NOK** for **7 sammenhengende netter** (ingen per-person eller per-døgn gebyrer!).\n• **Plass til familien**: 1–2 soveromssuiter med fullt kjøkken og stue – plass til **opptil 4–6 personer**.\n• **Førsteklasses destinasjoner**: Marbella (Spania), Tenerife (Kanariøyene), Algarve (Portugal), Kreta (Hellas), Toscana (Italia) og Mallorca.\n• **100% Trygghet**: 14 dagers ubetinget angrefrist med full refusjon om du ikke finner ønsket uke.\n• **Ingen pakkereiselås**: Du bestiller kun oppholdet, og finner egne flybilletter til nettopris.`,
+          text: `🏖️ **Atlas Signature Resorts — 7 Netters Ferieleiligheter:**\n\nGjennom lukkede avtaler om overskuddskapasitet (RCI/Panorama-nettverket) får medlemmer tilgang til romslige ferieleiligheter til restplasspriser:\n\n• **Restplasspriser**: Fra kun **3 490 NOK (€299)** for **7 sammenhengende netter** ved clearance (ingen per-person eller per-døgn gebyrer!).\n• **Varierte enheter**: Fra studioleiligheter til 1- og 2-roms suiter med kjøkken og stue – plass til **2 til 6 personer** (avhengig av leilighetsstørrelse og sesong).\n• **Førsteklasses destinasjoner**: Marbella (Spania), Tenerife (Kanariøyene), Algarve (Portugal), Kreta (Hellas), Toscana (Italia) og Mallorca.\n• **100% Trygghet**: 14 dagers ubetinget angrefrist med full refusjon om du ikke finner ønsket uke.\n• **Ren frihet**: Du bestiller oppholdet separat og kombinerer med egne flybilletter til nettopris (0 kr påslag).`,
           action: 'open_waitlist',
           actionLabel: `Reserver Founding Member-plass (${p.formattedFounding})`,
           followUps: [
@@ -821,14 +821,14 @@ Atlas connects directly to major commercial airlines (including British Airways,
       }
 
       return {
-        text: `🏖️ **Atlas Signature Resorts — 7-Night Whole Condo Stays:**\n\nThrough private liquidation agreements with the RCI/Panorama network, Atlas members access spacious vacation condos at a flat clearance rate:\n\n• **Flat Weekly Rate**: Just **€299** (3 490 kr) for **7 consecutive nights** (zero per-person fees, zero daily rates!).\n• **Sleeps Up to 4–6**: 1–2 bedroom suites with full kitchens, dining and living areas.\n• **Top Tier Destinations**: Marbella (Costa del Sol), Tenerife (Canary Islands), Algarve (Portugal), Crete (Greece), Tuscany (Italy), and Mallorca.\n• **100% Peace of Mind**: 14-day money-back guarantee if you don't find a matching week.\n• **Pure Freedom**: Self-directed accommodation—book flights separately at net wholesale rates with zero markup.`,
-        action: 'open_waitlist',
-        actionLabel: `Reserve Founding Spot (${p.formattedFounding})`,
-        followUps: [
-          'What is Gourmet & Spa Escapes (€0 room rate)?',
-          'Can I test for free with zero commitment?',
-          'How does wholesale hotel pricing work?',
-        ],
+        text: `🏖️ **Atlas Signature Resorts — 7-Night Condominium Stays:**\n\nThrough private liquidation agreements with the RCI/Panorama network, Atlas members access spacious vacation condominiums at clearance rates:\n\n• **Clearance Pricing**: From just **€299** (3 490 kr) for **7 consecutive nights** on last-minute clearance weeks (zero per-person surcharges!).\n• **Diverse Accommodations**: Ranging from studio suites to 1- and 2-bedroom condominium apartments with full kitchens and living areas—sleeping **2 to 6 guests** (pricing and availability vary by unit size and season).\n• **Top Tier Destinations**: Marbella (Costa del Sol), Tenerife (Canary Islands), Algarve (Portugal), Crete (Greece), Tuscany (Italy), and Mallorca.\n• **100% Peace of Mind**: 14-day money-back guarantee if you do not find a matching week.\n• **Pure Freedom**: Self-directed accommodation—book flights separately at net wholesale rates with zero markup.`,
+          action: 'open_waitlist',
+          actionLabel: `Reserve Founding Spot (${p.formattedFounding})`,
+          followUps: [
+            'What is Gourmet & Spa Escapes (€0 room rate)?',
+            'Can I test for free with zero commitment?',
+            'How does wholesale hotel pricing work?',
+          ],
       };
     },
   },
@@ -909,12 +909,12 @@ Den offisielle lanseringen åpner **onsdag 20. januar 2027 kl. 10:00**!
 
 Du kan **reservere din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig**. De første 100 medlemmene mottar et **gratis 3-dagers luksushotellopphold for to (verdi 5 400 kr / ca. €480)** og sjansen til å vinne all mat dekket!
 
-Jeg kan også forklare lukkede engrospriser på hotell, våre **7-netters ferieleiligheter til 3 490 kr (€299)**, eller **0 kr i rompris (Connex)**. Hva vil du vite mer om?`,
+Jeg kan også forklare lukkede engrospriser på hotell, våre **7-netters ferieleiligheter fra 3 490 kr (€299)**, eller **0 kr i rompris (Connex)**. Hva vil du vite mer om?`,
       action: 'open_waitlist' as const,
       actionLabel: 'Reserver plass gratis (Uten kort)',
       followUps: [
         'Hva inkluderer det gratis hotelloppholdet?',
-        'Hva er ferieleiligheter til 3 490 kr?',
+        'Hva er ferieleiligheter fra 3 490 kr?',
         'Hva skjer når dørene åpner 20. januar?',
         'Hvordan fungerer engrospriser på hotell?',
         'Hva er 100% verdigarantien?',
@@ -929,12 +929,12 @@ Our official launch opens on **Wednesday, January 20, 2027 at 10:00 AM CET**!
 
 You can **reserve your Founding Member spot today for free, no credit card necessary**. The first 100 Founding Members receive a **complimentary 3-day European hotel stay for two (worth €480)** and entry into the draw where 3 of 100 win all meals covered!
 
-I can also explain how wholesale bedbank pricing works, our **7-night vacation condos for €299 (3 490 kr)**, or **€0 room rates (Connex)**. What can I help you with today?`,
+I can also explain how wholesale bedbank pricing works, our **7-night vacation condos from €299 (fra 3 490 kr)**, or **€0 room rates (Connex)**. What can I help you with today?`,
     action: 'open_waitlist' as const,
     actionLabel: 'Reserve Free Spot (No Card Needed)',
     followUps: [
       'What is included in the free hotel stay?',
-      'What are 7-night condo stays for €299 (3 490 kr)?',
+      'What are 7-night condo stays from €299 (3 490 kr)?',
       'What happens on Launch Day January 20?',
       'How does wholesale hotel pricing work?',
       'What is the 100% money-back guarantee?',

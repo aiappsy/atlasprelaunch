@@ -203,17 +203,17 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
   // =========================================================================
   {
     id: 'email_3_rvc_condos',
-    stageName: 'Trinn 3: 7 netters leiligheter til 3 490 kr',
+    stageName: 'Trinn 3: 7 netters ferieleiligheter fra 3 490 kr',
     scheduledTiming: '9 dager etter registrering',
-    subjectNo: '🏖️ 7 netter i Marbella eller Tenerife for 3 490 kr? Her er beviset.',
-    subjectEn: '🏖️ 7 nights in Marbella or Tenerife for €299 (3 490 kr)? Here is the proof.',
+    subjectNo: '🏖️ 7 netter i Marbella eller Tenerife fra 3 490 kr? Her er beviset.',
+    subjectEn: '🏖️ 7 nights in Marbella or Tenerife from €299 (fra 3 490 kr)? Here is the proof.',
     preheaderNo: 'Slik sparer en familie over 15 000 kr på én eneste ukesferie med ATLAS.',
     preheaderEn: 'How a family saves over €1,300 (15,000 NOK) on a single summer vacation with ATLAS.',
-    podcastTitleNo: 'Episode 3: «Resort-smutthullet: 7-netters ferieleiligheter til fastpris 3 490 kr»',
-    podcastTitleEn: 'Episode 3: "The Private Resort Clearance: 7-Night 4-Star Condos for Flat €299"',
+    podcastTitleNo: 'Episode 3: «Resort-smutthullet: 7-netters ferieleiligheter fra kun 3 490 kr»',
+    podcastTitleEn: 'Episode 3: "The Private Resort Clearance: 7-Night Condominiums from €299 (fra 3 490 kr)"',
     podcastDuration: '14:18 min',
-    podcastDescriptionNo: 'Slik fyller RVC- og Panorama-nettverket ledige 1–2 soveromssuiter for barnefamilier i Spania, Hellas og Italia til 83 kr per person/natt.',
-    podcastDescriptionEn: 'Inside the RVC/Panorama network surplus clearance, offering 1-2 bedroom condominium apartments for up to 6 guests at a flat weekly fee.',
+    podcastDescriptionNo: 'Slik fyller RVC- og Panorama-nettverket ledige studioer, 1- og 2-romssuiter for 2–6 personer i Spania, Hellas og Italia fra 3 490 kr ved restplass/clearance.',
+    podcastDescriptionEn: 'Inside the RVC/Panorama network surplus clearance, offering studio, 1- and 2-bedroom condominium suites for 2 to 6 guests starting from €299 on last-minute clearance.',
     podcastUrl: 'https://atlasprelaunch.web.app?podcast=summary',
     getHtmlContent: (ctx) => `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #f5f5f5; border: 1px solid #d4af3740; border-radius: 16px; overflow: hidden;">
@@ -224,7 +224,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
         <div style="padding: 32px;">
           <h2 style="font-size: 20px; color: #f3f4f6; margin-top: 0;">Hei, ${ctx.fullName}.</h2>
           <p style="font-size: 14px; line-height: 1.6; color: #d1d5db;">
-            Hva betaler en typisk familie for en 2-roms ferieleilighet med svømmebasseng og kjøkken i Marbella, Algarve eller Tenerife i ferien?
+            Hva betaler en typisk familie for en ferieleilighet (fra studio til 2-roms) med svømmebasseng og kjøkken i Marbella, Algarve eller Tenerife i ferien?
           </p>
           <p style="font-size: 14px; line-height: 1.6; color: #d1d5db;">
             På Booking.com eller Airbnb ligger prisen vanligvis mellom <strong>16 000 kr og 24 000 kr (€1 400–€2 100) for én uke</strong>.
@@ -232,8 +232,8 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
 
           <div style="background: #171717; border: 1px solid #38bdf840; border-radius: 12px; padding: 20px; margin: 24px 0;">
             <div style="font-size: 11px; font-family: monospace; color: #38bdf8; text-transform: uppercase; font-weight: bold;">Atlas Signature Resorts (RVC / Panorama)</div>
-            <div style="font-size: 22px; font-weight: bold; color: #ffffff; margin: 6px 0;">Fast pris: 3 490 NOK (€299) for alle 7 netter</div>
-            <div style="font-size: 13px; color: #9ca3af; margin-bottom: 12px;">Ingen per-person tillegg • Plass til opptil 4–6 personer • Fullt utstyrt kjøkken og stue</div>
+            <div style="font-size: 22px; font-weight: bold; color: #ffffff; margin: 6px 0;">Fra kun 3 490 NOK (€299) for alle 7 netter</div>
+            <div style="font-size: 13px; color: #9ca3af; margin-bottom: 12px;">Restplass / clearance • Studio, 1- og 2-roms leiligheter for 2–6 personer • Kjøkken og stue</div>
             
             <div style="font-size: 13px; color: #34d399; font-weight: bold; border-top: 1px solid #262626; padding-top: 12px;">
               = Kun 83 kr (€7) per person per natt for hele familien!
@@ -246,7 +246,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
               🎧 Podcast Episode 3 Inkludert (14:18 min)
             </div>
             <div style="font-size: 13px; font-weight: bold; color: #ffffff; margin-bottom: 6px;">
-              «Resort-smutthullet: 7-netters ferieleiligheter til fastpris 3 490 kr»
+              «Resort-smutthullet: 7-netters ferieleiligheter fra kun 3 490 kr»
             </div>
             <div style="font-size: 12px; color: #9ca3af; line-height: 1.4; margin-bottom: 12px;">
               Hør hvordan overskuddskapasitet i tusenvis av private ferieleiligheter og resortanlegg gjøres tilgjengelig til faste rydningspriser uten omveier via pakkereisegiganter.

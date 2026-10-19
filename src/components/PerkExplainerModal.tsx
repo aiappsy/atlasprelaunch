@@ -192,7 +192,7 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
             }`}
           >
             <Palmtree className="w-4 h-4" />
-            <span>{isNorwegian ? 'RVC: 7 Netter (3 490 kr)' : 'RVC: 7 Nights (€299)'}</span>
+            <span>{isNorwegian ? 'RVC: 7 Netter (fra 3 490 kr)' : 'RVC: 7 Nights (from €299)'}</span>
           </button>
         </div>
 
@@ -329,7 +329,7 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
           <div className="space-y-6">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs font-mono font-bold mb-2">
-                <span>{isNorwegian ? '🏖️ Fast Clearance-pris for hele familien' : '🏖️ Flat Clearance Rate for the Whole Family'}</span>
+                <span>{isNorwegian ? '🏖️ Clearance-priser fra kun 3 490 kr' : '🏖️ Clearance Rates from €299'}</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-cinzel font-bold text-white flex items-center gap-2">
                 <span>🏖️</span>
@@ -337,20 +337,20 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
               </h3>
               <p className="text-xs sm:text-sm text-neutral-300 mt-1 leading-relaxed">
                 {isNorwegian
-                  ? 'Gjennom overskuddsallokeringer fra RCI / Panorama får ATLAS-medlemmer tilgang til romslige ferieleiligheter (1–2 soverom, fullt utstyrt kjøkken, stue og svømmebasseng) for opptil 4–6 personer til en fast lavpris for alle 7 nettene.'
-                  : 'Through liquidation allotments via the RCI / Panorama network, ATLAS members unlock spacious whole-condo accommodations (1-2 bedrooms, full kitchen, living room, pool access) for up to 4-6 guests at a flat clearance rate for the whole week.'}
+                  ? 'Gjennom overskuddsallokeringer fra RCI / Panorama får ATLAS-medlemmer tilgang til romslige ferieleiligheter (fra studio til 1- og 2-roms suiter med kjøkken og stue) for 2–6 personer til restplasspriser fra kun 3 490 kr for alle 7 nettene.'
+                  : 'Through liquidation allotments via the RCI / Panorama network, ATLAS members unlock spacious vacation condos (studios, 1- and 2-bedroom suites with kitchens and living areas) sleeping 2 to 6 guests at clearance rates starting from €299 for the entire week.'}
               </p>
             </div>
 
             {/* Core RVC Perks Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs font-mono">
               <div className="p-3 rounded-xl bg-neutral-900 border border-neutral-800 text-center">
-                <span className="text-[10px] text-neutral-400 block">{isNorwegian ? 'Totalpris for 7 Netter' : 'Flat Weekly Rate'}</span>
-                <span className="text-base font-bold text-amber-300">{isNorwegian ? '3 490 NOK' : '€299'}</span>
+                <span className="text-[10px] text-neutral-400 block">{isNorwegian ? '7 Netter (fra-pris)' : '7 Nights (From)'}</span>
+                <span className="text-base font-bold text-amber-300">{isNorwegian ? 'Fra 3 490 NOK' : 'From €299'}</span>
               </div>
               <div className="p-3 rounded-xl bg-neutral-900 border border-neutral-800 text-center">
                 <span className="text-[10px] text-neutral-400 block">{isNorwegian ? 'Plass til' : 'Capacity'}</span>
-                <span className="text-base font-bold text-emerald-400">{isNorwegian ? '4–6 Personer' : '4–6 Guests'}</span>
+                <span className="text-base font-bold text-emerald-400">{isNorwegian ? '2–6 Personer' : '2–6 Guests'}</span>
               </div>
               <div className="p-3 rounded-xl bg-neutral-900 border border-neutral-800 text-center col-span-2 sm:col-span-1">
                 <span className="text-[10px] text-neutral-400 block">{isNorwegian ? 'Trygghet' : 'Peace of Mind'}</span>
@@ -422,9 +422,9 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
                 <div className="flex justify-between items-center text-neutral-300">
                   <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>{isNorwegian ? 'ATLAS Fast Totalpris (7 netter):' : 'ATLAS Flat Weekly Rate (7 nights):'}</span>
+                    <span>{isNorwegian ? 'ATLAS Restplasspris (7 netter):' : 'ATLAS Clearance Rate (7 nights):'}</span>
                   </span>
-                  <span className="text-emerald-400 font-black text-sm">{isNorwegian ? '3 490 NOK' : '€299 total'}</span>
+                  <span className="text-emerald-400 font-black text-sm">{isNorwegian ? 'Fra 3 490 NOK' : 'From €299'}</span>
                 </div>
                 <div className="flex justify-between items-center text-neutral-400">
                   <span>{isNorwegian ? `Pris per person per natt (${rvcGuests} personer):` : `Cost per guest per night (${rvcGuests} guests):`}</span>

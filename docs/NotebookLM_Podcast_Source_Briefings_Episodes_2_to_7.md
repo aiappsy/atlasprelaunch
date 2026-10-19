@@ -1,9 +1,18 @@
 # ATLAS TRAVEL CLUB — NOTEBOOKLM AUDIO SOURCE BRIEFINGS
 **Master Research Briefings for Automated NotebookLM Audio Overviews (Episodes 2 – 7)**
 *Entity: HARD ROCK CAPITAL LTD (UK Company #16833237)*  
-*Founder & Executive Director: Pål Juritzen*  
+*Founder & Executive Director: Pål Juritzen (pronounced: "Paul Yur-it-zen")*  
 *Launch Date: Wednesday, January 20, 2027 at 10:00 AM CET*  
-*Base Membership: €110 / year (1 290 NOK / år) • 0 kr Retail Markup*
+*Base Membership: €110 / year (1 290 NOK / år) • 0 kr Retail Markup • 100% Value Guarantee*
+
+---
+
+> ### 🎙️ CRITICAL HOST PRONUNCIATION & FACTUAL GUARDRAILS (ALL EPISODES):
+> 1. **Founder Name Pronunciation**: The founder's name is **Pål Juritzen**, which is strictly pronounced by hosts as **"Paul Yur-it-zen"** (phonetic: `Pawl Yoo-rit-sen`). AI co-hosts MUST NEVER say "Pal" (like buddy) and MUST NEVER pronounce Juritzen with a hard English "J". Always refer to him as "Founder Paul Yur-it-zen (spelled Pål Juritzen)".
+> 2. **Apartment Types & Sizes**: Accommodations range from **studio suites to 1-bedroom and 2-bedroom vacation condominium apartments** (sleeping 2 to 6 guests depending on unit size and resort availability). Co-hosts MUST NOT state that it is always a 2-bedroom unit!
+> 3. **Condo Pricing**: Pricing is **FROM €299 / 3 490 kr (fra 3 490 kr)** for a full 7-night week when booking **last-minute clearance / distressed inventory weeks**. Pricing varies by season, unit size, and booking window. Co-hosts MUST NOT say the price is always €299!
+> 4. **Strict Terminology**: Strictly DO NOT use the term "timeshare" anywhere. These properties are serviced resort condominiums and vacation residences.
+> 5. **Zero RGF**: Never mention RGF or Reisegarantifondet. ATLAS does not sell package tours; ATLAS provides raw wholesale technology access with a 100% Value Guarantee.
 
 ---
 
@@ -21,7 +30,7 @@
 **Funnel Stage:** Email Stage 2 (Day 4 Post-Registration)
 
 ### 🎙️ NotebookLM Host Direction Prompt:
-> *"Adopt the tone of two investigative travel journalists and financial forensic analysts examining the European boutique hotel industry. Focus on the counter-intuitive economics of 'surplus capacity' and explain why 1,500+ four-star wellness hotels in the Alps, Tuscany, and the Black Forest willingly give away 100% free lodging (€0 room rate) to private club members. Break down the transparent math of the half-board model (€35–€60/day for gourmet breakfast and multi-course dinner), compare it to Booking.com's public prices, and emphasize how ATLAS operates this as an unbundled benefit with zero corporate markup."*
+> *"Adopt the tone of two investigative travel journalists and financial forensic analysts examining the European boutique hotel industry. PRONUNCIATION: Founder Pål Juritzen is strictly pronounced as 'Paul Yur-it-zen'. Focus on the counter-intuitive economics of 'surplus capacity' and explain why 1,500+ four-star wellness hotels in the Alps, Tuscany, and the Black Forest willingly give away 100% free lodging (€0 room rate) to private club members. Break down the transparent math of the half-board model (€35–€60/day for gourmet breakfast and multi-course dinner), compare it to Booking.com's public prices, and emphasize how ATLAS operates this as an unbundled benefit with zero corporate markup."*
 
 ### 📄 Source Briefing Document for NotebookLM:
 
@@ -65,30 +74,30 @@ Furthermore, ATLAS holds a certified Golden Ticket Draw where **3 out of the 100
 ---
 
 # EPISODE 3: THE RVC VACATION CERTIFICATE SECRET
-## *«The Private Resort Clearance: 7-Night 4-Star Condos for Flat €299»*
+## *«The Private Resort Clearance: 7-Night Condominiums from €299 (fra 3 490 kr)»*
 **Target Audio Length:** ~14 Minutes  
 **Funnel Stage:** Email Stage 3 (Day 9 Post-Registration)
 
 ### 🎙️ NotebookLM Host Direction Prompt:
-> *"Take an energetic, conversational podcast approach examining the vacation condominium and serviced resort residence industry. Demystify the multi-billion-dollar Panorama/RVC resort network and explain how unbooked institutional resort allocations end up in clearance liquidation. Explain how ATLAS secures whole 1-to-2 bedroom resort apartments sleeping 4 to 6 people in top family destinations (Marbella, Tenerife, Crete, Algarve) for a flat total of €299 (3 490 kr) for the entire week with zero per-person surcharges. Contrast this with Booking.com and Airbnb prices, and emphasize that guests check in as independent private club VIPs with zero sales presentations or ownership meetings."*
+> *"Take an energetic, conversational podcast approach examining the vacation condominium and serviced resort residence industry. CRITICAL DIRECTIVES: 1) Pronounce Founder Pål Juritzen strictly as 'Paul Yur-it-zen'. 2) Note that accommodations are NOT always 2-bedroom units—they range from studio suites to 1-bedroom and 2-bedroom condominium apartments sleeping 2 to 6 guests. 3) Note that pricing is NOT always €299; it starts FROM €299 / 3 490 kr (fra 3 490 kr) for a full 7-night week when booking last-minute clearance / distressed inventory weeks (pricing varies by season, advance notice, and unit size). 4) Strictly DO NOT use the word timeshare. Demystify how unbooked institutional resort inventory enters liquidation clearance, contrast with Booking.com and Airbnb prices, and explain that guests check in as independent private club VIPs with zero sales presentations or ownership pitches."*
 
 ### 📄 Source Briefing Document for NotebookLM:
 
 #### 1. The Serviced Resort Residence Clearance Model
-Across Europe and the Mediterranean, premier resort communities operate large portfolios of fully equipped 1- and 2-bedroom vacation condominium residences. While these properties are maintained year-round with full resort infrastructure—including heated swimming pools, fitness centers, tennis courts, on-site supermarkets, and restaurants—thousands of unbooked institutional weeks enter clearance during the 60- to 180-day liquidation window before check-in.
+Across Europe and the Mediterranean, premier resort communities operate large portfolios of fully equipped serviced vacation condominium residences—ranging from **cozy studio apartments to 1-bedroom and 2-bedroom residential suites**. While these properties are maintained year-round with full resort infrastructure—including heated swimming pools, fitness centers, tennis courts, on-site supermarkets, and restaurants—thousands of unbooked institutional weeks enter clearance during the liquidation window before check-in.
 
 Resort operators cannot afford to leave these residential suites unoccupied. An empty apartment generates zero revenue at the resort’s dining, wellness, and recreation facilities, while the property’s fixed operational overhead remains completely unchanged.
 
 #### 2. The Resort Vacation Certificate (RVC) Clearance Network
 Through direct liquidation agreements with the global Panorama / RVC institutional network, ATLAS accesses **Resort Vacation Certificates (RVC)**:
 * **Format:** Whole 7-night consecutive stays (check-in Friday, Saturday, or Sunday).
-* **Accommodations:** Full private condominium apartments featuring 1 or 2 private bedrooms, full kitchen (refrigerator, stove, oven, cookware), dining area, spacious living room with pull-out sofa, and private terrace/balcony.
-* **Capacity:** Comfortably accommodates **4 to 6 guests** (families or travel couples).
-* **Price:** A single, flat clearance rate of **€299 / 3 490 NOK for the ENTIRE 7 nights**.
+* **Accommodations:** Full private condominium apartments ranging from **studio suites to 1-bedroom and 2-bedroom units** (featuring kitchen facilities, dining area, living room, and private terrace/balcony).
+* **Capacity:** Accommodates **2 to 6 guests** depending on apartment layout and resort availability. (It is not always a 2-bedroom apartment; units are selected based on member party size and inventory availability).
+* **Pricing Nuance:** Clearance pricing starts **FROM €299 / 3 490 NOK for the ENTIRE 7 nights** when booking last-minute clearance / distressed inventory weeks. (Rates vary by season, unit size, and booking window; clearance inventory provides unprecedented value compared to open retail channels).
 
 #### 3. Critical Consumer Clarifications
 * **Zero Sales Meetings or Ownership Pitches:** These liquidation units are clean institutional excess allocations. Members are NOT subject to sales presentations, breakfast seminars, or ownership pitches. They check in with an official corporate guest confirmation voucher just like any independent VIP hotel guest.
-* **Zero Per-Person Surcharges:** The price is strictly per condo, not per guest. A family of 4 pays €299 total, which equates to **€10.67 (ca. 120 NOK) per person per night**.
+* **Zero Per-Person Surcharges:** The price is strictly per condominium unit, not per guest. When booking a clearance week starting from €299, a family of 4 pays just **€10.67 (ca. 120 NOK) per person per night** for the entire week.
 * **Prime Coastal Destinations:** Inventory covers major European vacation hotspots including:
   * Marbella, Fuengirola & Costa del Sol (Spain)
   * Tenerife, Gran Canaria & Lanzarote (Canary Islands)
@@ -98,11 +107,11 @@ Through direct liquidation agreements with the global Panorama / RVC institution
 * **14-Day Money-Back Guarantee:** If a member redeems an RVC certificate and cannot find a week or destination that fits their schedule within 14 days, ATLAS provides a 100% unconditional refund.
 
 #### 4. The Family Economics Case Study
-A Norwegian or British family of four booking a 2-bedroom self-catering apartment in Marbella for 7 nights in June:
+A family of four booking a 2-bedroom serviced condominium apartment in Marbella for 7 nights during a clearance period:
 * **Booking.com / Airbnb Public Price:** €1,650 to €2,300 (18 500 kr – 26 000 kr)
-* **ATLAS RVC Clearance Condo:** €299 (3 490 kr)
+* **ATLAS RVC Clearance Condo:** From €299 (fra 3 490 kr)
 * **Direct Flight via ATLAS (Duffel NDC 0% markup):** €720 (8 000 kr for 4 return tickets)
-* **Total Vacation Accommodation + Flight via ATLAS:** €1,019
+* **Total Vacation Accommodation + Flight via ATLAS:** From €1,019
 * **Public Retail Cost for Same Trip:** €2,600+
 * **Net Family Savings:** **€1,580+ (over 17 000 NOK saved)** on a single family summer getaway.
 
@@ -114,7 +123,7 @@ A Norwegian or British family of four booking a 2-bedroom self-catering apartmen
 **Funnel Stage:** Email Stage 4 (Day 16 Post-Registration)
 
 ### 🎙️ NotebookLM Host Direction Prompt:
-> *"Act as deep-dive financial investigative hosts uncovering how the travel agency commission model works. Expose how cruise lines (Royal Caribbean, Celebrity, MSC, Norwegian Cruise Line) and luxury hotel consortia pay 10% to 16% backend commissions to retail intermediaries, while the public assumes agencies work 'for free'. Contrast traditional travel agents (who pocket this commission as profit) with ATLAS Travel Club's pure Costco model, which rebates 100% of these commissions directly back to the member via the Rewards Vault. Explain the 30-60 day post-travel escrow settlement rule transparently."*
+> *"Act as deep-dive financial investigative hosts uncovering how the travel agency commission model works. PRONUNCIATION: Founder Pål Juritzen is strictly pronounced as 'Paul Yur-it-zen'. Expose how cruise lines (Royal Caribbean, Celebrity, MSC, Norwegian Cruise Line) and luxury hotel consortia pay 10% to 16% backend commissions to retail intermediaries, while the public assumes agencies work 'for free'. Contrast traditional travel agents (who pocket this commission as profit) with ATLAS Travel Club's pure Costco model, which rebates 100% of these commissions directly back to the member via the Rewards Vault. Explain the 30-60 day post-travel escrow settlement rule transparently."*
 
 ### 📄 Source Briefing Document for NotebookLM:
 
@@ -153,7 +162,7 @@ For non-commissionable travel (flights and wholesale hotels), ATLAS utilizes dir
 **Funnel Stage:** Email Stage 5 (Wednesday, January 13, 2027 — 7 Days Before Launch)
 
 ### 🎙️ NotebookLM Host Direction Prompt:
-> *"Produce a fast-paced, highly informative tactical preview episode. Discuss the upcoming official launch of ATLAS Travel Club on Wednesday, January 20, 2027 at 10:00 AM CET. Walk the listener through exactly what happens when the portal opens, how the 48-hour claim window works, how the first 100 Founding Members claim their €480 hotel voucher, and why there is a 100% value-back guarantee if members don't save more than the €110 membership fee on their first trip."*
+> *"Produce a fast-paced, highly informative tactical preview episode. PRONUNCIATION: Founder Pål Juritzen is strictly pronounced as 'Paul Yur-it-zen'. Discuss the upcoming official launch of ATLAS Travel Club on Wednesday, January 20, 2027 at 10:00 AM CET. Walk the listener through exactly what happens when the portal opens, how the 48-hour claim window works, how the first 100 Founding Members claim their €480 hotel voucher, and why there is a 100% value-back guarantee if members don't save more than the €110 membership fee on their first trip."*
 
 ### 📄 Source Briefing Document for NotebookLM:
 
@@ -188,11 +197,11 @@ ATLAS institutes a contractual consumer protection guarantee:
 **Funnel Stage:** Email Stage 6 (Launch Day — Wednesday, January 20, 2027 at 10:00 AM CET)
 
 ### 🎙️ NotebookLM Host Direction Prompt:
-> *"Deliver an urgent, celebratory, high-energy executive launch announcement. Announce that the doors to ATLAS Travel Club are officially live as of 10:00 AM CET on Wednesday, January 20, 2027. Reiterate that the first 100 members to finalize their €110 (1 290 NOK) annual subscription lock in their free 3-day European luxury hotel break, gain entry to the all-meals draw, and immediately unlock live unmasked B2B wholesale inventory. Emphasize that the 48-hour claim clock is ticking."*
+> *"Deliver an urgent, celebratory, high-energy executive launch announcement. PRONUNCIATION: Founder Pål Juritzen is strictly pronounced as 'Paul Yur-it-zen'. Announce that the doors to ATLAS Travel Club are officially live as of 10:00 AM CET on Wednesday, January 20, 2027. Reiterate that the first 100 members to finalize their €110 (1 290 NOK) annual subscription lock in their free 3-day European luxury hotel break, gain entry to the all-meals draw, and immediately unlock live unmasked B2B wholesale inventory. Emphasize that the 48-hour claim clock is ticking."*
 
 ### 📄 Source Briefing Document for NotebookLM:
 
-#### 1. Executive Statement from Founder Pål Juritzen
+#### 1. Executive Statement from Founder Pål Juritzen (pronounced: "Paul Yur-it-zen")
 *"Today, Wednesday, January 20, 2027 at 10:00 AM CET, we officially open the doors to ATLAS Travel Club. For over a century, the travel industry has operated on hidden markups, rate parity cartel agreements, and inflated middleman commissions. Today, we turn that model on its head. Welcome to wholesale travel with zero markups."*
 
 #### 2. Live Platform Status & Activated Features
@@ -200,7 +209,7 @@ As of 10:00 AM CET, the production platform (`https://atlasclub.web.app`) is ful
 * **Wholesale Bedbank Engine:** Over 1,200,000 hotels worldwide available at raw B2B net rates (20% to 45% below public OTA prices).
 * **Duffel NDC Direct Flight Feeds:** Direct airline inventory across 300+ major carriers with 0% ticket markup.
 * **Connex Holiday Plus Voucher Generator:** Generates unique vouchers for 1,500+ European boutique & wellness hotels with 100% free room rates.
-* **RVC Signature Resorts:** 7-night condominium stays in Spain, Greece, and Italy for a flat €299 (3 490 kr) for the entire family.
+* **RVC Signature Resorts:** 7-night condominium stays (studios, 1- and 2-bedroom suites) from €299 (fra 3 490 kr) on last-minute clearance for the entire family.
 * **Rewards Vault:** 100% cruise commission rebates tracked directly in member dashboards.
 
 #### 3. Immediate Action Checklist for Waitlist Candidates
@@ -217,7 +226,7 @@ As of 10:00 AM CET, the production platform (`https://atlasclub.web.app`) is ful
 **Funnel Stage:** Email Stage 7 (Thursday, January 21, 2027 at 20:00 CET — 16 Hours Before Deadline)
 
 ### 🎙️ NotebookLM Host Direction Prompt:
-> *"Create an urgent, direct, no-nonsense final countdown briefing. Announce that over 80% of the 100 Founding Member positions were claimed within the first 24 hours of launch. Remind listeners that the strict 48-hour claim window permanently closes tomorrow, Friday, January 22 at 12:00 PM CET. Explain that any unclaimed complimentary 3-day European hotel breaks will be automatically stripped and reallocated to waitlist candidate #101 at 12:01 PM."*
+> *"Create an urgent, direct, no-nonsense final countdown briefing. PRONUNCIATION: Founder Pål Juritzen is strictly pronounced as 'Paul Yur-it-zen'. Announce that over 80% of the 100 Founding Member positions were claimed within the first 24 hours of launch. Remind listeners that the strict 48-hour claim window permanently closes tomorrow, Friday, January 22 at 12:00 PM CET. Explain that any unclaimed complimentary 3-day European hotel breaks will be automatically stripped and reallocated to waitlist candidate #101 at 12:01 PM."*
 
 ### 📄 Source Briefing Document for NotebookLM:
 

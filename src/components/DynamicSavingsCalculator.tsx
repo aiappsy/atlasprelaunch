@@ -536,18 +536,18 @@ export const DynamicSavingsCalculator: React.FC<DynamicSavingsCalculatorProps> =
               <span>{isNorwegian ? 'Fast Medlemsfordel for Familien' : 'Signature Family Perk'}</span>
             </div>
             <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-neutral-100">
-              {isNorwegian ? 'RVC: 7 Netter Ferieleilighet (4–6 pers)' : 'RVC: 7-Night Family Resort Suites'}
+              {isNorwegian ? 'RVC: 7 Netter Ferieleilighet (Studio–2-roms)' : 'RVC: 7-Night Resort Condos (Studio to 2-BR)'}
             </h3>
             <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light">
               {isNorwegian
-                ? 'Romslige ferieleiligheter med stue, separat soverom og kjøkken i Spania (Tenerife/Marbella), Hellas (Kreta), Italia (Toscana) og Portugal (Algarve). Én fast pris for hele uken for hele familien!'
-                : 'Spacious condominium suites with living rooms, separate bedrooms, and kitchens in Spain, Greece, Italy, and Portugal. One flat price of €299 for the entire week for up to 6 guests!'}
+                ? 'Romslige ferieleiligheter (fra studio til 1- og 2-roms med kjøkken) i Spania (Tenerife/Marbella), Hellas (Kreta), Italia (Toscana) og Portugal (Algarve). Fra 3 490 kr for hele uken ved restplass / clearance!'
+                : 'Spacious condominium suites (studios, 1- and 2-bedroom units with kitchens) in Spain, Greece, Italy, and Portugal. From €299 for the entire week when booking last-minute clearance!'}
             </p>
 
             <div className="p-3.5 rounded-xl bg-neutral-950 border border-emerald-400/30 flex items-center justify-between text-xs font-mono">
               <div>
-                <span className="text-neutral-400 block text-[11px]">{isNorwegian ? 'Fast totalpris (7 netter):' : 'Fixed total price (7 nights):'}</span>
-                <span className="text-emerald-400 font-bold text-base">{isNorwegian ? '3 490 kr totalt' : '€299 total'}</span>
+                <span className="text-neutral-400 block text-[11px]">{isNorwegian ? 'Fra-pris ved restplass (7 netter):' : 'Clearance rate from (7 nights):'}</span>
+                <span className="text-emerald-400 font-bold text-base">{isNorwegian ? 'Fra 3 490 kr totalt' : 'From €299 total'}</span>
               </div>
               <div className="text-right">
                 <span className="text-neutral-400 block text-[11px]">{isNorwegian ? 'Du sparer vs Booking:' : 'You save vs Booking:'}</span>

@@ -83,7 +83,7 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onOpenPerkModal }) =
               {isNo ? 'Fast Medlemsfordel for Familien' : 'Signature Family Perk'}
             </span>
             <span className="text-xs font-mono font-black text-emerald-300">
-              {isNo ? 'Fast 3 490 kr / Uke' : 'Flat €299 / Week (3 490 kr)'}
+              {isNo ? 'Fra 3 490 kr / Uke' : 'From €299 / Week (fra 3 490 kr)'}
             </span>
           </div>
           <div>
