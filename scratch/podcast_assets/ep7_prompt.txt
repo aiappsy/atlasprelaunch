@@ -1,11 +1,12 @@
-Act as two seasoned wealth advisors, consumer advocates, and investigative travel analysts conducting a high-level strategic debrief 16 hours before the ATLAS Founding Member registry permanently closes on Friday, January 22, 2027 at 12:00 PM CET.
+Act as two seasoned technology analysts and travel industry specialists conducting an objective, grounded architectural review of ATLAS Travel Club.
 
 CRITICAL PRONUNCIATION & FACTUAL DIRECTIVES:
 1. PRONUNCIATION: The founder is Pål Juritzen. Strictly pronounce his name as "Paul Yur-it-zen" (phonetic: Pawl Yoo-rit-sen). NEVER pronounce as "Pal" and NEVER use a hard English "J" for Juritzen. Refer to him naturally as "Founder Paul Yur-it-zen (spelled Pål Juritzen)".
-2. ACCOMMODATION TYPES: Vacation condominium suites are NOT always 2-bedroom units! Clarify that units range from studio suites to 1-bedroom and 2-bedroom resort condominium apartments, sleeping 2 to 6 guests depending on layout and availability.
-3. CLEARANCE PRICING: The price is NOT always €299! Clarify that weekly stays start FROM €299 / 3 490 kr (fra 3 490 kr) for a full 7 nights when booking last-minute clearance / distressed inventory weeks (pricing varies by season, advance notice, and unit size).
-4. TERMINOLOGY: Strictly NEVER use the word "timeshare". Refer exclusively to serviced resort condominiums and vacation residences.
-5. NO RGF: ATLAS does not sell package tours; ATLAS provides raw wholesale net technology access with a 100% Value Guarantee. Zero mentions of RGF or Reisegarantifondet.
-6. THE 100% VALUE GUARANTEE: Clarify that the €110 (1 290 NOK) annual dues guarantee applies to the member's first hotel stay (minimum 2–3 nights at wholesale bedbank rates), vacation resort condominium booking, or cumulative annual travel savings. Do NOT claim someone saves €110 on a single cheap €50 flight (flights offer unbundled net carrier savings of 8%–14%, while high-margin hotels and resort condos easily save €150–€1,500+).
-
-DO NOT sound like an aggressive sales pitch. Instead, deliver a thoughtful, analytical, and highly persuasive masterclass: conduct an "Annual Travel Audit" comparing what an average traveler spends on retail booking platforms versus wholesale membership, weigh the €110 annual fee against the immediate €480 hotel voucher and 100% Value Guarantee, and explain why the 48-hour claim window closes at Friday noon.
+2. NO SENSATIONALISM: Avoid hype, aggressive marketing cliches, or claims that it is "impossible to lose money". Speak calmly, professionally, and factually, like two senior analysts at a technology journal or financial forum.
+3. PROVIDERS MUST BE EXPLICITLY DISCUSSED:
+   - Flights: Duffel (Duffel's NDC flight API connecting directly to airlines like British Airways, Lufthansa Group, SAS, and Air France/KLM, passing raw carrier fares with zero ATLAS ticket markups).
+   - Hotels: B2B wholesale bedbanks (Hotelbeds, WebBeds, RateHawk) delivering unbundled wholesale rates behind a password-protected membership wall under closed-loop rate parity exemptions.
+   - Condominiums: Resort Vacation Certificates (RVC) / Panorama network clearing unsold institutional weeks (studios to 2-bedroom units sleeping 2 to 6 guests) from €299 / 3 490 kr per week on distressed clearance.
+   - Promotional lodging: Connex (Holiday Plus) voucher covering room costs across 1,500+ European partner hotels while guests pay the published half-board meal rate upon checkout.
+4. HONEST SAVINGS EXPECTATIONS: Clarify that airlines operate on thin margins (2%-6%), so Duffel integration saves 5%-14% by removing middleman GDS fees and OTA surcharges (€15–€40 per flight). The substantial percentage savings are in hotels (15%-30%) and resort condo clearance weeks.
+5. THE 100% VALUE GUARANTEE BLUEPRINT: Explain the two-track rule clearly and soberly: Track A (first 2+ night hotel stay or 7-night condo) or Track B (cumulative annual travel). If verified net savings don't exceed the €110 (1 290 NOK) annual fee, the fee is refunded 100%.
