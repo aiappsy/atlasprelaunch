@@ -3,25 +3,29 @@ import edge_tts
 import os
 import shutil
 
-ENGLISH_TEXT = """Welcome to ATLAS. For decades, the global travel duopoly has kept institutional wholesale hotel bedbanks and direct airline net fares hidden behind 20 to 45 percent retail markups.
+ENGLISH_TEXT = """Welcome to ATLAS. For decades, major online booking portals have marked up hotels and flights by 20 to 45 percent, keeping true wholesale rates hidden behind inflated retail prices.
 
-ATLAS operates on a pure membership model. Zero markups. Direct wholesale bedbank inventory across 1.2 million hotels, and unbundled direct airline tickets.
+ATLAS changes the rules with a private annual membership — just 110 euros per year.
 
-On Wednesday, January 20th, 2027, ATLAS officially opens. We are releasing exactly 100 Founding Memberships at 110 euros. Every single Founding Member receives a complimentary European weekend break for two, worth up to 400 euros.
+As a member, you bypass the middlemen entirely. You book over 1.2 million luxury hotels and direct flights at raw institutional net rates with zero markups added. And whenever luxury resorts or cruises pay booking commissions, ATLAS refunds 100 percent of that cash directly back to you.
 
-Plus, lifetime access to wholesale net rates on flights, luxury resorts, and 100 percent commission rebates. On launch day, invited candidates have a strict 48-hour claim window before their allocation forfeits to the next in queue.
+To celebrate our launch, every single Founding Member receives a complimentary European weekend break for two, worth up to 400 euros. That welcome stay alone covers your annual membership nearly four times over before you even take your first trip.
 
-Backed by our 100 percent money-back value guarantee on your very first trip. Reserve your Founding Member spot today for free, no credit card necessary."""
+Backed by our 100 percent money-back guarantee: if our wholesale rates don't save you more than your membership fee in your first year, you get every cent back.
 
-NORWEGIAN_TEXT = """Velkommen til ATLAS. I tiår har reiselivsbransjens største portaler holdt ekte engrospriser på hotell og fly skjult bak påslag på 20 til 45 prosent.
+Reserve your Founding Member spot today. Zero upfront cost, zero risk."""
 
-ATLAS endrer spillereglene med en ren medlemsmodell. Null provisjoner. Rå grossistpriser på over 1,2 millioner hoteller og direkte flybilletter.
+NORWEGIAN_TEXT = """Velkommen til ATLAS. I tiår har de store bestillingsportalene lagt på 20 til 45 prosent i skjulte gebyrer og provisjoner på hotell og fly.
 
-Onsdag 20. januar 2027 åpner vi dørene for nøyaktig 100 Founding Members til 1 290 kroner. Samtlige 100 får et utvalgt Europeisk Weekend-opphold for to i Europa inkludert som velkomstgave – en verdi på inntil 4 500 kroner.
+ATLAS endrer spillereglene med et privat årsmedlemskap til 1 290 kroner i året.
 
-I tillegg får du livslang tilgang til rå nettopriser og 100 prosent provisjonsretur. På lanseringsdagen gjelder et 48-timers betalingsvindu før plassen går videre til neste på ventelisten.
+Som medlem handler du direkte mot de institusjonelle grossistene med null påslag på over 1,2 millioner hoteller og flybilletter. Og når luksushoteller og cruiserederier betaler provisjoner, refunderer ATLAS 100 prosent av pengene rett tilbake til deg.
 
-Støttet av vår 100 prosent fornøyd- og verdigaranti på din aller første reise. Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig."""
+For å ønske våre Founding Members velkommen, inkluderer medlemskapet et utvalgt europeisk weekend-opphold for to, med en verdi på inntil 4 500 kroner. Dette alene dekker årskontingenten mer enn tre ganger før du i det hele tatt har bestilt din første reise.
+
+Støttet av vår 100 prosent verdigaranti: Sparer du ikke inn medlemskontingenten i løpet av ditt første år, får du alle pengene tilbake.
+
+Sikre din plass på ventelisten i dag. Ingen binding, null risiko."""
 
 async def generate():
     output_dir = os.path.join(os.path.dirname(__file__), '..', 'public', 'audio')
