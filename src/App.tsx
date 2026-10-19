@@ -20,7 +20,7 @@ import { useLanguage } from './lib/i18n/LanguageContext';
 export default function App() {
   const { isNorwegian } = useLanguage();
   // Premier English studio master executive voiceover (Ryan) used globally
-  const currentVoiceSrc = '/audio/founder-voiceover-new.mp3?v=20261019_brief_v2';
+  const currentVoiceSrc = '/audio/founder-voiceover-new.mp3?v=20261019_calm_v3';
 
   const [viewMode, setViewMode] = useState<'site' | 'crm'>('site');
   const [isCrmAuthenticated, setIsCrmAuthenticated] = useState<boolean>(false);
@@ -234,6 +234,7 @@ export default function App() {
         }
         audioEl.muted = false;
         audioEl.volume = 1.0;
+        audioEl.playbackRate = 0.95;
         const playPromise = audioEl.play();
         if (playPromise !== undefined) {
           playPromise.catch((err) => {

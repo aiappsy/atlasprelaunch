@@ -31,11 +31,11 @@ async def generate():
     output_dir = os.path.join(os.path.dirname(__file__), '..', 'public', 'audio')
     os.makedirs(output_dir, exist_ok=True)
 
-    # 1. US Master Voiceover (en-US-ChristopherNeural) - Authoritative, cinematic American executive
+    # 1. US Master Voiceover (en-US-ChristopherNeural) - Authoritative, calm, measured executive pace
     en_voice = "en-US-ChristopherNeural"
     en_file = os.path.join(output_dir, "founder-voiceover-new.mp3")
-    print(f"Generating US English voiceover using {en_voice}...")
-    communicate = edge_tts.Communicate(ENGLISH_TEXT, en_voice, rate="-2%")
+    print(f"Generating US English voiceover using {en_voice} at measured pace (-10%)...")
+    communicate = edge_tts.Communicate(ENGLISH_TEXT, en_voice, rate="-10%")
     await communicate.save(en_file)
     print(f"Generated: {en_file} ({os.path.getsize(en_file)} bytes)")
 
@@ -50,8 +50,8 @@ async def generate():
     # 2. Norwegian Voiceover (nb-NO-FinnNeural)
     no_voice = "nb-NO-FinnNeural"
     no_file = os.path.join(output_dir, "founder-voiceover-no.mp3")
-    print(f"Generating Norwegian voiceover using {no_voice}...")
-    communicate_no = edge_tts.Communicate(NORWEGIAN_TEXT, no_voice, rate="-2%")
+    print(f"Generating Norwegian voiceover using {no_voice} at measured pace (-10%)...")
+    communicate_no = edge_tts.Communicate(NORWEGIAN_TEXT, no_voice, rate="-10%")
     await communicate_no.save(no_file)
     print(f"Generated: {no_file} ({os.path.getsize(no_file)} bytes)")
 

@@ -11,8 +11,9 @@ class HeroAudioManager {
     this.hasInitialized = true;
 
     try {
-      this.audio = new Audio('/audio/hero-voiceover-mastered.mp3?v=20261019_brief_v2');
+      this.audio = new Audio('/audio/hero-voiceover-mastered.mp3?v=20261019_calm_v3');
       this.audio.preload = 'auto';
+      this.audio.playbackRate = 0.95;
       this.audio.volume = 1.0;
 
       this.audio.addEventListener('timeupdate', () => {
