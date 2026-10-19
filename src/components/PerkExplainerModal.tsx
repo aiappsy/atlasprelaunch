@@ -16,10 +16,13 @@ import {
   Info,
   Clock,
   MapPin,
+  Plane,
+  Compass,
+  Zap,
 } from 'lucide-react';
 import { useLanguage } from '../lib/i18n/LanguageContext';
 
-export type PerkExplainerTab = 'connex' | 'rvc';
+export type PerkExplainerTab = 'connex' | 'rvc' | 'lounges';
 
 interface PerkExplainerModalProps {
   isOpen: boolean;
@@ -51,6 +54,11 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
   // RVC Calculator State
   const [rvcDestination, setRvcDestination] = useState<string>('marbella');
   const [rvcGuests, setRvcGuests] = useState<number>(4);
+
+  // Lounge Calculator State
+  const [loungeAirport, setLoungeAirport] = useState<string>('oslo');
+  const [loungeVisits, setLoungeVisits] = useState<number>(3);
+  const [loungeGuests, setLoungeGuests] = useState<number>(2);
 
   if (!isOpen) return null;
 
@@ -154,6 +162,72 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
   const rvcNetSavingsEur = rvcPublicOtaEur - rvcAtlasFlatPriceEur;
   const rvcPerPersonPerNightEur = Math.round(rvcAtlasFlatPriceEur / (rvcGuests * 7));
 
+  // Lounge Airport Network & Calculations
+  const loungeAirports: Record<
+    string,
+    {
+      name: string;
+      loungeName: string;
+      walkUpNok: number;
+      walkUpEur: number;
+      atlasPassNok: number;
+      atlasPassEur: number;
+      amenitiesNo: string;
+      amenitiesEn: string;
+    }
+  > = {
+    oslo: {
+      name: 'Oslo Gardermoen (OSL)',
+      loungeName: 'OSL Lounge (Utland & Innland)',
+      walkUpNok: 650,
+      walkUpEur: 55,
+      atlasPassNok: 295,
+      atlasPassEur: 25,
+      amenitiesNo: 'Varm buffet, vin/øl, stille soner, dusj og rask Wi-Fi',
+      amenitiesEn: 'Hot buffet, wine/beer, quiet workstations, showers & Wi-Fi',
+    },
+    london: {
+      name: 'London Heathrow (LHR T3/T5)',
+      loungeName: 'Club Aspire / Plaza Premium',
+      walkUpNok: 690,
+      walkUpEur: 58,
+      atlasPassNok: 310,
+      atlasPassEur: 26,
+      amenitiesNo: 'A la carte servering, bar, komfortable hvilesoner',
+      amenitiesEn: 'A la carte dining, runway views, bar, quiet pods',
+    },
+    frankfurt: {
+      name: 'Frankfurt (FRA T1/T2)',
+      loungeName: 'Primeclass / LuxxLounge',
+      walkUpNok: 620,
+      walkUpEur: 52,
+      atlasPassNok: 285,
+      atlasPassEur: 24,
+      amenitiesNo: 'Varme måltider, dusjkabiner, møtefasiliteter',
+      amenitiesEn: 'Warm meals, private showers, work hubs',
+    },
+    alicante: {
+      name: 'Alicante-Elche (ALC)',
+      loungeName: 'Sala VIP Ifach',
+      walkUpNok: 580,
+      walkUpEur: 49,
+      atlasPassNok: 270,
+      atlasPassEur: 23,
+      amenitiesNo: 'Spanske tapas, cava, panoramaterrasse',
+      amenitiesEn: 'Spanish tapas, cava, open terrace runway views',
+    },
+  };
+
+  const selectedLounge = loungeAirports[loungeAirport] || loungeAirports.oslo;
+  const totalLoungePasses = loungeVisits * loungeGuests;
+  const loungeTotalWalkUpNok = totalLoungePasses * selectedLounge.walkUpNok;
+  const loungeTotalAtlasNok = totalLoungePasses * selectedLounge.atlasPassNok;
+  const loungeSavingsNok = loungeTotalWalkUpNok - loungeTotalAtlasNok;
+
+  const loungeTotalWalkUpEur = totalLoungePasses * selectedLounge.walkUpEur;
+  const loungeTotalAtlasEur = totalLoungePasses * selectedLounge.atlasPassEur;
+  const loungeSavingsEur = loungeTotalWalkUpEur - loungeTotalAtlasEur;
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md overflow-y-auto animate-in fade-in duration-200">
       <div className="relative w-full max-w-2xl bg-neutral-950 border border-amber-400/35 rounded-3xl shadow-2xl shadow-black/90 p-5 sm:p-7 text-neutral-100 my-auto max-h-[92vh] overflow-y-auto">
@@ -168,31 +242,44 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
         </button>
 
         {/* Tab Navigation */}
-        <div className="flex items-center gap-2 p-1 bg-neutral-900/90 rounded-2xl border border-neutral-800/80 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1.5 bg-neutral-900/90 rounded-2xl border border-neutral-800/80 mb-6">
           <button
             type="button"
             onClick={() => setActiveTab('connex')}
-            className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-mono font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+            className={`py-2.5 px-3 rounded-xl text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
               activeTab === 'connex'
                 ? 'bg-gradient-to-r from-amber-400 to-amber-500 text-neutral-950 shadow-md shadow-amber-500/20'
-                : 'text-neutral-400 hover:text-white'
+                : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'
             }`}
           >
-            <Wine className="w-4 h-4" />
-            <span>{isNorwegian ? 'Connex: 0 kr Rompris' : 'Connex: €0 Room Rate'}</span>
+            <Wine className="w-4 h-4 shrink-0" />
+            <span className="truncate">{isNorwegian ? 'Connex: 0 kr Rom' : 'Connex: €0 Room'}</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('rvc')}
-            className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-mono font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
+            className={`py-2.5 px-3 rounded-xl text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
               activeTab === 'rvc'
                 ? 'bg-gradient-to-r from-amber-400 to-amber-500 text-neutral-950 shadow-md shadow-amber-500/20'
-                : 'text-neutral-400 hover:text-white'
+                : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'
             }`}
           >
-            <Palmtree className="w-4 h-4" />
-            <span>{isNorwegian ? 'RVC: 7 Netter (fra 3 490 kr)' : 'RVC: 7 Nights (from €299)'}</span>
+            <Palmtree className="w-4 h-4 shrink-0" />
+            <span className="truncate">{isNorwegian ? 'RVC: 7-Netters Resort' : 'RVC: 7-Night Resort'}</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('lounges')}
+            className={`py-2.5 px-3 rounded-xl text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+              activeTab === 'lounges'
+                ? 'bg-gradient-to-r from-amber-400 to-amber-500 text-neutral-950 shadow-md shadow-amber-500/20'
+                : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'
+            }`}
+          >
+            <Plane className="w-4 h-4 shrink-0" />
+            <span className="truncate">{isNorwegian ? 'Lounger (fra 270 kr)' : 'Lounges (from €23)'}</span>
           </button>
         </div>
 
@@ -445,6 +532,166 @@ export const PerkExplainerModal: React.FC<PerkExplainerModalProps> = ({
                 <span className="truncate">
                   {isNorwegian ? 'Eksempelresort:' : 'Featured Resort:'} <strong className="text-neutral-300">{selectedRvc.typicalResort}</strong>
                 </span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 3: AIRPORT LOUNGES & TRANSIT COPILOT */}
+        {activeTab === 'lounges' && (
+          <div className="space-y-6">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/15 border border-sky-400/30 text-sky-300 text-xs font-mono font-bold mb-2">
+                <span>{isNorwegian ? '✈️ Engrosadgang • Uten Kredittkortgebyrer' : '✈️ Wholesale Access • No Credit Card Fee Traps'}</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-cinzel font-bold text-white flex items-center gap-2">
+                <span>🛋️</span>
+                <span>{isNorwegian ? 'Flyplasslounger til Engrospris & Transit Copilot' : 'Wholesale Airport Lounges & Transit Copilot'}</span>
+              </h3>
+              <p className="text-xs sm:text-sm text-neutral-300 mt-1 leading-relaxed">
+                {isNorwegian
+                  ? 'Kutt ut 5 000–8 000 kr i unødvendige årlige kredittkortgebyrer for å få loungetilgang. Som ATLAS-medlem kjøper du digitale QR-loungepass til ren engros nettopris (270–310 kr) for over 1 300 lounger verden over via partnernettverket. Null medlemskapspåslag, og reisefølget ditt betaler nøyaktig samme engrospris.'
+                  : 'Eliminate €500–€800 in annual credit card fees just to access airport lounges. As an ATLAS member, unlock digital QR lounge vouchers at pure net wholesale cost (€23–€26) across 1,300+ lounges globally via partner networks. Zero retail markup, and your family or travel companions get the exact same net rate.'}
+              </p>
+            </div>
+
+            {/* Ancillaries & Transit Copilot Highlight */}
+            <div className="p-3.5 rounded-2xl bg-gradient-to-r from-sky-500/10 via-neutral-900 to-sky-500/10 border border-sky-400/30 flex items-start gap-3">
+              <Compass className="w-5 h-5 text-sky-400 shrink-0 mt-0.5" />
+              <div className="text-xs space-y-1">
+                <span className="font-bold text-sky-200 block">
+                  {isNorwegian ? 'Duffel NDC Flytilvalg & Transit Copilot Sanntidsradar' : 'Duffel NDC Ancillaries & Transit Copilot Layover Radar'}
+                </span>
+                <span className="text-neutral-300 block">
+                  {isNorwegian
+                    ? 'Legg til fast-track sikkerhetskontroll og prioritert boarding til rå flyselskapskost via Duffel NDC. Transit Copilot regner automatisk ut gangtid fra loungen til avgangsgaten din på travle knutepunkt.'
+                    : 'Add fast-track security and priority boarding directly at raw airline cost via Duffel NDC. Transit Copilot calculates exact walking times from the lounge to your departure gate at busy hubs.'}
+                </span>
+              </div>
+            </div>
+
+            {/* Interactive Calculator Section */}
+            <div className="p-5 rounded-2xl bg-neutral-900/90 border border-neutral-800 space-y-4">
+              <div className="flex items-center justify-between border-b border-neutral-800 pb-3">
+                <div className="flex items-center gap-2 text-xs font-mono font-bold text-amber-300 uppercase tracking-wider">
+                  <Calculator className="w-4 h-4 text-amber-400" />
+                  <span>{isNorwegian ? 'Lounge- & Besparelseskalkulator' : 'Lounge & Savings Calculator'}</span>
+                </div>
+                <span className="text-[11px] font-mono text-neutral-400">
+                  {isNorwegian ? '1 300+ lounger i nettverket' : '1,300+ Lounges Globally'}
+                </span>
+              </div>
+
+              {/* Controls */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                <div>
+                  <label className="block text-neutral-400 mb-1 font-mono text-[11px]">
+                    {isNorwegian ? 'Eksempellounge / Flyplass:' : 'Featured Airport Lounge:'}
+                  </label>
+                  <select
+                    value={loungeAirport}
+                    onChange={(e) => setLoungeAirport(e.target.value)}
+                    className="w-full px-3 py-2 rounded-xl bg-neutral-950 border border-neutral-700 text-neutral-200 text-xs focus:border-amber-400 outline-none"
+                  >
+                    {Object.entries(loungeAirports).map(([key, item]) => (
+                      <option key={key} value={key}>
+                        {item.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-neutral-400 mb-1 font-mono text-[11px]">
+                    {isNorwegian ? 'Antall flyplassbesøk/år:' : 'Airport Visits / Year:'}
+                  </label>
+                  <div className="flex gap-1.5">
+                    {[1, 2, 3, 5].map((v) => (
+                      <button
+                        key={v}
+                        type="button"
+                        onClick={() => setLoungeVisits(v)}
+                        className={`flex-1 py-2 rounded-xl text-xs font-mono font-bold border transition ${
+                          loungeVisits === v
+                            ? 'bg-amber-400 text-neutral-950 border-amber-400'
+                            : 'bg-neutral-950 text-neutral-300 border-neutral-700 hover:border-neutral-500'
+                        }`}
+                      >
+                        {v}x
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-neutral-400 mb-1 font-mono text-[11px]">
+                    {isNorwegian ? 'Personer i reisefølget:' : 'Travelers in Party:'}
+                  </label>
+                  <div className="flex gap-1.5">
+                    {[1, 2, 3, 4].map((g) => (
+                      <button
+                        key={g}
+                        type="button"
+                        onClick={() => setLoungeGuests(g)}
+                        className={`flex-1 py-2 rounded-xl text-xs font-mono font-bold border transition ${
+                          loungeGuests === g
+                            ? 'bg-amber-400 text-neutral-950 border-amber-400'
+                            : 'bg-neutral-950 text-neutral-300 border-neutral-700 hover:border-neutral-500'
+                        }`}
+                      >
+                        {g} {g === 1 ? (isNorwegian ? 'pers' : 'pax') : (isNorwegian ? 'pers' : 'pax')}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Lounge Calculation Breakdown */}
+              <div className="p-4 rounded-xl bg-neutral-950 border border-sky-400/20 space-y-2.5 text-xs font-mono">
+                <div className="flex justify-between items-center text-neutral-400">
+                  <span>{isNorwegian ? 'Ordinær drop-in pris i døren:' : 'Walk-up Door Entrance Rate:'}</span>
+                  <span className="line-through text-neutral-500">
+                    {isNorwegian
+                      ? `${selectedLounge.walkUpNok} kr x ${totalLoungePasses} = ${loungeTotalWalkUpNok.toLocaleString('no-NO')} kr`
+                      : `€${selectedLounge.walkUpEur} x ${totalLoungePasses} = €${loungeTotalWalkUpEur.toLocaleString('en-US')}`}
+                  </span>
+                </div>
+
+                <div className="flex justify-between items-center text-neutral-300">
+                  <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    <span>{isNorwegian ? 'ATLAS Rå Nettopris (0 kr påslag):' : 'ATLAS Pure Net Wholesale Pass:'}</span>
+                  </span>
+                  <span className="text-emerald-400 font-black text-sm">
+                    {isNorwegian
+                      ? `${selectedLounge.atlasPassNok} kr x ${totalLoungePasses} = ${loungeTotalAtlasNok.toLocaleString('no-NO')} kr`
+                      : `€${selectedLounge.atlasPassEur} x ${totalLoungePasses} = €${loungeTotalAtlasEur.toLocaleString('en-US')}`}
+                  </span>
+                </div>
+
+                <div className="pt-2 border-t border-neutral-800 flex justify-between items-center text-sm">
+                  <span className="font-bold text-neutral-100">{isNorwegian ? 'Din Netto Besparelse:' : 'Your Net Cash Savings:'}</span>
+                  <span className="font-black text-emerald-400 text-base">
+                    {isNorwegian
+                      ? `+${loungeSavingsNok.toLocaleString('no-NO')} kr spart!`
+                      : `+€${loungeSavingsEur.toLocaleString('en-US')} saved!`}
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-3 rounded-xl bg-neutral-900/60 border border-neutral-800/80 text-[11px] text-neutral-400 space-y-1">
+                <div className="flex items-center gap-1.5 text-amber-300 font-semibold">
+                  <Zap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <span>{selectedLounge.loungeName}</span>
+                </div>
+                <p className="text-neutral-400 text-[10px]">
+                  {isNorwegian ? selectedLounge.amenitiesNo : selectedLounge.amenitiesEn}
+                </p>
+                <p className="text-neutral-500 text-[10px] pt-1 border-t border-neutral-800">
+                  {isNorwegian
+                    ? '💡 Sammenligning: SAS Amex Elite koster 6 000 kr/år i fast kortavgift. Hos ATLAS betaler du kun 1 290 kr/år for hele klubben og kjøper lounger etter behov til rå innkjøpspris.'
+                    : '💡 Comparison: Premium airline credit cards cost €500–€800/year in annual fees. ATLAS gives you the entire club for €110/year and digital lounge passes on-demand at pure cost.'}
+                </p>
               </div>
             </div>
           </div>

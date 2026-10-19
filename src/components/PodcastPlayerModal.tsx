@@ -13,6 +13,7 @@ import {
   ArrowRight,
   Radio,
   Download,
+  Compass,
 } from 'lucide-react';
 import { useLanguage } from '../lib/i18n/LanguageContext';
 
@@ -22,8 +23,10 @@ export interface Chapter {
   desc: string;
 }
 
+export type PodcastTrackId = 'summary' | 'deepdive' | 'lounges';
+
 export interface PodcastTrack {
-  id: 'summary' | 'deepdive';
+  id: PodcastTrackId;
   badge: string;
   durationLabel: string;
   title: string;
@@ -33,7 +36,7 @@ export interface PodcastTrack {
   chapters: Chapter[];
 }
 
-export const PODCAST_TRACKS: Record<'summary' | 'deepdive', PodcastTrack> = {
+export const PODCAST_TRACKS: Record<PodcastTrackId, PodcastTrack> = {
   summary: {
     id: 'summary',
     badge: 'Executive Briefing • 6 Min',
@@ -69,9 +72,27 @@ export const PODCAST_TRACKS: Record<'summary' | 'deepdive', PodcastTrack> = {
       { time: 1140, label: '19:00 — The Founder Membership Advantage', desc: 'Free 3-day European hotel break for 2 and launch privileges' },
     ],
   },
+  lounges: {
+    id: 'lounges',
+    badge: 'Airport Logistics • 5 Min',
+    durationLabel: '5:19 Duration',
+    title: 'Wholesale Airport Lounges Without Credit Cards',
+    description:
+      'How ATLAS unbundles expensive airport perks: digital lounge passes at pure wholesale cost (€24–€28), family companion rates, Duffel NDC priority boarding, and real-time Transit Copilot layover radar.',
+    audioSrc: '/audio/Wholesale_Airport_Lounges_Without_Credit_Cards.m4a?v=20270120',
+    downloadFilename: 'Wholesale_Airport_Lounges_Without_Credit_Cards.m4a',
+    chapters: [
+      { time: 0, label: '00:00 — Unbundling Airport Logistics', desc: 'Why €500–€800 credit card fees are an unnecessary tax on travelers' },
+      { time: 70, label: '01:10 — DragonPass & Net Wholesale Entry', desc: 'Buying digital QR lounge passes at pure €24–€28 cost vs. €65 walk-up' },
+      { time: 130, label: '02:10 — Companion & Family Passes', desc: 'No markup on spouses and kids: identical wholesale pass pricing' },
+      { time: 173, label: '02:53 — Duffel NDC Airline Ancillaries', desc: 'Fast-track security and priority boarding at raw airline cost' },
+      { time: 220, label: '03:40 — Transit Copilot Layover Intelligence', desc: 'Departure gate radars and walking time calculations between gates' },
+      { time: 275, label: '04:35 — The Founder Paul Yur-it-zen Model', desc: 'HARD ROCK CAPITAL LTD and pragmatic travel utility over status symbols' },
+    ],
+  },
 };
 
-export const PODCAST_TRACKS_NO: Record<'summary' | 'deepdive', PodcastTrack> = {
+export const PODCAST_TRACKS_NO: Record<PodcastTrackId, PodcastTrack> = {
   summary: {
     id: 'summary',
     badge: 'Konsernbriefing • 6 Min',
@@ -107,6 +128,24 @@ export const PODCAST_TRACKS_NO: Record<'summary' | 'deepdive', PodcastTrack> = {
       { time: 1140, label: '19:00 — Founding-fordelen', desc: 'Gratis 3-dagers hotellopphold for 2, mattrekning og 0 kr påslag ved lansering' },
     ],
   },
+  lounges: {
+    id: 'lounges',
+    badge: 'Flyplasslogistikk • 5 Min',
+    durationLabel: '5:19 Varighet',
+    title: 'Flyplasslounger til engrospris uten dyre kredittkort',
+    description:
+      'Hvordan ATLAS kutter fordyrende ledd på flyplassen: digitale loungebekreftelser til rå nettopris (250–320 kr), pass til reisefølge, Duffel NDC fast-track og Transit Copilot sanntids layover-radar.',
+    audioSrc: '/audio/Wholesale_Airport_Lounges_Without_Credit_Cards.m4a?v=20270120',
+    downloadFilename: 'Wholesale_Airport_Lounges_Without_Credit_Cards.m4a',
+    chapters: [
+      { time: 0, label: '00:00 — Slutt på tvungne buffetpakker', desc: 'Hvorfor 5 000–8 000 kr i årsgebyr for kredittkort er unødvendig' },
+      { time: 70, label: '01:10 — DragonPass & rå nettopris', desc: 'Digitale loungebekreftelser til 250–320 kr vs. 650 kr i døren' },
+      { time: 130, label: '02:10 — Gjestepass til familie', desc: 'Null påslag på ledsagere: nøyaktig samme engrospris' },
+      { time: 173, label: '02:53 — Duffel NDC flytilvalg', desc: 'Fast-track og prioritert ombordstigning til offisiell flypris' },
+      { time: 220, label: '03:40 — Transit Copilot layover-radar', desc: 'Sanntids gatevarsler og gangtidsberegninger på store flyplasser' },
+      { time: 275, label: '04:35 — Pål Juritzen og nytteverdi', desc: 'Hard Rock Capital Ltd og fokus på praktisk verdi fremfor statussymboler' },
+    ],
+  },
 };
 
 const SPEED_OPTIONS = [1.0, 1.25, 1.5, 2.0];
@@ -116,7 +155,7 @@ interface PodcastPlayerModalProps {
   onClose: () => void;
   onOpenWaitlist: () => void;
   onPlaybackStart?: () => void;
-  initialTrack?: 'summary' | 'deepdive';
+  initialTrack?: PodcastTrackId;
 }
 
 export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
@@ -127,7 +166,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
   initialTrack = 'summary',
 }) => {
   const { isNorwegian } = useLanguage();
-  const [activeTrackId, setActiveTrackId] = useState<'summary' | 'deepdive'>(initialTrack);
+  const [activeTrackId, setActiveTrackId] = useState<PodcastTrackId>(initialTrack);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -162,7 +201,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
     audio.muted = isMuted;
 
     setCurrentTime(0);
-    const expectedDur = activeTrackId === 'summary' ? 373 : 1387;
+    const expectedDur = activeTrackId === 'summary' ? 373 : activeTrackId === 'lounges' ? 319 : 1387;
     setDuration(expectedDur);
 
     const handleLoadedMetadata = () => {
@@ -183,14 +222,7 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
     };
 
     const handleError = () => {
-      console.warn('Primary audio stream failed, falling back to MP3');
-      if (audio.src.includes('.m4a')) {
-        audio.src = activeTrackId === 'summary'
-          ? '/audio/how-private-clubs-get-wholesale-hotel-rates.mp3'
-          : '/audio/how-travel-duopolies-rig-hotel-prices.mp3';
-        audio.load();
-        audio.play().then(() => setIsPlaying(true)).catch(() => {});
-      }
+      console.warn('Primary audio stream failed');
     };
 
     audio.onloadedmetadata = handleLoadedMetadata;
@@ -218,13 +250,13 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
     };
   }, []);
 
-  const switchTrack = (trackId: 'summary' | 'deepdive', autoPlay = true) => {
+  const switchTrack = (trackId: PodcastTrackId, autoPlay = true) => {
     if (trackId === activeTrackId) {
       togglePlay();
       return;
     }
     setActiveTrackId(trackId);
-    setDuration(trackId === 'summary' ? 373 : 1387);
+    setDuration(trackId === 'summary' ? 373 : trackId === 'lounges' ? 319 : 1387);
     setCurrentTime(0);
     setIsPlaying(autoPlay);
     loadAudio(PODCAST_TRACKS[trackId].audioSrc, autoPlay);
@@ -401,34 +433,47 @@ export const PodcastPlayerModal: React.FC<PodcastPlayerModalProps> = ({
         {/* Scrollable Body */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
           {/* Track Switcher Tabs */}
-          <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-neutral-950 border border-neutral-800">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1.5 rounded-2xl bg-neutral-950 border border-neutral-800">
             <button
               type="button"
               onClick={() => switchTrack('summary')}
-              className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-mono font-semibold flex items-center justify-center gap-2 transition cursor-pointer ${
+              className={`py-2.5 px-3 rounded-xl text-xs font-mono font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer ${
                 activeTrackId === 'summary'
                   ? 'bg-amber-400 text-neutral-950 font-bold shadow-md shadow-amber-400/20'
                   : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-900'
               }`}
             >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{isNorwegian ? '5-Min Lydoppsummering' : '5-Min Club Summary'}</span>
+              <Sparkles className="w-3.5 h-3.5 shrink-0" />
+              <span>{isNorwegian ? '6-Min Oversikt' : '6-Min Briefing'}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => switchTrack('lounges')}
+              className={`py-2.5 px-3 rounded-xl text-xs font-mono font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer ${
+                activeTrackId === 'lounges'
+                  ? 'bg-amber-400 text-neutral-950 font-bold shadow-md shadow-amber-400/20'
+                  : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-900'
+              }`}
+            >
+              <Compass className="w-3.5 h-3.5 shrink-0" />
+              <span>{isNorwegian ? '5-Min Lounger' : '5-Min Lounges'}</span>
+              <span className="text-[9px] px-1 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold uppercase">
+                {isNorwegian ? 'Ny' : 'New'}
+              </span>
             </button>
 
             <button
               type="button"
               onClick={() => switchTrack('deepdive')}
-              className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-mono font-semibold flex items-center justify-center gap-2 transition cursor-pointer ${
+              className={`py-2.5 px-3 rounded-xl text-xs font-mono font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer ${
                 activeTrackId === 'deepdive'
                   ? 'bg-amber-400 text-neutral-950 font-bold shadow-md shadow-amber-400/20'
                   : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-900'
               }`}
             >
-              <Radio className="w-3.5 h-3.5" />
-              <span>{isNorwegian ? '23-Min Dybdeanalyse' : '23-Min Duopoly Deep Dive'}</span>
-              <span className="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold uppercase">
-                {isNorwegian ? 'Dybde' : 'Forensic'}
-              </span>
+              <Radio className="w-3.5 h-3.5 shrink-0" />
+              <span>{isNorwegian ? '21-Min Dybde' : '21-Min Deep Dive'}</span>
             </button>
           </div>
 
