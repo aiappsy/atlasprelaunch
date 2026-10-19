@@ -20,7 +20,14 @@ import {
   Phone,
   MessageCircle,
   Headphones,
+  Play,
+  Pause,
+  RotateCcw,
+  Volume2,
+  Radio,
+  Lock,
 } from 'lucide-react';
+import { useRef } from 'react';
 import { LeadRecord, TeamMember, LeadStatus } from '../../lib/crmTypes';
 import {
   getStoredLeads,
@@ -43,6 +50,186 @@ import {
   RefundClaimRecord,
 } from '../../lib/refundManagementService';
 
+interface CrmPodcastItem {
+  id: string;
+  category: 'core' | 'deepdive';
+  badge: string;
+  title: string;
+  desc: string;
+  file: string;
+  size: string;
+  duration: string;
+  trackId: string;
+}
+
+const CRM_PODCAST_ITEMS: CrmPodcastItem[] = [
+  {
+    id: 'ep1',
+    category: 'core',
+    badge: 'Core 1 • Hotell',
+    title: 'How to Bypass Hidden Hotel Markups (Slik omgår du skjulte hotellpåslag)',
+    desc: 'How rate parity agreements enforce identical prices on public booking portals, and how closed-loop private travel clubs legally unlock raw wholesale bedbank rates.',
+    file: 'How_to_Bypass_Hidden_Hotel_Markups.m4a',
+    size: '11.6 MB',
+    duration: '12:05',
+    trackId: 'hotel-blueprint'
+  },
+  {
+    id: 'ep2',
+    category: 'core',
+    badge: 'Core 2 • 0 kr Opphold',
+    title: 'The Math Behind €0 Hotel Stays (Matematikken bak 0 kr hotellovernattinger)',
+    desc: 'The complete breakdown of Connex Group corporate vouchers: why 4-star properties trade empty rooms for on-site food and beverage revenue.',
+    file: 'The_Math_Behind_Zero_Euro_Hotel_Stays.m4a',
+    size: '11.1 MB',
+    duration: '11:32',
+    trackId: 'connex'
+  },
+  {
+    id: 'ep3',
+    category: 'core',
+    badge: 'Core 3 • Flybilletter',
+    title: 'How Flight Middlemen Inflate Ticket Prices (Slik pumper fly-mellommenn opp billettprisene)',
+    desc: 'Legacy GDS markup structures vs. direct IATA/NDC airline API connections. How ATLAS bypasses consolidator fees to deliver pure net airfares.',
+    file: 'How_Flight_Middlemen_Inflate_Ticket_Prices.m4a',
+    size: '11.8 MB',
+    duration: '12:18',
+    trackId: 'flights'
+  },
+  {
+    id: 'ep4',
+    category: 'core',
+    badge: 'Core 4 • Passasjerkrav',
+    title: 'How APIs Force Flight Delay Payouts (Slik tvinger API-er flyselskapene til utbetalinger)',
+    desc: 'Why 85% of delayed flyers never collect their €250–€600 compensation, and how real-time flight tracking triggers automated EU261 claims.',
+    file: 'How_APIs_Force_Flight_Delay_Payouts.m4a',
+    size: '10.2 MB',
+    duration: '10:41',
+    trackId: 'delays'
+  },
+  {
+    id: 'ep5',
+    category: 'core',
+    badge: 'Core 5 • Flyplasslounger',
+    title: 'Wholesale Airport Lounges Without Credit Cards (Engros flyplasslounger uten dyre kredittkort)',
+    desc: 'How DragonPass and Collinson B2B wholesale access bypasses high-annual-fee credit cards to deliver VIP lounge access for $24–$28.',
+    file: 'Wholesale_Airport_Lounges_Without_Credit_Cards.m4a',
+    size: '10.3 MB',
+    duration: '10:42',
+    trackId: 'lounges'
+  },
+  {
+    id: 'ep6',
+    category: 'core',
+    badge: 'Core 6 • Provisjoner',
+    title: 'How ATLAS Returns Hidden Travel Commissions (Slik refunderer ATLAS skjulte provisjoner til deg)',
+    desc: 'Cruises, packages, and luxury chains pay 10%–16% commission behind your back. ATLAS passes 100% back into your member Rewards Vault.',
+    file: 'How_ATLAS_Returns_Hidden_Travel_Commissions.m4a',
+    size: '9.6 MB',
+    duration: '10:02',
+    trackId: 'commissions'
+  },
+  {
+    id: 'ep7',
+    category: 'core',
+    badge: 'Core 7 • Luksusresorter',
+    title: 'How Luxury Resorts Secretly Liquidate Empty Suites (Slik dumper luksusresorter tomme suiter i hemmelighet)',
+    desc: '5-star resorts cannot discount publicly without destroying their brand equity. Discover how opaque closed-loop distribution liquidates unsold suites.',
+    file: 'How_Luxury_Resorts_Secretly_Liquidate_Empty_Suites.m4a',
+    size: '41.3 MB',
+    duration: '43:03',
+    trackId: 'resorts'
+  },
+  {
+    id: 'ep8',
+    category: 'core',
+    badge: 'Core 8 • Garanti',
+    title: 'How ATLAS Guarantees Wholesale Savings (Slik garanterer ATLAS at medlemskapet lønner seg)',
+    desc: 'The legal and mathematical framework of the ATLAS 100% Value Guarantee. Why joining ATLAS carries zero financial risk.',
+    file: 'How_ATLAS_Travel_Club_Guarantees_Wholesale_Savings.m4a',
+    size: '10.3 MB',
+    duration: '10:46',
+    trackId: 'guarantee'
+  },
+  {
+    id: 'ep9',
+    category: 'core',
+    badge: 'Core 9 • Storlansering',
+    title: 'The Zero-Markup Travel Membership Revolution (Revolusjonen: Reis til 0 kr påslag med ATLAS)',
+    desc: 'The full vision of ATLAS Travel Club, the Costco model applied to global travel, and what happens when the doors open on Jan 20, 2027.',
+    file: 'ATLAS_Travel_Club_Zero_Markup_Membership.m4a',
+    size: '9.0 MB',
+    duration: '09:22',
+    trackId: 'launch'
+  },
+  {
+    id: 'deep1',
+    category: 'deepdive',
+    badge: 'Deep Dive • Playbook',
+    title: 'The ATLAS Travel Club Launch Playbook',
+    desc: 'Comprehensive 45-minute deep-dive covering founder perks, hotel bedbanks, EU261 integrations, and our long-term roadmap.',
+    file: 'The_ATLAS_Travel_Club_Launch_Playbook.m4a',
+    size: '43.5 MB',
+    duration: '45:18',
+    trackId: 'deepdive'
+  },
+  {
+    id: 'deep2',
+    category: 'deepdive',
+    badge: 'Deep Dive • Duopol',
+    title: 'How ATLAS Disrupts the Travel Duopoly',
+    desc: 'How Booking Holdings and Expedia Group maintain a 92% market chokehold, and how private subscription clubs break the duopoly.',
+    file: 'How_ATLAS_Disrupts_the_Travel_Duopoly.m4a',
+    size: '42.3 MB',
+    duration: '44:06',
+    trackId: 'deepdive-duopoly'
+  },
+  {
+    id: 'deep3',
+    category: 'deepdive',
+    badge: 'Deep Dive • Økonomi',
+    title: 'Why Luxury Hotels Give Away Free Rooms',
+    desc: 'The operational mathematics of hotel marginal costs vs. food, beverage, and amenities upsells during shoulder seasons.',
+    file: 'Why_Luxury_Hotels_Give_Away_Free_Rooms.m4a',
+    size: '40.4 MB',
+    duration: '42:07',
+    trackId: 'deepdive-free-rooms'
+  },
+  {
+    id: 'deep4',
+    category: 'deepdive',
+    badge: 'Deep Dive • Engros',
+    title: 'How Travel Clubs Bypass Retail Markups',
+    desc: 'Behind the scenes of closed-user-group credentialing and how contractual rate parity is legally honored without surcharges.',
+    file: 'How_Travel_Clubs_Bypass_Retail_Markups.m4a',
+    size: '40.3 MB',
+    duration: '42:00',
+    trackId: 'deepdive-markup-bypass'
+  },
+  {
+    id: 'deep5',
+    category: 'deepdive',
+    badge: 'Deep Dive • Forretningsmodell',
+    title: 'How Travel Subscriptions Kill Hidden Commissions',
+    desc: 'Why the alignment of interests between club and member is the only way to achieve truly transparent travel pricing.',
+    file: 'How_Travel_Subscriptions_Kill_Hidden_Commissions.m4a',
+    size: '22.8 MB',
+    duration: '23:45',
+    trackId: 'deepdive-subscriptions'
+  },
+  {
+    id: 'briefing1',
+    category: 'deepdive',
+    badge: 'Executive Briefing',
+    title: 'The Closed-User-Group Advantage (Executive Briefing)',
+    desc: 'Concise 6-minute executive overview for high-level partner reviews and onboardings.',
+    file: 'how-private-clubs-get-wholesale-hotel-rates.m4a',
+    size: '7.6 MB',
+    duration: '06:13',
+    trackId: 'summary'
+  }
+];
+
 interface CrmDashboardProps {
   onBackToSite: () => void;
   onLockCrm: () => void;
@@ -53,9 +240,19 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
   const [team, setTeam] = useState<TeamMember[]>([]);
   const [refundClaims, setRefundClaims] = useState<RefundClaimRecord[]>([]);
   const [currentMemberId, setCurrentMemberId] = useState<string>('');
-  const [activeTab, setActiveTab] = useState<'leads' | 'team' | 'sequences' | 'refunds'>('leads');
+  const [activeTab, setActiveTab] = useState<'leads' | 'team' | 'sequences' | 'refunds' | 'podcasts'>('leads');
   const [refundStatusFilter, setRefundStatusFilter] = useState<string>('all');
   const [actionFeedback, setActionFeedback] = useState<string>('');
+
+  // Podcasts Player State (Founder Internal Vault)
+  const [selectedPodcast, setSelectedPodcast] = useState<CrmPodcastItem>(CRM_PODCAST_ITEMS[0]);
+  const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
+  const [podcastFilterTab, setPodcastFilterTab] = useState<'all' | 'core' | 'deepdive'>('all');
+  const [podcastSearchQuery, setPodcastSearchQuery] = useState<string>('');
+  const [playbackSpeed, setPlaybackSpeed] = useState<number>(1.0);
+  const [audioCurrentTime, setAudioCurrentTime] = useState<number>(0);
+  const [audioDuration, setAudioDuration] = useState<number>(0);
+  const crmAudioRef = useRef<HTMLAudioElement | null>(null);
 
   // Sequences State
   const [selectedSequenceId, setSelectedSequenceId] = useState<string>(NURTURE_EMAIL_SEQUENCE[0].id);
@@ -292,6 +489,19 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
             >
               <Shield className="w-3.5 h-3.5" />
               <span>Verdigaranti & Refusjoner ({refundClaims.length})</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab('podcasts')}
+              className={`px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider uppercase transition cursor-pointer flex items-center gap-1.5 ${
+                activeTab === 'podcasts'
+                  ? 'bg-amber-400 text-neutral-950 shadow-md shadow-amber-400/20'
+                  : 'bg-neutral-900 text-neutral-400 hover:text-neutral-200'
+              }`}
+            >
+              <Headphones className="w-3.5 h-3.5" />
+              <span>Podcast Arkiv ({CRM_PODCAST_ITEMS.length})</span>
             </button>
           </div>
 
@@ -977,6 +1187,324 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
                   </tbody>
                 </table>
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 5: INTERNAL FOUNDER PODCAST VAULT */}
+        {activeTab === 'podcasts' && (
+          <div className="space-y-6">
+            {/* Top Founder Notice */}
+            <div className="p-5 rounded-2xl bg-gradient-to-r from-neutral-900 via-neutral-900/90 to-amber-950/40 border border-amber-400/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 text-[10px] font-mono font-bold uppercase border border-amber-400/30 flex items-center gap-1">
+                    <Lock className="w-3 h-3 text-amber-400" />
+                    Intern Stifter-Lydbank • Konfidensielt
+                  </span>
+                  <span className="text-[11px] font-mono text-neutral-400">
+                    Kun tilgjengelig bak CRM-sikkerhetsnøkkel
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold text-neutral-100 mt-2 font-cinzel">
+                  ATLAS Travel Club — Komplett Lydarkiv (15 Spor)
+                </h3>
+                <p className="text-xs text-neutral-400 mt-1 max-w-3xl leading-relaxed">
+                  Dette er din private stifter-oversikt over alle 15 innleste masterclass-episoder og bakgrunnsanalyser. Her kan du lytte til sporene, teste avspilling i sanntid, laste ned råfilene eller kopiere abonnent-lenkene.
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-xl bg-neutral-950 border border-neutral-800 text-right font-mono text-xs shrink-0">
+                <span className="text-neutral-500 block text-[10px]">Totalt Antall Spor</span>
+                <span className="text-xl font-bold text-amber-300">{CRM_PODCAST_ITEMS.length} episoder</span>
+              </div>
+            </div>
+
+            {/* Master Integrated Audio Player */}
+            <div className="p-5 rounded-2xl bg-neutral-900/90 border border-amber-400/30 shadow-xl space-y-4">
+              <audio
+                ref={crmAudioRef}
+                src={`/audio/${selectedPodcast.file}`}
+                preload="metadata"
+                onTimeUpdate={(e) => {
+                  const target = e.currentTarget;
+                  setAudioCurrentTime(target.currentTime);
+                  setAudioDuration(target.duration || 0);
+                }}
+                onLoadedMetadata={(e) => {
+                  setAudioDuration(e.currentTarget.duration || 0);
+                }}
+                onEnded={() => setIsAudioPlaying(false)}
+                onPlay={() => setIsAudioPlaying(true)}
+                onPause={() => setIsAudioPlaying(false)}
+              />
+
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-neutral-950 shadow-lg ${isAudioPlaying ? 'animate-pulse shadow-amber-400/30' : ''}`}>
+                    <Headphones className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-amber-400 block font-bold">
+                      {selectedPodcast.badge}
+                    </span>
+                    <h4 className="text-base font-bold text-neutral-100 font-cinzel">
+                      {selectedPodcast.title}
+                    </h4>
+                    <span className="text-xs text-neutral-400 font-mono">
+                      Fil: {selectedPodcast.file} • Størrelse: {selectedPodcast.size}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Player Controls */}
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (crmAudioRef.current) {
+                        crmAudioRef.current.currentTime = Math.max(0, crmAudioRef.current.currentTime - 15);
+                      }
+                    }}
+                    className="p-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-xs font-mono transition cursor-pointer"
+                    title="Spol 15 sekunder tilbake"
+                  >
+                    ↺ 15s
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (!crmAudioRef.current) return;
+                      if (isAudioPlaying) {
+                        crmAudioRef.current.pause();
+                      } else {
+                        crmAudioRef.current.play().catch(console.warn);
+                      }
+                    }}
+                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-neutral-950 font-bold text-xs uppercase tracking-wider flex items-center gap-2 shadow-lg shadow-amber-400/20 transition cursor-pointer"
+                  >
+                    {isAudioPlaying ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current" />}
+                    <span>{isAudioPlaying ? 'Pause' : 'Spill av'}</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (crmAudioRef.current) {
+                        crmAudioRef.current.currentTime = Math.min(crmAudioRef.current.duration || 0, crmAudioRef.current.currentTime + 15);
+                      }
+                    }}
+                    className="p-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-xs font-mono transition cursor-pointer"
+                    title="Spol 15 sekunder frem"
+                  >
+                    15s ↻
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const speeds = [1.0, 1.25, 1.5, 2.0];
+                      const next = speeds[(speeds.indexOf(playbackSpeed) + 1) % speeds.length];
+                      setPlaybackSpeed(next);
+                      if (crmAudioRef.current) crmAudioRef.current.playbackRate = next;
+                    }}
+                    className="px-2.5 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-amber-300 text-xs font-mono font-bold transition cursor-pointer"
+                    title="Avspillingshastighet"
+                  >
+                    {playbackSpeed.toFixed(1)}x
+                  </button>
+
+                  <a
+                    href={`/audio/${selectedPodcast.file}`}
+                    download
+                    className="p-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-300 transition cursor-pointer"
+                    title="Last ned lydfil til datamaskin"
+                  >
+                    <Download className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Progress Scrubber */}
+              <div className="flex items-center gap-3 pt-2">
+                <span className="text-xs font-mono text-neutral-400 w-12 text-right">
+                  {Math.floor(audioCurrentTime / 60)}:{String(Math.floor(audioCurrentTime % 60)).padStart(2, '0')}
+                </span>
+                <input
+                  type="range"
+                  min={0}
+                  max={audioDuration || 100}
+                  value={audioCurrentTime}
+                  onChange={(e) => {
+                    const time = Number(e.target.value);
+                    setAudioCurrentTime(time);
+                    if (crmAudioRef.current) {
+                      crmAudioRef.current.currentTime = time;
+                    }
+                  }}
+                  className="flex-1 accent-amber-400 h-1.5 bg-neutral-800 rounded-lg cursor-pointer"
+                />
+                <span className="text-xs font-mono text-neutral-400 w-12">
+                  {Math.floor(audioDuration / 60)}:{String(Math.floor(audioDuration % 60)).padStart(2, '0')}
+                </span>
+              </div>
+            </div>
+
+            {/* Filter and Search Bar */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-neutral-900/60 p-3 rounded-2xl border border-neutral-800">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setPodcastFilterTab('all')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition cursor-pointer ${
+                    podcastFilterTab === 'all'
+                      ? 'bg-amber-400 text-neutral-950'
+                      : 'bg-neutral-800 text-neutral-400 hover:text-neutral-200'
+                  }`}
+                >
+                  Alle Spor ({CRM_PODCAST_ITEMS.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPodcastFilterTab('core')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition cursor-pointer ${
+                    podcastFilterTab === 'core'
+                      ? 'bg-amber-400 text-neutral-950'
+                      : 'bg-neutral-800 text-neutral-400 hover:text-neutral-200'
+                  }`}
+                >
+                  Kjerne-Nurture (9)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPodcastFilterTab('deepdive')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition cursor-pointer ${
+                    podcastFilterTab === 'deepdive'
+                      ? 'bg-amber-400 text-neutral-950'
+                      : 'bg-neutral-800 text-neutral-400 hover:text-neutral-200'
+                  }`}
+                >
+                  Dybdedykk (6)
+                </button>
+              </div>
+
+              <div className="relative">
+                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500" />
+                <input
+                  type="text"
+                  placeholder="Søk i titler, tema eller filnavn..."
+                  value={podcastSearchQuery}
+                  onChange={(e) => setPodcastSearchQuery(e.target.value)}
+                  className="pl-9 pr-3 py-1.5 rounded-xl bg-neutral-950 border border-neutral-800 text-neutral-100 text-xs font-mono placeholder:text-neutral-600 focus:outline-none focus:border-amber-400/50 w-full sm:w-64"
+                />
+              </div>
+            </div>
+
+            {/* Podcast Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {CRM_PODCAST_ITEMS
+                .filter((p) => {
+                  if (podcastFilterTab !== 'all' && p.category !== podcastFilterTab) return false;
+                  if (!podcastSearchQuery.trim()) return true;
+                  const q = podcastSearchQuery.toLowerCase();
+                  return (
+                    p.title.toLowerCase().includes(q) ||
+                    p.desc.toLowerCase().includes(q) ||
+                    p.file.toLowerCase().includes(q)
+                  );
+                })
+                .map((item) => {
+                  const isCurrent = selectedPodcast.id === item.id;
+                  return (
+                    <div
+                      key={item.id}
+                      className={`p-5 rounded-2xl border transition flex flex-col justify-between ${
+                        isCurrent
+                          ? 'bg-amber-950/20 border-amber-400/50 shadow-lg shadow-amber-400/10'
+                          : 'bg-neutral-900/70 border-neutral-800 hover:border-neutral-700'
+                      }`}
+                    >
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className={`text-[10px] font-mono uppercase px-2 py-0.5 rounded font-bold ${
+                            item.category === 'deepdive'
+                              ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
+                              : 'bg-amber-400/20 text-amber-300 border border-amber-400/30'
+                          }`}>
+                            {item.badge}
+                          </span>
+                          <span className="text-[11px] font-mono text-neutral-400">
+                            ⏱️ {item.duration}
+                          </span>
+                        </div>
+
+                        <h4 className="text-sm font-bold text-neutral-100 font-cinzel mb-1.5 leading-snug">
+                          {item.title}
+                        </h4>
+
+                        <p className="text-xs text-neutral-400 line-clamp-3 mb-4 leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </div>
+
+                      <div className="pt-3 border-t border-neutral-800/80 space-y-3">
+                        <div className="flex items-center justify-between text-[11px] font-mono text-neutral-500">
+                          <span>Fil: {item.file.replace('.m4a', '')}</span>
+                          <span>{item.size}</span>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setSelectedPodcast(item);
+                              setTimeout(() => {
+                                if (crmAudioRef.current) {
+                                  crmAudioRef.current.src = `/audio/${item.file}`;
+                                  crmAudioRef.current.load();
+                                  crmAudioRef.current.play().catch(console.warn);
+                                  setIsAudioPlaying(true);
+                                }
+                              }, 50);
+                            }}
+                            className={`flex-1 py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer ${
+                              isCurrent && isAudioPlaying
+                                ? 'bg-amber-400 text-neutral-950 shadow-md shadow-amber-400/20'
+                                : 'bg-neutral-800 hover:bg-neutral-700 text-neutral-200'
+                            }`}
+                          >
+                            {isCurrent && isAudioPlaying ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current" />}
+                            <span>{isCurrent && isAudioPlaying ? 'Pause' : 'Spill av'}</span>
+                          </button>
+
+                          <a
+                            href={`/audio/${item.file}`}
+                            download
+                            className="p-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-300 transition cursor-pointer"
+                            title="Last ned fil"
+                          >
+                            <Download className="w-3.5 h-3.5" />
+                          </a>
+
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const link = `https://atlasprelaunch.web.app/?podcast=${item.trackId}`;
+                              navigator.clipboard.writeText(link);
+                              setActionFeedback(`Kopierte dyp-lenke for ${item.title}`);
+                              setTimeout(() => setActionFeedback(''), 3000);
+                            }}
+                            className="p-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-300 transition cursor-pointer"
+                            title="Kopier abonnent-lenke"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         )}
