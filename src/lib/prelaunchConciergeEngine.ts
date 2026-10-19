@@ -305,13 +305,13 @@ ATLAS er en privat medlemsklubb etter Costco-modellen. Vi tar **0 kr i påslag p
 • **100% Gratis Reservasjon**: Du reserverer plass i dag helt gratis – intet kredittkort nødvendig.
 • **Gave til de 100 første**: Et **3-dagers gratis luksushotellopphold for 2 personer** i Europa (verdi 5 400 kr, 0 kr i rompris via Connex Holiday Plus).
 • **Golden Ticket Mattrekning**: 3 av de 100 første vinner OGSÅ all gourmetmat (halvpensjon) 100% dekket av ATLAS.
-• **100% Fornøyd- & Verdigaranti**: Sparer du ikke inn kontingenten på din aller første reise, refunderer vi 100% av beløpet umiddelbart.`,
+• **100% Fornøyd- & Verdigaranti**: Sparer du ikke inn kontingenten på ditt første hotellopphold (2+ netter), ferieleilighet eller samlede årsreiser, refunderer vi 100% av beløpet umiddelbart.`,
           action: 'open_waitlist',
           actionLabel: `Reserver Founding-plass gratis (${p.formattedFounding})`,
           followUps: [
             'Hva inkluderer det gratis hotelloppholdet?',
             'Hvordan fungerer engrospriser på hotell?',
-            'Hva er 7-netters ferieleiligheter til 3 490 kr?',
+            'Hva er ferieleiligheter fra 3 490 kr?',
             'Hva er 100% verdigarantien?',
           ],
         };
@@ -326,7 +326,7 @@ ATLAS operates on a strict subscription model (like Costco). We charge **0 retai
 • **100% Free Reservation**: You can reserve your priority spot today for free – no credit card required.
 • **Founder Gift for the First 100**: A complimentary **3-day European luxury hotel break for 2 guests** (worth €480 / 5 400 kr, €0 room rate via Connex Holiday Plus).
 • **Golden Ticket Food Draw**: 3 of the first 100 members will win ALL gourmet meals (half-board) 100% covered by ATLAS.
-• **100% Value Guarantee**: If your first trip doesn't save you more than your membership fee, we refund 100% of your fee immediately.`,
+• **100% Value Guarantee**: If your first hotel stay (2+ nights), vacation condo, or cumulative annual travel doesn't save you more than your membership fee, we refund 100% of your fee immediately.`,
         action: 'open_waitlist',
         actionLabel: `Reserve Founding Spot Free (${p.formattedFounding})`,
         followUps: [
@@ -511,7 +511,9 @@ You can top it up instantly via SEPA or local bank transfer, and you can add it 
 
       if (isNorwegian) {
         return {
-          text: `Vi holder det helt risikofritt: Hvis Atlas ikke sparer deg for mer enn årskontingenten din (${p.formattedFounding} for Founding Members) på din aller første reise, gir du oss bare beskjed, og **vi refunderer 100% av medlemskontingenten**.
+          text: `Vi holder det helt risikofritt: Hvis Atlas ikke sparer deg for mer enn årskontingenten din (${p.formattedFounding} for Founding Members) på ditt aller første hotellopphold (min. 2–3 netter på engrospriser), ferieleilighet eller samlede årsreiser, gir du oss bare beskjed, og **vi refunderer 100% av medlemskontingenten**.
+
+På flybilletter gir vi ærlige engrospriser (du sparer IATA- og bagasjepåslag på 8%–14%), mens på hoteller og ferieleiligheter (med 20%–45% marginer) sparer en gjennomsnittlig tur 1 500 – 15 000 kr. Medlemskapet betaler seg dermed inn allerede på første ferietur.
 
 Bestillingene dine er forhåndsbetalte engrosallokeringer med offisielle digitale innsjekkingskuponger direkte fra globale hotellgrossister. Du handler trygt med 14 dagers ubetinget angrefrist og vår 100% verdigaranti.`,
           action: 'open_waitlist',
@@ -525,7 +527,9 @@ Bestillingene dine er forhåndsbetalte engrosallokeringer med offisielle digital
       }
 
       return {
-        text: `We keep it simple and completely risk-free: if Atlas doesn't save you more than your annual membership fee (${p.formattedFounding} for Founding Members) on your very first booking, simply let us know and **we will refund 100% of your membership fee**.
+        text: `We keep it simple and completely risk-free: if Atlas doesn't save you more than your annual membership fee (${p.formattedFounding} for Founding Members) on your very first completed hotel stay (min. 2–3 nights at wholesale bedbank rates), vacation resort condo, or cumulative annual travel, simply let us know and **we will refund 100% of your membership fee**.
+
+On flights, we provide honest unbundled carrier net fares (saving 8%–14% on economy GDS/baggage markups), while on hotels and resort apartments (where retail markups are 20%–45%), typical savings range from €150 to €1,500+, easily paying for the membership on trip one.
 
 Your bookings are pre-paid corporate allotments with official digital check-in vouchers issued directly by global bedbanks and hotel partners. You are protected by our 100% Value Guarantee and consumer peace of mind.`,
         action: 'open_waitlist',

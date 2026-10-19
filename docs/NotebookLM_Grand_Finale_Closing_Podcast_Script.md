@@ -17,13 +17,14 @@ CRITICAL PRONUNCIATION & FACTUAL DIRECTIVES FOR CO-HOSTS:
 3. CLEARANCE PRICING: The price is NOT always €299! Clarify that weekly stays start FROM €299 / 3 490 kr (fra 3 490 kr) for a full 7 nights when booking last-minute clearance / distressed inventory weeks (rates vary by season, unit size, and advance booking window).
 4. TERMINOLOGY: Strictly NEVER use the term "timeshare". Refer exclusively to serviced resort condominiums and vacation residences.
 5. NO RGF: ATLAS does not sell package tours; ATLAS provides raw wholesale net technology access with a 100% Value Guarantee.
+6. THE 100% VALUE GUARANTEE: Clarify that the 100% Value Guarantee applies to a member's first hotel stay (minimum 2–3 nights), vacation resort condominium booking, or cumulative annual travel savings. Do NOT claim someone saves €110 on a single cheap €50 flight (flights offer unbundled net carrier savings of 8%–14%, while high-margin hotels and resort condos easily save €150–€1,500+).
 
 Synthesize the entire investigative series into a persuasive, seamless, and urgent sales masterclass:
 1. Re-expose the public OTA monopoly (Booking.com & Expedia charging 20% to 45% markups) and explain how the closed-loop Costco model legally bypasses Rate Parity to deliver raw wholesale bedbank rates and direct Duffel NDC flights with 0 kr markup.
 2. Recap the Connex Holiday Plus breakthrough: 100% free room rates (€0) across 1,500+ boutique & wellness retreats in Europe, with only published gourmet half-board paid upon checkout, and the 3x all-meals golden ticket draw.
 3. Recap the Private Resort Residence liquidation clearance: 7-night condominium stays (studios, 1- and 2-bedroom units sleeping 2 to 6 guests) in Marbella, Tenerife, Algarve, and Crete starting FROM €299 (fra 3 490 kr) for the entire week on last-minute clearance weeks (zero per-person fees, independent VIP check-in with absolutely zero sales presentations or ownership pitches).
 4. Recap the 100% Cruise Commission Rebate into the Rewards Vault, explaining the transparent 30-60 day post-travel escrow settlement rule.
-5. Deliver an irresistible closing pitch: Weigh the €110 (1 290 NOK) annual membership fee against the immediate €480 (5 400 kr) complimentary hotel break voucher, thousands in projected annual savings, and the 100% Value Guarantee (save more than the membership fee on trip one or get an immediate full refund). Create intense urgency around the 100 Founding Member cap and the strict 48-hour claim window.
+5. Deliver an irresistible closing pitch: Weigh the €110 (1 290 NOK) annual membership fee against the immediate €480 (5 400 kr) complimentary hotel break voucher, thousands in projected annual savings, and the 100% Value Guarantee (guaranteeing that your first hotel stay of 2+ nights, resort condo, or cumulative annual travel saves more than the €110 fee or 100% is refunded). Create intense urgency around the 100 Founding Member cap and the strict 48-hour claim window.
 ```
 
 ---
@@ -94,9 +95,9 @@ Let’s look at the financial balance sheet of becoming an ATLAS Founding Member
 
 ### The 100% Value Guarantee (Complete Risk Elimination):
 ATLAS removes 100% of the buyer's risk through a strict contractual guarantee:
-> *"If an ATLAS member does not save more than their annual membership fee (€110 / 1 290 NOK) on their very first completed booking compared to public retail rates on Booking.com or Expedia, ATLAS immediately refunds 100% of their membership fee on the spot."*
+> *"If an ATLAS member does not save more than their annual membership fee (€110 / 1 290 NOK) on their very first completed hotel stay (minimum 2–3 nights at wholesale bedbank rates), vacation resort condominium booking, or cumulative annual travel compared to public retail rates on Booking.com or Expedia, ATLAS immediately refunds 100% of their membership fee on the spot."*
 
-You literally cannot lose money. If you book a single weekend getaway, a family vacation, or a flight, you save multiple times the €110 fee. If you don't, your €110 is returned in full.
+This is mathematically sound and transparent: while airline tickets provide honest, unbundled wholesale savings of 8% to 14% (saving GDS fees and baggage markups), hotels and serviced resort condominiums operate on massive 20% to 45% retail markups. A single 3-night hotel stay or 7-night resort condo easily saves between **€150 and €1,500+**, paying for the entire €110 membership on trip one. You literally cannot lose money.
 
 ---
 

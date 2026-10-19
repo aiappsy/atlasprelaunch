@@ -60,8 +60,8 @@ const SCRIPT_BEATS: ScriptBeat[] = [
     startSec: 43.9,
     endSec: 62.8,
     badge: 'MEMBER PRIVILEGES & EU261',
-    headline: 'EU261 Recovery, Insolvency Protection & Concierge',
-    subtext: 'Automated €600 cash flight disruption recovery, full travel insolvency guarantee, and 24/7 dedicated human concierge support.',
+    headline: 'EU261 Flight Recovery, 100% Value Guarantee & Concierge',
+    subtext: 'Automated €600 cash flight disruption recovery, 100% Value Guarantee on holidays, and 24/7 dedicated concierge support.',
   },
   {
     startSec: 62.8,

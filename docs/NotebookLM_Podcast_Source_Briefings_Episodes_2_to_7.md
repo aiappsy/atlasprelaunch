@@ -13,6 +13,7 @@
 > 3. **Condo Pricing**: Pricing is **FROM €299 / 3 490 kr (fra 3 490 kr)** for a full 7-night week when booking **last-minute clearance / distressed inventory weeks**. Pricing varies by season, unit size, and booking window. Co-hosts MUST NOT say the price is always €299!
 > 4. **Strict Terminology**: Strictly DO NOT use the term "timeshare" anywhere. These properties are serviced resort condominiums and vacation residences.
 > 5. **Zero RGF**: Never mention RGF or Reisegarantifondet. ATLAS does not sell package tours; ATLAS provides raw wholesale technology access with a 100% Value Guarantee.
+> 6. **The 100% Value Guarantee (Flight vs. Hotel Reality)**: Clarify that the guarantee applies to a member's first hotel stay (minimum 2–3 nights at wholesale bedbank rates), vacation resort condominium booking, or cumulative annual travel savings. Co-hosts MUST NOT claim that someone saves €110 on a single cheap €50 flight (flights offer unbundled net carrier savings of 8%–14%, while high-margin hotels and resort condos easily save €150–€1,500+).
 
 ---
 
@@ -186,7 +187,7 @@ Upon checkout completion, all verified Founding 100 members are automatically en
 
 #### 4. The 100% Value Guarantee (Zero Economic Risk)
 ATLAS institutes a contractual consumer protection guarantee:
-* If an active member does not save more than their annual membership fee (€110 / 1 290 NOK) on their very first completed travel booking compared to public prices on Booking.com or Expedia, ATLAS provides an immediate, unconditional **100% refund of the membership fee**.
+* If an active member does not save more than their annual membership fee (€110 / 1 290 NOK) on their very first completed hotel stay (minimum 2–3 nights at wholesale bedbank rates), vacation resort condominium booking, or cumulative annual travel compared to public prices on Booking.com or Expedia, ATLAS provides an immediate, unconditional **100% refund of the membership fee**.
 * Bookings are confirmed corporate allotments with legal check-in vouchers, backed by our 100% Value Guarantee and European consumer protections.
 
 ---
@@ -241,5 +242,5 @@ In accordance with ATLAS membership bylaws:
 * The corresponding complimentary 3-day hotel vouchers (worth €480 / 5 400 kr) and entry into the 3x all-meals draw will be systematically passed to the next applicants in the secondary waitlist registry (starting with candidate #101).
 
 #### 3. Final Reminder on Member Protection
-* The €110 / 1 290 NOK annual membership is backed by the **100% Value Guarantee**: if you do not save more than your membership fee on your very first booking, you receive an immediate 100% refund.
+* The €110 / 1 290 NOK annual membership is backed by the **100% Value Guarantee**: if you do not save more than your membership fee on your very first hotel stay (2+ nights), vacation condo, or cumulative annual travel, you receive an immediate 100% refund.
 * There is zero economic risk. To protect your allocation and voucher, finalize your membership before Friday at 12:00 CET at `https://atlasclub.web.app/membership`.

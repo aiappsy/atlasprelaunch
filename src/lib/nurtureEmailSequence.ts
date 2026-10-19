@@ -66,7 +66,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
             <div style="border-top: 1px solid #262626; padding-top: 14px; font-size: 13px; color: #e5e7eb; line-height: 1.6;">
               <div style="margin-bottom: 6px;">🎁 <strong>100% gratis 3-dagers hotellopphold for 2 personer</strong> i Europa (verdi 5 400 kr / €480)</div>
               <div style="margin-bottom: 6px;">🌟 <strong>Lodd i trekningen</strong> der 3 av de 100 får OGSÅ all gourmetmat (halvpensjon) dekket</div>
-              <div style="margin-bottom: 6px;">🛡️ <strong>100% Fornøyd- & Verdigaranti</strong> på din aller første reise</div>
+              <div style="margin-bottom: 6px;">🛡️ <strong>100% Fornøyd- & Verdigaranti</strong> på ditt første hotellopphold (2+ netter), ferieleilighet eller samlede årsreiser</div>
               <div>⚡ <strong>0 kr påslag for livstid</strong> på fly, leiebil og over 1 200 000 hoteller globalt</div>
             </div>
           </div>
@@ -540,7 +540,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
           </div>
 
           <p style="font-size: 13px; line-height: 1.5; color: #9ca3af;">
-            Husk vår <strong>100% verdigaranti</strong>: Hvis du ikke sparer mer enn de 1 290 kr på din første reise, refunderer vi hele kontingenten på dagen. Du tar null økonomisk risiko.
+            Husk vår <strong>100% verdigaranti</strong>: Hvis du ikke sparer mer enn de 1 290 kr på ditt første hotellopphold (2+ netter), ferieleilighet eller samlede årsreiser, refunderer vi hele kontingenten på dagen. Du tar null økonomisk risiko.
           </p>
 
           <div style="border-top: 1px solid #262626; padding-top: 20px; font-size: 12px; font-family: monospace; color: #6b7280;">
