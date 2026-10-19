@@ -96,7 +96,7 @@ export const SiteOpenerVideo: React.FC<SiteOpenerVideoProps> = ({
     }
 
     // Prepare voiceover audio element
-    const audio = new Audio('/audio/founder-voiceover.mp3?v=20261009_brian_v3');
+    const audio = new Audio('/audio/founder-voiceover.mp3?v=20261019_us_v1');
     audio.preload = 'auto';
     voiceAudioRef.current = audio;
 
