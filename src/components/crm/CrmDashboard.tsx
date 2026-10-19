@@ -35,6 +35,13 @@ import { AddTeamMemberModal } from './AddTeamMemberModal';
 import { FounderCertificateModal, FounderCertificateData } from '../FounderCertificateModal';
 import { NURTURE_EMAIL_SEQUENCE, NurtureEmailTemplate } from '../../lib/nurtureEmailSequence';
 import { dispatchVerificationCode } from '../../lib/emailService';
+import {
+  getStoredRefundClaims,
+  approveRefundClaim,
+  processStripeRefund,
+  rejectRefundClaim,
+  RefundClaimRecord,
+} from '../../lib/refundManagementService';
 
 interface CrmDashboardProps {
   onBackToSite: () => void;
@@ -44,8 +51,11 @@ interface CrmDashboardProps {
 export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLockCrm }) => {
   const [leads, setLeads] = useState<LeadRecord[]>([]);
   const [team, setTeam] = useState<TeamMember[]>([]);
+  const [refundClaims, setRefundClaims] = useState<RefundClaimRecord[]>([]);
   const [currentMemberId, setCurrentMemberId] = useState<string>('');
-  const [activeTab, setActiveTab] = useState<'leads' | 'team' | 'sequences'>('leads');
+  const [activeTab, setActiveTab] = useState<'leads' | 'team' | 'sequences' | 'refunds'>('leads');
+  const [refundStatusFilter, setRefundStatusFilter] = useState<string>('all');
+  const [actionFeedback, setActionFeedback] = useState<string>('');
 
   // Sequences State
   const [selectedSequenceId, setSelectedSequenceId] = useState<string>(NURTURE_EMAIL_SEQUENCE[0].id);
@@ -66,8 +76,10 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
   const refreshData = () => {
     const loadedTeam = getStoredTeamMembers();
     const loadedLeads = getStoredLeads();
+    const loadedClaims = getStoredRefundClaims();
     setTeam(loadedTeam);
     setLeads(loadedLeads);
+    setRefundClaims(loadedClaims);
     if (!currentMemberId && loadedTeam.length > 0) {
       setCurrentMemberId(loadedTeam[0].id);
     }
@@ -267,6 +279,19 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
             >
               <Mail className="w-3.5 h-3.5" />
               <span>Lanseringssekvens ({NURTURE_EMAIL_SEQUENCE.length})</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab('refunds')}
+              className={`px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider uppercase transition cursor-pointer flex items-center gap-1.5 ${
+                activeTab === 'refunds'
+                  ? 'bg-amber-400 text-neutral-950 shadow-md shadow-amber-400/20'
+                  : 'bg-neutral-900 text-neutral-400 hover:text-neutral-200'
+              }`}
+            >
+              <Shield className="w-3.5 h-3.5" />
+              <span>Verdigaranti & Refusjoner ({refundClaims.length})</span>
             </button>
           </div>
 
@@ -726,6 +751,231 @@ export const CrmDashboard: React.FC<CrmDashboardProps> = ({ onBackToSite, onLock
                     </>
                   );
                 })()}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 4: VALUE GUARANTEE & REFUND CLAIMS */}
+        {activeTab === 'refunds' && (
+          <div className="space-y-6 animate-fade-in font-sans">
+            {/* Feedback Banner */}
+            {actionFeedback && (
+              <div className="p-3.5 rounded-xl bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-mono flex items-center justify-between">
+                <span>{actionFeedback}</span>
+                <button
+                  onClick={() => setActionFeedback('')}
+                  className="text-amber-400 hover:text-white text-xs underline cursor-pointer"
+                >
+                  Lukk
+                </button>
+              </div>
+            )}
+
+            {/* Refund KPI Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+              <div className="p-4 rounded-2xl bg-neutral-900 border border-neutral-800">
+                <span className="text-[11px] font-mono text-neutral-400 uppercase block mb-1">
+                  Totalt Krav Mottatt
+                </span>
+                <div className="text-2xl font-bold font-mono text-white">{refundClaims.length}</div>
+                <span className="text-[10px] text-neutral-500 font-mono mt-1 block">The Value Guarantee Blueprint</span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-neutral-900 border border-neutral-800">
+                <span className="text-[11px] font-mono text-neutral-400 uppercase block mb-1">
+                  Forhåndsvalidert / Klar
+                </span>
+                <div className="text-2xl font-bold font-mono text-emerald-400">
+                  {refundClaims.filter((c) => c.status === 'pre_validated' || c.status === 'approved').length}
+                </div>
+                <span className="text-[10px] text-emerald-500/80 font-mono mt-1 block">Oppfyller Track A / B</span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-neutral-900 border border-neutral-800">
+                <span className="text-[11px] font-mono text-neutral-400 uppercase block mb-1">
+                  Utbetalt via Stripe
+                </span>
+                <div className="text-2xl font-bold font-mono text-blue-400">
+                  {refundClaims.filter((c) => c.status === 'processed').length}
+                </div>
+                <span className="text-[10px] text-neutral-500 font-mono mt-1 block">100% Penger Tilbake</span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-neutral-900 border border-neutral-800">
+                <span className="text-[11px] font-mono text-neutral-400 uppercase block mb-1">
+                  Avvist under Blueprint
+                </span>
+                <div className="text-2xl font-bold font-mono text-neutral-400">
+                  {refundClaims.filter((c) => c.status === 'rejected').length}
+                </div>
+                <span className="text-[10px] text-neutral-500 font-mono mt-1 block">Fly / &lt;2 netter unntak</span>
+              </div>
+            </div>
+
+            {/* Filter Pills */}
+            <div className="flex items-center gap-2 border-b border-neutral-800 pb-3 text-xs font-mono">
+              <span className="text-neutral-500">Filtrer krav:</span>
+              {['all', 'pre_validated', 'approved', 'processed', 'rejected'].map((f) => (
+                <button
+                  key={f}
+                  type="button"
+                  onClick={() => setRefundStatusFilter(f)}
+                  className={`px-3 py-1 rounded-lg border transition cursor-pointer uppercase text-[10px] ${
+                    refundStatusFilter === f
+                      ? 'bg-amber-400 text-neutral-950 border-amber-400 font-bold'
+                      : 'bg-neutral-900 border-neutral-800 text-neutral-400 hover:text-white'
+                  }`}
+                >
+                  {f === 'all'
+                    ? 'Alle'
+                    : f === 'pre_validated'
+                    ? 'Forhåndsvalidert'
+                    : f === 'approved'
+                    ? 'Godkjent'
+                    : f === 'processed'
+                    ? 'Utbetalt (Stripe)'
+                    : 'Avvist'}
+                </button>
+              ))}
+            </div>
+
+            {/* Claims Table */}
+            <div className="border border-neutral-800 rounded-2xl overflow-hidden bg-neutral-900/40">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs font-mono">
+                  <thead className="bg-neutral-900/90 text-neutral-400 uppercase text-[10px] border-b border-neutral-800">
+                    <tr>
+                      <th className="p-3.5">Krav-ID & Dato</th>
+                      <th className="p-3.5">Medlem & Booking</th>
+                      <th className="p-3.5">Spor & Kategori</th>
+                      <th className="p-3.5">Atlas vs Butikk</th>
+                      <th className="p-3.5">Status & Validering</th>
+                      <th className="p-3.5 text-right">Handlinger</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-neutral-800/60 text-neutral-300">
+                    {refundClaims
+                      .filter((c) => refundStatusFilter === 'all' || c.status === refundStatusFilter)
+                      .map((claim) => (
+                        <tr key={claim.id} className="hover:bg-neutral-800/30 transition">
+                          <td className="p-3.5 whitespace-nowrap">
+                            <span className="font-bold text-amber-400 block">{claim.id}</span>
+                            <span className="text-[10px] text-neutral-500">
+                              {new Date(claim.submittedAt).toLocaleDateString('no-NO')}
+                            </span>
+                          </td>
+
+                          <td className="p-3.5">
+                            <span className="text-white font-medium block">{claim.memberName}</span>
+                            <span className="text-[11px] text-neutral-400 block">{claim.memberEmail}</span>
+                            <span className="text-[10px] text-neutral-500 font-mono">
+                              Ref: {claim.bookingRef} • {claim.destination}
+                            </span>
+                          </td>
+
+                          <td className="p-3.5 whitespace-nowrap">
+                            <span className="text-neutral-200 block text-[11px]">
+                              {claim.track === 'track_a_lodging'
+                                ? 'Track A (Første Tur)'
+                                : claim.track === 'track_b_annual'
+                                ? 'Track B (Årsrevisjon)'
+                                : '14-Dagers Angrerett'}
+                            </span>
+                            <span className="text-[10px] text-neutral-500 capitalize">
+                              {claim.category.replace('_', ' ')}
+                            </span>
+                          </td>
+
+                          <td className="p-3.5 whitespace-nowrap">
+                            <div className="text-[11px]">
+                              Atlas: <strong className="text-white">{claim.atlasPricePaid} {claim.currency}</strong>
+                            </div>
+                            <div className="text-[11px] text-neutral-400">
+                              Butikk: {claim.publicRetailPrice} {claim.currency} ({claim.retailSource})
+                            </div>
+                            <div className="text-[10px] text-amber-400 font-bold mt-0.5">
+                              Spart: {claim.calculatedSavings} {claim.currency} (Kontingent: {claim.annualFeePaid} {claim.currency})
+                            </div>
+                          </td>
+
+                          <td className="p-3.5 max-w-xs">
+                            <span
+                              className={`inline-block px-2 py-0.5 rounded text-[10px] uppercase font-bold mb-1 ${
+                                claim.status === 'processed'
+                                  ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
+                                  : claim.status === 'approved'
+                                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                                  : claim.status === 'pre_validated'
+                                  ? 'bg-amber-400/20 text-amber-300 border border-amber-400/30'
+                                  : 'bg-neutral-800 text-neutral-400'
+                              }`}
+                            >
+                              {claim.status}
+                            </span>
+                            <p className="text-[10px] text-neutral-400 line-clamp-2 leading-tight">
+                              {claim.statusReason}
+                            </p>
+                          </td>
+
+                          <td className="p-3.5 text-right whitespace-nowrap space-x-1.5">
+                            {claim.status !== 'processed' && (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const updated = processStripeRefund(claim.id);
+                                  if (updated) {
+                                    refreshData();
+                                    setActionFeedback(
+                                      `✅ Stripe-refusjon på ${claim.annualFeePaid} ${claim.currency} utbetalt til ${claim.memberEmail} (Ref: ${updated.stripeRefundId})`
+                                    );
+                                  }
+                                }}
+                                className="px-2.5 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold text-[10px] rounded-lg transition cursor-pointer shadow-sm"
+                                title="Utbetal 100% refusjon via Stripe"
+                              >
+                                Utfør Stripe-refusjon
+                              </button>
+                            )}
+
+                            {claim.status === 'submitted' && (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  approveRefundClaim(claim.id, 'Manuell godkjenning av concierge');
+                                  refreshData();
+                                  setActionFeedback(`Krav ${claim.id} godkjent.`);
+                                }}
+                                className="px-2 py-1.5 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-[10px] rounded-lg transition cursor-pointer"
+                              >
+                                Godkjenn
+                              </button>
+                            )}
+
+                            {claim.status !== 'rejected' && claim.status !== 'processed' && (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const reason = window.prompt(
+                                    'Oppgi årsak for avvisning under Blueprint (f.eks. fly eller under 2 netter):',
+                                    'Avvist i henhold til The Atlas Value Guarantee Blueprint: Flybesparelser akkumuleres under Track B.'
+                                  );
+                                  if (reason) {
+                                    rejectRefundClaim(claim.id, reason);
+                                    refreshData();
+                                    setActionFeedback(`Krav ${claim.id} avvist med begrunnelse.`);
+                                  }
+                                }}
+                                className="px-2 py-1.5 bg-red-950/40 hover:bg-red-900/60 text-red-300 text-[10px] rounded-lg border border-red-800/40 transition cursor-pointer"
+                              >
+                                Avvis
+                              </button>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

@@ -12,6 +12,8 @@ import { FounderCertificateModal, FounderCertificateData } from './components/Fo
 import { PodcastPlayerModal } from './components/PodcastPlayerModal';
 import { PrelaunchConcierge } from './components/PrelaunchConcierge';
 import { PerkExplainerModal, PerkExplainerTab } from './components/PerkExplainerModal';
+import { ComplianceModal } from './components/ComplianceModal';
+import { RefundClaimModal } from './components/RefundClaimModal';
 import { CalculationResult } from './lib/calculatorModel';
 import { useLanguage } from './lib/i18n/LanguageContext';
 
@@ -27,6 +29,9 @@ export default function App() {
   const [podcastTrack, setPodcastTrack] = useState<'summary' | 'deepdive'>('summary');
   const [isPerkExplainerOpen, setIsPerkExplainerOpen] = useState<boolean>(false);
   const [perkExplainerTab, setPerkExplainerTab] = useState<PerkExplainerTab>('connex');
+  const [isComplianceOpen, setIsComplianceOpen] = useState<boolean>(false);
+  const [complianceTab, setComplianceTab] = useState<'guarantee' | 'wholesale' | 'passenger_rights' | 'escrow' | 'governance'>('guarantee');
+  const [isRefundModalOpen, setIsRefundModalOpen] = useState<boolean>(false);
   const [calculatorMode, setCalculatorMode] = useState<CalculatorMode>('package');
   const [selectedSavings, setSelectedSavings] = useState<CalculationResult | null>(null);
   const [founderCertificateData, setFounderCertificateData] = useState<FounderCertificateData | null>(null);
@@ -88,12 +93,37 @@ export default function App() {
     setIsPerkExplainerOpen(true);
   };
 
+  const handleOpenCompliance = (tab?: 'guarantee' | 'wholesale' | 'passenger_rights' | 'escrow' | 'governance') => {
+    handleStopVideo();
+    if (tab) setComplianceTab(tab);
+    setIsComplianceOpen(true);
+  };
+
+  const handleOpenRefundModal = () => {
+    handleStopVideo();
+    setIsRefundModalOpen(true);
+  };
+
   // Automatically pause hero video and voiceover when any modal opens
   useEffect(() => {
-    if (isWaitlistOpen || isPodcastOpen || isPerkExplainerOpen || !!founderCertificateData) {
+    if (
+      isWaitlistOpen ||
+      isPodcastOpen ||
+      isPerkExplainerOpen ||
+      !!founderCertificateData ||
+      isComplianceOpen ||
+      isRefundModalOpen
+    ) {
       handleStopVideo();
     }
-  }, [isWaitlistOpen, isPodcastOpen, isPerkExplainerOpen, founderCertificateData]);
+  }, [
+    isWaitlistOpen,
+    isPodcastOpen,
+    isPerkExplainerOpen,
+    founderCertificateData,
+    isComplianceOpen,
+    isRefundModalOpen,
+  ]);
 
   useEffect(() => {
     const isAuth = sessionStorage.getItem('atlas_crm_auth') === 'true';
@@ -360,10 +390,14 @@ export default function App() {
       </main>
 
       {/* Footer with Discreet Staff Lock Icon */}
-      <Footer onOpenCrm={() => {
-        window.history.pushState(null, '', '/admin');
-        setViewMode('crm');
-      }} />
+      <Footer
+        onOpenCrm={() => {
+          window.history.pushState(null, '', '/admin');
+          setViewMode('crm');
+        }}
+        onOpenCompliance={handleOpenCompliance}
+        onOpenRefundModal={handleOpenRefundModal}
+      />
 
       {/* Early Access / Waitlist Lead Modal */}
       <WaitlistModal
@@ -408,6 +442,23 @@ export default function App() {
         onPlaybackStart={() => setIsVideoPlaying(false)}
       />
 
+      {/* Official Legal Compliance & Blueprint Policy Modal */}
+      <ComplianceModal
+        isOpen={isComplianceOpen}
+        onClose={() => setIsComplianceOpen(false)}
+        initialTab={complianceTab}
+        onOpenRefundModal={() => {
+          setIsComplianceOpen(false);
+          setIsRefundModalOpen(true);
+        }}
+      />
+
+      {/* Automated Value Guarantee Refund Claim Portal */}
+      <RefundClaimModal
+        isOpen={isRefundModalOpen}
+        onClose={() => setIsRefundModalOpen(false)}
+      />
+
       {/* Prelaunch AI Concierge (Aura) */}
       {viewMode === 'site' && (
         <PrelaunchConcierge
@@ -419,6 +470,8 @@ export default function App() {
           onOpenCalculator={() => {
             document.getElementById('visual-savings-calculator')?.scrollIntoView({ behavior: 'smooth' });
           }}
+          onOpenRefundModal={handleOpenRefundModal}
+          onOpenComplianceModal={handleOpenCompliance}
         />
       )}
 

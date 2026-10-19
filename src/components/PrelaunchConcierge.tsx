@@ -34,6 +34,8 @@ interface PrelaunchConciergeProps {
   onJoinWaitlist: () => void;
   onOpenPodcast?: (track: 'summary' | 'deepdive') => void;
   onOpenCalculator?: () => void;
+  onOpenRefundModal?: () => void;
+  onOpenComplianceModal?: (tab?: 'guarantee' | 'wholesale' | 'passenger_rights' | 'escrow' | 'governance') => void;
 }
 
 // Custom Markdown Text Renderer for Luxury Typography with Streaming Cursor
@@ -168,6 +170,8 @@ export const PrelaunchConcierge: React.FC<PrelaunchConciergeProps> = ({
   onJoinWaitlist,
   onOpenPodcast,
   onOpenCalculator,
+  onOpenRefundModal,
+  onOpenComplianceModal,
 }) => {
   const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
@@ -422,6 +426,12 @@ export const PrelaunchConcierge: React.FC<PrelaunchConciergeProps> = ({
       setIsOpen(false);
     } else if (action === 'open_calculator') {
       if (onOpenCalculator) onOpenCalculator();
+      setIsOpen(false);
+    } else if (action === 'open_refund_modal') {
+      if (onOpenRefundModal) onOpenRefundModal();
+      setIsOpen(false);
+    } else if (action === 'open_compliance_modal') {
+      if (onOpenComplianceModal) onOpenComplianceModal('guarantee');
       setIsOpen(false);
     }
   };

@@ -55,7 +55,7 @@ export const MEMBERSHIP_PRICING: Record<CurrencyCode, PriceQuote> = {
 
 export interface ConciergeAnswer {
   text: string;
-  action?: 'open_waitlist' | 'open_podcast' | 'open_calculator' | 'open_audio_deepdive';
+  action?: 'open_waitlist' | 'open_podcast' | 'open_calculator' | 'open_audio_deepdive' | 'open_refund_modal' | 'open_compliance_modal';
   actionLabel?: string;
   followUps?: string[];
 }
@@ -516,12 +516,12 @@ You can top it up instantly via SEPA or local bank transfer, and you can add it 
 På flybilletter gir vi ærlige engrospriser (du sparer IATA- og bagasjepåslag på 8%–14%), mens på hoteller og ferieleiligheter (med 20%–45% marginer) sparer en gjennomsnittlig tur 1 500 – 15 000 kr. Medlemskapet betaler seg dermed inn allerede på første ferietur.
 
 Bestillingene dine er forhåndsbetalte engrosallokeringer med offisielle digitale innsjekkingskuponger direkte fra globale hotellgrossister. Du handler trygt med 14 dagers ubetinget angrefrist og vår 100% verdigaranti.`,
-          action: 'open_waitlist',
-          actionLabel: 'Bli med på risikofri venteliste',
+          action: 'open_refund_modal',
+          actionLabel: 'Åpne Verdigaranti Refusjonsportal',
           followUps: [
-            'Hvorfor må jeg bli medlem og ikke teste først?',
-            'Hva koster årsmedlemskapet ved lansering?',
-            'Hvordan fungerer engrospriser på hotell?',
+            'Hvordan fungerer refusjonsprosessen?',
+            'Hva er flyplasslounge-fordelen?',
+            'Hva er EU261 flyforsinkelse-erstatning?',
           ],
         };
       }
@@ -529,15 +529,268 @@ Bestillingene dine er forhåndsbetalte engrosallokeringer med offisielle digital
       return {
         text: `We keep it simple and completely risk-free: if Atlas doesn't save you more than your annual membership fee (${p.formattedFounding} for Founding Members) on your very first completed hotel stay (min. 2–3 nights at wholesale bedbank rates), vacation resort condo, or cumulative annual travel, simply let us know and **we will refund 100% of your membership fee**.
 
-On flights, we provide honest unbundled carrier net fares (saving 8%–14% on economy GDS/baggage markups), while on hotels and resort apartments (where retail markups are 20%–45%), typical savings range from €150 to €1,500+, easily paying for the membership on trip one.
+Under The Atlas Value Guarantee Blueprint, Track A protects your first qualifying lodging stay, while Track B covers cumulative annual travel (including flights). You can submit a claim in 60 seconds directly in our automated refund portal.
 
 Your bookings are pre-paid corporate allotments with official digital check-in vouchers issued directly by global bedbanks and hotel partners. You are protected by our 100% Value Guarantee and consumer peace of mind.`,
-        action: 'open_waitlist',
-        actionLabel: 'Join Risk-Free Early Access',
+        action: 'open_refund_modal',
+        actionLabel: 'Open Value Guarantee Portal',
         followUps: [
-          'Why do I have to become a member and can\'t test first?',
-          'What is the annual membership fee at launch?',
-          'How does wholesale hotel pricing work?',
+          'How does the refund process work?',
+          'How does airport lounge access work?',
+          'What is EU261 flight delay cash recovery?',
+        ],
+      };
+    },
+  },
+
+  // =========================================================================
+  // 6B. HOW AUTOMATED REFUNDS WORK (BILINGUAL)
+  // =========================================================================
+  {
+    id: 'refund_claim_process',
+    category: 'guarantee',
+    exactPhrases: [
+      'how do i get a refund',
+      'how to claim guarantee',
+      'how does the refund work',
+      'refund process',
+      'hvordan krever jeg refusjon',
+      'hvordan fungerer refusjon',
+      'krev refusjon',
+      'be om penger tilbake',
+    ],
+    patterns: [
+      /how (do I|to) (claim|get|request) (a )?refund/i,
+      /refund (process|steps|portal)/i,
+      /kreve refusjon/i,
+      /be om refusjon/i,
+      /refusjonsprosess/i,
+    ],
+    strongKeywords: ['refund', 'claim', 'portal', 'refusjon', 'krav', 'penger tilbake'],
+    weight: 108,
+    getAnswer: (currency: CurrencyCode) => {
+      const isNorwegian = currency === 'NOK';
+      const fee = isNorwegian ? '1 290 kr' : '€110';
+
+      if (isNorwegian) {
+        return {
+          text: `Atlas har et helautomatisert refusjonssystem under **The Atlas Value Guarantee Blueprint**:
+
+1. **Send inn krav på 60 sekunder**: Åpne refusjonsportalen, oppgi bookingreferanse og en enkel skjermdump/lenke til offentlig pris på Booking.com eller Expedia.
+2. **Automatisk forhåndsvalidering**: Systemet beregner umiddelbart besparelsesdifferansen mot din årskontingent (${fee}).
+3. **48-timers saksbehandlingsfrist**: Hard Rock Capital Ltd verifiserer kravet innen 2 virkedager, og 100% av kontingenten utbetales direkte til ditt betalingskort via Stripe.
+4. **Du beholder fordelene**: Du beholder din utstedte Connex 3-dagers luksushotellkupong (verdi 5 400 kr) og alle opptjente Rewards Vault-poeng.`,
+          action: 'open_refund_modal',
+          actionLabel: 'Krev 100% Verdigaranti Nå',
+          followUps: [
+            'Hva er forskjellen på Track A og Track B?',
+            'Hvorfor kan ikke en billig flybillett utløse full refusjon?',
+            'Hva er flyplasslounge-fordelen?',
+          ],
+        };
+      }
+
+      return {
+        text: `Atlas operates an automated claim system under **The Atlas Value Guarantee Blueprint**:
+
+1. **Submit in 60 seconds**: Open our digital claim portal, provide your booking reference and a link or screenshot of the public retail rate on Booking.com or Expedia.
+2. **Automated Pre-Validation**: The engine instantly calculates your savings delta against the annual fee (${fee}).
+3. **48-Hour SLA**: Hard Rock Capital Ltd verifies the claim within 2 business days, and a 100% refund is wired directly to your payment card via Stripe.
+4. **Keep Your Day-One Perks**: You retain your issued Connex 3-Day European Hotel Break voucher (€480 value) and any earned Rewards Vault points. Zero exit penalties apply.`,
+        action: 'open_refund_modal',
+        actionLabel: 'Submit Value Guarantee Claim Now',
+        followUps: [
+          'What is the difference between Track A and Track B?',
+          'Why do flights accumulate under Track B instead of Track A?',
+          'How does airport lounge access work?',
+        ],
+      };
+    },
+  },
+
+  // =========================================================================
+  // 6C. AIRPORT LOUNGES & TRANSIT COPILOT (BILINGUAL)
+  // =========================================================================
+  {
+    id: 'airport_lounges',
+    category: 'founding_perks',
+    exactPhrases: [
+      'airport lounges',
+      'lounge access',
+      'how do lounges work',
+      'flyplasslounge',
+      'loungetilgang',
+      'transit copilot',
+      'dragonpass',
+      'priority pass',
+    ],
+    patterns: [
+      /airport lounge/i,
+      /lounge access/i,
+      /flyplasslounge/i,
+      /loungetilgang/i,
+      /transit copilot/i,
+    ],
+    strongKeywords: ['lounge', 'lounges', 'transit', 'copilot', 'flyplasslounge'],
+    weight: 98,
+    getAnswer: (currency: CurrencyCode) => {
+      const isNorwegian = currency === 'NOK';
+
+      if (isNorwegian) {
+        return {
+          text: `Atlas-medlemmer har tilgang til over **1 300 VIP-flyplasslounger i 140 land** (det globale DragonPass- og Priority Pass-nettverket):
+
+* **Engrospris per inngang**: Mens drop-in i døren koster 450–650 kr, eller krever dyre kredittkort med 5 000–8 000 kr i årsgebyr, kjøper Atlas-medlemmer digitale adgangspass til **rå nettopris (ca. 250–320 kr / €22–€28)**.
+* **Alt inkludert**: Gratis varme buffeter, baristakaffe, premium vin og brennevin, rolige arbeidssoner, dusjer og lynraskt privat Wi-Fi.
+* **Gjestepass til samme pris**: Du kan generere engrospass til familie eller reisefølge direkte i appen.
+* **Transit Copilot**: Vår sanntids reiseassistent gir gateoppdateringer og leder deg direkte til nærmeste ledige lounge ved mellomlandinger.`,
+          action: 'open_waitlist',
+          actionLabel: 'Sikre Loungetilgang som Founding Member',
+          followUps: [
+            'Hva er EU261 flyforsinkelse-erstatning?',
+            'Hva er Fast Track i sikkerhetskontrollen?',
+            'Hva koster årsmedlemskapet ved lansering?',
+          ],
+        };
+      }
+
+      return {
+        text: `Atlas members enjoy direct digital access to **1,300+ VIP airport lounges across 140 countries** (via the global DragonPass / Priority Pass network):
+
+* **Net Wholesale Entry**: While walk-up day passes cost €45 to €65 (or require credit cards charging €500–€800/yr), Atlas members purchase digital lounge passes at **pure B2B net cost (€22–€28 / ca. 250–320 kr)**.
+* **All-Inclusive Amenities**: Complimentary chef buffets, barista coffee, open bars with wines and spirits, quiet work suites, showers, and high-speed Wi-Fi.
+* **Companion Guest Passes**: Issue digital lounge passes for family and traveling companions at the exact same net rate.
+* **Real-Time Transit Copilot**: Live terminal guidance, boarding gate radars, and connection alerts pointing you to the nearest open lounge during layovers.`,
+        action: 'open_waitlist',
+        actionLabel: 'Lock In Lounge Access as Founding Member',
+        followUps: [
+          'What is EU261 flight disruption compensation?',
+          'How does Priority Fast Track security work?',
+          'What are the annual membership fees?',
+        ],
+      };
+    },
+  },
+
+  // =========================================================================
+  // 6D. AUTOMATED EU261 FLIGHT DISRUPTION CASH RECOVERY (BILINGUAL)
+  // =========================================================================
+  {
+    id: 'eu261_cash_recovery',
+    category: 'flights',
+    exactPhrases: [
+      'eu261',
+      'flight delay compensation',
+      'delayed flight cash',
+      'flight cancellation refund',
+      'flyforsinkelse',
+      'erstatning forsinket fly',
+      'kansellert fly',
+      'passasjerrettigheter',
+    ],
+    patterns: [
+      /eu261/i,
+      /flight delay/i,
+      /flight cancellation/i,
+      /flyforsinkelse/i,
+      /kansellering/i,
+      /passasjerrettigheter/i,
+    ],
+    strongKeywords: ['eu261', 'delay', 'forsinkelse', 'compensation', 'erstatning', 'kansellering'],
+    weight: 100,
+    getAnswer: (currency: CurrencyCode) => {
+      const isNorwegian = currency === 'NOK';
+
+      if (isNorwegian) {
+        return {
+          text: `I henhold til europeisk forordning **EC 261/2004** har du lovfestet krav på skattefri kontanterstatning hvis flyet ditt forsinkes med 3+ timer eller kanselleres:
+
+* **Lovfestede satser**: **250 € (ca. 2 900 kr)** for korte ruter, **400 € (ca. 4 700 kr)** for mellomdistanse (f.eks. Oslo–Spania), og **600 € (ca. 7 000 kr)** for langdistanse per passasjer.
+* **Atlas 0% Gebyrløfte**: Kommersielle klagetjenester (som AirHelp) tar 35%–50% av passasjerens penger i provisjon. **Atlas beholder 0%** – 100% av erstatningen utbetales direkte til din bankkonto.
+* **Automatisk radarmonitorering**: Vår flymotor overvåker flyvningene dine kontinuerlig. Ved forsinkelse forbereder systemet automatisk den juridiske kravsmeldingen direkte til flyselskapet med full dokumentasjon.`,
+          action: 'open_waitlist',
+          actionLabel: 'Sikre Automatisk EU261-Beskyttelse',
+          followUps: [
+            'Hva er Fast Track i sikkerhetskontrollen?',
+            'Hva er flyplasslounge-fordelen?',
+            'Hvordan fungerer 100% verdigarantien?',
+          ],
+        };
+      }
+
+      return {
+        text: `Under European Regulation **EC 261/2004** and UK261, air passengers have statutory rights to non-taxable cash compensation for flight delays of 3+ hours, cancellations, or denied boarding:
+
+* **Mandatory Statutory Rates**: **€250** (< 1,500 km), **€400** (1,500–3,500 km), and **€600** (> 3,500 km) in pure cash per passenger.
+* **Atlas 0% Commission Promise**: While retail claims companies take 35% to 50% in fees, **Atlas retains 0%**. 100% of the compensation goes straight to your account.
+* **Automated Radar Tracking**: Our system continuously tracks your booked flights. When a disruption occurs, the platform automatically logs the meteorological/radar evidence and files the official claim directly with the carrier.`,
+        action: 'open_waitlist',
+        actionLabel: 'Lock In Automated EU261 Protection',
+        followUps: [
+          'How does Priority Fast Track security work?',
+          'How does airport lounge access work?',
+          'What is the 100% Value Guarantee?',
+        ],
+      };
+    },
+  },
+
+  // =========================================================================
+  // 6E. PRIORITY FAST TRACK & 24/7 DEDICATED CONCIERGE (BILINGUAL)
+  // =========================================================================
+  {
+    id: 'fast_track_concierge',
+    category: 'founding_perks',
+    exactPhrases: [
+      'fast track',
+      'priority security',
+      'vip concierge',
+      'travel desk',
+      'hurtigkø',
+      'sikkerhetskontroll',
+      'personlig reiseassistent',
+    ],
+    patterns: [
+      /fast track/i,
+      /priority security/i,
+      /hurtigkø/i,
+      /travel desk/i,
+      /concierge/i,
+    ],
+    strongKeywords: ['fast track', 'security', 'concierge', 'travel desk', 'hurtigkø'],
+    weight: 96,
+    getAnswer: (currency: CurrencyCode) => {
+      const isNorwegian = currency === 'NOK';
+
+      if (isNorwegian) {
+        return {
+          text: `Atlas kombinerer umaskert B2B-teknologi med førsteklasses personlig service:
+
+* **Fast Track Sikkerhetskontroll**: Unngå 45 minutters kø i morgenrushet. Kjøp Fast Track-adgang på store europeiske flyplasser (inkl. Oslo Gardermoen, London, Stockholm, København) til rå engrospris (**ca. 70–110 kr / €6–€10 per passering**).
+* **24/7 Dedikert Concierge**: Mens Booking.com og Expedia har erstattet kundeservice med frustrerende AI-roboter, har Atlas menneskelige reisespesialister tilgjengelig døgnet rundt på WhatsApp, telefon og app.
+* **Skreddersøm & Krisehjelp**: Vi håndterer komplekse rutevalg, private pristester og ordner ombooking umiddelbart ved flykanselleringer, slik at du aldri må stå i timevis i flyplasskøer.`,
+          action: 'open_waitlist',
+          actionLabel: 'Bli Founding Member med 24/7 Concierge',
+          followUps: [
+            'Hva er flyplasslounge-fordelen?',
+            'Hva er 100% verdigarantien?',
+            'Hva koster årsmedlemskapet ved lansering?',
+          ],
+        };
+      }
+
+      return {
+        text: `Atlas combines raw B2B technology with white-glove human hospitality:
+
+* **Airport Fast Track Security**: Bypass 45-minute security screening queues. Purchase Fast Track passes across major European hubs (Oslo, London, Copenhagen, Stockholm, Barcelona) at raw wholesale cost (**€6–€10 per pass**).
+* **24/7 Dedicated Concierge Desk**: Unlike retail OTAs that leave travelers stranded with unresponsive chatbots, Atlas provides human travel specialists available 24/7 via WhatsApp, phone, and app chat.
+* **Custom Curation & Crisis Assistance**: We assist with complex multi-city flights, private rate audits, and immediate rebooking during weather or strike disruptions, so you never wait in airport service lines.`,
+        action: 'open_waitlist',
+        actionLabel: 'Join as Founding Member with 24/7 Concierge',
+        followUps: [
+          'How does airport lounge access work?',
+          'What is the 100% Value Guarantee?',
+          'What are the annual membership fees?',
         ],
       };
     },
