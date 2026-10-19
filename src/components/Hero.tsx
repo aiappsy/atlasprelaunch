@@ -45,13 +45,13 @@ export const Hero: React.FC<HeroProps> = ({
   const { t, isNorwegian } = useLanguage();
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col justify-between items-center text-center px-4 sm:px-6 pt-6 pb-12 overflow-hidden select-none bg-transparent">
+    <section className="relative w-full min-h-screen flex flex-col justify-between items-center text-center px-4 sm:px-6 pt-20 sm:pt-24 pb-12 select-none bg-transparent">
       {/* Soft, Transparent Luxury Vignettes */}
       <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-neutral-950/40 pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-neutral-950/40 pointer-events-none" />
 
       {/* Top Floating Badge */}
-      <div className="relative z-10 pt-2 animate-in fade-in duration-700">
+      <div className="relative z-10 pt-1 pb-2 animate-in fade-in duration-700">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neutral-950/60 backdrop-blur-md border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-medium shadow-xl shadow-black/50">
           <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
           <span>{t.hero.topBadge}</span>
@@ -59,15 +59,15 @@ export const Hero: React.FC<HeroProps> = ({
       </div>
 
       {/* Center Hero: Translucent Minimalist Typography */}
-      <div className="relative z-10 max-w-4xl mx-auto space-y-6 my-auto py-8">
-        <h1 className="font-cinzel text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-neutral-100 leading-[1.08] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+      <div className="relative z-10 max-w-4xl mx-auto space-y-5 py-2 sm:py-4">
+        <h1 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-neutral-100 leading-[1.15] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
           {t.hero.titleLine1} <br />
           <span className="bg-gradient-to-r from-amber-200 via-amber-300 to-amber-100 bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
             {t.hero.titleLine2}
           </span>
         </h1>
 
-        <p className="text-base sm:text-xl text-neutral-100 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] px-4">
+        <p className="text-sm sm:text-lg text-neutral-100 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] px-4">
           {t.hero.description}
         </p>
 
@@ -187,7 +187,9 @@ export const Hero: React.FC<HeroProps> = ({
         {/* Right: Live Luxury Destination Pill */}
         <div className="flex items-center gap-2 bg-neutral-950/60 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-neutral-800/80 text-[11px] shadow-lg">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-neutral-300 font-medium">Europeiske Luksusdestinasjoner</span>
+          <span className="text-neutral-300 font-medium">
+            {isNorwegian ? 'Europeiske luksusdestinasjoner' : 'European Luxury Destinations'}
+          </span>
           <span className="text-neutral-600">•</span>
           <span className="text-emerald-400 font-bold">{isNorwegian ? 'Spar 45% netto' : 'Save 45% Net'}</span>
         </div>
