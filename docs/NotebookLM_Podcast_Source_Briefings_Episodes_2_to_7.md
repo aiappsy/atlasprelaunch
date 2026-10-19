@@ -192,55 +192,176 @@ ATLAS institutes a contractual consumer protection guarantee:
 
 ---
 
-# EPISODE 6: THE DOORS ARE OPEN — FOUNDER'S LAUNCH MEMO
-## *«The Doors Are Open: Activating Your Zero-Markup Access & Claiming Your Free Hotel Break»*
-**Target Audio Length:** ~4 to 5 Minutes  
+# EPISODE 6: THE LIVE PLATFORM REVEAL — INSIDE THE WHOLESALE ENGINE
+## *«The Vault Opens: The Inside Tour of ATLAS Live on Day One»*
+**Target Audio Length:** ~12 to 14 Minutes  
 **Funnel Stage:** Email Stage 6 (Launch Day — Wednesday, January 20, 2027 at 10:00 AM CET)
 
-### 🎙️ NotebookLM Host Direction Prompt:
-> *"Deliver an urgent, celebratory, high-energy executive launch announcement. PRONUNCIATION: Founder Pål Juritzen is strictly pronounced as 'Paul Yur-it-zen'. Announce that the doors to ATLAS Travel Club are officially live as of 10:00 AM CET on Wednesday, January 20, 2027. Reiterate that the first 100 members to finalize their €110 (1 290 NOK) annual subscription lock in their free 3-day European luxury hotel break, gain entry to the all-meals draw, and immediately unlock live unmasked B2B wholesale inventory. Emphasize that the 48-hour claim clock is ticking."*
+### 🎙️ NotebookLM Host Direction Prompt (Paste into "Customize" box):
+```text
+Act as two charismatic, high-energy tech and financial investigative journalists doing a live, hands-on "unboxing" and walkthrough of ATLAS Travel Club on launch morning (Wednesday, January 20, 2027 at 10:00 AM CET). 
 
-### 📄 Source Briefing Document for NotebookLM:
+CRITICAL PRONUNCIATION & FACTUAL DIRECTIVES:
+1. PRONUNCIATION: The founder is Pål Juritzen. Strictly pronounce his name as "Paul Yur-it-zen" (phonetic: Pawl Yoo-rit-sen). NEVER pronounce as "Pal" and NEVER use a hard English "J" for Juritzen. Refer to him naturally as "Founder Paul Yur-it-zen (spelled Pål Juritzen)".
+2. ACCOMMODATION TYPES: Vacation condominium suites are NOT always 2-bedroom units! Clarify that units range from studio suites to 1-bedroom and 2-bedroom resort condominium apartments, sleeping 2 to 6 guests depending on layout and availability.
+3. CLEARANCE PRICING: The price is NOT always €299! Clarify that weekly stays start FROM €299 / 3 490 kr (fra 3 490 kr) for a full 7 nights when booking last-minute clearance / distressed inventory weeks (pricing varies by season, advance notice, and unit size).
+4. TERMINOLOGY: Strictly NEVER use the word "timeshare". Refer exclusively to serviced resort condominiums and vacation residences.
+5. NO RGF: ATLAS does not sell package tours; ATLAS provides raw wholesale net technology access with a 100% Value Guarantee. Zero mentions of RGF or Reisegarantifondet.
+6. THE 100% VALUE GUARANTEE: Clarify that the €110 (1 290 NOK) annual dues guarantee applies to the member's first hotel stay (minimum 2–3 nights at wholesale bedbank rates), vacation resort condominium booking, or cumulative annual travel savings. Do NOT claim someone saves €110 on a single cheap €50 flight (flights offer unbundled net carrier savings of 8%–14%, while high-margin hotels and resort condos easily save €150–€1,500+).
 
-#### 1. Executive Statement from Founder Pål Juritzen (pronounced: "Paul Yur-it-zen")
-*"Today, Wednesday, January 20, 2027 at 10:00 AM CET, we officially open the doors to ATLAS Travel Club. For over a century, the travel industry has operated on hidden markups, rate parity cartel agreements, and inflated middleman commissions. Today, we turn that model on its head. Welcome to wholesale travel with zero markups."*
+DO NOT give a dry administrative memo or repeat earlier basic explanations. Treat this as an exciting, live, insider demonstration of what an active member actually experiences inside the platform right now: live hotel wholesale rate comparisons, downloading the €480 Connex voucher, searching the real-time RVC condo liquidation board, and explaining the zero-risk math of the 100% Value Guarantee.
+```
 
-#### 2. Live Platform Status & Activated Features
-As of 10:00 AM CET, the production platform (`https://atlasclub.web.app`) is fully operational:
-* **Wholesale Bedbank Engine:** Over 1,200,000 hotels worldwide available at raw B2B net rates (20% to 45% below public OTA prices).
-* **Duffel NDC Direct Flight Feeds:** Direct airline inventory across 300+ major carriers with 0% ticket markup.
-* **Connex Holiday Plus Voucher Generator:** Generates unique vouchers for 1,500+ European boutique & wellness hotels with 100% free room rates.
-* **RVC Signature Resorts:** 7-night condominium stays (studios, 1- and 2-bedroom suites) from €299 (fra 3 490 kr) on last-minute clearance for the entire family.
-* **Rewards Vault:** 100% cruise commission rebates tracked directly in member dashboards.
+### 📄 Source Briefing Document for NotebookLM (Paste as Source Text):
 
-#### 3. Immediate Action Checklist for Waitlist Candidates
-1. Navigate to `https://atlasclub.web.app/membership`
-2. Enter your validated Founding Reference Code.
-3. Complete the €110 / 1 290 NOK annual membership activation via Stripe.
-4. Download your official Founding Certificate and claim your complimentary 3-day European hotel voucher.
+# ATLAS LAUNCH DAY: INSIDE THE LIVE WHOLESALE PLATFORM
+**Entity:** HARD ROCK CAPITAL LTD (UK Company #16833237)  
+**Registered Office:** 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ  
+**Founder & Managing Director:** Pål Juritzen (pronounced: "Paul Yur-it-zen")  
+**Production Platform:** `https://atlasclub.web.app`  
+**Launch Moment:** Wednesday, January 20, 2027 at 10:00 AM CET  
+**Annual Founding Membership:** €110 / year (1 290 NOK / år) • 0 kr Retail Markup • 100% Value Guarantee
 
 ---
 
-# EPISODE 7: THE 48-HOUR FINAL NOTICE BRIEFING
-## *«Final Call Briefing: Reallocation of Unclaimed Free Stays to the Priority Waitlist»*
-**Target Audio Length:** ~3 to 4 Minutes  
-**Funnel Stage:** Email Stage 7 (Thursday, January 21, 2027 at 20:00 CET — 16 Hours Before Deadline)
+### 1. The Moment the Doors Open: From Theory to Live Execution
+Today, Wednesday, January 20, 2027 at exactly 10:00 AM CET, ATLAS Travel Club transitions from private prelaunch to full operational reality. For months, waitlist candidates have heard about the economics of wholesale travel. Today, the platform (`https://atlasclub.web.app`) is live, and Founding Members are logging in, searching live inventory, and seeing raw wholesale pricing for the first time in consumer travel history.
 
-### 🎙️ NotebookLM Host Direction Prompt:
-> *"Create an urgent, direct, no-nonsense final countdown briefing. PRONUNCIATION: Founder Pål Juritzen is strictly pronounced as 'Paul Yur-it-zen'. Announce that over 80% of the 100 Founding Member positions were claimed within the first 24 hours of launch. Remind listeners that the strict 48-hour claim window permanently closes tomorrow, Friday, January 22 at 12:00 PM CET. Explain that any unclaimed complimentary 3-day European hotel breaks will be automatically stripped and reallocated to waitlist candidate #101 at 12:01 PM."*
+Founder Pål Juritzen (pronounced "Paul Yur-it-zen") and Hard Rock Capital Ltd built ATLAS on a radical premise: treat travel like Costco. Members pay a modest annual subscription fee (€110 / 1 290 NOK per year), and in return, the platform strips away every single cent of retail markup, passing institutional wholesale net rates directly to travelers.
 
-### 📄 Source Briefing Document for NotebookLM:
+### 2. Live Platform Walkthrough: What Members See Right Now
 
-#### 1. Urgent Status Update
-* **Time Elapsed:** 34 Hours since official opening.
-* **Positions Claimed:** 80+ of the 100 Founding Member allocations are fully finalized.
-* **Final Hard Deadline:** **Friday, January 22, 2027 at 12:00 PM CET (Tomorrow Noon)**.
+When a member logs into their dashboard on launch day, they enter an unmasked B2B travel interface that bypasses traditional retail gatekeepers:
 
-#### 2. The Automatic Reallocation Protocol
-In accordance with ATLAS membership bylaws:
-* At 12:00:01 PM CET on Friday, January 22, any reserved spots from pre-registered candidates who have not completed their Stripe activation will be automatically voided.
-* The corresponding complimentary 3-day hotel vouchers (worth €480 / 5 400 kr) and entry into the 3x all-meals draw will be systematically passed to the next applicants in the secondary waitlist registry (starting with candidate #101).
+#### A. Live Wholesale Hotel Engine (1.2 Million+ Properties)
+* **Real-Time B2B Feeds:** ATLAS pulls live availability directly from global bedbank networks (RateHawk, WebBeds, Hotelbeds)—the exact wholesale infrastructure used by multinational corporate travel departments.
+* **Side-by-Side Reality Check:**
+  * Search a 4-star boutique hotel in Paris, Rome, or London for a 3-night stay next month.
+  * Public OTA price (Booking.com / Expedia): **€245 / night = €735 total**.
+  * ATLAS Live Wholesale Net Rate: **€155 / night = €465 total**.
+  * **Markup added by ATLAS: €0 / 0 kr.**
+  * The member saves **€270 (over 3 000 NOK)** on a single 3-night European city stay—more than double the entire annual membership fee on day one!
 
-#### 3. Final Reminder on Member Protection
-* The €110 / 1 290 NOK annual membership is backed by the **100% Value Guarantee**: if you do not save more than your membership fee on your very first hotel stay (2+ nights), vacation condo, or cumulative annual travel, you receive an immediate 100% refund.
-* There is zero economic risk. To protect your allocation and voucher, finalize your membership before Friday at 12:00 CET at `https://atlasclub.web.app/membership`.
+#### B. The Instant Connex €0 Room Voucher Generator
+* The moment a Founding Member completes their activation, the system automatically generates their certified **Connex Holiday Plus Hotel Break Certificate** (`HP-ATLAS-2027`).
+* **Certified Retail Value:** **€480 (5 400 kr)**.
+* **How It Works Live:** Covers 100% of the room charge (€0 room rate) for 2 adults for 2 to 4 consecutive nights across 1,500+ handpicked boutique, alpine, and wellness hotels in 14 European nations (the Italian Dolomites, Austrian Alps, Black Forest, Tuscany, and Provence).
+* **Transparent Dining Math:** The member pays only the hotel’s standard, published half-board (buffet breakfast and gourmet multi-course evening dinner) directly at checkout—typically €35 to €60 per person per day.
+* **The Golden Ticket:** 3 of the 100 Founding Members win **ALL meals 100% paid by ATLAS**, turning their luxury European getaway into an entirely free vacation.
+
+#### C. The Live RVC Vacation Condominium Liquidation Board
+* Members have direct access to the Panorama / RVC serviced resort liquidation network.
+* **Unit Diversity:** Accommodations are **not always 2-bedroom units**; they range from **spacious studio suites to 1-bedroom and 2-bedroom serviced condominium apartments** featuring full kitchens, dining areas, and living rooms, sleeping between **2 to 6 guests**.
+* **Clearance Pricing:** Weekly rates start **FROM €299 / 3 490 kr (fra 3 490 kr) for the ENTIRE 7 consecutive nights** when booking last-minute distressed inventory weeks.
+* **Independent VIP Check-In:** Members check in with official corporate vouchers. Strictly zero timeshare presentations, zero property pitches, and zero sales seminars.
+
+#### D. The Direct Duffel NDC Flight Gateway
+* Direct connection into airline reservation systems (SAS, British Airways, Lufthansa, Emirates, Air France) eliminating GDS middleman surcharges and hidden OTA booking fees.
+
+---
+
+### 3. The 100% Value Guarantee: Absolute Consumer Protection
+Founder Paul Yur-it-zen instituted a non-negotiable legal guarantee to eliminate all perceived risk for new members:
+* **The Rule:** If an active member does not save more than their annual membership fee (€110 / 1 290 NOK) on their very first hotel stay (minimum 2–3 nights at wholesale bedbank rates), vacation resort condominium booking, or cumulative annual travel compared to public rates on Booking.com or Expedia, ATLAS provides an immediate, unconditional **100% refund of their membership dues**.
+* **The Economics:** While flights offer honest net carrier savings of 8% to 14% (saving €10–€25 in GDS fees and baggage markups), hotels and resort condos carry massive 20% to 45% retail margins. A single 2+ night hotel stay or week-long condo easily saves between **€150 and €1,500+**, guaranteeing that the €110 membership is recouped immediately.
+
+---
+
+### 4. The 48-Hour Founding Member Allocation
+* Exactly **100 Founding Member allocations** were created for this launch cohort.
+* Each Founding Member receives the complimentary €480 Connex 3-day European hotel voucher and entry into the 3x all-meals draw.
+* Pre-registered candidates hold a guaranteed 48-hour reservation window expiring **Friday, January 22, 2027 at 12:00 PM CET**.
+* To claim your slot: go to `https://atlasclub.web.app/membership`, enter your reference code, complete the secure €110 / 1 290 kr checkout, and start exploring live wholesale travel immediately.
+
+---
+
+# EPISODE 7: THE STRATEGIC ANNUAL AUDIT — THE FINAL CALL
+## *«The Smart Traveler's Audit: The Math of Staying Retail vs. Going Wholesale»*
+**Target Audio Length:** ~14 to 16 Minutes  
+**Funnel Stage:** Email Stage 7 (Thursday, January 21, 2027 at 20:00 CET — Final Countdown Before Friday Noon)
+
+### 🎙️ NotebookLM Host Direction Prompt (Paste into "Customize" box):
+```text
+Act as two seasoned wealth advisors, consumer advocates, and investigative travel analysts conducting a high-level strategic debrief 16 hours before the ATLAS Founding Member registry permanently closes on Friday, January 22, 2027 at 12:00 PM CET.
+
+CRITICAL PRONUNCIATION & FACTUAL DIRECTIVES:
+1. PRONUNCIATION: The founder is Pål Juritzen. Strictly pronounce his name as "Paul Yur-it-zen" (phonetic: Pawl Yoo-rit-sen). NEVER pronounce as "Pal" and NEVER use a hard English "J" for Juritzen. Refer to him naturally as "Founder Paul Yur-it-zen (spelled Pål Juritzen)".
+2. ACCOMMODATION TYPES: Vacation condominium suites are NOT always 2-bedroom units! Clarify that units range from studio suites to 1-bedroom and 2-bedroom resort condominium apartments, sleeping 2 to 6 guests depending on layout and availability.
+3. CLEARANCE PRICING: The price is NOT always €299! Clarify that weekly stays start FROM €299 / 3 490 kr (fra 3 490 kr) for a full 7 nights when booking last-minute clearance / distressed inventory weeks (pricing varies by season, advance notice, and unit size).
+4. TERMINOLOGY: Strictly NEVER use the word "timeshare". Refer exclusively to serviced resort condominiums and vacation residences.
+5. NO RGF: ATLAS does not sell package tours; ATLAS provides raw wholesale net technology access with a 100% Value Guarantee. Zero mentions of RGF or Reisegarantifondet.
+6. THE 100% VALUE GUARANTEE: Clarify that the €110 (1 290 NOK) annual dues guarantee applies to the member's first hotel stay (minimum 2–3 nights at wholesale bedbank rates), vacation resort condominium booking, or cumulative annual travel savings. Do NOT claim someone saves €110 on a single cheap €50 flight (flights offer unbundled net carrier savings of 8%–14%, while high-margin hotels and resort condos easily save €150–€1,500+).
+
+DO NOT sound like an aggressive sales pitch. Instead, deliver a thoughtful, analytical, and highly persuasive masterclass: conduct an "Annual Travel Audit" comparing what an average traveler spends on retail booking platforms versus wholesale membership, weigh the €110 annual fee against the immediate €480 hotel voucher and 100% Value Guarantee, and explain why the 48-hour claim window closes at Friday noon.
+```
+
+### 📄 Source Briefing Document for NotebookLM (Paste as Source Text):
+
+# THE ANNUAL TRAVEL AUDIT: RETAIL DUOPOLY VS. WHOLESALE ARBITRAGE
+**Entity:** HARD ROCK CAPITAL LTD (UK Company #16833237)  
+**Registered Office:** 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ  
+**Founder & Managing Director:** Pål Juritzen (pronounced: "Paul Yur-it-zen")  
+**Final Registry Deadline:** Friday, January 22, 2027 at 12:00 PM CET (Tomorrow Noon)  
+**Annual Membership:** €110 / year (1 290 NOK / år) • Guaranteed 100% Risk-Free
+
+---
+
+### 1. The Decision at the 48-Hour Mark
+As the clock winds down toward Friday noon, over 80 of the 100 Founding Member positions in ATLAS Travel Club have already been finalized. For travelers remaining on the priority waitlist, the decision comes down to a clear financial question:
+
+*Should you continue booking your personal and family travel through retail online travel agencies, or should you operate on private wholesale net rates?*
+
+To answer that question, Founder Pål Juritzen (pronounced "Paul Yur-it-zen") encourages consumers to conduct a simple, honest **Annual Travel Audit**.
+
+---
+
+### 2. The Annual Travel Audit: Examining the Cold, Hard Numbers
+Consider what a typical Nordic or European household or frequent traveler books across an ordinary 12-month calendar:
+* **Two Weekend Getaways:** 2 short city or wellness trips (e.g., 2 nights in London, Rome, or the Alps).
+* **One Annual Family Vacation:** A 7-night summer holiday or autumn sun retreat in Spain, Portugal, Greece, or the Canary Islands.
+* **Two Flights:** Return flights for domestic or European travel.
+
+#### Pathway A: The Public Retail Route (Booking.com / Expedia / Airbnb)
+* **Two 2-night weekend hotel stays:** €220 / night × 4 nights = **€880**
+* **One 7-night vacation condominium / apartment:** €250 / night × 7 nights = **€1,750**
+* **Flights for 2 with baggage markups and OTA fees:** **€680**
+* **Total Annual Retail Travel Spend: €3,310 (ca. 37 500 NOK)**
+* **The Hidden Retail Tax:** Included in that €3,310 is roughly **€750 to €1,100** in middleman markups, advertising overhead, and OTA corporate profits that do nothing to improve the traveler's room or airline seat.
+
+#### Pathway B: The ATLAS Wholesale Club Route
+* **First Weekend Getaway (Connex Holiday Plus €0 Room Voucher):**
+  * Room rate for 2 nights: **€0 (100% covered by Founding Voucher)**
+  * Published gourmet half-board (breakfast + dinner for 2): €45 × 2 × 2 = **€180**
+* **Second Weekend Getaway (B2B Bedbank Net Rate):**
+  * Raw wholesale rate: €145 / night × 2 nights = **€290** (saving €150)
+* **One 7-Night Vacation Condominium (RVC Clearance):**
+  * Studio, 1-bed, or 2-bed resort condominium (sleeping 2 to 6 guests) on last-minute clearance: **From €299 / 3 490 NOK for the ENTIRE week** (saving €1,450+ vs €1,750 retail)
+* **Flights via Duffel NDC (0% ticket markup):** **€590** (saving GDS fees and seat fees)
+* **Total Travel Spend via ATLAS: €1,359 (ca. 15 400 NOK)**
+* **Annual Membership Fee:** **€110 (1 290 NOK)**
+* **Total Out-of-Pocket Expense: €1,469 (ca. 16 600 NOK)**
+
+#### The Bottom Line Difference:
+* **Net Cash Kept in the Traveler's Bank Account:** **€1,841 (over 20 800 NOK) saved in a single calendar year.**
+
+---
+
+### 3. The Asymmetric Risk Profile: Why You Cannot Lose
+In finance, an "asymmetric bet" is an opportunity where the potential downside is zero while the potential upside is substantial. The ATLAS Founding Membership is structured as a pure asymmetric bet:
+
+1. **Immediate Value Multiplier:** On day one, the €110 membership unlocks a certified Connex 3-Day European Hotel Break voucher worth **€480 (5 400 kr)**. The tangible voucher value is more than 4x the cost of admission.
+2. **The Golden Ticket Opportunity:** 3 of the 100 Founding Members win all meals and dining 100% funded by ATLAS, making their holiday completely free.
+3. **The Contractual 100% Value Guarantee:**
+   * If an ATLAS member does not save more than their annual membership fee (€110 / 1 290 NOK) on their very first hotel stay (minimum 2–3 nights at wholesale bedbank rates), vacation resort condominium booking, or cumulative annual travel compared to public retail rates on Booking.com or Expedia, ATLAS immediately refunds **100% of the membership fee**.
+   * It is mathematically impossible to lose money. A single 2-night stay or 7-night resort condo easily produces €150 to €1,400+ in net savings.
+4. **Transparent Governance:** ATLAS operates with complete transparency under HARD ROCK CAPITAL LTD (UK Reg. #16833237). 100% of cruise commissions are rebated to members in the Rewards Vault, with transparent 30–60 day post-travel escrow settlement rules.
+
+---
+
+### 4. The Final Reallocation at Friday Noon (12:00 PM CET)
+Because the allocation of complimentary €480 hotel break vouchers is strictly limited to 100 packages, ATLAS bylaws require an automated reallocation protocol:
+* **The Hard Cutoff:** **Friday, January 22, 2027 at exactly 12:00 PM CET (Tomorrow Noon)**.
+* **What Happens at 12:01 PM:** Any reserved Founding spot from the prelaunch waitlist that has not been confirmed via Stripe checkout will be automatically stripped. The reserved voucher and priority access will immediately roll over to candidate #101 on the waitlist.
+* **How to Secure Your Allocation:** Navigate to `https://atlasclub.web.app/membership`, input your Founding Reference Code (`ATLAS-xxxx`), complete the €110 / 1 290 NOK activation, and immediately access your digital Founding Certificate, hotel break voucher, and live wholesale engine.
+
+Welcome to intelligent travel. The decision is yours.

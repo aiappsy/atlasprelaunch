@@ -1,0 +1,40 @@
+# ATLAS TRAVEL CLUB BRIEFING
+Entity: HARD ROCK CAPITAL LTD (UK Company #16833237)
+Founder: Pål Juritzen (phonetic: "Paul Yur-it-zen")
+Launch: Wednesday, January 20, 2027 at 10:00 AM CET
+Annual Membership: €110 / year (1 290 NOK / år) • 0 kr Retail Markup • 100% Value Guarantee
+
+CRITICAL GUARDRAILS:
+- Founder Pål Juritzen is strictly pronounced "Paul Yur-it-zen" (never Pal, never hard J).
+- Condominiums are studio suites, 1-bed, and 2-bed units sleeping 2 to 6 guests (NOT always 2-bedroom).
+- 7-night condo clearance pricing is FROM €299 / 3 490 kr (fra 3 490 kr) for distressed inventory weeks (NOT flat €299).
+- Strictly NEVER use the word timeshare.
+- Zero mentions of RGF or Reisegarantifondet.
+- 100% Value Guarantee applies to hotel stays (2+ nights), vacation condos, or cumulative annual travel (never promises saving €110 on a single €50 flight).
+
+#### 1. Official Launch Coordinates
+* **Launch Date & Time:** **Wednesday, January 20, 2027 at 10:00 AM CET (Central European Time)**
+* **Platform URL:** `https://atlasclub.web.app` (Production Member Portal)
+* **Access Control:** Restricted priority registry for pre-registered waitlist candidates with validated reference codes (e.g., `ATLAS-xxxx`).
+* **Annual Membership Dues:** **€110 / year (1 290 NOK / år)** with zero hidden fees.
+
+#### 2. The Strict 48-Hour Claim Window
+Because the allocation of complimentary 3-day European hotel stays (Connex vouchers worth €480 / 5 400 kr) is hard-capped at exactly **100 units**, a strict operational claim protocol is enforced:
+1. **10:00 AM CET (Wednesday, Jan 20):** Doors open. Pre-registered candidates receive an instant SMS and email with their direct checkout link.
+2. **First-Come, First-Served Stripe Checkout:** Membership dues are finalized via secure Stripe payment (€110 / 1 290 kr).
+3. **Instant Voucher Crediting:** The moment payment clears, the member's digital Founding Certificate, unique Connex voucher code, and Rewards Vault profile are immediately generated in the app.
+4. **The 48-Hour Clock:** Pre-registered candidates hold their reserved slot until **Friday, January 22, 2027 at 12:00 CET**. Any unclaimed allocation is automatically forfeited and transferred down the priority waitlist to candidate #101.
+
+#### 3. The 3x All-Meals Golden Ticket Draw
+Upon checkout completion, all verified Founding 100 members are automatically entered into the Golden Ticket Draw:
+* Exactly **3 of the 100 Founding Members** will have their mandatory gourmet half-board (breakfast + multi-course dinner) fully covered by ATLAS.
+* For these 3 winners, their 3-day European hotel break becomes 100% entirely free, with zero out-of-pocket expenses for room or dining.
+
+#### 4. The 100% Value Guarantee (Zero Economic Risk)
+ATLAS institutes a contractual consumer protection guarantee:
+* If an active member does not save more than their annual membership fee (€110 / 1 290 NOK) on their very first completed hotel stay (minimum 2–3 nights at wholesale bedbank rates), vacation resort condominium booking, or cumulative annual travel compared to public prices on Booking.com or Expedia, ATLAS provides an immediate, unconditional **100% refund of the membership fee**.
+* Bookings are confirmed corporate allotments with legal check-in vouchers, backed by our 100% Value Guarantee and European consumer protections.
+
+---
+
+#
