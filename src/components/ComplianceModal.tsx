@@ -125,8 +125,8 @@ export const ComplianceModal: React.FC<ComplianceModalProps> = ({
                   </div>
                   <p className="text-neutral-400 text-[11px] font-sans">
                     {isNorwegian
-                      ? 'Gjelder hotellopphold på min. 2 sammenhengende netter (bookingverdi ≥ 1 700 kr) eller 7-netters ferieleilighet via RVC. 100% refusjon dersom besparelsen mot Booking.com/Expedia er under 1 290 kr.'
-                      : 'Applies to hotel stays of min 2 consecutive nights (booking value ≥ €150) or 7-night resort condos. 100% refund if verified savings vs Booking.com/Expedia are under €110.'}
+                      ? 'Gjelder hotellopphold på min. 2 sammenhengende netter (bookingverdi ≥ 1 700 kr) eller 7-netters ferieleilighet via Resort Condos. 100% refusjon dersom besparelsen mot commercial booking portals/commercial booking portals er under 1 290 kr.'
+                      : 'Applies to hotel stays of min 2 consecutive nights (booking value ≥ €150) or 7-night resort condos. 100% refund if verified savings vs commercial booking portals/commercial booking portals are under €110.'}
                   </p>
                 </div>
 
@@ -148,7 +148,7 @@ export const ComplianceModal: React.FC<ComplianceModalProps> = ({
                   {isNorwegian ? 'Objektiv Sammenligningsstandard (Epler-mot-Epler)' : 'Apples-to-Apples Verification Standard'}
                 </h4>
                 <ul className="list-disc list-inside space-y-1 text-neutral-400">
-                  <li>{isNorwegian ? 'Sammenligningskilde: Offentlig tilgjengelig pris på Booking.com eller Expedia.' : 'Source: Publicly verifiable retail rate on Booking.com or Expedia.'}</li>
+                  <li>{isNorwegian ? 'Sammenligningskilde: Offentlig tilgjengelig pris på kommersielle bestillingsportaler.' : 'Source: Publicly verifiable retail rate on commercial booking portals.'}</li>
                   <li>{isNorwegian ? 'Identisk romkategori, sengekonfigurasjon og utsiktstype.' : 'Identical room category, bedding layout, and view tier.'}</li>
                   <li>{isNorwegian ? 'Identiske innsjekkings- og utsjekkingsdatoer.' : 'Identical check-in and check-out dates.'}</li>
                   <li>{isNorwegian ? 'Samme kanselleringsvilkår og måltidstype (f.eks. kun rom vs frokost inkludert).' : 'Identical cancellation policy and meal inclusions.'}</li>
@@ -172,12 +172,12 @@ export const ComplianceModal: React.FC<ComplianceModalProps> = ({
               </h3>
               <p>
                 {isNorwegian
-                  ? 'Hoteller over hele verden er bundet av såkalte "Rate Parity"-klausuler som forbyr dem å vise lavere priser på åpne nettsider enn på Booking.com eller Expedia. Nettotakstene forbeholdes lukkede distribusjonskanaler.'
-                  : 'Hotels worldwide are bound by Most Favored Nation "Rate Parity" agreements prohibiting lower rates on public open websites than on Booking.com or Expedia. Wholesale net rates are restricted to closed distribution channels.'}
+                  ? 'Hoteller over hele verden er bundet av såkalte "Rate Parity"-klausuler som forbyr dem å vise lavere priser på åpne nettsider enn på kommersielle bestillingsportaler. Nettotakstene forbeholdes lukkede distribusjonskanaler.'
+                  : 'Hotels worldwide are bound by Most Favored Nation "Rate Parity" agreements prohibiting lower rates on public open websites than on commercial booking portals. Wholesale net rates are restricted to closed distribution channels.'}
               </p>
               <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800 space-y-2">
                 <span className="font-mono text-xs font-bold text-amber-400 block">
-                  {isNorwegian ? 'Den Juridiske Unntaksregelen (Costco-Modellen)' : 'The Legal Exemption (Closed-User Groups)'}
+                  {isNorwegian ? 'Den Juridiske Unntaksregelen (den private abonnementsmodellen)' : 'The Legal Exemption (Closed-User Groups)'}
                 </span>
                 <p className="text-neutral-400 text-xs">
                   {isNorwegian

@@ -215,7 +215,7 @@ When you secure one of our first 100 Founding Memberships (${p.formattedFounding
 
       if (isNorwegian) {
         return {
-          text: `Tenk på åpne reisesider som Booking.com og Expedia som vanlige butikker. De legger på 15% til 30% i provisjon på hvert eneste rom og bruker milliarder på markedsføring – kostnader som lempes over på deg.
+          text: `Tenk på åpne reisesider som commercial booking portals og commercial booking portals som vanlige butikker. De legger på 15% til 30% i provisjon på hvert eneste rom og bruker milliarder på markedsføring – kostnader som lempes over på deg.
 
 Hotellene hater tomme rom, så de selger store romblokker i hemmelighet til B2B-grossister (bedbanks som WebBeds og Hotelbeds) med 20% til 40% rabatt. Men hotellkontraktene forbyr enhver å annonsere disse engrosprisene offentlig – dette kalles **prisparitet (Rate Parity)**.
 
@@ -233,7 +233,7 @@ På et typisk 4-netters opphold på et 4- eller 5-stjerners hotell sparer du van
       }
 
       return {
-        text: `Think of public travel sites like Booking.com and Expedia as retail storefronts. They add a 15% to 30% commission on every room and spend billions on advertising, passing those markups on to you.
+        text: `Think of public travel sites like commercial booking portals and commercial booking portals as retail storefronts. They add a 15% to 30% commission on every room and spend billions on advertising, passing those markups on to you.
 
 Hotels hate having empty rooms, so they quietly sell room blocks to B2B wholesale suppliers (bedbanks like WebBeds and Hotelbeds) at deep 20% to 40% discounts. But hotel contracts legally forbid anyone from advertising those wholesale rates publicly—that is called **Rate Parity**.
 
@@ -295,7 +295,7 @@ On a typical 4-night stay at a 4- or 5-star hotel, that usually puts **€250 to
         return {
           text: `👑 **ATLAS Medlemskontingent & Founding Privilegier:**
 
-ATLAS er en privat medlemsklubb etter Costco-modellen. Vi tar **0 kr i påslag på fly og over 1 200 000 hoteller**, og gir **100% provisjonsretur** på cruise og luksusopphold.
+ATLAS er en privat medlemsklubb etter den private abonnementsmodellen. Vi tar **0 kr i påslag på fly og over 1 200 000 hoteller**, og gir **100% provisjonsretur** på cruise og luksusopphold.
 
 • **Årskontingent ved lansering**: **${p.formattedFounding} per år** (${p.monthlyEquivalent}) ved åpning onsdag 20. januar 2027.
 • **100% Gratis Reservasjon**: Du reserverer plass i dag helt gratis – intet kredittkort nødvendig.
@@ -315,7 +315,7 @@ ATLAS er en privat medlemsklubb etter Costco-modellen. Vi tar **0 kr i påslag p
       return {
         text: `👑 **ATLAS Annual Membership & Founding Member Privileges:**
 
-ATLAS operates on a strict subscription model (like Costco). We charge **0 retail markups on direct NDC flights and 1.2M+ wholesale hotels**, and pass **100% commission rebates** directly to members.
+ATLAS operates on a strict subscription model (as a private club). We charge **0 retail markups on direct NDC flights and 1.2M+ wholesale hotels**, and pass **100% commission rebates** directly to members.
 
 • **Annual Dues at Launch**: **${p.formattedFounding} per year** (${p.monthlyEquivalent}) upon official launch on Wednesday, January 20, 2027.
 • **100% Free Reservation**: You can reserve your priority spot today for free – no credit card required.
@@ -570,7 +570,7 @@ Your bookings are pre-paid corporate allotments with official digital check-in v
         return {
           text: `Atlas har et helautomatisert refusjonssystem under **The Atlas Value Guarantee Blueprint**:
 
-1. **Send inn krav på 60 sekunder**: Åpne refusjonsportalen, oppgi bookingreferanse og en enkel skjermdump/lenke til offentlig pris på Booking.com eller Expedia.
+1. **Send inn krav på 60 sekunder**: Åpne refusjonsportalen, oppgi bookingreferanse og en enkel skjermdump/lenke til offentlig pris på kommersielle bestillingsportaler.
 2. **Automatisk forhåndsvalidering**: Systemet beregner umiddelbart besparelsesdifferansen mot din årskontingent (${fee}).
 3. **48-timers saksbehandlingsfrist**: Hard Rock Capital Ltd verifiserer kravet innen 2 virkedager, og 100% av kontingenten utbetales direkte til ditt betalingskort via Stripe.
 4. **Du beholder fordelene**: Du beholder din utstedte Europeiske hotellopphold-kupong (verdi inntil 4 500 kr) og alle opptjente Rewards Vault-poeng.`,
@@ -587,7 +587,7 @@ Your bookings are pre-paid corporate allotments with official digital check-in v
       return {
         text: `Atlas operates an automated claim system under **The Atlas Value Guarantee Blueprint**:
 
-1. **Submit in 60 seconds**: Open our digital claim portal, provide your booking reference and a link or screenshot of the public retail rate on Booking.com or Expedia.
+1. **Submit in 60 seconds**: Open our digital claim portal, provide your booking reference and a link or screenshot of the public retail rate on commercial booking portals.
 2. **Automated Pre-Validation**: The engine instantly calculates your savings delta against the annual fee (${fee}).
 3. **48-Hour SLA**: Hard Rock Capital Ltd verifies the claim within 2 business days, and a 100% refund is wired directly to your payment card via Stripe.
 4. **Keep Your Day-One Perks**: You retain your issued European 3-Day Hotel Break voucher (€480 value) and any earned Rewards Vault points. Zero exit penalties apply.`,
@@ -761,7 +761,7 @@ Your bookings are pre-paid corporate allotments with official digital check-in v
           text: `Atlas kombinerer umaskert B2B-teknologi med førsteklasses personlig service:
 
 * **Fast Track Sikkerhetskontroll**: Unngå 45 minutters kø i morgenrushet. Kjøp Fast Track-adgang på store europeiske flyplasser (inkl. Oslo Gardermoen, London, Stockholm, København) til rå engrospris (**ca. 70–110 kr / €6–€10 per passering**).
-* **24/7 Dedikert Concierge**: Mens Booking.com og Expedia har erstattet kundeservice med frustrerende AI-roboter, har Atlas menneskelige reisespesialister tilgjengelig døgnet rundt på WhatsApp, telefon og app.
+* **24/7 Dedikert Concierge**: Mens commercial booking portals og commercial booking portals har erstattet kundeservice med frustrerende AI-roboter, har Atlas menneskelige reisespesialister tilgjengelig døgnet rundt på WhatsApp, telefon og app.
 * **Skreddersøm & Krisehjelp**: Vi håndterer komplekse rutevalg, private pristester og ordner ombooking umiddelbart ved flykanselleringer, slik at du aldri må stå i timevis i flyplasskøer.`,
           action: 'open_waitlist',
           actionLabel: 'Bli Founding Member med 24/7 Concierge',
@@ -1200,11 +1200,11 @@ export function getFallbackAnswer(currency: CurrencyCode): ConciergeAnswer {
 
   if (isNorwegian) {
     return {
-      text: `ATLAS Travel Club er en lukket medlemsklubb (etter Costco-modellen) som gir deg direkte tilgang til engrospriser på reiser med 0% kommersielt påslag – vanligvis 20% til 45% lavere enn Booking.com eller Expedia.
+      text: `ATLAS Travel Club er en lukket medlemsklubb (etter den private abonnementsmodellen) som gir deg direkte tilgang til engrospriser på reiser med 0% kommersielt påslag – vanligvis 20% til 45% lavere enn kommersielle bestillingsportaler.
 
 Lanseringen skjer **onsdag 20. januar 2027 kl. 10:00**. **Reserver din Founding Member-plass i dag – helt gratis, intet kredittkort nødvendig.** Samtlige 100 første medlemmer mottar et **100% gratis 3-dagers luksushotellopphold for to i Europa (verdi inntil 4 500 kr)**.
 
-Hva er du mest nysgjerrig på? Jeg forklarer gjerne 0 kr i rompris (Europeisk Hotellkupong), 7-netters leiligheter (RVC), 100% provisjonsrefusjon eller 100% verdigarantien.`,
+Hva er du mest nysgjerrig på? Jeg forklarer gjerne 0 kr i rompris (Europeisk Hotellkupong), 7-netters leiligheter (Resort Condos), 100% provisjonsrefusjon eller 100% verdigarantien.`,
       action: 'open_waitlist',
       actionLabel: 'Reserver plass gratis (Uten kort)',
       followUps: [
@@ -1217,11 +1217,11 @@ Hva er du mest nysgjerrig på? Jeg forklarer gjerne 0 kr i rompris (Europeisk Ho
   }
 
   return {
-    text: `ATLAS Travel Club is a private membership club (built on the Costco model) giving members direct access to wholesale travel rates with 0% retail markup—typically 20% to 45% lower than Booking.com or Expedia.
+    text: `ATLAS Travel Club is a private membership club (built as a private membership club) giving members direct access to wholesale travel rates with 0% retail markup—typically 20% to 45% lower than commercial booking portals.
 
 Our official launch opens **Wednesday, January 20, 2027 at 10:00 AM CET**. **Reserve your Founding Member spot today for free, no credit card necessary.** The first 100 Founding Members receive a **complimentary 3-day European hotel break for two (worth €480)**.
 
-What would you like to know more about? I can explain €0 room rates (Europeisk Hotellkupong), 7-night condo escapes (RVC), 100% commission rebates, or our 100% money-back guarantee.`,
+What would you like to know more about? I can explain €0 room rates (Europeisk Hotellkupong), 7-night condo escapes (Resort Condos), 100% commission rebates, or our 100% money-back guarantee.`,
       action: 'open_waitlist',
       actionLabel: 'Reserve Free Spot (No Card Needed)',
       followUps: [

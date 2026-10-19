@@ -82,7 +82,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
               «Slik omgår du de skjulte hotellpåslagene»
             </div>
             <p style="font-size: 12px; line-height: 1.5; color: #9ca3af; margin: 0 0 12px 0;">
-              Hør hvorfor Booking.com og Expedia tvinger hoteller til å signere prisparitetsklausuler, og hvordan private klubber juridisk kan tilby rå B2B-engrospriser.
+              Hør hvorfor commercial booking portals og commercial booking portals tvinger hoteller til å signere prisparitetsklausuler, og hvordan private klubber juridisk kan tilby rå B2B-engrospriser.
             </p>
             <a href="https://atlasprelaunch.web.app?podcast=hotel-blueprint" style="display: inline-block; font-size: 11px; font-family: monospace; font-weight: bold; color: #0a0a0a; background: linear-gradient(90deg, #fbbf24, #f59e0b); text-decoration: none; padding: 8px 16px; border-radius: 6px;">
               ▶ Hør Episoden i Lydspilleren
@@ -368,7 +368,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
             Når du bestiller et cruise til 30 000 kr eller et 5-stjerners luksushotell via et tradisjonelt reisebyrå, betaler leverandøren <strong>10% til 16% i ren provisjon</strong> (3 000–4 800 kr) direkte til byrået.
           </p>
           <p style="font-size: 14px; line-height: 1.6; color: #d1d5db;\">
-            ATLAS er bygget på <strong>Costco-modellen</strong>: Vi lever utelukkende av vår faste medlemskontingent (1 290 kr/år). Vi beholder 0 kr i reisebyråprovisjoner. Hver eneste krone fra cruiserederier og luksuskjeder overføres 100% rett tilbake til din <strong>Rewards Vault</strong> som reisekreditter for fremtidige ferier!
+            ATLAS er bygget på <strong>den private abonnementsmodellen</strong>: Vi lever utelukkende av vår faste medlemskontingent (1 290 kr/år). Vi beholder 0 kr i reisebyråprovisjoner. Hver eneste krone fra cruiserederier og luksuskjeder overføres 100% rett tilbake til din <strong>Rewards Vault</strong> som reisekreditter for fremtidige ferier!
           </p>
 
           <!-- Embedded Podcast Episode 6 Card -->
@@ -410,8 +410,8 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
     podcastTitleNo: 'Episode 7: «Resort-smutthullet: 7-netters ferieleiligheter fra 3 490 kr»',
     podcastTitleEn: 'Episode 7: "How Luxury Resorts Secretly Liquidate Empty Suites"',
     podcastDuration: '06:30 min',
-    podcastDescriptionNo: 'Slik fyller RVC og Panorama luksusleiligheter for 2 til 6 personer i Spania, Hellas og Italia til rydningspriser (fra 83 kr per person per natt).',
-    podcastDescriptionEn: 'How RVC and Panorama liquidate luxury condominium apartments for 2 to 6 guests from €299 for full 7-night stays.',
+    podcastDescriptionNo: 'Slik fyller Resort Condos og Panorama luksusleiligheter for 2 til 6 personer i Spania, Hellas og Italia til rydningspriser (fra 83 kr per person per natt).',
+    podcastDescriptionEn: 'How Resort Condos and Panorama liquidate luxury condominium apartments for 2 to 6 guests from €299 for full 7-night stays.',
     podcastUrl: 'https://atlasprelaunch.web.app?perk=rvc&podcast=resorts',
     getHtmlContent: (ctx) => `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #f5f5f5; border: 1px solid #38bdf840; border-radius: 16px; overflow: hidden;\">
@@ -422,10 +422,10 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
         <div style="padding: 32px;\">
           <h2 style="font-size: 20px; color: #f3f4f6; margin-top: 0;\">Hei, ${ctx.fullName}.</h2>
           <p style="font-size: 14px; line-height: 1.6; color: #d1d5db;\">
-            Hva betaler en typisk familie for en 2-roms ferieleilighet med kjøkken og svømmebasseng i Marbella, Tenerife eller på Mallorca i ferien? På Booking.com og Airbnb ligger prisen vanligvis på <strong>16 000 til 25 000 kr for 7 netter</strong>.
+            Hva betaler en typisk familie for en 2-roms ferieleilighet med kjøkken og svømmebasseng i Marbella, Tenerife eller på Mallorca i ferien? På commercial booking portals og Airbnb ligger prisen vanligvis på <strong>16 000 til 25 000 kr for 7 netter</strong>.
           </p>
           <p style="font-size: 14px; line-height: 1.6; color: #d1d5db;\">
-            Gjennom RVC- og Panorama-nettverket fyller ATLAS restplasser i ferieleiligheter fra <strong>kun 3 490 NOK (€299) for hele uken</strong>. For en familie på 4 til 6 personer tilsvarer det kun <strong>83 kr per person per natt</strong>!
+            Gjennom Resort Condos- og Panorama-nettverket fyller ATLAS restplasser i ferieleiligheter fra <strong>kun 3 490 NOK (€299) for hele uken</strong>. For en familie på 4 til 6 personer tilsvarer det kun <strong>83 kr per person per natt</strong>!
           </p>
 
           <!-- Embedded Podcast Episode 7 Card -->
@@ -553,7 +553,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
           <div style="background: #171717; border-left: 4px solid #10b981; padding: 18px 20px; border-radius: 0 12px 12px 0; margin: 20px 0;\">
             <h4 style="margin: 0 0 6px 0; color: #34d399; font-size: 14px;\">ATLAS 100% Verdigaranti:</h4>
             <p style="font-size: 13px; line-height: 1.6; color: #d1d5db; margin: 0;\">
-              Hvis du ikke sparer mer enn årskontingenten på 1 290 kr (€110) på ditt aller første hotellopphold (2+ netter), ferieleilighet eller samlede årsreiser sammenlignet med Booking.com/Expedia, <strong>refunderer vi 100% av kontingenten på dagen</strong>. Du beholder uansett ditt gratis 3-dagers hotellopphold for 2 personer.
+              Hvis du ikke sparer mer enn årskontingenten på 1 290 kr (€110) på ditt aller første hotellopphold (2+ netter), ferieleilighet eller samlede årsreiser sammenlignet med commercial booking portals/commercial booking portals, <strong>refunderer vi 100% av kontingenten på dagen</strong>. Du beholder uansett ditt gratis 3-dagers hotellopphold for 2 personer.
             </p>
           </div>
 
