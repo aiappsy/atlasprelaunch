@@ -3,27 +3,27 @@ import edge_tts
 import os
 import shutil
 
-ENGLISH_TEXT = """Welcome to ATLAS. For decades, major online booking portals have marked up hotels and flights by 20 to 45 percent, keeping true wholesale rates hidden behind inflated retail prices.
+ENGLISH_TEXT = """Welcome to ATLAS. A private travel club created for travelers who value discretion, transparency, and true wholesale access.
 
-ATLAS changes the rules with a private annual membership — just 110 euros per year.
+ATLAS operates on a private annual membership — just 110 euros per year.
 
-As a member, you bypass the middlemen entirely. You book over 1.2 million luxury hotels and direct flights at raw institutional net rates with zero markups added. And whenever luxury resorts or cruises pay booking commissions, ATLAS refunds 100 percent of that cash directly back to you.
+As a member, you bypass the middlemen entirely. You book over 1.2 million luxury hotels and direct flights at raw institutional net rates with zero markups added. And whenever luxury resorts or cruises pay commissions, ATLAS refunds 100 percent of that cash directly back to you.
 
-To celebrate our launch, every single Founding Member receives a complimentary European weekend break for two, worth up to 400 euros. That welcome stay alone covers your annual membership nearly four times over before you even take your first trip.
+To celebrate our launch, every Founding Member receives a complimentary European weekend break for two, worth up to 400 euros. Flexible boutique accommodation with zero meal obligations.
 
-Backed by our 100 percent money-back guarantee: if our wholesale rates don't save you more than your membership fee in your first year, you get every cent back.
+And when you travel, your membership is backed by our 100 percent Value Guarantee: You must book and complete your travel for the guarantee to activate. If your wholesale bookings do not save you more than your 110 euro membership fee, we refund your dues in full.
 
 Reserve your Founding Member spot today. Zero upfront cost, zero risk."""
 
-NORWEGIAN_TEXT = """Velkommen til ATLAS. I tiår har de store bestillingsportalene lagt på 20 til 45 prosent i skjulte gebyrer og provisjoner på hotell og fly.
+NORWEGIAN_TEXT = """Velkommen til ATLAS. En privat reiseklubb skapt for reisende som verdsetter diskresjon, åpenhet og ekte engrospriser.
 
-ATLAS endrer spillereglene med et privat årsmedlemskap til 1 290 kroner i året.
+ATLAS opererer med et privat årsmedlemskap til 1 290 kroner i året.
 
 Som medlem handler du direkte mot de institusjonelle grossistene med null påslag på over 1,2 millioner hoteller og flybilletter. Og når luksushoteller og cruiserederier betaler provisjoner, refunderer ATLAS 100 prosent av pengene rett tilbake til deg.
 
-For å ønske våre Founding Members velkommen, inkluderer medlemskapet et utvalgt europeisk weekend-opphold for to, med en verdi på inntil 4 500 kroner. Dette alene dekker årskontingenten mer enn tre ganger før du i det hele tatt har bestilt din første reise.
+For å ønske våre Founding Members velkommen, inkluderer medlemskapet et utvalgt europeisk weekend-opphold for to, med en verdi på inntil 4 500 kroner. Fleksibelt hotellopphold helt uten matforpliktelser.
 
-Støttet av vår 100 prosent verdigaranti: Sparer du ikke inn medlemskontingenten i løpet av ditt første år, får du alle pengene tilbake.
+Og når du reiser, er medlemskapet sikret av vår 100 prosent verdigaranti: Du må bestille og gjennomføre en reise for at garantien skal gjelde. Hvis dine engrosbestillinger ikke sparer deg for mer enn årsavgiften, refunderer vi kontingenten i sin helhet.
 
 Sikre din plass på ventelisten i dag. Ingen binding, null risiko."""
 

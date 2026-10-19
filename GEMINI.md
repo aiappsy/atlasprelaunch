@@ -5,7 +5,7 @@
 > 2. **Founder & Managing Director**: **Pål Juritzen** (`paljuritzen@gmail.com`, `+47 40059493`).
 > 3. **Business Model**: Private annual subscription travel club (€110 / 1 290 NOK per year).
 > 4. **Welcome Perk Ground Truth**: Founding Members receive a **Complimentary European Weekend Break for 2** (value up to 4 500 NOK / €400) — flexible boutique accommodation with NO meal requirements and NO half-board traps.
-> 5. **100% Money-Back Value Guarantee**: If a member doesn't save more than the annual fee in year 1, 100% refunded.
+> 5. **100% Money-Back Value Guarantee (Requires Active Booking & Travel)**: The guarantee is strictly tied to completed travel. A member must actually book and travel through ATLAS. If the verified wholesale savings on their completed bookings do not exceed their annual membership fee, ATLAS refunds 100% of their dues. Inactive members who do not book travel cannot claim the guarantee.
 > 6. **Strict Points Liquidity Guard**: Points earned from travel bookings are `🟡 Pending (In Escrow)` until partner commissions physically clear in our bank account (30–60 days). Only cleared points can be redeemed.
 
 ---
