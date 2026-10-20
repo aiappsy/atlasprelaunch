@@ -3,29 +3,29 @@ import edge_tts
 import os
 import shutil
 
-ENGLISH_TEXT = """Welcome to ATLAS. A private travel club created for travelers who value discretion, transparency, and true wholesale access.
+ENGLISH_TEXT = """Welcome to ATLAS. An exclusive private travel club created for travelers who value discretion, transparency, and true wholesale access.
 
-ATLAS operates on a private annual membership — just 110 euros per year.
+ATLAS operates on a transparent annual membership — just 110 euros per year.
 
-As a member, you bypass the middlemen entirely. You book over 1.2 million luxury hotels and direct flights at raw institutional net rates with zero markups added. And whenever luxury resorts or cruises pay commissions, ATLAS refunds 100 percent of that cash directly back to you.
+As a member, you bypass the middlemen entirely. You book over 1.2 million luxury hotels and direct flights at raw institutional net rates with zero markups added. And whenever luxury resorts or cruises pay booking commissions, ATLAS refunds 100 percent of that cash directly back to you.
 
-To celebrate our launch, every Founding Member receives a complimentary European weekend break for two, worth up to 400 euros. Flexible boutique accommodation with zero meal obligations.
+To celebrate our official launch, the first one hundred Founding Members receive a complimentary European weekend break for two, worth up to 400 euros. Flexible boutique accommodation with zero meal obligations.
 
-And when you travel, your membership is backed by our 100 percent Value Guarantee: You must book and complete your travel for the guarantee to activate. If your wholesale bookings do not save you more than your 110 euro membership fee, we refund your dues in full.
+That welcome break alone is worth nearly four times your annual membership dues on day one.
 
-Reserve your Founding Member spot today. Zero upfront cost, zero risk."""
+Reserve your Founding Member spot today for free. No credit card required. Welcome to ATLAS."""
 
-NORWEGIAN_TEXT = """Velkommen til ATLAS. En privat reiseklubb skapt for reisende som verdsetter diskresjon, åpenhet og ekte engrospriser.
+NORWEGIAN_TEXT = """Velkommen til ATLAS. En eksklusiv, privat reiseklubb skapt for reisende som verdsetter diskresjon, åpenhet og ekte engrospriser.
 
-ATLAS opererer med et privat årsmedlemskap til 1 290 kroner i året.
+ATLAS opererer med et transparent årsmedlemskap til 1 290 kroner i året.
 
 Som medlem handler du direkte mot de institusjonelle grossistene med null påslag på over 1,2 millioner hoteller og flybilletter. Og når luksushoteller og cruiserederier betaler provisjoner, refunderer ATLAS 100 prosent av pengene rett tilbake til deg.
 
-For å ønske våre Founding Members velkommen, inkluderer medlemskapet et utvalgt europeisk weekend-opphold for to, med en verdi på inntil 4 500 kroner. Fleksibelt hotellopphold helt uten matforpliktelser.
+For å feire lanseringen mottar de første 100 Founding-medlemmene et utvalgt europeisk weekend-opphold for to personer, med en verdi på inntil 4 500 kroner. Fleksibelt hotellopphold helt uten matforpliktelser.
 
-Og når du reiser, er medlemskapet sikret av vår 100 prosent verdigaranti: Du må bestille og gjennomføre en reise for at garantien skal gjelde. Hvis dine engrosbestillinger ikke sparer deg for mer enn årsavgiften, refunderer vi kontingenten i sin helhet.
+Velkomstgaven alene overstiger årsavgiften mer enn tre ganger på dag én.
 
-Sikre din plass på ventelisten i dag. Ingen binding, null risiko."""
+Sikre din plass på ventelisten i dag helt gratis. Intet kredittkort nødvendig. Velkommen til ATLAS."""
 
 async def generate():
     output_dir = os.path.join(os.path.dirname(__file__), '..', 'public', 'audio')

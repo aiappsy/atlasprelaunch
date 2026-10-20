@@ -180,7 +180,7 @@ export const Hero: React.FC<HeroProps> = ({
           <span className="text-neutral-600">•</span>
           <span className="flex items-center gap-1.5 text-emerald-300 font-semibold">
             <Sparkles className="w-3.5 h-3.5" />
-            {isNorwegian ? '100% Fornøyd- & Verdigaranti' : '100% Value Guarantee'}
+            {isNorwegian ? '0 kr påslag på fly & hotell' : '0% Markup on Flights & Hotels'}
           </span>
         </div>
 

@@ -16,7 +16,7 @@
       ],
       "headers": [
         {
-          "source": "**/*.@(jpg|jpeg|gif|png|svg|webp|js|css|woff2|mp3|m4a|mp4)",
+          "source": "**/*.@(jpg|jpeg|gif|png|svg|webp|js|css|woff2|mp3|m4a|mp4|wav)",
           "headers": [
             {
               "key": "Cache-Control",
@@ -42,7 +42,7 @@
       ],
       "headers": [
         {
-          "source": "**/*.@(jpg|jpeg|gif|png|svg|webp|js|css|woff2|mp3|m4a|mp4)",
+          "source": "**/*.@(jpg|jpeg|gif|png|svg|webp|js|css|woff2|mp3|m4a|mp4|wav)",
           "headers": [
             {
               "key": "Cache-Control",
