@@ -8,7 +8,6 @@ import {
   CheckCircle2,
   Gift,
   Coins,
-  Anchor,
   ArrowRight,
   Utensils,
 } from 'lucide-react';
@@ -113,7 +112,7 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onOpenPerkModal }) =
         </div>
       </div>
 
-      {/* 3 Core CommeResort Allotment Networkal Pillars: RateHawk/WebBeds, Duffel Flights, Rewards Vault Cruise */}
+      {/* 3 Core Commercial Pillars: RateHawk/WebBeds, Duffel Flights, Rewards Vault */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Pillar 1: RateHawk & WebBeds Hotels */}
         <div className="p-5 rounded-2xl bg-neutral-950/70 border border-neutral-800/80 backdrop-blur-md text-left hover:border-amber-400/40 transition flex flex-col justify-between">
@@ -153,11 +152,11 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onOpenPerkModal }) =
           </div>
         </div>
 
-        {/* Pillar 3: Rewards Vault (100% Cruise Rebate) */}
+        {/* Pillar 3: Rewards Vault (100% Commission Rebate) */}
         <div className="p-5 rounded-2xl bg-neutral-950/70 border border-neutral-800/80 backdrop-blur-md text-left hover:border-indigo-400/40 transition flex flex-col justify-between">
           <div>
             <div className="w-9 h-9 rounded-xl bg-indigo-400/10 border border-indigo-400/30 flex items-center justify-center text-indigo-300 mb-3">
-              <Anchor className="w-5 h-5" />
+              <Coins className="w-5 h-5" />
             </div>
             <h4 className="text-sm font-semibold text-neutral-100">
               {t.pillars.pillar5Title}

@@ -123,7 +123,7 @@ const CRM_PODCAST_ITEMS: CrmPodcastItem[] = [
     category: 'core',
     badge: 'Core 6 • Provisjoner',
     title: 'How ATLAS Returns Hidden Travel Commissions (Slik refunderer ATLAS skjulte provisjoner til deg)',
-    desc: 'Cruises, packages, and luxury chains pay 10%–16% commission behind your back. ATLAS passes 100% back into your member Rewards Vault.',
+    desc: 'Luxury resort packages and partner chains pay 10%–16% commission behind your back. ATLAS passes 100% back into your member Rewards Vault.',
     file: 'How_ATLAS_Returns_Hidden_Travel_Commissions.m4a',
     size: '9.6 MB',
     duration: '10:02',

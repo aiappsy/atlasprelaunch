@@ -227,7 +227,7 @@ På et typisk 4-netters opphold på et 4- eller 5-stjerners hotell sparer du van
           followUps: [
             'Hvorfor må jeg bli medlem og ikke teste først?',
             'Hva koster medlemskapet ved lansering?',
-            'Hvorfor er cruisepriser like overalt?',
+            'Hva er inkludert i Founding Member-gaven?',
           ],
         };
       }
@@ -245,7 +245,7 @@ On a typical 4-night stay at a 4- or 5-star hotel, that usually puts **€250 to
         followUps: [
           'Why do I have to become a member and can\'t test first?',
           'What is the annual membership fee?',
-          'Why are cruise prices identical publicly?',
+          'What is included in the Founding Member gift?',
         ],
       };
     },
@@ -295,7 +295,7 @@ On a typical 4-night stay at a 4- or 5-star hotel, that usually puts **€250 to
         return {
           text: `👑 **ATLAS Medlemskontingent & Founding Privilegier:**
 
-ATLAS er en privat medlemsklubb etter den private abonnementsmodellen. Vi tar **0 kr i påslag på fly og over 1 200 000 hoteller**, og gir **100% provisjonsretur** på cruise og luksusopphold.
+ATLAS er en privat medlemsklubb etter den private abonnementsmodellen. Vi tar **0 kr i påslag på fly og over 1 200 000 hoteller**, og gir **100% provisjonsretur** på luksusopphold og utvalgte ferieresorter.
 
 • **Årskontingent ved lansering**: **${p.formattedFounding} per år** (${p.monthlyEquivalent}) ved åpning onsdag 20. januar 2027.
 • **100% Gratis Reservasjon**: Du reserverer plass i dag helt gratis – intet kredittkort nødvendig.
@@ -364,45 +364,41 @@ ATLAS operates on a strict subscription model (as a private club). We charge **0
 
       if (isNorwegian) {
         return {
-          text: `Det kan virke merkelig at alle reisesider viser nøyaktig samme pris på et cruise eller leiebil, men det er en streng bransjeregel: Cruiserederiene og leiebilselskapene håndhever regler for laveste annonserte pris (MAP). Ingen reisebyråer får lov til å underby de offisielle prisene i handlekurven.
+          text: `For å sikre maksimal kvalitet og direkte engrospriser ved oppstart, har vi valgt å **utsette direkte cruise-integrasjoner** i første lanseringsfase. 
 
-I stedet betaler de en agentprovisjon (typisk 10% til 16%) i etterkant av reisen.
+ATLAS fokuserer 100% på kjernefordelene ved lansering:
+• **0 kr påslag på over 1 200 000 engroshoteller** direkte via globale leverandører (RateHawk, WebBeds).
+• **Direkte flypriser (NDC)** uten fordyrende GDS- og byrågebyrer.
+• **Europeisk Weekend-opphold for to** inkludert som Founding Member-gave for de 100 første.
+• **RVC Signature Resorts**: 7-netters ferieleiligheter for familier fra kun 3 490 kr for hele uken.
 
-**Hva gjør Atlas annerledes?**
-Vanlige reisebyråer stikker hele denne provisjonen i egen lomme. Siden Atlas er en ren medlemsklubb med 0 kr i påslag, **overfører vi 100% av denne provisjonen rett tilbake til deg som Rewards Vault-kreditt!**
-
-• **100% Provisjonsretur**: Hele provisjonen tilfaller deg som medlem.
-• **Trygg Likviditet & Escrow**: Provisjonen godskrives som disponible poeng så snart rederiet utbetaler oppgjøret (30–60 dager etter reisen).
-• **Selvfinansierende**: Disponible poeng kan brukes til reiser eller trekkes fra din neste årskontingent (1 290 kr / €110).
-• **Ekstra fordeler**: Eksklusive lugar-oppgraderinger og gratis ombordkreditt (€180–€550 per lugar).`,
+Vi evaluerer partnerskap for luksuscruise og vil annonsere dedikerte cruisefordeler til medlemmene i en senere oppdatering.`,
           action: 'open_waitlist',
-          actionLabel: 'Bli med på ventelisten for cruise',
+          actionLabel: 'Reserver Founding-plass gratis',
           followUps: [
             'Hva koster medlemskapet ved lansering?',
             'Hvordan fungerer engrospriser på hotell?',
-            'Hva er 100% verdigarantien?',
+            'Hva er ferieleiligheter fra 3 490 kr?',
           ],
         };
       }
 
       return {
-        text: `It's frustrating when every travel website shows the exact same price for a cruise or rental car, but there's a strict industry reason for it: luxury cruise lines and rental firms enforce Minimum Advertised Price (MAP) rules. No agency is permitted to undercut public retail prices in the shopping cart.
+        text: `To ensure absolute quality and zero-compromise wholesale pricing at launch, we have **paused direct cruise integrations** for our initial rollout phase.
 
-Instead, suppliers pay an agency commission (typically 10% to 16%) after the journey is completed.
+ATLAS is focusing 100% on delivering our core launch verticals:
+• **0% markup on 1.2M+ wholesale hotels** direct from institutional bedbanks (RateHawk, WebBeds).
+• **Direct NDC airfares** at raw airline cost without GDS middleman surcharges.
+• **Complimentary European Weekend Break for two** included as a Founding Member gift for early adopters.
+• **RVC Signature Resorts**: 7-night condominium stays for families from €299 (fra 3 490 kr) for the entire week.
 
-**What does Atlas do differently?**
-Traditional agencies pocket this entire commission. Because Atlas is a pure membership club with 0 kr markups, **we pass 100% of this supplier commission directly back to you as Rewards Vault points and credits!**
-
-• **100% Commission Rebate**: We retain 0% of travel commissions.
-• **Escrow Liquidity**: Commission credits clear into spendable points once funds settle from the supplier (30–60 days post-travel).
-• **Self-Funding**: Spendable points can be redeemed for future travel or offset your next annual renewal in Stripe (€110 / 1 290 NOK) – making your membership completely self-funding!
-• **Exclusive VIP Perks**: Stateroom upgrades and onboard spending credits (€180–€550 per cabin).`,
+We are curating high-standard cruise partner agreements and will announce cruise benefits for our members in a subsequent roadmap update.`,
         action: 'open_waitlist',
-        actionLabel: 'Join Waitlist for Cruise Allocations',
+        actionLabel: 'Reserve Founding Spot Free',
         followUps: [
           'What is the annual membership fee?',
           'How does wholesale hotel pricing work?',
-          'What is the 100% money-back guarantee?',
+          'What are 7-night condo stays for €299 (3 490 kr)?',
         ],
       };
     },

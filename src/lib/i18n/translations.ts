@@ -253,7 +253,7 @@ export const translations: Record<Language, Translations> = {
       pillar4Title: 'RVC Signature Resorts (7-Night Condos for Families)',
       pillar4Desc: 'Spacious condominium suites (studios, 1- and 2-bedroom units sleeping 2 to 6 guests) in Spain, Greece, and Italy from €299 (fra 3 490 kr) for 7 nights on last-minute clearance bookings.',
       pillar5Title: 'Rewards Vault (100% Commission Rebate)',
-      pillar5Desc: 'On cruises (Royal Caribbean, MSC, Celebrity) and luxury hotels, ATLAS passes 100% of supplier commissions (10%–16%) directly back to you.',
+      pillar5Desc: 'On luxury resort collections, signature wellness retreats, and partner properties, ATLAS passes 100% of travel commissions (10%–16%) directly back to your member vault.',
     },
     waitlist: {
       modalTitle: 'Reserve Founding Member Spot',
@@ -415,7 +415,7 @@ export const translations: Record<Language, Translations> = {
       pillar4Title: 'RVC Signature Resorts (7 netter for familien)',
       pillar4Desc: 'Romslige ferieleiligheter (fra studio til 1- og 2-roms for 2–6 personer) i Spania, Hellas, Italia og Portugal fra kun 3 490 kr (€299) for hele uken ved restplass / clearance.',
       pillar5Title: 'Rewards Vault (100% Provisjonsretur)',
-      pillar5Desc: 'På cruise (Royal Caribbean, MSC, Celebrity) og luksusopphold der leverandørene betaler 10%–16% provisjon, overfører ATLAS 100% direkte tilbake til deg.',
+      pillar5Desc: 'På luksusresorter, utvalgte velværehoteller og partneropphold der leverandørene betaler 10%–16% provisjon, overfører ATLAS 100% direkte tilbake til din medlemskonto.',
     },
     waitlist: {
       modalTitle: 'Reserver Founding Member-plass',

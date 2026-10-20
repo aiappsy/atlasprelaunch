@@ -150,11 +150,11 @@ export const PODCAST_TRACKS: Record<PodcastTrackId, PodcastTrack> = {
     durationLabel: '5:08 Duration',
     title: 'How ATLAS Returns Hidden Travel Commissions',
     description:
-      'Why cruise lines and luxury hotel chains pay 10%–16% commissions, and how ATLAS passes 100% of these commissions directly to members as Rewards Vault credits.',
+      'Why luxury resort collections and hotel partners pay 10%–16% commissions, and how ATLAS passes 100% of these commissions directly to members as Rewards Vault credits.',
     audioSrc: '/audio/How_ATLAS_Returns_Hidden_Travel_Commissions.m4a?v=20261019',
     downloadFilename: 'How_ATLAS_Returns_Hidden_Travel_Commissions.m4a',
     chapters: [
-      { time: 0, label: '00:00 — The Hidden Agency Commission', desc: 'How travel agents profit quietly from cruise and luxury bookings' },
+      { time: 0, label: '00:00 — The Hidden Agency Commission', desc: 'How retail agents profit quietly from luxury resort bookings' },
       { time: 90, label: '01:30 — Closed-Loop Loyalty', desc: 'Maintaining 100% rate parity while rebating commissions to members' },
       { time: 210, label: '03:30 — Escrow & Cash Lag', desc: 'Why points clear when commission funds physically settle' },
     ],
@@ -327,12 +327,12 @@ export const PODCAST_TRACKS_NO: Record<PodcastTrackId, PodcastTrack> = {
     durationLabel: '5:08 Varighet',
     title: 'Slik betaler ATLAS 100% av provisjonen tilbake til deg',
     description:
-      'Hvorfor rederier og luksushoteller betaler 10%–16% i provisjon, og hvordan ATLAS overfører hver eneste krone rett inn i din Rewards Vault.',
+      'Hvorfor luksushoteller og utvalgte resorter betaler 10%–16% i provisjon, og hvordan ATLAS overfører hver eneste krone rett inn i din Rewards Vault.',
     audioSrc: '/audio/How_ATLAS_Returns_Hidden_Travel_Commissions.m4a?v=20261019',
     downloadFilename: 'How_ATLAS_Returns_Hidden_Travel_Commissions.m4a',
     chapters: [
       { time: 0, label: '00:00 — De hemmelige provisjonene', desc: 'Hvordan reisebyråer tjener store penger bak ryggen på kunden' },
-      { time: 90, label: '01:30 — Closed-Loop lojalitetskreditter', desc: 'Overholder cruiserederienes prisregler og gir kunden verdien' },
+      { time: 90, label: '01:30 — Closed-Loop lojalitetskreditter', desc: 'Overholder leverandørenes prisregler og gir kunden verdien' },
       { time: 210, label: '03:30 — Escrow & likviditet', desc: 'Poengene frigis når provisjonen er utbetalt fra leverandøren' },
     ],
   },

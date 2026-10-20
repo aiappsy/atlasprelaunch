@@ -235,8 +235,8 @@ export const ComplianceModal: React.FC<ComplianceModalProps> = ({
               </h3>
               <p>
                 {isNorwegian
-                  ? 'Cruiserederier (10%–16%) og luksushoteller utbetaler provisjoner til reisebyråer. Tradisjonelle byråer beholder disse pengene som overskudd. Atlas refunderer 100% av provisjonen direkte tilbake til medlemmet i Rewards Vault.'
-                  : 'Cruise lines (10%–16%) and luxury hotels pay backend commissions to retail booking agents. Traditional agencies keep this as profit. ATLAS rebates 100% of these commissions directly to the member\'s Rewards Vault.'}
+                  ? 'Luksushoteller og utvalgte ferieresorter (10%–16%) utbetaler provisjoner til reisebyråer. Tradisjonelle byråer beholder disse pengene som overskudd. Atlas refunderer 100% av provisjonen direkte tilbake til medlemmet i Rewards Vault.'
+                  : 'Luxury resorts and boutique hotel partners (10%–16%) pay backend commissions to retail booking agents. Traditional agencies keep this as profit. ATLAS rebates 100% of these commissions directly to the member\'s Rewards Vault.'}
               </p>
               <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800 space-y-2">
                 <span className="font-mono text-xs font-bold text-amber-400 block">

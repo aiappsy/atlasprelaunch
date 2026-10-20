@@ -339,12 +339,12 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
   },
 
   // =========================================================================
-  // STAGE 6: COMMISSION REBATES ON CRUISES & LUXURY (DAY 20)
+  // STAGE 6: COMMISSION REBATES ON LUXURY RESORTS & HOTELS (DAY 20)
   // =========================================================================
   {
     id: 'email_6_commission_rebates',
     stageNumber: 6,
-    stageName: 'Trinn 6: Provisjonsrevolusjonen på Cruise & Luksus',
+    stageName: 'Trinn 6: Provisjonsrevolusjonen på Luksusresorter & Hotell',
     scheduledTiming: '20 dager etter registrering',
     subjectNo: '💳 Hvor blir de 10-16% provisjonene av? Slik fungerer Rewards Vault',
     subjectEn: '💳 Where do the 10-16% commissions go? Inside Rewards Vault',
@@ -353,8 +353,8 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
     podcastTitleNo: 'Episode 6: «Slik betaler ATLAS 100% av provisjonen tilbake til deg»',
     podcastTitleEn: 'Episode 6: "How ATLAS Returns Hidden Travel Commissions"',
     podcastDuration: '05:08 min',
-    podcastDescriptionNo: 'Hvorfor rederier og luksushoteller betaler 10%–16% i provisjon, og hvordan ATLAS overfører hver eneste krone rett inn i din Rewards Vault.',
-    podcastDescriptionEn: 'Why cruise lines and luxury hotel chains pay 10%–16% commissions, and how ATLAS passes 100% of these commissions directly to members as Rewards Vault credits.',
+    podcastDescriptionNo: 'Hvorfor luksushoteller og utvalgte resorter betaler 10%–16% i provisjon, og hvordan ATLAS overfører hver eneste krone rett inn i din Rewards Vault.',
+    podcastDescriptionEn: 'Why luxury resort collections and hotel partners pay 10%–16% commissions, and how ATLAS passes 100% of these commissions directly to members as Rewards Vault credits.',
     podcastUrl: 'https://atlasprelaunch.web.app?podcast=commissions',
     getHtmlContent: (ctx) => `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #f5f5f5; border: 1px solid #d4af3740; border-radius: 16px; overflow: hidden;\">
@@ -365,10 +365,10 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
         <div style="padding: 32px;\">
           <h2 style="font-size: 20px; color: #f3f4f6; margin-top: 0;\">Hei, ${ctx.fullName}.</h2>
           <p style="font-size: 14px; line-height: 1.6; color: #d1d5db;\">
-            Når du bestiller et cruise til 30 000 kr eller et 5-stjerners luksushotell via et tradisjonelt reisebyrå, betaler leverandøren <strong>10% til 16% i ren provisjon</strong> (3 000–4 800 kr) direkte til byrået.
+            Når du bestiller et 5-stjerners luksusresort eller boutiqueopphold til 30 000 kr via et tradisjonelt reisebyrå, betaler leverandøren <strong>10% til 16% i ren provisjon</strong> (3 000–4 800 kr) direkte til byrået.
           </p>
           <p style="font-size: 14px; line-height: 1.6; color: #d1d5db;\">
-            ATLAS er bygget på <strong>den private abonnementsmodellen</strong>: Vi lever utelukkende av vår faste medlemskontingent (1 290 kr/år). Vi beholder 0 kr i reisebyråprovisjoner. Hver eneste krone fra cruiserederier og luksuskjeder overføres 100% rett tilbake til din <strong>Rewards Vault</strong> som reisekreditter for fremtidige ferier!
+            ATLAS er bygget på <strong>den private abonnementsmodellen</strong>: Vi lever utelukkende av vår faste medlemskontingent (1 290 kr/år). Vi beholder 0 kr i reisebyråprovisjoner. Hver eneste krone fra luksusresorter og hotellkjeder overføres 100% rett tilbake til din <strong>Rewards Vault</strong> som reisekreditter for fremtidige ferier!
           </p>
 
           <!-- Embedded Podcast Episode 6 Card -->
@@ -380,7 +380,7 @@ export const NURTURE_EMAIL_SEQUENCE: NurtureEmailTemplate[] = [
               «Slik betaler ATLAS 100% av provisjonen tilbake til deg»
             </div>
             <p style="font-size: 12px; color: #9ca3af; line-height: 1.4; margin-bottom: 12px;\">
-              Hør hvordan vi overholder cruiserederienes strenge prisregler (100% rate parity i kassen), samtidig som medlemmene høster all fortjeneste gjennom lukkede lojalitetskreditter.
+              Hør hvordan vi overholder leverandørenes prisregler, samtidig som medlemmene høster all fortjeneste gjennom lukkede lojalitetskreditter.
             </p>
             <a href="https://atlasprelaunch.web.app?podcast=commissions" style="display: inline-block; font-size: 11px; font-family: monospace; font-weight: bold; color: #0a0a0a; background: linear-gradient(90deg, #fbbf24, #f59e0b); text-decoration: none; padding: 7px 14px; border-radius: 6px;\">
               ▶ Hør Provisjonsavsløringen i Lydspilleren
